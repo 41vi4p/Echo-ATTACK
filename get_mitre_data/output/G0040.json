@@ -1,0 +1,1227 @@
+{
+  "attack_id": "G0040",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "17 November 2024",
+  "name": "Patchwork",
+  "version": "1.5",
+  "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) is a cyber espionage group that was first observed in December 2015. While the group has not been definitively attributed, circumstantial evidence suggests the group may be a pro-Indian or Indian entity. [Patchwork](https://attack.mitre.org/groups/G0040) has been seen targeting industries related to diplomatic and government agencies. Much of the code used by this group was copied and pasted from online forums. [Patchwork](https://attack.mitre.org/groups/G0040) was also seen operating spearphishing campaigns targeting U.S. think tank groups in March and April of 2018.(Citation: Cymmetria Patchwork) (Citation: Symantec Patchwork)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1548",
+      "name": "Abuse Elevation Control Mechanism",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Bypass User Account Control",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) bypassed User Access Control (UAC).(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) encrypted the collected files' path with AES and then encoded them with base64.(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) developed a file stealer to search C:\\ and collect files with certain extensions. [Patchwork](https://attack.mitre.org/groups/G0040) also executed a script to enumerate all drives, store them as a list, and upload generated files to the C2 server.(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1197",
+      "name": "BITS Jobs",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used BITS jobs to download malicious payloads.(Citation: Unit 42 BackConfig May 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has added the path of its second-stage malware to the startup folder to achieve persistence. One of its file stealers has also persisted by adding a Registry Run key.(Citation: Cymmetria Patchwork)(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) used [PowerSploit](https://attack.mitre.org/software/S0194) to download payloads, run a reverse shell, and execute malware on the victim's machine.(Citation: Cymmetria Patchwork)(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) ran a reverse shell with Meterpreter.(Citation: Cymmetria Patchwork) [Patchwork](https://attack.mitre.org/groups/G0040) used JavaScript code and .SCT files on victim machines.(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) used Visual Basic Scripts (VBS) on victim machines.(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) dumped the login data database from <code>\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data</code>.(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1132",
+      "name": "Data Encoding",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Standard Encoding",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) used Base64 to encode C2 traffic.(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) collected and exfiltrated files from the infected system.(Citation: Cymmetria Patchwork)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) copied all targeted files to a directory called index that was eventually uploaded to the C&C server.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Code Signing Certificates",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has created self-signed certificates from fictitious and spoofed legitimate software companies that were later used to sign malware.(Citation: Unit 42 BackConfig May 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1189",
+      "name": "Drive-by Compromise",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used watering holes to deliver files with exploits to initial victims.(Citation: Symantec Patchwork)(Citation: Volexity Patchwork June 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) uses malicious documents to deliver remote execution exploits as part of. The group has previously exploited CVE-2017-8570, CVE-2012-1856, CVE-2014-4114, CVE-2017-0199, CVE-2017-11882, and CVE-2015-1641.(Citation: Cymmetria Patchwork)(Citation: Securelist Dropping Elephant)(Citation: Symantec Patchwork)(Citation: PaloAlto Patchwork Mar 2018)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)(Citation: Unit 42 BackConfig May 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) payload has searched all fixed drives on the victim for files matching a specified list of extensions.(Citation: Cymmetria Patchwork)(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1574",
+      "name": "Hijack Execution Flow",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "DLL",
+          "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) .dll that contains [BADNEWS](https://attack.mitre.org/software/S0128) is loaded and executed using DLL side-loading.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) removed certain files and replaced them so they could not be retrieved.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) payloads download additional files from the C2 server.(Citation: Securelist Dropping Elephant)(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1559",
+      "name": "Inter-Process Communication",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Dynamic Data Exchange",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) leveraged the DDE protocol to deliver their malware.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) installed its payload in the startup programs folder as \"Baidu Software Update.\" The group also adds its second stage payload to the startup programs as “Net Monitor.\"(Citation: Cymmetria Patchwork) They have also dropped [QuasarRAT](https://attack.mitre.org/software/S0262) binaries as files named microsoft_network.exe and crome.exe.(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) payload deletes Resiliency Registry keys created by Microsoft Office applications in an apparent effort to trick users into thinking there were no issues during application runs.(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Binary Padding",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) apparently altered [NDiskMonitor](https://attack.mitre.org/software/S0272) samples by adding four bytes of random letters in a likely attempt to change the file hashes.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) payload was packed with UPX.(Citation: Securelist Dropping Elephant)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Indicator Removal from Tools",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) apparently altered [NDiskMonitor](https://attack.mitre.org/software/S0272) samples by adding four bytes of random letters in a likely attempt to change the file hashes.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Command Obfuscation",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has obfuscated a script with Crypto Obfuscator.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has obtained and used open-source tools such as [QuasarRAT](https://attack.mitre.org/software/S0262).(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used spearphishing with an attachment to deliver files with exploits to initial victims.(Citation: Cymmetria Patchwork)(Citation: Securelist Dropping Elephant)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used spearphishing with links to deliver files with exploits to initial victims.(Citation: Symantec Patchwork)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Unit 42 BackConfig May 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1598",
+      "name": "Phishing for Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing Link",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used embedded image tags (known as web bugs) with unique, per-recipient tracking links in their emails for the purpose of identifying which recipients opened messages.(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "012",
+          "name": "Process Hollowing",
+          "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) payload uses process hollowing to hide the UAC bypass vulnerability exploitation inside svchost.exe.(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) attempted to use RDP to move laterally.(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "A [Patchwork](https://attack.mitre.org/groups/G0040) file stealer can run a TaskScheduler DLL to add persistence.(Citation: TrendMicro Patchwork Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) scanned the “Program Files” directories for a directory with the string “Total Security” (the installation path of the “360 Total Security” antivirus tool).(Citation: Cymmetria Patchwork)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1553",
+      "name": "Subvert Trust Controls",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Code Signing",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has signed malware with self-signed certificates from fictitious and spoofed legitimate software companies.(Citation: Unit 42 BackConfig May 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) collected the victim computer name, OS version, and architecture type and sent the information to its C2 server. [Patchwork](https://attack.mitre.org/groups/G0040) also enumerated all available drives on the victim's machine.(Citation: Cymmetria Patchwork)(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) collected the victim username and whether it was running as admin, then sent the information to its C2 server.(Citation: Cymmetria Patchwork)(Citation: TrendMicro Patchwork Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) has used spearphishing with links to try to get users to click, download and open malicious files.(Citation: Symantec Patchwork)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)(Citation: Unit 42 BackConfig May 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) embedded a malicious macro in a Word document and lured the victim to click on an icon to execute the malware.(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Dead Drop Resolver",
+          "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) hides base64-encoded and encrypted C2 server locations in comments on legitimate websites.(Citation: Securelist Dropping Elephant)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0129",
+      "name": "AutoIt backdoor",
+      "descr": "(Citation: Forcepoint Monsoon)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0475",
+      "name": "BackConfig",
+      "descr": "(Citation: Unit 42 BackConfig May 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "001",
+          "name": "User Execution",
+          "sub_name": "Malicious Link"
+        }
+      ]
+    },
+    {
+      "id": "S0128",
+      "name": "BADNEWS",
+      "descr": "(Citation: Forcepoint Monsoon)(Citation: TrendMicro Patchwork Dec 2017)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1132",
+          "name": "Data Encoding"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1039",
+          "name": "Data from Network Shared Drive"
+        },
+        {
+          "id": "T1025",
+          "name": "Data from Removable Media"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "001",
+          "name": "Masquerading",
+          "sub_name": "Invalid Code Signature"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0272",
+      "name": "NDiskMonitor",
+      "descr": "(Citation: TrendMicro Patchwork Dec 2017)",
+      "techniques": [
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0194",
+      "name": "PowerSploit",
+      "descr": "(Citation: Cymmetria Patchwork)",
+      "techniques": [
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "002",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials in Registry"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "006",
+          "name": "Unsecured Credentials",
+          "sub_name": "Group Policy Preferences"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0262",
+      "name": "QuasarRAT",
+      "descr": "(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "003",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Window"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1614",
+          "name": "System Location Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0131",
+      "name": "TINYTYPHON",
+      "descr": "(Citation: Forcepoint Monsoon)",
+      "techniques": [
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        }
+      ]
+    },
+    {
+      "id": "S0130",
+      "name": "Unknown Logger",
+      "descr": "(Citation: Forcepoint Monsoon)",
+      "techniques": [
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1091",
+          "name": "Replication Through Removable Media"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "Hangover Group",
+      "descr": "[Patchwork](https://attack.mitre.org/groups/G0040) and the Hangover Group have both been referenced as aliases for the threat group associated with Operation Monsoon.(Citation: PaloAlto Patchwork Mar 2018)(Citation: Unit 42 BackConfig May 2020)(Citation: Forcepoint Monsoon)"
+    },
+    {
+      "name": "Dropping Elephant",
+      "descr": "(Citation: Symantec Patchwork) (Citation: Securelist Dropping Elephant) (Citation: PaloAlto Patchwork Mar 2018) (Citation: Volexity Patchwork June 2018)"
+    },
+    {
+      "name": "Chinastrats",
+      "descr": "(Citation: Securelist Dropping Elephant)"
+    },
+    {
+      "name": "MONSOON",
+      "descr": "MONSOON is the name of an espionage campaign; we use it here to refer to the actor group behind the campaign. (Citation: Forcepoint Monsoon) (Citation: PaloAlto Patchwork Mar 2018)"
+    },
+    {
+      "name": "Operation Hangover",
+      "descr": "It is believed that the actors behind [Patchwork](https://attack.mitre.org/groups/G0040) are the same actors behind Operation Hangover. (Citation: Forcepoint Monsoon) (Citation: Operation Hangover May 2013)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Cymmetria Patchwork": {
+      "description": "Cymmetria. (2016). Unveiling Patchwork - The Copy-Paste APT. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://web.archive.org/web/20180825085952/https:/s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling_Patchwork.pdf"
+    },
+    "Operation Hangover May 2013": {
+      "description": "Fagerland, S., et al. (2013, May). Operation Hangover: Unveiling an Indian Cyberattack Infrastructure. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://web.archive.org/web/20140424084220/http://enterprise-manage.norman.c.bitbit.net/resources/files/Unveiling_an_Indian_Cyberattack_Infrastructure.pdf"
+    },
+    "Symantec Patchwork": {
+      "description": "Hamada, J.. (2016, July 25). Patchwork cyberespionage group expands targets from governments to wide range of industries. Retrieved August 17, 2016.",
+      "number": null,
+      "url": "http://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries"
+    },
+    "Unit 42 BackConfig May 2020": {
+      "description": "Hinchliffe, A. and Falcone, R. (2020, May 11). Updated BackConfig Malware Targeting Government and Military Organizations in South Asia. Retrieved June 17, 2020.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/updated-backconfig-malware-targeting-government-and-military-organizations/"
+    },
+    "Securelist Dropping Elephant": {
+      "description": "Kaspersky Lab's Global Research & Analysis Team. (2016, July 8). The Dropping Elephant – aggressive cyber-espionage in the Asian region. Retrieved August 3, 2016.",
+      "number": null,
+      "url": "https://securelist.com/the-dropping-elephant-actor/75328/"
+    },
+    "PaloAlto Patchwork Mar 2018": {
+      "description": "Levene, B. et al.. (2018, March 7). Patchwork Continues to Deliver BADNEWS to the Indian Subcontinent. Retrieved March 31, 2018.",
+      "number": null,
+      "url": "https://researchcenter.paloaltonetworks.com/2018/03/unit42-patchwork-continues-deliver-badnews-indian-subcontinent/"
+    },
+    "TrendMicro Patchwork Dec 2017": {
+      "description": "Lunghi, D., et al. (2017, December). Untangling the Patchwork Cyberespionage Group. Retrieved July 10, 2018.",
+      "number": null,
+      "url": "https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf"
+    },
+    "Volexity Patchwork June 2018": {
+      "description": "Meltzer, M, et al. (2018, June 07). Patchwork APT Group Targets US Think Tanks. Retrieved July 16, 2018.",
+      "number": null,
+      "url": "https://www.volexity.com/blog/2018/06/07/patchwork-apt-group-targets-us-think-tanks/"
+    },
+    "Forcepoint Monsoon": {
+      "description": "Settle, A., et al. (2016, August 8). MONSOON - Analysis Of An APT Campaign. Retrieved September 22, 2016.",
+      "number": null,
+      "url": "https://www.forcepoint.com/sites/default/files/resources/files/forcepoint-security-labs-monsoon-analysis-report.pdf"
+    }
+  },
+  "aliases_list": [
+    "Hangover Group",
+    "Dropping Elephant",
+    "Chinastrats",
+    "MONSOON",
+    "Operation Hangover"
+  ]
+}

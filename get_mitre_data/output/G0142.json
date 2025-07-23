@@ -1,0 +1,621 @@
+{
+  "attack_id": "G0142",
+  "notes": null,
+  "created": "26 December 2021",
+  "modified": "16 April 2025",
+  "name": "Confucius",
+  "version": "1.1",
+  "descr": "[Confucius](https://attack.mitre.org/groups/G0142) is a cyber espionage group that has primarily targeted military personnel, high-profile personalities, business persons, and government organizations in South Asia since at least 2013. Security researchers have noted similarities between [Confucius](https://attack.mitre.org/groups/G0142) and [Patchwork](https://attack.mitre.org/groups/G0040), particularly in their respective custom malware code and targets.(Citation: TrendMicro Confucius APT Feb 2018)(Citation: TrendMicro Confucius APT Aug 2021)(Citation: Uptycs Confucius APT Jan 2021)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Web Services",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has obtained cloud storage service accounts to host stolen data.(Citation: TrendMicro Confucius APT Feb 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used HTTP for C2 communications.(Citation: Uptycs Confucius APT Jan 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer to steal documents and images with the following extensions: txt, pdf, png, jpg, doc, xls, xlm, odp, ods, odt, rtf, ppt, xlsx, xlsm, docx, pptx, and jpeg.(Citation: TrendMicro Confucius APT Aug 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has dropped malicious files into the startup folder `%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup` on a compromised host in order to maintain persistence.(Citation: Uptycs Confucius APT Jan 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used PowerShell to execute malicious files and payloads.(Citation: TrendMicro Confucius APT Aug 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used VBScript to execute malicious code.(Citation: TrendMicro Confucius APT Feb 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has exfiltrated stolen files to its C2 server.(Citation: TrendMicro Confucius APT Aug 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has exfiltrated victim data to cloud storage service accounts.(Citation: TrendMicro Confucius APT Feb 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has exploited Microsoft Office vulnerabilities, including CVE-2015-1641, CVE-2017-11882, and CVE-2018-0802.(Citation: Uptycs Confucius APT Jan 2021)(Citation: TrendMicro Confucius APT Feb 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer that checks the Document, Downloads, Desktop, and Picture folders for documents and images with specific extensions.(Citation: TrendMicro Confucius APT Aug 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has downloaded additional files and payloads onto a compromised host following initial access.(Citation: Uptycs Confucius APT Jan 2021)(Citation: TrendMicro Confucius APT Aug 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has crafted and sent victims malicious attachments to gain initial access.(Citation: Uptycs Confucius APT Jan 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has sent malicious links to victims through email campaigns.(Citation: TrendMicro Confucius APT Aug 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has created scheduled tasks to maintain persistence on a compromised host.(Citation: TrendMicro Confucius APT Aug 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Mshta",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used mshta.exe to execute malicious VBScript.(Citation: TrendMicro Confucius APT Feb 2018) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer that can examine system drives, including those other than the C drive.(Citation: TrendMicro Confucius APT Aug 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1221",
+      "name": "Template Injection",
+      "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has used a weaponized Microsoft Word document with an embedded RTF exploit.(Citation: Uptycs Confucius APT Jan 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has lured victims into clicking on a malicious link sent through spearphishing.(Citation: TrendMicro Confucius APT Aug 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Confucius](https://attack.mitre.org/groups/G0142) has lured victims to execute malicious attachments included in crafted spearphishing emails related to current topics.(Citation: Uptycs Confucius APT Jan 2021)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S1077",
+      "name": "Hornbill",
+      "descr": "(Citation: lookout_hornbill_sunbird_0221)",
+      "techniques": [
+        {
+          "parent_id": "T1626",
+          "id": "001",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Device Administrator Permissions"
+        },
+        {
+          "id": "T1517",
+          "name": "Access Notifications"
+        },
+        {
+          "parent_id": "T1437",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1429",
+          "name": "Audio Capture"
+        },
+        {
+          "id": "T1533",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1646",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1420",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1628",
+          "id": "002",
+          "name": "Hide Artifacts",
+          "sub_name": "User Evasion"
+        },
+        {
+          "parent_id": "T1630",
+          "id": "002",
+          "name": "Indicator Removal on Host",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1430",
+          "name": "Location Tracking"
+        },
+        {
+          "parent_id": "T1655",
+          "id": "001",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Name or Location"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "003",
+          "name": "Protected User Data",
+          "sub_name": "Contact List"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "002",
+          "name": "Protected User Data",
+          "sub_name": "Call Log"
+        },
+        {
+          "id": "T1513",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1418",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1409",
+          "name": "Stored Application Data"
+        },
+        {
+          "id": "T1426",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1422",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "parent_id": "T1422",
+          "id": "001",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Internet Connection Discovery"
+        },
+        {
+          "parent_id": "T1422",
+          "id": "002",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Wi-Fi Discovery"
+        },
+        {
+          "id": "T1512",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S1082",
+      "name": "Sunbird",
+      "descr": "(Citation: lookout_hornbill_sunbird_0221)",
+      "techniques": [
+        {
+          "parent_id": "T1626",
+          "id": "001",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Device Administrator Permissions"
+        },
+        {
+          "id": "T1532",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1429",
+          "name": "Audio Capture"
+        },
+        {
+          "parent_id": "T1623",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "id": "T1533",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1646",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1544",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1430",
+          "name": "Location Tracking"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "002",
+          "name": "Protected User Data",
+          "sub_name": "Call Log"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "003",
+          "name": "Protected User Data",
+          "sub_name": "Contact List"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "001",
+          "name": "Protected User Data",
+          "sub_name": "Calendar Entries"
+        },
+        {
+          "id": "T1513",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1418",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1409",
+          "name": "Stored Application Data"
+        },
+        {
+          "id": "T1426",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1422",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1512",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0670",
+      "name": "WarzoneRAT",
+      "descr": "(Citation: Check Point Warzone Feb 2020)(Citation: Uptycs Confucius APT Jan 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "015",
+          "name": "Event Triggered Execution",
+          "sub_name": "Component Object Model Hijacking"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1564",
+          "name": "Hide Artifacts"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "003",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Window"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "005",
+          "name": "Remote Services",
+          "sub_name": "VNC"
+        },
+        {
+          "id": "T1014",
+          "name": "Rootkit"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1221",
+          "name": "Template Injection"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [],
+  "citations": {
+    "current_number": 0,
+    "TrendMicro Confucius APT Feb 2018": {
+      "description": "Lunghi, D and Horejsi, J. (2018, February 13). Deciphering Confucius: A Look at the Group's Cyberespionage Operations. Retrieved December 26, 2021.",
+      "number": null,
+      "url": "https://www.trendmicro.com/en_us/research/18/b/deciphering-confucius-cyberespionage-operations.html"
+    },
+    "TrendMicro Confucius APT Aug 2021": {
+      "description": "Lunghi, D. (2021, August 17). Confucius Uses Pegasus Spyware-related Lures to Target Pakistani Military. Retrieved December 26, 2021.",
+      "number": null,
+      "url": "https://www.trendmicro.com/en_us/research/21/h/confucius-uses-pegasus-spyware-related-lures-to-target-pakistani.html"
+    },
+    "Uptycs Confucius APT Jan 2021": {
+      "description": "Uptycs Threat Research Team. (2021, January 12). Confucius APT deploys Warzone RAT. Retrieved December 17, 2021.",
+      "number": null,
+      "url": "https://www.uptycs.com/blog/confucius-apt-deploys-warzone-rat"
+    },
+    "Check Point Warzone Feb 2020": {
+      "description": "Harakhavik, Y. (2020, February 3). Warzone: Behind the enemy lines. Retrieved December 17, 2021.",
+      "number": null,
+      "url": "https://research.checkpoint.com/2020/warzone-behind-the-enemy-lines/"
+    },
+    "lookout_hornbill_sunbird_0221": {
+      "description": "Apurva Kumar, Kristin Del Rosso. (2021, February 10). Novel Confucius APT Android Spyware Linked to India-Pakistan Conflict. Retrieved June 9, 2023.",
+      "number": null,
+      "url": "https://www.lookout.com/blog/lookout-discovers-novel-confucius-apt-android-spyware-linked-to-india-pakistan-conflict"
+    }
+  },
+  "aliases_list": [
+    "Confucius APT"
+  ]
+}

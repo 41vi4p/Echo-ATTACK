@@ -1,0 +1,898 @@
+{
+  "attack_id": "G0088",
+  "notes": null,
+  "created": "16 April 2019",
+  "modified": "17 April 2024",
+  "name": "TEMP.Veles",
+  "version": "1.4",
+  "contributors_list": [
+    "Dragos Threat Intelligence"
+  ],
+  "descr": "[TEMP.Veles](https://attack.mitre.org/groups/G0088) is a Russia-based threat group that has targeted critical infrastructure. The group has been observed utilizing [TRITON](https://attack.mitre.org/software/S0609), a malware framework designed to manipulate industrial safety systems.(Citation: FireEye TRITON 2019)(Citation: FireEye TEMP.Veles 2018)(Citation: FireEye TEMP.Veles JSON April 2019)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used Virtual Private Server (VPS) infrastructure.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) engaged in network reconnaissance against targets of interest.(Citation: FireEye TEMP.Veles 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0830",
+      "name": "Adversary-in-the-Middle",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) changed phone numbers tied to certain specific accounts in a designated contact list. They then used the changed phone numbers to redirect network traffic to websites controlled by them, thereby allowing them to capture and use any login codes sent to the devices via text message.(Citation: Triton-EENews-2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used a publicly available PowerShell-based tool, WMImplant.(Citation: FireEye TEMP.Veles 2018)\nDuring the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used PowerShell to perform timestomping.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0807",
+      "name": "Command-Line Interface",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088)’ tool took one option from the command line, which was a single IP address of the target Triconex device.(Citation: FireEye TRITON Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used staging folders that are infrequently used by legitimate users or processes to store data for exfiltration and tool deployment.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) developed, prior to the attack, malware capabilities that would require access to specific and specialized hardware and software.(Citation: FireEye TRITON Dec 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0817",
+      "name": "Drive-by Compromise",
+      "descr": "[TEMP.Veles](https://attack.mitre.org/groups/G0088) utilizes watering hole websites to target industrial employees. (Citation: Chris Bing May 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used cryptcat binaries to encrypt their traffic.(Citation: FireEye TEMP.Veles 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1546",
+      "name": "Event Triggered Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "012",
+          "name": "Image File Execution Options Injection",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) modified and added entries within <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options</code> to maintain persistence.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used VPN access to persist in the victim environment.(Citation: FireEye TRITON 2019)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) routinely deleted tools, logs, and other files after they were finished with them.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Timestomp",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used timestomping to modify the <code>$STANDARD_INFORMATION</code> attribute on tools.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0872",
+      "name": "Indicator Removal on Host",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) would programmatically return the controller to a normal running state if the [Triton](https://attack.mitre.org/software/S1009) malware failed. If the controller could not recover in a defined time window, [TEMP.Veles](https://attack.mitre.org/groups/G0088) programmatically overwrote their malicious program with invalid data.(Citation: FireEye TRITON Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Portal Capture",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) captured credentials as they were being changed by redirecting text-based login codes to websites they controlled.(Citation: Triton-EENews-2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0867",
+      "name": "Lateral Tool Transfer",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) made attempts on multiple victim machines to transfer and execute the WMImplant tool.(Citation: FireEye TEMP.Veles 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0828",
+      "name": "Loss of Productivity and Revenue",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) tripped a controller into a failed safe state, which caused an automatic shutdown of the plant, this resulted in a pause of plant operations for more than a week. Thereby impacting industrial processes and halting productivity.(Citation: FireEye TRITON Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) renamed files to look like legitimate files, such as Windows update files or Schneider Electric application files.\nDuring the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) renamed files to look like legitimate files, such as Windows update files or Schneider Electric application files.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used port-protocol mismatches on ports such as 443, 4444, 8531, and 50501 during C2.(Citation: FireEye TRITON 2019)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Indicator Removal from Tools",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) modified files based on the open-source project cryptcat in an apparent attempt to decrease anti-virus detection rates.(Citation: FireEye TEMP.Veles 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used tools such as Mimikatz and other open-source software.(Citation: FireEye TEMP.Veles 2018)\nDuring the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) obtained and used tools such as Mimikatz and PsExec.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used Mimikatz.(Citation: FireEye TRITON 2018)\nDuring the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used Mimikatz and a custom tool, SecHack, to harvest credentials.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0843",
+      "name": "Program Download",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) downloaded multiple rounds of control logic to the Safety Instrumented System (SIS) controllers through a program append operation.(Citation: FireEye TRITON Dec 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1572",
+      "name": "Protocol Tunneling",
+      "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used encrypted SSH-based PLINK tunnels to transfer tools and enable RDP connections throughout the environment.(Citation: FireEye TRITON 2019)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0886",
+      "name": "Remote Services",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) utilized remote desktop protocol (RDP) jump boxes, poorly configured OT firewalls (Citation: Triton-EENews-2017), along with other traditional malware backdoors, to move into the ICS environment.(Citation: FireEye TRITON 2018)(Citation: Triton-EENews-2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) utilized RDP throughout an operation.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) relied on encrypted SSH-based tunnels to transfer tools and for remote command/program execution.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) installed scheduled tasks defined in XML files.(Citation: FireEye TEMP.Veles 2018)\nDuring the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used scheduled task XML triggers.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0853",
+      "name": "Scripting",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used a publicly available PowerShell-based tool, WMImplant.(Citation: FireEye TEMP.Veles 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) planted Web shells on Outlook Exchange servers.(Citation: FireEye TRITON 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0862",
+      "name": "Supply Chain Compromise",
+      "descr": "[TEMP.Veles](https://attack.mitre.org/groups/G0088) targeted several ICS vendors and manufacturers. (Citation: Dragos Threat Intelligence August 2019)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0855",
+      "name": "Unauthorized Command Message",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) leveraged [Triton](https://attack.mitre.org/software/S1009) to send unauthorized command messages to the Triconex safety controllers.(Citation: FireEye TRITON 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0859",
+      "name": "Valid Accounts",
+      "descr": "In the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030), [TEMP.Veles](https://attack.mitre.org/groups/G0088) used valid credentials when laterally moving through RDP jump boxes into the ICS environment.(Citation: FireEye TRITON 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "descr": "During the [C0032](https://attack.mitre.org/campaigns/C0032) campaign, [TEMP.Veles](https://attack.mitre.org/groups/G0088) used compromised VPN accounts.(Citation: FireEye TRITON 2019)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0032",
+      "name": "C0032",
+      "first_seen": "October 2014",
+      "last_seen": "January 2017",
+      "first_seen_citation": "(Citation: FireEye TRITON 2019)",
+      "last_seen_citation": "(Citation: FireEye TRITON 2019)",
+      "desc": "(Citation: FireEye TRITON 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1583",
+          "id": "003",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Virtual Private Server"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "012",
+          "name": "Event Triggered Execution",
+          "sub_name": "Image File Execution Options Injection"
+        },
+        {
+          "id": "T1133",
+          "name": "External Remote Services"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1588",
+          "id": "002",
+          "name": "Obtain Capabilities",
+          "sub_name": "Tool"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "id": "T1078",
+          "name": "Valid Accounts"
+        }
+      ]
+    },
+    {
+      "id": "C0030",
+      "name": "Triton Safety Instrumented System Attack",
+      "first_seen": "June 2017",
+      "last_seen": "August 2017",
+      "first_seen_citation": "(Citation: Triton-EENews-2017)",
+      "last_seen_citation": "(Citation: Triton-EENews-2017)",
+      "desc": "(Citation: FireEye TEMP.Veles 2018)(Citation: FireEye TRITON Dec 2017)",
+      "techniques": [
+        {
+          "id": "T1595",
+          "name": "Active Scanning"
+        },
+        {
+          "id": "T0830",
+          "name": "Adversary-in-the-Middle"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T0807",
+          "name": "Command-Line Interface"
+        },
+        {
+          "parent_id": "T1587",
+          "id": "001",
+          "name": "Develop Capabilities",
+          "sub_name": "Malware"
+        },
+        {
+          "id": "T1573",
+          "name": "Encrypted Channel"
+        },
+        {
+          "id": "T0872",
+          "name": "Indicator Removal on Host"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "003",
+          "name": "Input Capture",
+          "sub_name": "Web Portal Capture"
+        },
+        {
+          "id": "T0867",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0828",
+          "name": "Loss of Productivity and Revenue"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "parent_id": "T1588",
+          "id": "002",
+          "name": "Obtain Capabilities",
+          "sub_name": "Tool"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T0843",
+          "name": "Program Download"
+        },
+        {
+          "id": "T0886",
+          "name": "Remote Services"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T0853",
+          "name": "Scripting"
+        },
+        {
+          "id": "T0855",
+          "name": "Unauthorized Command Message"
+        },
+        {
+          "id": "T0859",
+          "name": "Valid Accounts"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: FireEye TRITON 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: FireEye TRITON 2019)(Citation: Dragos Xenotime 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S1009",
+      "name": "Triton",
+      "descr": "(Citation: Dragos Xenotime 2018)",
+      "techniques": [
+        {
+          "id": "T0858",
+          "name": "Change Operating Mode"
+        },
+        {
+          "id": "T0885",
+          "name": "Commonly Used Port"
+        },
+        {
+          "id": "T0868",
+          "name": "Detect Operating Mode"
+        },
+        {
+          "id": "T0871",
+          "name": "Execution through API"
+        },
+        {
+          "id": "T0820",
+          "name": "Exploitation for Evasion"
+        },
+        {
+          "id": "T0890",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T0874",
+          "name": "Hooking"
+        },
+        {
+          "id": "T0872",
+          "name": "Indicator Removal on Host"
+        },
+        {
+          "id": "T0880",
+          "name": "Loss of Safety"
+        },
+        {
+          "id": "T0849",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T0821",
+          "name": "Modify Controller Tasking"
+        },
+        {
+          "id": "T0834",
+          "name": "Native API"
+        },
+        {
+          "id": "T0843",
+          "name": "Program Download"
+        },
+        {
+          "id": "T0845",
+          "name": "Program Upload"
+        },
+        {
+          "id": "T0846",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T0853",
+          "name": "Scripting"
+        },
+        {
+          "id": "T0869",
+          "name": "Standard Application Layer Protocol"
+        },
+        {
+          "id": "T0857",
+          "name": "System Firmware"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "XENOTIME",
+      "descr": "The activity group XENOTIME, as defined by Dragos, has overlaps with activity reported upon by FireEye about TEMP.Veles as well as the actors behind [TRITON](https://attack.mitre.org/software/S0609).(Citation: Dragos Xenotime 2018)(Citation: Pylos Xenotime 2019)(Citation: FireEye TRITON 2019)(Citation: FireEye TEMP.Veles 2018)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Dragos Xenotime 2018": {
+      "description": "Dragos, Inc.. (n.d.). Xenotime. Retrieved April 16, 2019.",
+      "number": null,
+      "url": "https://dragos.com/resource/xenotime/"
+    },
+    "FireEye TEMP.Veles 2018": {
+      "description": "FireEye Intelligence . (2018, October 23). TRITON Attribution: Russian Government-Owned Lab Most Likely Built Custom Intrusion Tools for TRITON Attackers. Retrieved April 16, 2019.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2018/10/triton-attribution-russian-government-owned-lab-most-likely-built-tools.html"
+    },
+    "FireEye TRITON 2019": {
+      "description": "Miller, S, et al. (2019, April 10). TRITON Actor TTP Profile, Custom Attack Tools, Detections, and ATT&CK Mapping. Retrieved April 16, 2019.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2019/04/triton-actor-ttp-profile-custom-attack-tools-detections.html"
+    },
+    "FireEye TEMP.Veles JSON April 2019": {
+      "description": "Miller, S., et al. (2019, April 10). TRITON Appendix C. Retrieved April 29, 2019.",
+      "number": null,
+      "url": "https://www.fireeye.com/content/dam/fireeye-www/blog/files/TRITON_Appendix_C.html"
+    },
+    "Pylos Xenotime 2019": {
+      "description": "Slowik, J.. (2019, April 12). A XENOTIME to Remember: Veles in the Wild. Retrieved April 16, 2019.",
+      "number": null,
+      "url": "https://pylos.co/2019/04/12/a-xenotime-to-remember-veles-in-the-wild/"
+    },
+    "Dragos Threat Intelligence August 2019": {
+      "description": "Dragos Threat Intelligence 2019, August Global Oil and Gas Cyber Threat Perspective Retrieved. 2020/01/03 ",
+      "number": null,
+      "url": "https://dragos.com/wp-content/uploads/Dragos-Oil-and-Gas-Threat-Perspective-2019.pdf"
+    },
+    "Chris Bing May 2018": {
+      "description": "Chris Bing 2018, May 24 Trisis masterminds have expanded operations to target U.S. industrial firms Retrieved. 2020/01/03 ",
+      "number": null,
+      "url": "https://www.cyberscoop.com/xenotime-ics-cyber-attacks-trisis-dragos/"
+    },
+    "FireEye TRITON 2018": {
+      "description": "Miller, S. Reese, E. (2018, June 7). A Totally Tubular Treatise on TRITON and TriStation. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://web.archive.org/web/20200618231942/https://www.fireeye.com/blog/threat-research/2018/06/totally-tubular-treatise-on-triton-and-tristation.html"
+    },
+    "FireEye TRITON Dec 2017": {
+      "description": "Blake Johnson, Dan Caban, Marina Krotofil, Dan Scali, Nathan Brubaker, Christopher Glyer. (2017, December 14). Attackers Deploy New ICS Attack Framework “TRITON” and Cause Operational Disruption to Critical Infrastructure. Retrieved January 12, 2018.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2017/12/attackers-deploy-new-ics-attack-framework-triton.html"
+    },
+    "Triton-EENews-2017": {
+      "description": "Blake Sobczak. (2019, March 7). The inside story of the world’s most dangerous malware. Retrieved March 25, 2024.",
+      "number": null,
+      "url": "https://www.eenews.net/articles/the-inside-story-of-the-worlds-most-dangerous-malware/"
+    },
+    "FireEye TRITON 2017": {
+      "description": "Johnson, B, et. al. (2017, December 14). Attackers Deploy New ICS Attack Framework \"TRITON\" and Cause Operational Disruption to Critical Infrastructure. Retrieved January 6, 2021.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2017/12/attackers-deploy-new-ics-attack-framework-triton.html"
+    }
+  },
+  "aliases_list": [
+    "XENOTIME"
+  ]
+}

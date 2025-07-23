@@ -1,0 +1,77 @@
+{
+  "attack_id": "G1000",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "16 April 2025",
+  "name": "ALLANITE",
+  "version": "1.0",
+  "contributors_list": [
+    "Dragos Threat Intelligence"
+  ],
+  "descr": "[ALLANITE](https://attack.mitre.org/groups/G1000) is a suspected Russian cyber espionage group, that has primarily targeted the electric utility sector within the United States and United Kingdom. The group's tactics and techniques are reportedly similar to [Dragonfly](https://attack.mitre.org/groups/G0035), although [ALLANITE](https://attack.mitre.org/groups/G1000)s technical capabilities have not exhibited disruptive or destructive abilities. It has been suggested that the group maintains a presence in ICS for the purpose of gaining understanding of processes and to maintain persistence. (Citation: Dragos)",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0817",
+      "name": "Drive-by Compromise",
+      "descr": "[ALLANITE](https://attack.mitre.org/groups/G1000) leverages watering hole attacks to gain access into electric utilities. (Citation: Eduard Kovacs May 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0852",
+      "name": "Screen Capture",
+      "descr": "[ALLANITE](https://attack.mitre.org/groups/G1000) has been identified to collect and distribute screenshots of ICS systems such as HMIs. (Citation: Dragos) (Citation: ICS-CERT October 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0865",
+      "name": "Spearphishing Attachment",
+      "descr": "[ALLANITE](https://attack.mitre.org/groups/G1000) utilized spear phishing to gain access into energy sector environments. (Citation: Jeff Jones May 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0859",
+      "name": "Valid Accounts",
+      "descr": "[ALLANITE](https://attack.mitre.org/groups/G1000) utilized credentials collected through phishing and watering hole attacks. (Citation: Dragos)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "alias_descriptions": [],
+  "citations": {
+    "current_number": 0,
+    "Dragos": {
+      "description": "Dragos   Allanite Retrieved. 2019/10/27 ",
+      "number": null,
+      "url": "https://dragos.com/resource/allanite/"
+    },
+    "ICS-CERT October 2017": {
+      "description": "ICS-CERT 2017, October 21 Advanced Persistent Threat Activity Targeting Energy and Other Critical Infrastructure Sectors Retrieved. 2017/10/23 ",
+      "number": null,
+      "url": "https://www.us-cert.gov/ncas/alerts/TA17-293A"
+    },
+    "Jeff Jones May 2018": {
+      "description": "Jeff Jones 2018, May 10 Dragos Releases Details on Suspected Russian Infrastructure Hacking Team ALLANITE Retrieved. 2020/01/03 ",
+      "number": null,
+      "url": "https://www.eisac.com/public-news-detail?id=115909"
+    },
+    "Eduard Kovacs May 2018": {
+      "description": "Eduard Kovacs 2018, May 21 Group linked to Shamoon attacks targeting ICS networks in Middle East and UK Retrieved September 12, 2024.",
+      "number": null,
+      "url": "https://web.archive.org/web/20220120001230/https://www.cyberviser.com/2018/05/group-linked-to-shamoon-attacks-targeting-ics-networks-in-middle-east-and-uk/"
+    }
+  },
+  "aliases_list": [
+    "Palmetto Fusion"
+  ]
+}

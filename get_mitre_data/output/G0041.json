@@ -1,0 +1,250 @@
+{
+  "attack_id": "G0041",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "Strider",
+  "version": "1.1",
+  "descr": "[Strider](https://attack.mitre.org/groups/G0041) is a threat group that has been active since at least 2011 and has targeted victims in Russia, China, Sweden, Belgium, Iran, and Rwanda.(Citation: Symantec Strider Blog)(Citation: Kaspersky ProjectSauron Blog)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Hidden File System",
+          "descr": "[Strider](https://attack.mitre.org/groups/G0041) has used a hidden file system that is stored as a file on disk.(Citation: Kaspersky ProjectSauron Full Report)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1556",
+      "name": "Modify Authentication Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Password Filter DLL",
+          "descr": "[Strider](https://attack.mitre.org/groups/G0041) has registered its persistence module on domain controllers as a Windows LSA (Local System Authority) password filter to acquire credentials any time a domain, local user, or administrator logs in or changes a password.(Citation: Kaspersky ProjectSauron Full Report)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internal Proxy",
+          "descr": "[Strider](https://attack.mitre.org/groups/G0041) has used local servers with both local network and Internet access to act as internal proxy nodes to exfiltrate data from other parts of the network without direct Internet access.(Citation: Kaspersky ProjectSauron Blog)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0125",
+      "name": "Remsec",
+      "descr": "(Citation: Symantec Strider Blog)(Citation: Kaspersky ProjectSauron Blog)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "003",
+          "name": "Application Layer Protocol",
+          "sub_name": "Mail Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "011",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Lua"
+        },
+        {
+          "id": "T1025",
+          "name": "Data from Removable Media"
+        },
+        {
+          "id": "T1652",
+          "name": "Device Driver Discovery"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "parent_id": "T1052",
+          "id": "001",
+          "name": "Exfiltration Over Physical Medium",
+          "sub_name": "Exfiltration over USB"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1556",
+          "id": "002",
+          "name": "Modify Authentication Process",
+          "sub_name": "Password Filter DLL"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1053",
+          "name": "Scheduled Task/Job"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "ProjectSauron",
+      "descr": "ProjectSauron is used to refer both to the threat group also known as G0041 as well as the malware platform also known as S0125. (Citation: Kaspersky ProjectSauron Blog) (Citation: Kaspersky ProjectSauron Full Report)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Symantec Strider Blog": {
+      "description": "Symantec Security Response. (2016, August 7). Strider: Cyberespionage group turns eye of Sauron on targets. Retrieved August 17, 2016.",
+      "number": null,
+      "url": "http://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets"
+    },
+    "Kaspersky ProjectSauron Blog": {
+      "description": "Kaspersky Lab's Global Research & Analysis Team. (2016, August 8). ProjectSauron: top level cyber-espionage platform covertly extracts encrypted government comms. Retrieved August 17, 2016.",
+      "number": null,
+      "url": "https://securelist.com/faq-the-projectsauron-apt/75533/"
+    },
+    "Kaspersky ProjectSauron Full Report": {
+      "description": "Kaspersky Lab's Global Research & Analysis Team. (2016, August 9). The ProjectSauron APT. Retrieved August 17, 2016.",
+      "number": null,
+      "url": "https://securelist.com/files/2016/07/The-ProjectSauron-APT_research_KL.pdf"
+    }
+  },
+  "aliases_list": [
+    "ProjectSauron"
+  ]
+}

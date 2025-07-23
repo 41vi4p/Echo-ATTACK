@@ -1,0 +1,24 @@
+{
+  "attack_id": "G0141",
+  "notes": null,
+  "created": "30 November 2021",
+  "modified": "18 April 2025",
+  "name": "Gelsemium",
+  "version": "1.0",
+  "descr": "[Gelsemium](https://attack.mitre.org/groups/G0141) is a cyberespionage group that has been active since at least 2014, targeting governmental institutions, electronics manufacturers, universities, and religious organizations in East Asia and the Middle East.(Citation: ESET Gelsemium June 2021)",
+  "deprecated": true,
+  "technique_table_data": [],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "ESET Gelsemium June 2021": {
+      "description": "Dupuy, T. and Faou, M. (2021, June). Gelsemium. Retrieved November 30, 2021.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf"
+    }
+  },
+  "aliases_list": []
+}

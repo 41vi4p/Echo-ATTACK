@@ -1,0 +1,962 @@
+{
+  "attack_id": "G0139",
+  "notes": null,
+  "created": "01 October 2021",
+  "modified": "16 September 2024",
+  "name": "TeamTNT",
+  "version": "1.3",
+  "contributors_list": [
+    "Will Thomas, Cyjax",
+    "Darin Smith, Cisco"
+  ],
+  "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) is a threat group that has primarily targeted cloud and containerized environments. The group as been active since at least October 2019 and has mainly focused its efforts on leveraging cloud and container resources to deploy cryptocurrency miners in victim environments.(Citation: Palo Alto Black-T October 2020)(Citation: Lacework TeamTNT May 2021)(Citation: Intezer TeamTNT September 2020)(Citation: Cado Security TeamTNT Worm August 2020)(Citation: Unit 42 Hildegard Malware)(Citation: Trend Micro TeamTNT)(Citation: ATT TeamTNT Chimaera September 2020)(Citation: Aqua TeamTNT August 2020)(Citation: Intezer TeamTNT Explosion September 2021)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH Authorized Keys",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has added RSA keys in <code>authorized_keys</code>.(Citation: Aqua TeamTNT August 2020)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has obtained domains to host their payloads.(Citation: Palo Alto Black-T October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Scanning IP Blocks",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has scanned specific lists of target IP addresses.(Citation: Trend Micro TeamTNT)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Vulnerability Scanning",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has scanned for vulnerabilities in IoT devices and other related resources such as the Docker API.(Citation: Trend Micro TeamTNT)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used an IRC bot for C2 communications.(Citation: Trend Micro TeamTNT)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has the `curl` command to send credentials over HTTP and the `curl` and `wget` commands to download new software.(Citation: Intezer TeamTNT September 2020)(Citation: Cado Security TeamTNT Worm August 2020)(Citation: Cisco Talos Intelligence Group) [TeamTNT](https://attack.mitre.org/groups/G0139) has also used a custom user agent HTTP header in shell scripts.(Citation: Trend Micro TeamTNT)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has added batch scripts to the startup folder.(Citation: ATT TeamTNT Chimaera September 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has executed PowerShell commands in batch scripts.(Citation: ATT TeamTNT Chimaera September 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used batch scripts to download tools and executing cryptocurrency miners.(Citation: ATT TeamTNT Chimaera September 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Unix Shell",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used shell scripts for execution.(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "009",
+          "name": "Cloud API",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has leveraged AWS CLI to enumerate cloud environments with compromised credentials.(Citation: Talos TeamTNT)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1609",
+      "name": "Container Administration Command",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) executed [Hildegard](https://attack.mitre.org/software/S0601) through the kubelet API run command and by executing commands on running containers.(Citation: Unit 42 Hildegard Malware)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1613",
+      "name": "Container and Resource Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has checked for running containers with <code>docker ps</code> and for specific container names with <code>docker inspect</code>.(Citation: Trend Micro TeamTNT) [TeamTNT](https://attack.mitre.org/groups/G0139) has also searched for Kubernetes pods running in a local network.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has created local privileged users on victim machines.(Citation: Intezer TeamTNT September 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1543",
+      "name": "Create or Modify System Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Systemd Service",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has established persistence through the creation of a cryptocurrency mining system service using <code>systemctl</code>.(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Service",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used malware that adds cryptocurrency miners as a service.(Citation: ATT TeamTNT Chimaera September 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has aggregated collected credentials in text files before exfiltrating.(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used a script that decodes a Base64-encoded version of WeaveWorks Scope.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1610",
+      "name": "Deploy Container",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has deployed different types of containers into victim environments to facilitate execution.(Citation: Intezer TeamTNT September 2020)(Citation: Trend Micro TeamTNT) [TeamTNT](https://attack.mitre.org/groups/G0139) has also transferred cryptocurrency mining software to Kubernetes clusters discovered within local IP address ranges.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has developed custom malware such as [Hildegard](https://attack.mitre.org/software/S0601).(Citation: Unit 42 Hildegard Malware)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1611",
+      "name": "Escape to Host",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has deployed privileged containers that mount the filesystem of victim machine.(Citation: Intezer TeamTNT September 2020)(Citation: Aqua TeamTNT August 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1048",
+      "name": "Exfiltration Over Alternative Protocol",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has sent locally staged files with collected credentials to C2 servers using cURL.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used open-source tools such as Weave Scope to target exposed Docker API ports and gain initial access to victim environments.(Citation: Intezer TeamTNT September 2020)(Citation: Cisco Talos Intelligence Group) [TeamTNT](https://attack.mitre.org/groups/G0139) has also targeted exposed kubelets for Kubernetes environments.(Citation: Unit 42 Hildegard Malware)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used a script that checks `/proc/*/environ` for environment variables related to AWS.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1222",
+      "name": "File and Directory Permissions Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Linux and Mac File and Directory Permissions Modification",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has modified the permissions on binaries with <code>chattr</code>.(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has disabled and uninstalled security tools such as Alibaba, Tencent, and BMC cloud monitoring agents on cloud-based infrastructure.(Citation: ATT TeamTNT Chimaera September 2020)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Disable or Modify System Firewall",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has disabled <code>iptables</code>.(Citation: Aqua TeamTNT August 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Clear Linux or Mac System Logs",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has removed system logs from <code>/var/log/syslog</code>.(Citation: Aqua TeamTNT August 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Clear Command History",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has cleared command history with <code>history -c</code>.(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used a payload that removes itself after running. [TeamTNT](https://attack.mitre.org/groups/G0139) also has deleted locally staged files for collecting credentials or scan results for local IP addresses after exfiltrating them.(Citation: ATT TeamTNT Chimaera September 2020)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has the <code>curl</code> and <code>wget</code> commands as well as batch scripts to download new tools.(Citation: Intezer TeamTNT September 2020)(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has replaced .dockerd and .dockerenv with their own scripts and cryptocurrency mining software.(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has disguised their scripts with docker-related file names.(Citation: Cisco Talos Intelligence Group)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used masscan to search for open Docker API ports and Kubernetes clusters.(Citation: Cado Security TeamTNT Worm August 2020)(Citation: Unit 42 Hildegard Malware)(Citation: Cisco Talos Intelligence Group) [TeamTNT](https://attack.mitre.org/groups/G0139) has also used malware that utilizes zmap and zgrab to search for vulnerable services in cloud environments.(Citation: Palo Alto Black-T October 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used UPX and Ezuri packer to pack its binaries.(Citation: Trend Micro TeamTNT)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has encrypted its binaries via AES and encoded files using Base64.(Citation: Trend Micro TeamTNT)(Citation: Aqua TeamTNT August 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1120",
+      "name": "Peripheral Device Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for attached VGA devices using lspci.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for rival malware and removes it if found.(Citation: Trend Micro TeamTNT) [TeamTNT](https://attack.mitre.org/groups/G0139) has also searched for running processes containing the strings aliyun or liyun to identify machines running Alibaba Cloud Security tools.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1219",
+      "name": "Remote Access Tools",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has established tmate sessions for C2 communications.(Citation: Unit 42 Hildegard Malware)(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used SSH to connect back to victim machines.(Citation: Intezer TeamTNT September 2020) [TeamTNT](https://attack.mitre.org/groups/G0139) has also used SSH to transfer tools and payloads onto victim hosts and execute them.(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1496",
+      "name": "Resource Hijacking",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Compute Hijacking",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has deployed XMRig Docker images to mine cryptocurrency.(Citation: Lacework TeamTNT May 2021)(Citation: Cado Security TeamTNT Worm August 2020) [TeamTNT](https://attack.mitre.org/groups/G0139) has also infected Docker containers and Kubernetes clusters with XMRig, and used RainbowMiner and lolMiner for mining cryptocurrency.(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1014",
+      "name": "Rootkit",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has used rootkits such as the open-source Diamorphine rootkit and their custom bots to hide cryptocurrency mining activities on the machine.(Citation: Trend Micro TeamTNT) (Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for security products on infected machines.(Citation: ATT TeamTNT Chimaera September 2020)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1608",
+      "name": "Stage Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Upload Malware",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has uploaded backdoored Docker images to Docker Hub.(Citation: Lacework TeamTNT May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for system version, architecture, disk partition, logical volume, and hostname information.(Citation: ATT TeamTNT Chimaera September 2020)(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has enumerated the host machine’s IP address.(Citation: Trend Micro TeamTNT)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has run <code>netstat -anp</code> to search for rival malware connections.(Citation: Trend Micro TeamTNT) [TeamTNT](https://attack.mitre.org/groups/G0139) has also used `libprocesshider` to modify <code>/etc/ld.so.preload</code>.(Citation: ATT TeamTNT Chimaera September 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1007",
+      "name": "System Service Discovery",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for services such as Alibaba Cloud Security's aliyun service and BMC Helix Cloud Security's bmc-agent service in order to disable them.(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1569",
+      "name": "System Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Systemctl",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has created system services to execute cryptocurrency mining software.(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Credentials In Files",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for unsecured AWS credentials and Docker API credentials.(Citation: Cado Security TeamTNT Worm August 2020)(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Private Keys",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has searched for unsecured SSH keys.(Citation: Cado Security TeamTNT Worm August 2020)(Citation: Trend Micro TeamTNT)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Cloud Instance Metadata API",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has queried the AWS instance metadata service for credentials.(Citation: Trend Micro TeamTNT)(Citation: Cisco Talos Intelligence Group)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Malicious Image",
+          "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has relied on users to download and execute malicious Docker images.(Citation: Lacework TeamTNT May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "descr": "[TeamTNT](https://attack.mitre.org/groups/G0139) has leveraged iplogger.org to send collected data back to C2.(Citation: Aqua TeamTNT August 2020)(Citation: Cisco Talos Intelligence Group)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0601",
+      "name": "Hildegard",
+      "descr": "(Citation: Unit 42 Hildegard Malware)",
+      "techniques": [
+        {
+          "id": "T1071",
+          "name": "Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "004",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "id": "T1609",
+          "name": "Container Administration Command"
+        },
+        {
+          "id": "T1613",
+          "name": "Container and Resource Discovery"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "002",
+          "name": "Create or Modify System Process",
+          "sub_name": "Systemd Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1611",
+          "name": "Escape to Host"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1133",
+          "name": "External Remote Services"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "006",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Dynamic Linker Hijacking"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "003",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Command History"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1219",
+          "name": "Remote Access Tools"
+        },
+        {
+          "parent_id": "T1496",
+          "id": "001",
+          "name": "Resource Hijacking",
+          "sub_name": "Compute Hijacking"
+        },
+        {
+          "id": "T1014",
+          "name": "Rootkit"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "005",
+          "name": "Unsecured Credentials",
+          "sub_name": "Cloud Instance Metadata API"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    },
+    {
+      "id": "S0349",
+      "name": "LaZagne",
+      "descr": "(Citation: ATT TeamTNT Chimaera September 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "001",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Keychain"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "008",
+          "name": "OS Credential Dumping",
+          "sub_name": "/etc/passwd and /etc/shadow"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "005",
+          "name": "OS Credential Dumping",
+          "sub_name": "Cached Domain Credentials"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "007",
+          "name": "OS Credential Dumping",
+          "sub_name": "Proc Filesystem"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        }
+      ]
+    },
+    {
+      "id": "S0179",
+      "name": "MimiPenguin",
+      "descr": "(Citation: Palo Alto Black-T October 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1003",
+          "id": "007",
+          "name": "OS Credential Dumping",
+          "sub_name": "Proc Filesystem"
+        }
+      ]
+    },
+    {
+      "id": "S0683",
+      "name": "Peirates",
+      "descr": "(Citation: TeamTNT Cloud Enumeration)",
+      "techniques": [
+        {
+          "id": "T1619",
+          "name": "Cloud Storage Object Discovery"
+        },
+        {
+          "id": "T1609",
+          "name": "Container Administration Command"
+        },
+        {
+          "id": "T1613",
+          "name": "Container and Resource Discovery"
+        },
+        {
+          "id": "T1530",
+          "name": "Data from Cloud Storage"
+        },
+        {
+          "id": "T1610",
+          "name": "Deploy Container"
+        },
+        {
+          "id": "T1611",
+          "name": "Escape to Host"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1528",
+          "name": "Steal Application Access Token"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "007",
+          "name": "Unsecured Credentials",
+          "sub_name": "Container API"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "005",
+          "name": "Unsecured Credentials",
+          "sub_name": "Cloud Instance Metadata API"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "001",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Application Access Token"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "004",
+          "name": "Valid Accounts",
+          "sub_name": "Cloud Accounts"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "ATT TeamTNT Chimaera September 2020": {
+      "description": "AT&T Alien Labs. (2021, September 8). TeamTNT with new campaign aka Chimaera. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://cybersecurity.att.com/blogs/labs-research/teamtnt-with-new-campaign-aka-chimaera"
+    },
+    "Cado Security TeamTNT Worm August 2020": {
+      "description": "Cado Security. (2020, August 16). Team TNT – The First Crypto-Mining Worm to Steal AWS Credentials. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://www.cadosecurity.com/team-tnt-the-first-crypto-mining-worm-to-steal-aws-credentials/"
+    },
+    "Unit 42 Hildegard Malware": {
+      "description": "Chen, J. et al. (2021, February 3). Hildegard: New TeamTNT Cryptojacking Malware Targeting Kubernetes. Retrieved April 5, 2021.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/"
+    },
+    "Trend Micro TeamTNT": {
+      "description": "Fiser, D. Oliveira, A. (n.d.). Tracking the Activities of TeamTNT A Closer Look at a Cloud-Focused Malicious Actor Group. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://documents.trendmicro.com/assets/white_papers/wp-tracking-the-activities-of-teamTNT.pdf"
+    },
+    "Intezer TeamTNT September 2020": {
+      "description": "Fishbein, N. (2020, September 8). Attackers Abusing Legitimate Cloud Monitoring Tools to Conduct Cyber Attacks. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://www.intezer.com/blog/cloud-security/attackers-abusing-legitimate-cloud-monitoring-tools-to-conduct-cyber-attacks/"
+    },
+    "Intezer TeamTNT Explosion September 2021": {
+      "description": "Intezer. (2021, September 1). TeamTNT Cryptomining Explosion. Retrieved October 15, 2021.",
+      "number": null,
+      "url": "https://www.intezer.com/wp-content/uploads/2021/09/TeamTNT-Cryptomining-Explosion.pdf"
+    },
+    "Aqua TeamTNT August 2020": {
+      "description": "Kol, Roi. Morag, A. (2020, August 25). Deep Analysis of TeamTNT Techniques Using Container Images to Attack. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://blog.aquasec.com/container-security-tnt-container-attack"
+    },
+    "Palo Alto Black-T October 2020": {
+      "description": "Quist, N. (2020, October 5). Black-T: New Cryptojacking Variant from TeamTNT. Retrieved September 22, 2021.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/black-t-cryptojacking-variant/"
+    },
+    "Lacework TeamTNT May 2021": {
+      "description": "Stroud, J. (2021, May 25). Taking TeamTNT's Docker Images Offline. Retrieved September 16, 2024.",
+      "number": null,
+      "url": "https://www.lacework.com/blog/taking-teamtnt-docker-images-offline"
+    },
+    "Cisco Talos Intelligence Group": {
+      "description": "Darin Smith. (2022, April 21). TeamTNT targeting AWS, Alibaba. Retrieved August 4, 2022.",
+      "number": null,
+      "url": "https://blog.talosintelligence.com/teamtnt-targeting-aws-alibaba-2/"
+    },
+    "Talos TeamTNT": {
+      "description": "Darin Smith. (2022, April 21). TeamTNT targeting AWS, Alibaba. Retrieved July 8, 2022.",
+      "number": null,
+      "url": "https://blog.talosintelligence.com/2022/04/teamtnt-targeting-aws-alibaba.html"
+    },
+    "TeamTNT Cloud Enumeration": {
+      "description": "Nathaniel Quist. (2021, June 4). TeamTNT Actively Enumerating Cloud Environments to Infiltrate Organizations. Retrieved February 8, 2022.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/teamtnt-operations-cloud-environments"
+    }
+  },
+  "aliases_list": []
+}

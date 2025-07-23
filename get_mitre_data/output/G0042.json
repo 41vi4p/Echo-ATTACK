@@ -1,0 +1,16 @@
+{
+  "attack_id": "G0042",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "MONSOON",
+  "version": "1.0",
+  "technique_table_data": [],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0
+  }
+}

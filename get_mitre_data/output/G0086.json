@@ -1,0 +1,23 @@
+{
+  "attack_id": "G0086",
+  "notes": null,
+  "created": "05 February 2019",
+  "modified": "25 April 2025",
+  "name": "Stolen Pencil",
+  "version": "1.1",
+  "descr": "[Stolen Pencil](https://attack.mitre.org/groups/G0086) is a threat group likely originating from DPRK that has been active since at least May 2018. The group appears to have targeted academic institutions, but its motives remain unclear.(Citation: Netscout Stolen Pencil Dec 2018)",
+  "technique_table_data": [],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "Netscout Stolen Pencil Dec 2018": {
+      "description": "ASERT team. (2018, December 5). STOLEN PENCIL Campaign Targets Academia. Retrieved February 5, 2019.",
+      "number": null,
+      "url": "https://asert.arbornetworks.com/stolen-pencil-campaign-targets-academia/"
+    }
+  },
+  "aliases_list": []
+}

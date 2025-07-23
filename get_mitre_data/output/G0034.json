@@ -1,0 +1,4797 @@
+{
+  "attack_id": "G0034",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "04 December 2024",
+  "name": "Sandworm Team",
+  "version": "4.2",
+  "contributors_list": [
+    "Dragos Threat Intelligence",
+    "Hakan KARABACAK"
+  ],
+  "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) is a destructive threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) Main Center for Special Technologies (GTsST) military unit 74455.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) This group has been active since at least 2009.(Citation: iSIGHT Sandworm 2014)(Citation: CrowdStrike VOODOO BEAR)(Citation: USDOJ Sandworm Feb 2020)(Citation: NCSC Sandworm Feb 2020)\n\nIn October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, the 2018 operation against the Organisation for the Prohibition of Chemical Weapons, and attacks against the country of Georgia in 2018 and 2019.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) Some of these were conducted with the assistance of GRU Unit 26165, which is also referred to as [APT28](https://attack.mitre.org/groups/G0007).(Citation: US District Court Indictment GRU Oct 2018)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used a tool to query Active Directory using LDAP, discovering information about usernames listed in AD.(Citation: ESET Telebots Dec 2016)\t",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Email Account",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used malware to enumerate email settings, including usernames and passwords, from the M.E.Doc application.(Citation: ESET Telebots July 2017)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used the `sp_addlinkedsrvlogin` command in MS-SQL to create a link between a created account and other servers in the network.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has registered domain names and created URLs that are often designed to mimic or spoof legitimate websites, such as email login pages, online file sharing and storage websites, and password reset pages, while also hosting these items on legitimate, compromised network infrastructure.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Slowik Sandworm 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Server",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has leased servers from resellers instead of leasing infrastructure directly from hosting companies to enable its operations.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used various third-party email campaign management services to deliver phishing emails.(Citation: Leonard TAG 2023)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Vulnerability Scanning",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has scanned network infrastructure for vulnerabilities as part of its operational planning.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s BCS-server tool connects to the designated C2 server via HTTP.(Citation: ESET Telebots Dec 2016)\t\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used [BlackEnergy](https://attack.mitre.org/software/S0089) to communicate between compromised hosts and their command-and-control servers via HTTP post requests. (Citation: Booz Allen Hamilton)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0895",
+      "name": "Autorun Image",
+      "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) used existing hypervisor access to map an ISO image named `a.iso` to a virtual machine running a SCADA server. The SCADA server’s operating system was configured to autorun CD-ROM images, and as a result, a malicious VBS script on the ISO image was automatically executed.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0803",
+      "name": "Block Command Message",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) blocked command messages by using malicious firmware to render serial-to-ethernet converters inoperable. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0804",
+      "name": "Block Reporting Message",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) blocked reporting messages by using malicious firmware to render serial-to-ethernet converters inoperable. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0805",
+      "name": "Block Serial COM",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) overwrote the serial-to-ethernet converter firmware, rendering the devices not operational. This meant that communication to the downstream serial devices was either not possible or more difficult. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used a script to attempt RPC authentication against a number of hosts.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used PowerShell scripts to run a credential harvesting tool in memory to evade defenses.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Dragos Crashoverride 2018) \nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used PowerShell scripts to run a credential harvesting tool in memory to evade defenses.(Citation: Dragos Crashoverride 2018)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) utilized a PowerShell utility called TANKTRAP to spread and launch a wiper using Windows Group Policy.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used the `xp_cmdshell` command in MS-SQL.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has created VBScripts to run an SSH server.(Citation: ESET BlackEnergy Jan 2016)(Citation: ESET Telebots Dec 2016)(Citation: ESET Telebots June 2017)(Citation: Dragos Crashoverride 2018) \nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) installed a VBA script called `vba_macro.exe`. This macro dropped `FONTCACHE.DAT`, the primary [BlackEnergy](https://attack.mitre.org/software/S0089) implant; `rundll32.exe`, for executing the malware; `NTUSER.log`, an empty file; and desktop.ini, the default file used to determine folder displays on Windows machines. (Citation: Booz Allen Hamilton)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) created VBScripts to run on an SSH server.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0807",
+      "name": "Command-Line Interface",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) uses the MS-SQL server xp_cmdshell command, and PowerShell to execute commands. (Citation: Dragos October 2018)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) supplied the name of the payload DLL to [Industroyer](https://attack.mitre.org/software/S0604) via a command line parameter.(Citation: ESET Industroyer)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged the SCIL-API on the MicroSCADA platform to execute commands through the `scilc.exe` binary.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0885",
+      "name": "Commonly Used Port",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used port 443 to communicate with their C2 servers. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1586",
+      "name": "Compromise Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Social Media Accounts",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) creates credential capture webpages to compromise existing, legitimate social media accounts.(Citation: Slowik Sandworm 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1554",
+      "name": "Compromise Host Software Binary",
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used a trojanized version of Windows Notepad to add a layer of persistence for [Industroyer](https://attack.mitre.org/software/S0604).(Citation: ESET Industroyer)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Server",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) compromised legitimate Linux servers running the EXIM mail transfer agent for use in subsequent campaigns.(Citation: NSA Sandworm 2020)(Citation: Leonard TAG 2023)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Botnet",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used a large-scale botnet to target Small Office/Home Office (SOHO) network devices.(Citation: NCSC Cyclops Blink February 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0884",
+      "name": "Connection Proxy",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) establishes an internal proxy prior to the installation of backdoors within the network. (Citation: Dragos Inc. June 2017)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) established an internal proxy prior to the installation of backdoors within the network. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) created privileged domain accounts to be used for further exploitation and lateral movement. (Citation: Booz Allen Hamilton)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) created two new accounts, “admin” and “система” (System). The accounts were then assigned to a domain matching local operation and were delegated new privileges.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) added a login to a SQL Server with `sp_addlinkedsrvlogin`.(Citation: Dragos Crashoverride 2018)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1543",
+      "name": "Create or Modify System Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Systemd Service",
+          "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) configured Systemd to maintain persistence of GOGETTER, specifying the `WantedBy=multi-user.target` configuration to run GOGETTER when the system begins accepting user logins.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Service",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used an arbitrary system service to load at system boot for persistence for [Industroyer](https://attack.mitre.org/software/S0604). They also replaced the ImagePath registry value of a Windows service with a new backdoor binary. (Citation: Dragos Crashoverride 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s CredRaptor tool can collect saved passwords from various internet browsers.(Citation: ESET Telebots Dec 2016)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1485",
+      "name": "Data Destruction",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used [CaddyWiper](https://attack.mitre.org/software/S0693), [SDelete](https://attack.mitre.org/software/S0195), and the [BlackEnergy](https://attack.mitre.org/software/S0089) KillDisk component to overwrite files on victim systems. (Citation: US-CERT Ukraine Feb 2016)(Citation: ESET Telebots June 2017)(Citation: Mandiant-Sandworm-Ukraine-2022) Additionally, [Sandworm Team](https://attack.mitre.org/groups/G0034) has used the JUNKMAIL tool to overwrite files with null bytes.(Citation: mandiant_apt44_unearthing_sandworm)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) deployed [CaddyWiper](https://attack.mitre.org/software/S0693) on the victim’s IT environment systems to wipe files related to the OT capabilities, along with mapped drives, and physical drive partitions.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1132",
+      "name": "Data Encoding",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Standard Encoding",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s BCS-server tool uses base64 encoding and HTML tags for the communication traffic between the C2 server.(Citation: ESET Telebots Dec 2016)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used [Prestige](https://attack.mitre.org/software/S1058) ransomware to encrypt data at targeted organizations in transportation and related logistics industries in Ukraine and Poland.(Citation: Microsoft Prestige ransomware October 2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1213",
+      "name": "Data from Information Repositories",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) exfiltrates data of interest from enterprise databases using Adminer.(Citation: Leonard TAG 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has exfiltrated internal documents, files, and other data from compromised hosts.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1491",
+      "name": "Defacement",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "External Defacement",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) defaced approximately 15,000 websites belonging to Georgian government, non-government, and private sector organizations in 2019.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0813",
+      "name": "Denial of Control",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [KillDisk](https://attack.mitre.org/software/S0607) rendered devices that were necessary for remote recovery unusable, including at least one RTU. Additionally, [Sandworm Team](https://attack.mitre.org/groups/G0034) overwrote the firmware for serial-to-ethernet converters, denying operators control of the downstream devices. (Citation: Booz Allen Hamilton)(Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0814",
+      "name": "Denial of Service",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), power company phone line operators were hit with a denial of service attack so that they couldn’t field customers’ calls about outages. Operators were also denied service to their downstream devices when their serial-to-ethernet converters had their firmware overwritten, which bricked the devices. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s VBS backdoor can decode Base64-encoded data and save it to the %TEMP% folder. The group also decrypted received information using the Triple DES algorithm and decompresses it using GZip.(Citation: ESET Telebots Dec 2016)(Citation: ESET Telebots July 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has developed malware for its operations, including malicious mobile applications and destructive malware such as [NotPetya](https://attack.mitre.org/software/S0368) and [Olympic Destroyer](https://attack.mitre.org/software/S0365).(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0816",
+      "name": "Device Restart/Shutdown",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) scheduled the uninterruptable power supplies (UPS) to shutdown data and telephone servers via the UPS management interface. (Citation: Ukraine15 - EISAC - 201603)(Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1561",
+      "name": "Disk Wipe",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Disk Structure Wipe",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used the [BlackEnergy](https://attack.mitre.org/software/S0089) KillDisk component to corrupt the infected system's master boot record.(Citation: US-CERT Ukraine Feb 2016)(Citation: ESET Telebots June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1484",
+      "name": "Domain or Tenant Policy Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Group Policy Modification",
+          "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged Group Policy Objects (GPOs) to deploy and execute malware.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1499",
+      "name": "Endpoint Denial of Service",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) temporarily disrupted service to Georgian government, non-government, and private sector websites after compromising a Georgian web hosting provider in 2019.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Social Media Accounts",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has established social media accounts to disseminate victim internal-only documents and other sensitive data.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Accounts",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has created email accounts that mimic legitimate organizations for its spearphishing operations.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has sent system information to its C2 server using HTTP.(Citation: ESET Telebots Dec 2016)\t",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) exploits public-facing applications for initial access and to acquire infrastructure, such as exploitation of the EXIM mail transfer agent in Linux systems.(Citation: NSA Sandworm 2020)(Citation: Leonard TAG 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0819",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) actors exploited vulnerabilities in GE's Cimplicity HMI and Advantech/Broadwin WebAccess HMI software which had been directly exposed to the internet. (Citation: ICS-CERT December 2014) (Citation: ICS CERT September 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has exploited vulnerabilities in Microsoft PowerPoint via OLE objects (CVE-2014-4114) and Microsoft Word via crafted TIFF images (CVE-2013-3906).(Citation: iSight Sandworm Oct 2014)(Citation: TrendMicro Sandworm October 2014)(Citation: McAfee Sandworm November 2013)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used Dropbear SSH with a hardcoded backdoor password to maintain persistence within the target network. [Sandworm Team](https://attack.mitre.org/groups/G0034) has also used VPN tunnels established in legitimate software company infrastructure to gain access to internal networks of that software company's users.(Citation: ESET BlackEnergy Jan 2016)(Citation: ESET Telebots June 2017)(Citation: ANSSI Sandworm January 2021)(Citation: mandiant_apt44_unearthing_sandworm)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) installed a modified Dropbear SSH client as the backdoor to target systems. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0822",
+      "name": "External Remote Services",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used Valid Accounts taken from the Windows Domain Controller to access the control system Virtual Private Network (VPN) used by grid operators. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has enumerated files on a compromised host.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1592",
+      "name": "Gather Victim Host Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has researched software code to enable supply-chain operations, most notably for the 2017 [NotPetya](https://attack.mitre.org/software/S0368) attack. [Sandworm Team](https://attack.mitre.org/groups/G0034) also collected a list of computers using specific software as part of its targeting efforts.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1589",
+      "name": "Gather Victim Identity Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Addresses",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has obtained valid emails addresses while conducting research against target organizations that were subsequently used in spearphishing campaigns.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Employee Names",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s research of potential victim organizations included the identification and collection of employee information.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1590",
+      "name": "Gather Victim Network Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domain Properties",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) conducted technical reconnaissance of the Parliament of Georgia's official internet domain prior to its 2019 attack.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1591",
+      "name": "Gather Victim Org Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Business Relationships",
+          "descr": "In preparation for its attack against the 2018 Winter Olympics, [Sandworm Team](https://attack.mitre.org/groups/G0034) conducted online research of partner organizations listed on an official PyeongChang Olympics partnership site.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0823",
+      "name": "Graphical User Interface",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) utilized HMI GUIs in the SCADA environment to open breakers. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) modified in-registry internet settings to lower internet security. (Citation: Booz Allen Hamilton)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Disable Windows Event Logging",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) disabled event logging on compromised systems.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used backdoors that can delete files used in an attack from an infected system.(Citation: ESET Telebots Dec 2016)(Citation: ESET Telebots July 2017)(Citation: Mandiant-Sandworm-Ukraine-2022) \nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), vba_macro.exe deletes itself after `FONTCACHE.DAT`, `rundll32.exe`, and the associated .lnk file is delivered. (Citation: Booz Allen Hamilton)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has pushed additional malicious tools onto an infected system to steal user credentials, move laterally, and destroy data.(Citation: ESET Telebots Dec 2016)(Citation: US District Court Indictment GRU Unit 74455 October 2020)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) pushed additional malicious tools onto an infected system to steal user credentials, move laterally, and destroy data. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1490",
+      "name": "Inhibit System Recovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) uses [Prestige](https://attack.mitre.org/software/S1058) to delete the backup catalog from the target system using: `C:\\Windows\\System32\\wbadmin.exe delete catalog -quiet` and to delete volume shadow copies using: `C:\\Windows\\System32\\vssadmin.exe delete shadows /all /quiet`. (Citation: Microsoft Prestige ransomware October 2022) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Keylogging",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used a keylogger to capture keystrokes by using the SetWindowsHookEx function.(Citation: ESET Telebots Dec 2016)\t\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) gathered account credentials via a [BlackEnergy](https://attack.mitre.org/software/S0089) keylogger plugin. (Citation: Booz Allen Hamilton)(Citation: Ukraine15 - EISAC - 201603)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used `move` to transfer files to a network share and has copied payloads--such as [Prestige](https://attack.mitre.org/software/S1058) ransomware--to an Active Directory Domain Controller and distributed via the Default Domain Group Policy Object.(Citation: Dragos Crashoverride 2018)(Citation: Microsoft Prestige ransomware October 2022) Additionally, [Sandworm Team](https://attack.mitre.org/groups/G0034) has transferred an ISO file into the OT network to gain initial access.(Citation: Mandiant-Sandworm-Ukraine-2022)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) moved their tools laterally within the corporate network and between the ICS and corporate network. (Citation: Booz Allen Hamilton)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used `move` to transfer files to a network share.(Citation: Dragos Crashoverride 2018)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) used a Group Policy Object (GPO) to copy [CaddyWiper](https://attack.mitre.org/software/S0693)'s executable `msserver.exe` from a staging server to a local hard drive before deployment.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0867",
+      "name": "Lateral Tool Transfer",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) moved their tools laterally within the ICS network. (Citation: Booz Allen Hamilton)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used a VBS script to facilitate lateral tool transfer. The VBS script was used to copy ICS-specific payloads with the following command: `cscript C:\\Backinfo\\ufn.vbs C:\\Backinfo\\101.dll C:\\Delta\\101.dll`(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0826",
+      "name": "Loss of Availability",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) opened the breakers at the infected sites, shutting the power off for thousands of businesses and households for around 6 hours. (Citation: Ukraine15 - EISAC - 201603)(Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0827",
+      "name": "Loss of Control",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), operators were shut out of their equipment either through the denial of peripheral use or the degradation of equipment. Operators were therefore unable to recover from the incident through their traditional means. Much of the power was restored manually. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0828",
+      "name": "Loss of Productivity and Revenue",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), power breakers were opened which caused the operating companies to be unable to deliver power, and left thousands of businesses and households without power for around 6 hours. (Citation: Ukraine15 - EISAC - 201603)(Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0831",
+      "name": "Manipulation of Control",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) opened live breakers via remote commands to the HMI, causing blackouts. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) masqueraded malicious installers as Windows update packages to evade defense and entice users to execute binaries.(Citation: Leonard TAG 2023)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Masquerade Task or Service",
+          "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged Systemd service units to masquerade GOGETTER malware as legitimate or seemingly legitimate services.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has avoided detection by naming a malicious binary explorer.exe.(Citation: ESET Telebots Dec 2016)(Citation: US District Court Indictment GRU Unit 74455 October 2020)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), DLLs and EXEs with filenames associated with common electric power sector protocols were used to masquerade files.(Citation: Dragos Crashoverride 2017)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Masquerade File Type",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) masqueraded executables as `.txt` files.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Masquerade Account Name",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) created two new accounts, “admin” and “система” (System).(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0849",
+      "name": "Masquerading",
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) transferred executable files as .txt and then renamed them to .exe, likely to avoid detection through extension tracking.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) modified in-registry Internet settings to lower internet security before launching `rundll32.exe`, which in-turn launches the malware and communicates with C2 servers over the Internet. (Citation: Booz Allen Hamilton).",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1106",
+      "name": "Native API",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) uses [Prestige](https://attack.mitre.org/software/S1058) to disable and restore file system redirection by using the following functions:  `Wow64DisableWow64FsRedirection()` and `Wow64RevertWow64FsRedirection()`.(Citation: Microsoft Prestige ransomware October 2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1040",
+      "name": "Network Sniffing",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used intercepter-NG to sniff passwords in network traffic.(Citation: ESET Telebots Dec 2016)\t\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used [BlackEnergy](https://attack.mitre.org/software/S0089)’s network sniffer module to discover user credentials being sent over the network between the local LAN and the power grid’s industrial control systems. (Citation: Charles McLellan March 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) proxied C2 communications within a TLS-based tunnel.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used port 6789 to accept connections on the group's SSH server.(Citation: ESET BlackEnergy Jan 2016)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used UPX to pack a copy of [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Command Obfuscation",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used ROT13 encoding, AES encryption and compression with the zlib library for their Python-based backdoor.(Citation: ESET Telebots Dec 2016)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used Base64 encoding within malware variants.(Citation: iSight Sandworm Oct 2014)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used heavily obfuscated code with [Industroyer](https://attack.mitre.org/software/S0604) in its Windows Notepad backdoor.(Citation: ESET Industroyer)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has acquired open-source tools for their operations, including [Invoke-PSImage](https://attack.mitre.org/software/S0231), which was used to establish an encrypted channel from a compromised host to [Sandworm Team](https://attack.mitre.org/groups/G0034)'s C2 server in preparation for the 2018 Winter Olympics attack, as well as [Impacket](https://attack.mitre.org/software/S0357) and RemoteExec, which were used in their 2022 [Prestige](https://attack.mitre.org/software/S1058) operations.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Microsoft Prestige ransomware October 2022) Additionally, [Sandworm Team](https://attack.mitre.org/groups/G0034) has used [Empire](https://attack.mitre.org/software/S0363), [Cobalt Strike](https://attack.mitre.org/software/S0154) and [PoshC2](https://attack.mitre.org/software/S0378).(Citation: mandiant_apt44_unearthing_sandworm)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Vulnerabilities",
+          "descr": "In 2017, [Sandworm Team](https://attack.mitre.org/groups/G0034) conducted technical research related to vulnerabilities associated with websites used by the Korean Sport and Olympic Committee, a Korean power company, and a Korean airport.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used its plainpwd tool, a modified version of [Mimikatz](https://attack.mitre.org/software/S0002), and comsvcs.dll to dump Windows credentials from system memory.(Citation: ESET Telebots Dec 2016)(Citation: ESET Telebots June 2017)(Citation: Microsoft Prestige ransomware October 2022)\t\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used [Mimikatz](https://attack.mitre.org/software/S0002) to capture and use legitimate credentials.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "NTDS",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used `ntdsutil.exe` to back up the Active Directory database, likely for credential access.(Citation: Microsoft Prestige ransomware October 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has delivered malicious Microsoft Office and ZIP file attachments via spearphishing emails.(Citation: iSight Sandworm Oct 2014)(Citation: US-CERT Ukraine Feb 2016)(Citation: ESET Telebots Dec 2016)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Google_WinRAR_vuln_2023)(Citation: mandiant_apt44_unearthing_sandworm)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) obtained their initial foothold into many IT systems using Microsoft Office attachments delivered through phishing emails. (Citation: Ukraine15 - EISAC - 201603)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has crafted phishing emails containing malicious hyperlinks.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "mobile",
+      "id": "T1660",
+      "name": "Phishing",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used SMS-based phishing to target victims with malicious links.(Citation: Leonard TAG 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1598",
+      "name": "Phishing for Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing Link",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has crafted spearphishing emails with hyperlinks designed to trick unwitting recipients into revealing their account credentials.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) loaded [BlackEnergy](https://attack.mitre.org/software/S0089) into svchost.exe, which then launched iexplore.exe for their C2. (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1572",
+      "name": "Protocol Tunneling",
+      "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) deployed the GOGETTER tunneler software to establish a “Yamux” TLS-based C2 channel with an external server(s).(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034)'s BCS-server tool can create an internal proxy server to redirect traffic from the adversary-controlled C2 to internal servers which may not be connected to the internet, but are interconnected locally.(Citation: ESET Telebots Dec 2016)\t",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1219",
+      "name": "Remote Access Tools",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used remote administration tools or remote industrial control system client software for execution and to maliciously release electricity breakers.(Citation: US-CERT Ukraine Feb 2016)(Citation: Microsoft Prestige ransomware October 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SMB/Windows Admin Shares",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has copied payloads to the `ADMIN$` share of remote systems and run <code>net use</code> to connect to network shares.(Citation: Dragos Crashoverride 2018)(Citation: Microsoft Prestige ransomware October 2022)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) utilized `net use` to connect to network shares.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0886",
+      "name": "Remote Services",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used an IT helpdesk software to move the mouse on ICS control devices to maliciously release electricity breakers. (Citation: Andy Greenberg June 2017)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used MS-SQL access to a pivot machine, allowing code execution throughout the ICS network.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used a tool to query Active Directory using LDAP, discovering information about computers listed in AD.(Citation: ESET Telebots Dec 2016)(Citation: Dragos Crashoverride 2018) \nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) remotely discovered systems over LAN connections. OT systems were visible from the IT network   as well, giving adversaries the ability to discover operational assets. (Citation: Charles McLellan March 2016)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) checked for connectivity to resources within the network and used LDAP to query Active Directory, discovering information about computers listed in AD.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0846",
+      "name": "Remote System Discovery",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) remotely discovered operational assets once on the OT network. (Citation: Charles McLellan March 2016) (Citation: Booz Allen Hamilton)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged SHARPIVORY, a .NET dropper that writes embedded payload to disk and uses scheduled tasks to persist on victim machines.(Citation: mandiant_apt44_unearthing_sandworm)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged Scheduled Tasks through a Group Policy Object (GPO) to execute [CaddyWiper](https://attack.mitre.org/software/S0693) at a predetermined time.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0853",
+      "name": "Scripting",
+      "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) utilized VBS and batch scripts for file movement and as wrappers for PowerShell execution.(Citation: Dragos Crashoverride 2018)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) utilizes a Visual Basic script `lun.vbs` to execute `n.bat` which then executed the MicroSCADA `scilc.exe` command.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1593",
+      "name": "Search Open Websites/Domains",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) researched Ukraine's unique legal entity identifier (called an \"EDRPOU\" number), including running queries on the EDRPOU website, in preparation for the [NotPetya](https://attack.mitre.org/software/S0368) attack. [Sandworm Team](https://attack.mitre.org/groups/G0034) has also researched third-party websites to help it craft credible spearphishing emails.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1594",
+      "name": "Search Victim-Owned Websites",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has conducted research against potential victim websites as part of its operational planning.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "SQL Stored Procedures",
+          "descr": "During the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used various MS-SQL stored procedures.(Citation: Dragos Crashoverride 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used webshells including [P.A.S. Webshell](https://attack.mitre.org/software/S0598) to maintain access to victim networks.(Citation: ANSSI Sandworm January 2021)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) deployed the Neo-REGEORG webshell on an internet-facing server.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1489",
+      "name": "Service Stop",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) attempts to stop the MSSQL Windows service to ensure successful encryption of locked files.(Citation: Microsoft Prestige ransomware October 2022) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1072",
+      "name": "Software Deployment Tools",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used the commercially available tool RemoteExec for agentless remote code execution.(Citation: Microsoft Prestige ransomware October 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1608",
+      "name": "Stage Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Upload Malware",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) staged compromised versions of legitimate software installers in forums to enable initial access to executing user.(Citation: mandiant_apt44_unearthing_sandworm)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1539",
+      "name": "Steal Web Session Cookie",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used information stealer malware to collect browser session cookies.(Citation: Leonard TAG 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "mobile",
+      "id": "T1409",
+      "name": "Stored Application Data",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) can collect encrypted Telegram and Signal communications.(Citation: mandiant_apt44_unearthing_sandworm)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1195",
+      "name": "Supply Chain Compromise",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Compromise Software Supply Chain",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has distributed [NotPetya](https://attack.mitre.org/software/S0368) by compromising the legitimate Ukrainian accounting software M.E.Doc and replacing a legitimate software update with a malicious one.(Citation: Secureworks NotPetya June 2017)(Citation: ESET Telebots June 2017)(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) staged compromised versions of legitimate software installers on forums to achieve initial, untargetetd access in victim environments.(Citation: mandiant_apt44_unearthing_sandworm) "
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "011",
+          "name": "Rundll32",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used a backdoor which could execute a supplied DLL using rundll32.exe.(Citation: ESET Telebots July 2017)\t\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used a backdoor which could execute a supplied DLL using `rundll32.exe`. (Citation: Booz Allen Hamilton)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0894",
+      "name": "System Binary Proxy Execution",
+      "descr": "During the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) executed a MicroSCADA application binary `scilc.exe` to send a predefined list of SCADA instructions specified in a file defined by the adversary, `s1.txt`. The executed command `C:\\sc\\prog\\exec\\scilc.exe -do pack\\scil\\s1.txt` leverages the SCADA software to send unauthorized command messages to remote substations.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0857",
+      "name": "System Firmware",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) overwrote the serial-to-ethernet gateways with custom firmware to make systems either disabled, shutdown, and/or unrecoverable. (Citation: Ukraine15 - EISAC - 201603)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) used a backdoor to enumerate information about the infected system's operating system.(Citation: ESET Telebots July 2017)(Citation: US District Court Indictment GRU Unit 74455 October 2020)\t",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) had gathered user, IP address, and server data related to RDP sessions on a compromised host. It has also accessed network diagram files useful for understanding how a host's network was configured.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Dragos Crashoverride 2018) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has collected the username from a compromised host.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1199",
+      "name": "Trusted Relationship",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used dedicated network connections from one victim organization to gain unauthorized access to a separate organization.(Citation: US District Court Indictment GRU Unit 74455 October 2020) Additionally, [Sandworm Team](https://attack.mitre.org/groups/G0034) has accessed Internet service providers and telecommunication entities that provide mobile connectivity.(Citation: mandiant_apt44_unearthing_sandworm) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0855",
+      "name": "Unauthorized Command Message",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) issued unauthorized commands to substation breaks after gaining control of operator workstations and accessing a distribution management system (DMS) application. (Citation: Ukraine15 - EISAC - 201603)\nDuring the [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034), [Sandworm Team](https://attack.mitre.org/groups/G0034) used the MicroSCADA SCIL-API to specify a set of SCADA instructions, including the sending of unauthorized commands to substation devices.(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has tricked unwitting recipients into clicking on malicious hyperlinks within emails crafted to resemble trustworthy senders.(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has tricked unwitting recipients into clicking on spearphishing attachments and enabling malicious macros embedded within files.(Citation: ESET Telebots Dec 2016)(Citation: US District Court Indictment GRU Unit 74455 October 2020)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) leveraged Microsoft Office attachments which contained malicious macros that were automatically executed once the user permitted them. (Citation: Ukraine15 - EISAC - 201603)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Accounts",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used stolen credentials to access administrative accounts within the domain.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Microsoft Prestige ransomware October 2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) have used previously acquired legitimate credentials prior to attacks.(Citation: US-CERT Ukraine Feb 2016)\nDuring the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used valid accounts on the corporate network to escalate privileges, move laterally, and establish persistence within the corporate network. (Citation: Ukraine15 - EISAC - 201603)"
+    },
+    {
+      "technique_used": true,
+      "domain": "ics",
+      "id": "T0859",
+      "name": "Valid Accounts",
+      "descr": "During the [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028), [Sandworm Team](https://attack.mitre.org/groups/G0034) used valid accounts to laterally move through VPN connections and dual-homed systems. Sandworm Team used the credentials of valid accounts to interact with client applications and access employee workstations hosting HMI applications.  (Citation: Ukraine15 - EISAC - 201603)(Citation: Booz Allen Hamilton)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), [Sandworm Team](https://attack.mitre.org/groups/G0034) used valid accounts to laterally move through VPN connections and dual-homed systems.(Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Bidirectional Communication",
+          "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used the Telegram Bot API from Telegram Messenger to send and receive commands to its Python backdoor. [Sandworm Team](https://attack.mitre.org/groups/G0034) also used legitimate M.E.Doc software update check requests for sending and receiving commands and hosted malicious payloads on putdrive.com.(Citation: ESET Telebots Dec 2016)(Citation: ESET Telebots June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used [Impacket](https://attack.mitre.org/software/S0357)’s WMIexec module for remote code execution and VBScript to run WMI queries.(Citation: Dragos Crashoverride 2018)(Citation: Microsoft Prestige ransomware October 2022)\nDuring the [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025), WMI in scripts were used for remote execution and system surveys. (Citation: Dragos Crashoverride 2018)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0028",
+      "name": "2015 Ukraine Electric Power Attack",
+      "first_seen": "December 2015",
+      "last_seen": "January 2016",
+      "first_seen_citation": "(Citation: Booz Allen Hamilton)",
+      "last_seen_citation": "(Citation: Booz Allen Hamilton)",
+      "desc": "(Citation: Andy Greenberg June 2017) (Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T0803",
+          "name": "Block Command Message"
+        },
+        {
+          "id": "T0804",
+          "name": "Block Reporting Message"
+        },
+        {
+          "id": "T0805",
+          "name": "Block Serial COM"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "id": "T0885",
+          "name": "Commonly Used Port"
+        },
+        {
+          "id": "T0884",
+          "name": "Connection Proxy"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "id": "T0813",
+          "name": "Denial of Control"
+        },
+        {
+          "id": "T0814",
+          "name": "Denial of Service"
+        },
+        {
+          "id": "T0816",
+          "name": "Device Restart/Shutdown"
+        },
+        {
+          "id": "T1133",
+          "name": "External Remote Services"
+        },
+        {
+          "id": "T0822",
+          "name": "External Remote Services"
+        },
+        {
+          "id": "T0823",
+          "name": "Graphical User Interface"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0867",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0826",
+          "name": "Loss of Availability"
+        },
+        {
+          "id": "T0827",
+          "name": "Loss of Control"
+        },
+        {
+          "id": "T0828",
+          "name": "Loss of Productivity and Revenue"
+        },
+        {
+          "id": "T0831",
+          "name": "Manipulation of Control"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T0886",
+          "name": "Remote Services"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T0846",
+          "name": "Remote System Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T0857",
+          "name": "System Firmware"
+        },
+        {
+          "id": "T0855",
+          "name": "Unauthorized Command Message"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "id": "T1078",
+          "name": "Valid Accounts"
+        },
+        {
+          "id": "T0859",
+          "name": "Valid Accounts"
+        }
+      ]
+    },
+    {
+      "id": "C0025",
+      "name": "2016 Ukraine Electric Power Attack",
+      "first_seen": "December 2016",
+      "last_seen": "December 2016",
+      "first_seen_citation": "(Citation: ESET Industroyer)(Citation: Dragos Crashoverride 2018)",
+      "last_seen_citation": "(Citation: ESET Industroyer)(Citation: Dragos Crashoverride 2018)",
+      "desc": "(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Joe Slowik August 2019)",
+      "techniques": [
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "id": "T1110",
+          "name": "Brute Force"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T0807",
+          "name": "Command-Line Interface"
+        },
+        {
+          "id": "T1554",
+          "name": "Compromise Host Software Binary"
+        },
+        {
+          "id": "T1136",
+          "name": "Create Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "002",
+          "name": "Impair Defenses",
+          "sub_name": "Disable Windows Event Logging"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0867",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "008",
+          "name": "Masquerading",
+          "sub_name": "Masquerade File Type"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "010",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Account Name"
+        },
+        {
+          "id": "T0849",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T0886",
+          "name": "Remote Services"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T0853",
+          "name": "Scripting"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "001",
+          "name": "Server Software Component",
+          "sub_name": "SQL Stored Procedures"
+        },
+        {
+          "id": "T0859",
+          "name": "Valid Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "C0034",
+      "name": "2022 Ukraine Electric Power Attack",
+      "first_seen": "June 2022",
+      "last_seen": "October 2022",
+      "first_seen_citation": "(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "last_seen_citation": "(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "desc": "(Citation: Mandiant-Sandworm-Ukraine-2022)(Citation: Dragos-Sandworm-Ukraine-2022) ",
+      "techniques": [
+        {
+          "id": "T0895",
+          "name": "Autorun Image"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T0807",
+          "name": "Command-Line Interface"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "002",
+          "name": "Create or Modify System Process",
+          "sub_name": "Systemd Service"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T0853",
+          "name": "Scripting"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "id": "T0894",
+          "name": "System Binary Proxy Execution"
+        },
+        {
+          "id": "T0855",
+          "name": "Unauthorized Command Message"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S1167",
+      "name": "AcidPour",
+      "descr": "[AcidPour](https://attack.mitre.org/software/S1167) is associated with [Sandworm Team](https://attack.mitre.org/groups/G0034).(Citation: SentinelOne AcidPour 2024)",
+      "techniques": [
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "001",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Content Wipe"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        }
+      ]
+    },
+    {
+      "id": "S1125",
+      "name": "AcidRain",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) is linked to [AcidRain](https://attack.mitre.org/software/S1125) deployment during the ViaSat KA-SAT incident in 2022.(Citation: Vincens AcidPour 2024)(Citation: AcidRain JAGS 2022)",
+      "techniques": [
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "001",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Content Wipe"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        }
+      ]
+    },
+    {
+      "id": "S0606",
+      "name": "Bad Rabbit",
+      "descr": "(Citation: Secureworks IRON VIKING )",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "003",
+          "name": "Brute Force",
+          "sub_name": "Password Spraying"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "id": "T1189",
+          "name": "Drive-by Compromise"
+        },
+        {
+          "id": "T0817",
+          "name": "Drive-by Compromise"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T0866",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1495",
+          "name": "Firmware Corruption"
+        },
+        {
+          "id": "T0867",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0828",
+          "name": "Loss of Productivity and Revenue"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "id": "T0863",
+          "name": "User Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0089",
+      "name": "BlackEnergy",
+      "descr": "(Citation: iSIGHT Sandworm 2014)(Citation: F-Secure BlackEnergy 2014)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)(Citation: Secureworks IRON VIKING )",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "010",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Services File Permissions Weakness"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T0865",
+          "name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T0869",
+          "name": "Standard Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "006",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing Policy Modification"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "id": "T0859",
+          "name": "Valid Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0693",
+      "name": "CaddyWiper",
+      "descr": "(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "techniques": [
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "002",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Structure Wipe"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "001",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Windows File and Directory Permissions Modification"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0555",
+      "name": "CHEMISTGAMES",
+      "descr": "(Citation: CYBERWARCON CHEMISTGAMES)",
+      "techniques": [
+        {
+          "parent_id": "T1437",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1623",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "id": "T1533",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1407",
+          "name": "Download New Code at Runtime"
+        },
+        {
+          "parent_id": "T1521",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1430",
+          "name": "Location Tracking"
+        },
+        {
+          "parent_id": "T1655",
+          "id": "001",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Name or Location"
+        },
+        {
+          "id": "T1575",
+          "name": "Native API"
+        },
+        {
+          "id": "T1406",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1474",
+          "id": "003",
+          "name": "Supply Chain Compromise",
+          "sub_name": "Compromise Software Supply Chain"
+        },
+        {
+          "id": "T1426",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used multiple publicly available tools during operations, such as Cobalt Strike.(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0687",
+      "name": "Cyclops Blink",
+      "descr": "(Citation: NCSC CISA Cyclops Blink Advisory February 2022)(Citation: Trend Micro Cyclops Blink March 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1037",
+          "id": "004",
+          "name": "Boot or Logon Initialization Scripts",
+          "sub_name": "RC Scripts"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1559",
+          "name": "Inter-Process Communication"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1542",
+          "id": "002",
+          "name": "Pre-OS Boot",
+          "sub_name": "Component Firmware"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0363",
+      "name": "Empire",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used multiple publicly available tools during operations, such as Empire.(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "008",
+          "name": "Event Triggered Execution",
+          "sub_name": "Accessibility Features"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "001",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Code Repository"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "004",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Dylib Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0401",
+      "name": "Exaramel for Linux",
+      "descr": "(Citation: ESET TeleBots Oct 2018)(Citation: ANSSI Sandworm January 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "001",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Setuid and Setgid"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "004",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "id": "T1543",
+          "name": "Create or Modify System Process"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "002",
+          "name": "Create or Modify System Process",
+          "sub_name": "Systemd Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "003",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Cron"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0343",
+      "name": "Exaramel for Windows",
+      "descr": "(Citation: ESET TeleBots Oct 2018)",
+      "techniques": [
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        }
+      ]
+    },
+    {
+      "id": "S0342",
+      "name": "GreyEnergy",
+      "descr": "(Citation: Secureworks IRON VIKING )",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "002",
+          "name": "Process Injection",
+          "sub_name": "Portable Executable Injection"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "(Citation: Microsoft Prestige ransomware October 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0604",
+      "name": "Industroyer",
+      "descr": "(Citation: Dragos Crashoverride 2018)(Citation: Dragos Crashoverride 2017)(Citation: ESET Industroyer)(Citation: Secureworks IRON VIKING)(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "id": "T0800",
+          "name": "Activate Firmware Update Mode"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T0802",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T0803",
+          "name": "Block Command Message"
+        },
+        {
+          "id": "T0804",
+          "name": "Block Reporting Message"
+        },
+        {
+          "id": "T0805",
+          "name": "Block Serial COM"
+        },
+        {
+          "id": "T0806",
+          "name": "Brute Force I/O"
+        },
+        {
+          "id": "T0807",
+          "name": "Command-Line Interface"
+        },
+        {
+          "id": "T1554",
+          "name": "Compromise Host Software Binary"
+        },
+        {
+          "id": "T0884",
+          "name": "Connection Proxy"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T0809",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T0813",
+          "name": "Denial of Control"
+        },
+        {
+          "id": "T0814",
+          "name": "Denial of Service"
+        },
+        {
+          "id": "T0815",
+          "name": "Denial of View"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T0816",
+          "name": "Device Restart/Shutdown"
+        },
+        {
+          "parent_id": "T1499",
+          "id": "004",
+          "name": "Endpoint Denial of Service",
+          "sub_name": "Application or System Exploitation"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T0827",
+          "name": "Loss of Control"
+        },
+        {
+          "id": "T0837",
+          "name": "Loss of Protection"
+        },
+        {
+          "id": "T0829",
+          "name": "Loss of View"
+        },
+        {
+          "id": "T0831",
+          "name": "Manipulation of Control"
+        },
+        {
+          "id": "T0832",
+          "name": "Manipulation of View"
+        },
+        {
+          "id": "T0801",
+          "name": "Monitor Process State"
+        },
+        {
+          "id": "T0840",
+          "name": "Network Connection Enumeration"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T0846",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T0888",
+          "name": "Remote System Information Discovery"
+        },
+        {
+          "id": "T1489",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T0881",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T0855",
+          "name": "Unauthorized Command Message"
+        },
+        {
+          "id": "T1078",
+          "name": "Valid Accounts"
+        }
+      ]
+    },
+    {
+      "id": "S1072",
+      "name": "Industroyer2",
+      "descr": "(Citation: Industroyer2 ESET April 2022)(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "id": "T0802",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T0806",
+          "name": "Brute Force I/O"
+        },
+        {
+          "id": "T0836",
+          "name": "Modify Parameter"
+        },
+        {
+          "id": "T0801",
+          "name": "Monitor Process State"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T0888",
+          "name": "Remote System Information Discovery"
+        },
+        {
+          "id": "T0881",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T0855",
+          "name": "Unauthorized Command Message"
+        }
+      ]
+    },
+    {
+      "id": "S0231",
+      "name": "Invoke-PSImage",
+      "descr": "(Citation: US District Court Indictment GRU Unit 74455 October 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "009",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Embedded Payloads"
+        }
+      ]
+    },
+    {
+      "id": "S1190",
+      "name": "Kapeka",
+      "descr": "[Kapeka](https://attack.mitre.org/software/S1190) is associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) operations and previous malware variants such as [GreyEnergy](https://attack.mitre.org/software/S0342).(Citation: Microsoft KnuckleTouch 2024)(Citation: WithSecure Kapeka 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "009",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Persistence"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "008",
+          "name": "Masquerading",
+          "sub_name": "Masquerade File Type"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0607",
+      "name": "KillDisk",
+      "descr": "(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: Secureworks IRON VIKING )",
+      "techniques": [
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T0809",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "002",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Structure Wipe"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T0872",
+          "name": "Indicator Removal on Host"
+        },
+        {
+          "id": "T0829",
+          "name": "Loss of View"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1489",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T0881",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T1129",
+          "name": "Shared Modules"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: Dragos Crashoverride 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S1189",
+      "name": "Neo-reGeorg",
+      "descr": "(Citation: Mandiant-Sandworm-Ukraine-2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0039",
+      "name": "Net",
+      "descr": "(Citation: Dragos Crashoverride 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "007",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Local or Domain Groups"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0368",
+      "name": "NotPetya",
+      "descr": "(Citation: NCSC Sandworm Feb 2020)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)(Citation: Secureworks IRON VIKING )(Citation: Trend Micro Cyclops Blink March 2022)(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T0866",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "id": "T0867",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T0828",
+          "name": "Loss of Productivity and Revenue"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0365",
+      "name": "Olympic Destroyer",
+      "descr": "(Citation: CrowdStrike GTR 2019)(Citation: Secureworks IRON VIKING )(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)(Citation: Trend Micro Cyclops Blink March 2022)(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "id": "T1490",
+          "name": "Inhibit System Recovery"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1489",
+          "name": "Service Stop"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0598",
+      "name": "P.A.S. Webshell",
+      "descr": "(Citation: ANSSI Sandworm January 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "id": "T1213",
+          "name": "Data from Information Repositories"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "002",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Linux and Mac File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0378",
+      "name": "PoshC2",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used multiple publicly available tools during operations, such as PoshC2.(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1110",
+          "name": "Brute Force"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S1058",
+      "name": "Prestige",
+      "descr": "(Citation: Microsoft Prestige ransomware October 2022)(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1490",
+          "name": "Inhibit System Recovery"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1489",
+          "name": "Service Stop"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: Dragos Crashoverride 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0195",
+      "name": "SDelete",
+      "descr": "[Sandworm Team](https://attack.mitre.org/groups/G0034) has used [SDelete](https://attack.mitre.org/software/S0195) for wartime operations in 2022-2023.(Citation: mandiant_apt44_unearthing_sandworm)",
+      "techniques": [
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        }
+      ]
+    },
+    {
+      "id": "S1010",
+      "name": "VPNFilter",
+      "descr": "[VPNFilter](https://attack.mitre.org/software/S1010) is associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) operations based on reporting on [VPNFilter](https://attack.mitre.org/software/S1010) replacement software, [Cyclops Blink](https://attack.mitre.org/software/S0687).(Citation: NCSC CISA Cyclops Blink Advisory February 2022)",
+      "techniques": [
+        {
+          "id": "T0830",
+          "name": "Adversary-in-the-Middle"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "001",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Content Wipe"
+        },
+        {
+          "id": "T0842",
+          "name": "Network Sniffing"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "ELECTRUM",
+      "descr": "(Citation: Dragos ELECTRUM)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "Telebots",
+      "descr": "(Citation: NCSC Sandworm Feb 2020)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "IRON VIKING",
+      "descr": "(Citation: Secureworks IRON VIKING )(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "BlackEnergy (Group)",
+      "descr": "(Citation: NCSC Sandworm Feb 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "Quedagh",
+      "descr": "(Citation: iSIGHT Sandworm 2014) (Citation: F-Secure BlackEnergy 2014)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "Voodoo Bear",
+      "descr": "(Citation: CrowdStrike VOODOO BEAR)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+    },
+    {
+      "name": "IRIDIUM",
+      "descr": "(Citation: Microsoft Prestige ransomware October 2022)"
+    },
+    {
+      "name": "Seashell Blizzard",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    },
+    {
+      "name": "FROZENBARENTS",
+      "descr": "(Citation: Leonard TAG 2023)"
+    },
+    {
+      "name": "APT44",
+      "descr": "(Citation: mandiant_apt44_unearthing_sandworm)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Leonard TAG 2023": {
+      "description": "Billy Leonard. (2023, April 19). Ukraine remains Russia’s biggest cyber focus in 2023. Retrieved March 1, 2024.",
+      "number": null,
+      "url": "https://blog.google/threat-analysis-group/ukraine-remains-russias-biggest-cyber-focus-in-2023/"
+    },
+    "US District Court Indictment GRU Oct 2018": {
+      "description": "Brady, S . (2018, October 3). Indictment - United States vs Aleksei Sergeyevich Morenets, et al.. Retrieved October 1, 2020.",
+      "number": null,
+      "url": "https://www.justice.gov/opa/page/file/1098481/download"
+    },
+    "Dragos ELECTRUM": {
+      "description": "Dragos. (2017, January 1). ELECTRUM Threat Profile. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.dragos.com/resource/electrum/"
+    },
+    "F-Secure BlackEnergy 2014": {
+      "description": "F-Secure Labs. (2014). BlackEnergy & Quedagh: The convergence of crimeware and APT attacks. Retrieved March 24, 2016.",
+      "number": null,
+      "url": "https://blog-assets.f-secure.com/wp-content/uploads/2019/10/15163408/BlackEnergy_Quedagh.pdf"
+    },
+    "iSIGHT Sandworm 2014": {
+      "description": "Hultquist, J.. (2016, January 7). Sandworm Team and the Ukrainian Power Authority Attacks. Retrieved October 6, 2017.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2016/01/ukraine-and-sandworm-team.html"
+    },
+    "CrowdStrike VOODOO BEAR": {
+      "description": "Meyers, A. (2018, January 19). Meet CrowdStrike’s Adversary of the Month for January: VOODOO BEAR. Retrieved May 22, 2018.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-january-voodoo-bear/"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Microsoft Prestige ransomware October 2022": {
+      "description": "MSTIC. (2022, October 14). New “Prestige” ransomware impacts organizations in Ukraine and Poland. Retrieved January 19, 2023.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2022/10/14/new-prestige-ransomware-impacts-organizations-in-ukraine-and-poland/"
+    },
+    "InfoSecurity Sandworm Oct 2014": {
+      "description": "Muncaster, P.. (2014, October 14). Microsoft Zero Day Traced to Russian ‘Sandworm’ Hackers. Retrieved October 6, 2017.",
+      "number": null,
+      "url": "https://www.infosecurity-magazine.com/news/microsoft-zero-day-traced-russian/"
+    },
+    "NCSC Sandworm Feb 2020": {
+      "description": "NCSC. (2020, February 20). NCSC supports US advisory regarding GRU intrusion set Sandworm. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/news/ncsc-supports-sandworm-advisory"
+    },
+    "USDOJ Sandworm Feb 2020": {
+      "description": "Pompeo, M. (2020, February 20). The United States Condemns Russian Cyber Attack Against the Country of Georgia. Retrieved September 12, 2024.",
+      "number": null,
+      "url": "https://2017-2021.state.gov/the-united-states-condemns-russian-cyber-attack-against-the-country-of-georgia/index.html"
+    },
+    "mandiant_apt44_unearthing_sandworm": {
+      "description": "Roncone, G. et al. (n.d.). APT44: Unearthing Sandworm. Retrieved July 11, 2024.",
+      "number": null,
+      "url": "https://services.google.com/fh/files/misc/apt44-unearthing-sandworm.pdf"
+    },
+    "US District Court Indictment GRU Unit 74455 October 2020": {
+      "description": "Scott W. Brady. (2020, October 15). United States vs. Yuriy Sergeyevich Andrienko et al.. Retrieved November 25, 2020.",
+      "number": null,
+      "url": "https://www.justice.gov/opa/press-release/file/1328521/download"
+    },
+    "Secureworks IRON VIKING ": {
+      "description": "Secureworks. (2020, May 1). IRON VIKING Threat Profile. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.secureworks.com/research/threat-profiles/iron-viking"
+    },
+    "UK NCSC Olympic Attacks October 2020": {
+      "description": "UK NCSC. (2020, October 19). UK exposes series of Russian cyber attacks against Olympic and Paralympic Games . Retrieved November 30, 2020.",
+      "number": null,
+      "url": "https://www.gov.uk/government/news/uk-exposes-series-of-russian-cyber-attacks-against-olympic-and-paralympic-games"
+    },
+    "ESET Telebots Dec 2016": {
+      "description": "Cherepanov, A.. (2016, December 13). The rise of TeleBots: Analyzing disruptive KillDisk attacks. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2016/12/13/rise-telebots-analyzing-disruptive-killdisk-attacks/"
+    },
+    "Slowik Sandworm 2021": {
+      "description": "Joseph Slowik, DomainTools. (2021, March 3). Centreon to Exim and Back: On the Trail of Sandworm. Retrieved April 6, 2024.",
+      "number": null,
+      "url": "https://www.domaintools.com/resources/blog/centreon-to-exim-and-back-on-the-trail-of-sandworm/"
+    },
+    "Dragos Crashoverride 2018": {
+      "description": "Joe Slowik. (2018, October 12). Anatomy of an Attack: Detecting and Defeating CRASHOVERRIDE. Retrieved December 18, 2020.",
+      "number": null,
+      "url": "https://www.dragos.com/wp-content/uploads/CRASHOVERRIDE2018.pdf"
+    },
+    "McAfee Sandworm November 2013": {
+      "description": "Li, H. (2013, November 5). McAfee Labs Detects Zero-Day Exploit Targeting Microsoft Office. Retrieved June 18, 2020.",
+      "number": null,
+      "url": "https://www.mcafee.com/blogs/other-blogs/mcafee-labs-detects-zero-day-exploit-targeting-microsoft-office-2"
+    },
+    "iSight Sandworm Oct 2014": {
+      "description": "Ward, S.. (2014, October 14). iSIGHT discovers zero-day vulnerability CVE-2014-4114 used in Russian cyber-espionage campaign. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://web.archive.org/web/20160503234007/https:/www.isightpartners.com/2014/10/cve-2014-4114/"
+    },
+    "TrendMicro Sandworm October 2014": {
+      "description": "Wu, W. (2014, October 14). An Analysis of Windows Zero-day Vulnerability ‘CVE-2014-4114’ aka “Sandworm”. Retrieved June 18, 2020.",
+      "number": null,
+      "url": "https://blog.trendmicro.com/trendlabs-security-intelligence/an-analysis-of-windows-zero-day-vulnerability-cve-2014-4114-aka-sandworm/"
+    },
+    "NSA Sandworm 2020": {
+      "description": "National Security Agency. (2020, March 28). Sandworm Actors Exploiting Vulnerability In EXIM Mail Transfer Agent. Retrieved March 1, 2024.",
+      "number": null,
+      "url": "https://media.defense.gov/2020/May/28/2002306626/-1/-1/0/CSA%20Sandworm%20Actors%20Exploiting%20Vulnerability%20in%20Exim%20Transfer%20Agent%2020200528.pdf"
+    },
+    "ANSSI Sandworm January 2021": {
+      "description": "ANSSI. (2021, January 27). SANDWORM INTRUSION SET CAMPAIGN TARGETING CENTREON SYSTEMS. Retrieved March 30, 2021.",
+      "number": null,
+      "url": "https://www.cert.ssi.gouv.fr/uploads/CERTFR-2021-CTI-005.pdf"
+    },
+    "ESET BlackEnergy Jan 2016": {
+      "description": "Cherepanov, A.. (2016, January 3). BlackEnergy by the SSHBearDoor: attacks against Ukrainian news media and electric industry . Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2016/01/03/blackenergy-sshbeardoor-details-2015-attacks-ukrainian-news-media-electric-industry/"
+    },
+    "ESET Telebots June 2017": {
+      "description": "Cherepanov, A.. (2017, June 30). TeleBots are back: Supply chain attacks against Ukraine. Retrieved June 11, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2017/06/30/telebots-back-supply-chain-attacks-against-ukraine/"
+    },
+    "NCSC Cyclops Blink February 2022": {
+      "description": "NCSC. (2022, February 23). Cyclops Blink Malware Analysis Report. Retrieved March 3, 2022.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/files/Cyclops-Blink-Malware-Analysis-Report.pdf"
+    },
+    "US-CERT Ukraine Feb 2016": {
+      "description": "US-CERT. (2016, February 25). ICS Alert (IR-ALERT-H-16-056-01) Cyber-Attack Against Ukrainian Critical Infrastructure. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.us-cert.gov/ics/alerts/IR-ALERT-H-16-056-01"
+    },
+    "Google_WinRAR_vuln_2023": {
+      "description": "Morgan, K. (2023, October 18). Government-backed actors exploiting WinRAR vulnerability. Retrieved July 19, 2024.",
+      "number": null,
+      "url": "https://blog.google/threat-analysis-group/government-backed-actors-exploiting-winrar-vulnerability/"
+    },
+    "ESET Telebots July 2017": {
+      "description": "Cherepanov, A.. (2017, July 4). Analysis of TeleBots’ cunning backdoor . Retrieved June 11, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2017/07/04/analysis-of-telebots-cunning-backdoor/"
+    },
+    "Mandiant-Sandworm-Ukraine-2022": {
+      "description": "Ken Proska, John Wolfram, Jared Wilson, Dan Black, Keith Lunden, Daniel Kapellmann Zafra, Nathan Brubaker, Tyler Mclellan, Chris Sistrunk. (2023, November 9). Sandworm Disrupts Power in Ukraine Using a Novel Attack Against Operational Technology. Retrieved March 28, 2024.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/blog/sandworm-disrupts-power-ukraine-operational-technology"
+    },
+    "Secureworks NotPetya June 2017": {
+      "description": "Counter Threat Research Team. (2017, June 28). NotPetya Campaign: What We Know About the Latest Global Ransomware Attack. Retrieved June 11, 2020.",
+      "number": null,
+      "url": "https://www.secureworks.com/blog/notpetya-campaign-what-we-know-about-the-latest-global-ransomware-attack"
+    },
+    "Dragos October 2018": {
+      "description": "Dragos 2018, October 12 Anatomy of an Attack: Detecting and Defeating CRASHOVERRIDE Retrieved. 2019/10/14 ",
+      "number": null,
+      "url": "https://dragos.com/wp-content/uploads/CRASHOVERRIDE2018.pdf"
+    },
+    "ICS CERT September 2018": {
+      "description": "ICS CERT 2018, September 06 Advantech/Broadwin WebAccess RPC Vulnerability (Update B) Retrieved. 2019/12/05 ",
+      "number": null,
+      "url": "https://www.us-cert.gov/ics/advisories/ICSA-11-094-02B"
+    },
+    "ICS-CERT December 2014": {
+      "description": "ICS-CERT 2014, December 10 ICS Alert (ICS-ALERT-14-281-01E) Ongoing Sophisticated Malware Campaign Compromising ICS (Update E) Retrieved. 2019/10/11 ",
+      "number": null,
+      "url": "https://www.us-cert.gov/ics/alerts/ICS-ALERT-14-281-01B"
+    },
+    "Dragos Inc. June 2017": {
+      "description": "Dragos Inc. 2017, June 13 Industroyer - Dragos - 201706: Analysis of the Threat to Electic Grid Operations Retrieved. 2017/09/18 ",
+      "number": null,
+      "url": "https://dragos.com/blog/crashoverride/CrashOverride-01.pdf"
+    },
+    "Ukraine15 - EISAC - 201603": {
+      "description": "Electricity Information Sharing and Analysis Center; SANS Industrial Control Systems. (2016, March 18). Analysis of the Cyber Attack on the Ukranian Power Grid: Defense Use Case. Retrieved March 27, 2018.",
+      "number": null,
+      "url": "https://nsarchive.gwu.edu/sites/default/files/documents/3891751/SANS-and-Electricity-Information-Sharing-and.pdf"
+    },
+    "Booz Allen Hamilton": {
+      "description": "Booz Allen Hamilton. (2016). When The Lights Went Out. Retrieved December 18, 2024.",
+      "number": null,
+      "url": "https://www.boozallen.com/content/dam/boozallen/documents/2016/09/ukraine-report-when-the-lights-went-out.pdf"
+    },
+    "Charles McLellan March 2016": {
+      "description": "Charles McLellan. (2016, March 4). How hackers attacked Ukraine's power grid: Implications for Industrial IoT security. Retrieved September 27, 2023.",
+      "number": null,
+      "url": "https://www.zdnet.com/article/how-hackers-attacked-ukraines-power-grid-implications-for-industrial-iot-security/"
+    },
+    "Andy Greenberg June 2017": {
+      "description": "Andy Greenberg. (2017, June 28). How an Entire Nation Became Russia's Test Lab for Cyberwar. Retrieved September 27, 2023.",
+      "number": null,
+      "url": "https://www.wired.com/story/russian-hackers-attack-ukraine/"
+    },
+    "Dragos Crashoverride 2017": {
+      "description": "Dragos Inc.. (2017, June 13). CRASHOVERRIDE Analysis of the Threat to Electric Grid Operations. Retrieved December 18, 2020.",
+      "number": null,
+      "url": "https://dragos.com/blog/crashoverride/CrashOverride-01.pdf"
+    },
+    "ESET Industroyer": {
+      "description": "Anton Cherepanov. (2017, June 12). Win32/Industroyer: A new threat for industrial controls systems. Retrieved December 18, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+    },
+    "Joe Slowik August 2019": {
+      "description": "Joe Slowik 2019, August 15 CRASHOVERRIDE: Reassessing the 2016 Ukraine Electric Power Event as a Protection-Focused Attack Retrieved. 2019/10/22 ",
+      "number": null,
+      "url": "https://dragos.com/wp-content/uploads/CRASHOVERRIDE.pdf"
+    },
+    "Dragos-Sandworm-Ukraine-2022": {
+      "description": "Dragos, Inc.. (2023, December 11). ELECTRUM Targeted Ukrainian Electric Entity Using Custom Tools and CaddyWiper Malware, October 2022. Retrieved March 28, 2024.",
+      "number": null,
+      "url": "https://www.dragos.com/blog/new-details-electrum-ukraine-electric-sector-compromise-2022/"
+    },
+    "ESET TeleBots Oct 2018": {
+      "description": "Cherepanov, A., Lipovsky, R. (2018, October 11). New TeleBots backdoor: First evidence linking Industroyer to NotPetya. Retrieved November 27, 2018.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2018/10/11/new-telebots-backdoor-linking-industroyer-notpetya/"
+    },
+    "SentinelOne AcidPour 2024": {
+      "description": "Juan Andrés Guerrero-Saade & Tom Hegel. (2024, March 21). AcidPour | New Embedded Wiper Variant of AcidRain Appears in Ukraine. Retrieved November 25, 2024.",
+      "number": null,
+      "url": "https://www.sentinelone.com/labs/acidpour-new-embedded-wiper-variant-of-acidrain-appears-in-ukraine/"
+    },
+    "NCSC CISA Cyclops Blink Advisory February 2022": {
+      "description": "NCSC, CISA, FBI, NSA. (2022, February 23). New Sandworm malware Cyclops Blink replaces VPNFilter. Retrieved March 3, 2022.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/news/joint-advisory-shows-new-sandworm-malware-cyclops-blink-replaces-vpnfilter"
+    },
+    "Trend Micro Cyclops Blink March 2022": {
+      "description": "Haquebord, F. et al. (2022, March 17). Cyclops Blink Sets Sights on Asus Routers. Retrieved March 17, 2022.",
+      "number": null,
+      "url": "https://www.trendmicro.com/en_us/research/22/c/cyclops-blink-sets-sights-on-asus-routers--.html"
+    },
+    "Microsoft KnuckleTouch 2024": {
+      "description": "Microsoft. (2024, February 14). Backdoor:Win64/KnuckleTouch.A!dha. Retrieved January 6, 2025.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win64/KnuckleTouch.A!dha&threatId=-2147067254"
+    },
+    "WithSecure Kapeka 2024": {
+      "description": "Mohammad Kazem Hassan Nejad, WithSecure. (2024, April 17). KAPEKA A novel backdoor spotted in Eastern Europe. Retrieved January 6, 2025.",
+      "number": null,
+      "url": "https://labs.withsecure.com/content/dam/labs/docs/WithSecure-Research-Kapeka.pdf"
+    },
+    "Vincens AcidPour 2024": {
+      "description": "A.J. Vincens, CyberScoop. (2024, March 18). Researchers spot updated version of malware that hit Viasat. Retrieved March 25, 2024.",
+      "number": null,
+      "url": "https://cyberscoop.com/viasat-malware-wiper-acidrain/"
+    },
+    "AcidRain JAGS 2022": {
+      "description": "Juan Andres Guerrero-Saade and Max van Amerongen, SentinelOne. (2022, March 31). AcidRain | A Modem Wiper Rains Down on Europe. Retrieved March 25, 2024.",
+      "number": null,
+      "url": "https://www.sentinelone.com/labs/acidrain-a-modem-wiper-rains-down-on-europe/"
+    },
+    "Secureworks IRON VIKING": {
+      "description": "Secureworks. (2020, May 1). IRON VIKING Threat Profile. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://www.secureworks.com/research/threat-profiles/iron-viking"
+    },
+    "Industroyer2 ESET April 2022": {
+      "description": "ESET. (2022, April 12). Industroyer2: Industroyer reloaded. Retrieved March 30, 2023.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2022/04/12/industroyer2-industroyer-reloaded/"
+    },
+    "CrowdStrike GTR 2019": {
+      "description": "CrowdStrike. (2019, January). 2019 Global Threat Report. Retrieved June 10, 2020.",
+      "number": null,
+      "url": "https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2019GlobalThreatReport.pdf"
+    },
+    "CYBERWARCON CHEMISTGAMES": {
+      "description": "B. Leonard, N. Mehta. (2019, November 21). The Secret Life of Sandworms. Retrieved December 31, 2020.",
+      "number": null,
+      "url": "https://www.youtube.com/watch?v=xoNSbm1aX_w"
+    }
+  },
+  "aliases_list": [
+    "ELECTRUM",
+    "Telebots",
+    "IRON VIKING",
+    "BlackEnergy (Group)",
+    "Quedagh",
+    "Voodoo Bear",
+    "IRIDIUM",
+    "Seashell Blizzard",
+    "FROZENBARENTS",
+    "APT44"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "attack_id": "G0036",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "GCMAN",
+  "version": "1.1",
+  "descr": "[GCMAN](https://attack.mitre.org/groups/G0036) is a threat group that focuses on targeting banks for the purpose of transferring money to e-currency services. (Citation: Securelist GCMAN)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH",
+          "descr": "[GCMAN](https://attack.mitre.org/groups/G0036) uses Putty for lateral movement.(Citation: Securelist GCMAN)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "VNC",
+          "descr": "[GCMAN](https://attack.mitre.org/groups/G0036) uses VNC for lateral movement.(Citation: Securelist GCMAN)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "Securelist GCMAN": {
+      "description": "Kaspersky Lab's Global Research & Analysis Team. (2016, February 8). APT-style bank robberies increase with Metel, GCMAN and Carbanak 2.0 attacks. Retrieved April 20, 2016.",
+      "number": null,
+      "url": "https://securelist.com/apt-style-bank-robberies-increase-with-metel-gcman-and-carbanak-2-0-attacks/73638/"
+    }
+  },
+  "aliases_list": []
+}

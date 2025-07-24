@@ -1,14 +1,25 @@
 #!/bin/bash
-# Script to install requirements and run the Streamlit dashboard
+# Script to create a venv, install requirements, and run the Streamlit dashboard
 
 echo "🚀 Starting MITRE CTI Dashboard Setup..."
 
-# Check if we're in a virtual environment
-if [[ "$VIRTUAL_ENV" != "" ]]; then
-    echo "✅ Virtual environment detected: $VIRTUAL_ENV"
-else
-    echo "⚠️  No virtual environment detected. Consider using one."
+# Define the virtual environment directory
+VENV_DIR="venv"
+
+# Check if the virtual environment directory exists
+if [ ! -d "$VENV_DIR" ]; then
+    echo "🐍 Creating Python virtual environment..."
+    python3 -m venv "$VENV_DIR"
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to create virtual environment. Please ensure python3 and venv are installed."
+        exit 1
+    fi
 fi
+
+# Activate the virtual environment
+source "$VENV_DIR/bin/activate"
+
+echo "✅ Virtual environment activated."
 
 # Install requirements
 echo "📦 Installing dashboard requirements..."

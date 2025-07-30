@@ -1,149 +1,158 @@
-# 🛡️ MITRE CTI Dashboard
+# ECHO ATT&CK
 
-**Comprehensive Interactive Dashboard for MITRE ATT&CK Data Analysis**
+A modern, interactive threat intelligence platform built with Next.js, providing comprehensive analysis of MITRE ATT&CK framework data including APT groups, techniques, and software tools.
 
-*Advanced Persistent Threat (APT) Groups, Techniques, Tactics & Procedures Analysis*
+## 🚀 Features
 
-## 🌟 Features
+- **Interactive Dashboard**: Real-time threat intelligence overview with key metrics and visualizations
+- **APT Groups Analysis**: Detailed analysis of Advanced Persistent Threat groups with searchable interface
+- **Comprehensive Search**: Search across APT groups, techniques, and software with interactive detailed views
+- **Professional UI**: Modern, futuristic blue theme with responsive design
+- **MITRE Integration**: Clickable MITRE ATT&CK links opening in new tabs
+- **Data Visualizations**: Multi-colored charts and graphs using Chart.js
+- **Collapsible Sidebar**: Clean navigation with expandable/collapsible sidebar
 
-### 🎨 **Default Dark Mode**
-- Professional dark theme optimized for cybersecurity analysis
-- Eye-friendly color scheme for extended analysis sessions
-- Theme toggle available for user preference
+## 🛠️ Tech Stack
 
-### 📈 **Comprehensive Overview**
-- **APT Groups Statistics** - Total groups analyzed and their activity levels
-- **Technique Coverage** - Unique techniques identified and actively used
-- **Software Tools Analysis** - Malware and tools used by threat actors
-- **MITRE ATT&CK Tactics Coverage** - Complete tactic-by-tactic breakdown
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **UI Library**: shadcn/ui components
+- **Styling**: Tailwind CSS v4
+- **Charts**: Chart.js with react-chartjs-2
+- **Icons**: Lucide React
+- **Data Source**: MITRE ATT&CK framework
 
-### 🏛️ **APT Group Analysis**
-- **Detailed Group Profiles** - Complete information including aliases, creation dates, and descriptions
-- **Technique Mapping** - All techniques and sub-techniques used by each group
-- **Software Arsenal** - Tools and malware associated with each APT group
-- **Campaign Analysis** - Historical campaigns and operations
+## 📦 Installation
 
-### 🎯 **TTP Matrix (Tactics, Techniques & Procedures)**
-- **Interactive Heatmap** - Visual representation of technique usage across APT groups
-- **Detailed Matrix Table** - Comprehensive technique-by-group usage matrix
-- **Summary Analytics** - Coverage percentages and maturity level assessments
-- **Filterable Views** - Filter by main techniques, sub-techniques, or used techniques only
-- **Maturity Levels**:
-  - 🔴 **Advanced** (80%+ coverage)
-  - 🟠 **Intermediate** (60-79% coverage)
-  - 🟡 **Developing** (40-59% coverage)
-  - 🔵 **Basic** (20-39% coverage)
-  - ⚪ **Limited** (<20% coverage)
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd echo-attack-dashboard
+   ```
 
-### 📊 **Advanced Analytics**
-- **Technique Popularity Analysis** - Most commonly used techniques across all APT groups
-- **Usage Trends** - Patterns and trends in technique adoption
-- **Software Distribution** - Most prevalent tools and malware
-- **Group Comparison** - Side-by-side analysis of APT group capabilities
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### 🔍 **Advanced Search**
-- **Multi-type Search** - Search across APT groups, techniques, and software
-- **Categorized Results** - Results organized by type (APT Groups, Techniques, Sub-techniques, Software)
-- **Contextual Information** - Detailed context for each search result
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-## 🚀 Getting Started
+4. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-### Prerequisites
-```bash
-pip install streamlit pandas plotly asyncio
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   ├── globals.css        # Global styles and theme
+│   └── page.tsx          # Main page component
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── dashboard-layout.tsx
+│   ├── overview-dashboard.tsx
+│   ├── apt-groups-dashboard.tsx
+│   └── search-dashboard.tsx
+├── lib/                  # Utility libraries
+│   └── mitre-links.tsx   # MITRE link parsing utilities
+├── types/                # TypeScript type definitions
+│   └── mitre.ts         # MITRE data types
+└── data/                # Static data files
+    └── mitre_data.json  # MITRE ATT&CK data
 ```
 
-### Running the Dashboard
+## 🎯 Key Components
+
+### Dashboard Layout
+- Collapsible sidebar navigation
+- Professional blue theme
+- Real-time system status display
+- Responsive design for desktop and mobile
+
+### Overview Dashboard
+- Key threat intelligence metrics
+- Interactive charts and visualizations
+- APT group statistics
+- Technique coverage analysis
+
+### APT Groups Dashboard
+- Searchable list of APT groups
+- Detailed group information with tabs
+- Technique usage statistics
+- Software tools and campaigns data
+
+### Search Dashboard
+- Universal search across all data types
+- Interactive search results with modal dialogs
+- Detailed information views with tabs
+- Related data and cross-references
+
+## 🎨 Theme & Styling
+
+ECHO ATT&CK features a professional futuristic blue theme using:
+- **Primary Colors**: Various shades of blue using oklch color space
+- **Typography**: Modern font stack with terminal-style elements
+- **Effects**: Subtle animations and hover states
+- **Layout**: Clean, card-based design with proper spacing
+
+## 📊 Data Format
+
+The application expects MITRE ATT&CK data in JSON format with the following structure:
+- APT Groups with attack IDs, names, descriptions
+- Technique tables with usage status
+- Software data with descriptions and types
+- Campaign information with timelines
+
+## 🚀 Build & Deployment
+
+### Development
 ```bash
-streamlit run streamlit_dashboard.py
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 ```
 
-### Navigation
-The dashboard features a sidebar navigation with five main sections:
+### Production Build
+The application builds to static files and can be deployed on any hosting platform supporting Next.js.
 
-1. **📈 Overview** - High-level statistics and metrics
-2. **🏛️ APT Analysis** - Detailed group-by-group analysis
-3. **🎯 TTP Matrix** - Interactive technique mapping
-4. **📊 Advanced Analytics** - Trends and patterns
-5. **🔍 Search** - Search and discovery tools
+## 🔧 Configuration
 
-## 📊 Data Structure
+### Environment Variables
+No environment variables required for basic functionality.
 
-The dashboard expects MITRE cache data with the following structure:
-- APT groups with technique tables
-- Technique usage indicators
-- Sub-technique mappings
-- Software and tool associations
-- Campaign data
+### Customization
+- **Theme**: Modify colors in `src/app/globals.css`
+- **Data**: Replace `src/data/mitre_data.json` with updated MITRE data
+- **Components**: Extend or modify dashboard components as needed
 
-## 🎨 Customization
+## 📈 Version History
 
-### Theme Options
-- **Dark Mode** (Default) - Professional cybersecurity analysis theme
-- **Light Mode** - Traditional light theme for presentations
-
-### Matrix Display Formats
-- **Heatmap** - Visual heat map representation
-- **Detailed Table** - Complete technique-by-group matrix
-- **Summary Table** - High-level coverage statistics
-
-## 🔧 Technical Features
-
-### Performance Optimizations
-- **Caching** - Streamlit cache decorators for improved performance
-- **Lazy Loading** - Data loaded only when needed
-- **Efficient Processing** - Optimized data structures and algorithms
-
-### Responsive Design
-- **Wide Layout** - Optimized for large displays and multiple monitors
-- **Mobile Friendly** - Responsive design for various screen sizes
-- **Scalable Components** - Charts and tables adapt to container size
-
-## 📈 Use Cases
-
-### 🎯 **Threat Intelligence Analysis**
-- Analyze APT group capabilities and technique preferences
-- Identify gaps in defensive coverage
-- Track evolution of threat actor TTPs
-
-### 🛡️ **Security Operations**
-- Map observed techniques to known APT groups
-- Assess threat sophistication levels
-- Plan defensive countermeasures
-
-### 📊 **Research & Reporting**
-- Generate comprehensive threat intelligence reports
-- Visualize technique adoption trends
-- Compare APT group capabilities
-
-### 🎓 **Education & Training**
-- Understand MITRE ATT&CK framework structure
-- Learn about APT group methodologies
-- Practice threat intelligence analysis
-
-## 🔄 Data Updates
-
-The dashboard automatically loads the latest MITRE cache data. For manual updates:
-1. Update the underlying MITRE cache
-2. Restart the dashboard
-3. Clear browser cache if needed
+See [VERSION_CHANGELOG.md](./VERSION_CHANGELOG.md) for detailed version history and changes.
 
 ## 🤝 Contributing
 
-To contribute to this project:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Submit a pull request
+4. Test thoroughly
+5. Submit a pull request
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
-## 🛡️ Security Note
+## 🔒 Security
 
-This dashboard is designed for cybersecurity professionals and researchers. The data displayed represents known threat actor techniques and should be used responsibly for defensive purposes only.
+ECHO ATT&CK is designed for defensive security analysis only. It provides tools for:
+- Threat intelligence analysis
+- Security research and education
+- Defensive planning and preparation
 
----
+## 📞 Support
 
-**Built with ❤️ for the Cybersecurity Community**
+For issues, questions, or contributions, please use the GitHub repository's issue tracker.

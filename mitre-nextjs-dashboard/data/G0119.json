@@ -1,0 +1,1768 @@
+{
+  "attack_id": "G0119",
+  "notes": null,
+  "created": "06 January 2021",
+  "modified": "28 October 2024",
+  "name": "Indrik Spider",
+  "version": "4.1",
+  "contributors_list": [
+    "Jennifer Kim Roman, CrowdStrike",
+    "Liran Ravich, CardinalOps"
+  ],
+  "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) is a Russia-based cybercriminal group that has been active since at least 2014. [Indrik Spider](https://attack.mitre.org/groups/G0119) initially started with the [Dridex](https://attack.mitre.org/software/S0384) banking Trojan, and then by 2017 they began running ransomware operations using [BitPaymer](https://attack.mitre.org/software/S0570), [WastedLocker](https://attack.mitre.org/software/S0612), and Hades ransomware. Following U.S. sanctions and an indictment in 2019, [Indrik Spider](https://attack.mitre.org/groups/G0119) changed their tactics and diversified their toolset.(Citation: Crowdstrike Indrik November 2018)(Citation: Crowdstrike EvilCorp March 2021)(Citation: Treasury EvilCorp Dec 2019)",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has purchased access to victim VPNs to facilitate access to victim environments.(Citation: Mandiant_UNC2165)   ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used PowerShell [Empire](https://attack.mitre.org/software/S0363) for execution of malware.(Citation: Crowdstrike Indrik November 2018)(Citation: Symantec WastedLocker June 2020) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used batch scripts on victim's machines.(Citation: Crowdstrike Indrik November 2018)(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "JavaScript",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used malicious JavaScript files for several components of their attack.(Citation: Symantec WastedLocker June 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Server",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has served fake updates via legitimate websites that have been compromised.(Citation: Crowdstrike Indrik November 2018)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) used <code>wmic.exe</code> to add a new user to the system.(Citation: Symantec WastedLocker June 2020)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has created local system accounts and has added the accounts to privileged groups.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Password Managers",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has accessed and exported passwords from password managers.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has encrypted domain-controlled systems using [BitPaymer](https://attack.mitre.org/software/S0570).(Citation: Crowdstrike Indrik November 2018) Additionally, [Indrik Spider](https://attack.mitre.org/groups/G0119) used [PsExec](https://attack.mitre.org/software/S0029) to execute a ransomware script.(Citation: Mandiant_UNC2165)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has stored collected data in a .tmp file.(Citation: Symantec WastedLocker June 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has developed malware for their operations, including ransomware such as [BitPaymer](https://attack.mitre.org/software/S0570) and [WastedLocker](https://attack.mitre.org/software/S0612).(Citation: Crowdstrike Indrik November 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1484",
+      "name": "Domain or Tenant Policy Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Group Policy Modification",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used Group Policy Objects to deploy batch scripts.(Citation: Crowdstrike Indrik November 2018)(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Accounts",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has created email accounts to communicate with their ransomware victims, to include providing payment and decryption details.(Citation: Crowdstrike Indrik November 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has exfiltrated data using [Rclone](https://attack.mitre.org/software/S1040) or MEGASync prior to deploying ransomware.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1590",
+      "name": "Gather Victim Network Information",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has downloaded tools, such as the Advanced Port Scanner utility and Lansweeper, to conduct internal reconnaissance of the victim network. [Indrik Spider](https://attack.mitre.org/groups/G0119) has also accessed the victim’s VMware VCenter, which had information about host configuration, clusters, etc.(Citation: Mandiant_UNC2165)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) used [PsExec](https://attack.mitre.org/software/S0029) to leverage Windows Defender to disable scanning of all downloaded files and to restrict real-time monitoring.(Citation: Symantec WastedLocker June 2020) [Indrik Spider](https://attack.mitre.org/groups/G0119) has used `MpCmdRun` to revert the definitions in Microsoft Defender.(Citation: Mandiant_UNC2165) Additionally, [Indrik Spider](https://attack.mitre.org/groups/G0119) has used WMI to stop or uninstall and reset anti-virus products and other defensive services.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Clear Windows Event Logs",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) to empty log files.(Citation: Symantec WastedLocker June 2020) Additionally, [Indrik Spider](https://attack.mitre.org/groups/G0119) has cleared all event logs using `wevutil`.(Citation: Mandiant_UNC2165)   ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has downloaded additional scripts, malware, and tools onto a compromised host.(Citation: Crowdstrike Indrik November 2018)(Citation: Symantec WastedLocker June 2020)(Citation: Mandiant_UNC2165)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) used fake updates for FlashPlayer plugin and Google Chrome as initial infection vectors.(Citation: Crowdstrike Indrik November 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has modified registry keys to prepare for ransomware execution and to disable common administrative utilities.(Citation: Mandiant_UNC2165)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) used [Cobalt Strike](https://attack.mitre.org/software/S0154) to carry out credential dumping using ProcDump.(Citation: Symantec WastedLocker June 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1012",
+      "name": "Query Registry",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used a service account to extract copies of the `Security` Registry hive.(Citation: Mandiant_UNC2165)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used RDP for lateral movement.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used SSH for lateral movement.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used PowerView to enumerate all Windows Server, Windows Server 2003, and Windows 7 instances in the Active Directory database.(Citation: Symantec WastedLocker June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1489",
+      "name": "Service Stop",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used [PsExec](https://attack.mitre.org/software/S0029) to stop services prior to the execution of ransomware.(Citation: Symantec WastedLocker June 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1558",
+      "name": "Steal or Forge Kerberos Tickets",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Kerberoasting",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has conducted Kerberoasting attacks using a module from GitHub.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1007",
+      "name": "System Service Discovery",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used the win32_service WMI class to retrieve a list of services from the system.(Citation: Symantec WastedLocker June 2020) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Credentials In Files",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has searched files to obtain and exfiltrate credentials.(Citation: Mandiant_UNC2165)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has attempted to get users to click on a malicious zipped file.(Citation: Symantec WastedLocker June 2020) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Accounts",
+          "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has collected credentials from infected systems, including domain accounts.(Citation: Crowdstrike Indrik November 2018)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used valid accounts for initial access and lateral movement.(Citation: Mandiant_UNC2165) [Indrik Spider](https://attack.mitre.org/groups/G0119) has also maintained access to the victim environment through the VPN infrastructure.(Citation: Mandiant_UNC2165)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Indrik Spider](https://attack.mitre.org/groups/G0119) has used WMIC to execute commands on remote computers.(Citation: Symantec WastedLocker June 2020) ",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0570",
+      "name": "BitPaymer",
+      "descr": "(Citation: Crowdstrike Indrik November 2018)(Citation: Crowdstrike EvilCorp March 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "001",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Windows File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "004",
+          "name": "Hide Artifacts",
+          "sub_name": "NTFS File Attributes"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1490",
+          "name": "Inhibit System Recovery"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "(Citation: Crowdstrike EvilCorp March 2021)(Citation: Microsoft Ransomware as a Service)(Citation: Mandiant_UNC2165)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0695",
+      "name": "Donut",
+      "descr": "(Citation: NCC Group WastedLocker June 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "015",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compression"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        }
+      ]
+    },
+    {
+      "id": "S0384",
+      "name": "Dridex",
+      "descr": "(Citation: Crowdstrike Indrik November 2018)(Citation: Crowdstrike EvilCorp March 2021)(Citation: Treasury EvilCorp Dec 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "id": "T1219",
+          "name": "Remote Access Tools"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "010",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Regsvr32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        }
+      ]
+    },
+    {
+      "id": "S0363",
+      "name": "Empire",
+      "descr": "(Citation: Crowdstrike Indrik November 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "008",
+          "name": "Event Triggered Execution",
+          "sub_name": "Accessibility Features"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "001",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Code Repository"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "004",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Dylib Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: Crowdstrike Indrik November 2018)(Citation: Mandiant_UNC2165)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: Symantec WastedLocker June 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0612",
+      "name": "WastedLocker",
+      "descr": "(Citation: NCC Group WastedLocker June 2020)(Citation: Crowdstrike EvilCorp March 2021)(Citation: Microsoft Ransomware as a Service)(Citation: SentinelOne SocGholish Infrastructure November 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "001",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Windows File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "004",
+          "name": "Hide Artifacts",
+          "sub_name": "NTFS File Attributes"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "id": "T1490",
+          "name": "Inhibit System Recovery"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "016",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Junk Code Insertion"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "Evil Corp",
+      "descr": "(Citation: Crowdstrike EvilCorp March 2021)(Citation: Treasury EvilCorp Dec 2019)"
+    },
+    {
+      "name": "Manatee Tempest",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    },
+    {
+      "name": "DEV-0243",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    },
+    {
+      "name": "UNC2165",
+      "descr": "(Citation: Mandiant_UNC2165)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Crowdstrike Indrik November 2018": {
+      "description": "Frankoff, S., Hartley, B. (2018, November 14). Big Game Hunting: The Evolution of INDRIK SPIDER From Dridex Wire Fraud to BitPaymer Targeted Ransomware. Retrieved January 6, 2021.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/big-game-hunting-the-evolution-of-indrik-spider-from-dridex-wire-fraud-to-bitpaymer-targeted-ransomware/"
+    },
+    "Mandiant_UNC2165": {
+      "description": "Mandiant Intelligence. (2022, June 2). To HADES and Back: UNC2165 Shifts to LOCKBIT to Evade Sanctions. Retrieved July 29, 2024.",
+      "number": null,
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc2165-shifts-to-evade-sanctions/"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Crowdstrike EvilCorp March 2021": {
+      "description": "Podlosky, A., Feeley, B. (2021, March 17). INDRIK SPIDER Supersedes WastedLocker with Hades Ransomware to Circumvent OFAC Sanctions. Retrieved September 15, 2021.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/hades-ransomware-successor-to-indrik-spiders-wastedlocker/"
+    },
+    "Treasury EvilCorp Dec 2019": {
+      "description": "U.S. Department of Treasury. (2019, December 5). Treasury Sanctions Evil Corp, the Russia-Based Cybercriminal Group Behind Dridex Malware. Retrieved September 15, 2021.",
+      "number": null,
+      "url": "https://home.treasury.gov/news/press-releases/sm845"
+    },
+    "Symantec WastedLocker June 2020": {
+      "description": "Symantec Threat Intelligence. (2020, June 25). WastedLocker: Symantec Identifies Wave of Attacks Against U.S. Organizations. Retrieved May 20, 2021.",
+      "number": null,
+      "url": "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/wastedlocker-ransomware-us"
+    },
+    "NCC Group WastedLocker June 2020": {
+      "description": "Antenucci, S., Pantazopoulos, N., Sandee, M. (2020, June 23). WastedLocker: A New Ransomware Variant Developed By The Evil Corp Group. Retrieved September 14, 2021.",
+      "number": null,
+      "url": "https://research.nccgroup.com/2020/06/23/wastedlocker-a-new-ransomware-variant-developed-by-the-evil-corp-group/"
+    },
+    "Microsoft Ransomware as a Service": {
+      "description": "Microsoft. (2022, May 9). Ransomware as a service: Understanding the cybercrime gig economy and how to protect yourself. Retrieved March 10, 2023.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2022/05/09/ransomware-as-a-service-understanding-the-cybercrime-gig-economy-and-how-to-protect-yourself/"
+    },
+    "SentinelOne SocGholish Infrastructure November 2022": {
+      "description": "Milenkoski, A. (2022, November 7). SocGholish Diversifies and Expands Its Malware Staging Infrastructure to Counter Defenders. Retrieved March 22, 2024.",
+      "number": null,
+      "url": "https://www.sentinelone.com/labs/socgholish-diversifies-and-expands-its-malware-staging-infrastructure-to-counter-defenders/"
+    }
+  },
+  "aliases_list": [
+    "Evil Corp",
+    "Manatee Tempest",
+    "DEV-0243",
+    "UNC2165"
+  ]
+}

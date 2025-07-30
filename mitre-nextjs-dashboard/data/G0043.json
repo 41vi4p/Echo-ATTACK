@@ -1,0 +1,313 @@
+{
+  "attack_id": "G0043",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "11 April 2024",
+  "name": "Group5",
+  "version": "1.3",
+  "descr": "[Group5](https://attack.mitre.org/groups/G0043) is a threat group with a suspected Iranian nexus, though this attribution is not definite. The group has targeted individuals connected to the Syrian opposition via spearphishing and watering holes, normally using Syrian and Iranian themes. [Group5](https://attack.mitre.org/groups/G0043) has used two commonly available remote access tools (RATs), [njRAT](https://attack.mitre.org/software/S0385) and [NanoCore](https://attack.mitre.org/software/S0336), as well as an Android RAT, DroidJack. (Citation: Citizen Lab Group5)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "Malware used by [Group5](https://attack.mitre.org/groups/G0043) is capable of remotely deleting files from victims.(Citation: Citizen Lab Group5)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Keylogging",
+          "descr": "Malware used by [Group5](https://attack.mitre.org/groups/G0043) is capable of capturing keystrokes.(Citation: Citizen Lab Group5)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[Group5](https://attack.mitre.org/groups/G0043) disguised its malicious binaries with several layers of obfuscation, including encrypting the files.(Citation: Citizen Lab Group5)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1113",
+      "name": "Screen Capture",
+      "descr": "Malware used by [Group5](https://attack.mitre.org/groups/G0043) is capable of watching the victim's screen.(Citation: Citizen Lab Group5)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0336",
+      "name": "NanoCore",
+      "descr": "(Citation: Citizen Lab Group5)",
+      "techniques": [
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0385",
+      "name": "njRAT",
+      "descr": "(Citation: Citizen Lab Group5)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "001",
+          "name": "Dynamic Resolution",
+          "sub_name": "Fast Flux DNS"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "009",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Persistence"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "004",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compile After Delivery"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1091",
+          "name": "Replication Through Removable Media"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Citizen Lab Group5": {
+      "description": "Scott-Railton, J., et al. (2016, August 2). Group5: Syria and the Iranian Connection. Retrieved September 26, 2016.",
+      "number": null,
+      "url": "https://citizenlab.ca/2016/08/group5-syria/"
+    }
+  },
+  "aliases_list": []
+}

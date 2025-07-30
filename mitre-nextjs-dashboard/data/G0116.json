@@ -1,0 +1,28 @@
+{
+  "attack_id": "G0116",
+  "notes": null,
+  "created": "17 November 2020",
+  "modified": "18 April 2025",
+  "name": "Operation Wocao",
+  "version": "1.0",
+  "contributors_list": [
+    "Erik Schamper, @Schamperr, Fox-IT",
+    "Maarten van Dantzig, @MaartenVDantzig, Fox-IT"
+  ],
+  "descr": "[Operation Wocao](https://attack.mitre.org/groups/G0116) described activities carried out by a China-based cyber espionage adversary. [Operation Wocao](https://attack.mitre.org/groups/G0116) targeted entities within the government, managed service providers, energy, health care, and technology sectors across several countries, including China, France, Germany, the United Kingdom, and the United States. [Operation Wocao](https://attack.mitre.org/groups/G0116) used similar TTPs and tools to APT20, suggesting a possible overlap.(Citation: FoxIT Wocao December 2019)",
+  "deprecated": true,
+  "technique_table_data": [],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "FoxIT Wocao December 2019": {
+      "description": "Dantzig, M. v., Schamper, E. (2019, December 19). Operation Wocao: Shining a light on one of China’s hidden hacking groups. Retrieved October 8, 2020.",
+      "number": null,
+      "url": "https://www.fox-it.com/media/kadlze5c/201912_report_operation_wocao.pdf"
+    }
+  },
+  "aliases_list": []
+}

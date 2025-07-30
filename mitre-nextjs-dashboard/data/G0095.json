@@ -1,0 +1,403 @@
+{
+  "attack_id": "G0095",
+  "notes": null,
+  "created": "13 September 2019",
+  "modified": "25 April 2025",
+  "name": "Machete",
+  "version": "2.0",
+  "contributors_list": [
+    "Matias Nicolas Porolli, ESET"
+  ],
+  "descr": "[Machete](https://attack.mitre.org/groups/G0095) is a suspected Spanish-speaking cyber espionage group that has been active since at least 2010. It has primarily focused its operations within Latin America, with a particular emphasis on Venezuela, but also in the US, Europe, Russia, and parts of Asia. [Machete](https://attack.mitre.org/groups/G0095) generally targets high-profile organizations such as government institutions, intelligence services, and military units, as well as telecommunications and power companies.(Citation: Cylance Machete Mar 2017)(Citation: Securelist Machete Aug 2014)(Citation: ESET Machete July 2019)(Citation: 360 Machete Sep 2020)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has used batch files to initiate additional downloads of malicious files.(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has embedded malicious macros within spearphishing attachments to download additional files.(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Python",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) used multiple compiled Python scripts on the victim’s system. [Machete](https://attack.mitre.org/groups/G0095)'s main backdoor [Machete](https://attack.mitre.org/software/S0409) is also written in Python.(Citation: Cylance Machete Mar 2017)(Citation: ESET Machete July 2019)(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1189",
+      "name": "Drive-by Compromise",
+      "descr": "[Machete](https://attack.mitre.org/groups/G0095) has distributed [Machete](https://attack.mitre.org/software/S0409) through a fake blog website.(Citation: Securelist Machete Aug 2014)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095)'s [Machete](https://attack.mitre.org/software/S0409) MSI installer has masqueraded as a legitimate Adobe Acrobat Reader installer.(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": " [Machete](https://attack.mitre.org/groups/G0095) has delivered spearphishing emails that contain a zipped file with malicious contents.(Citation: Securelist Machete Aug 2014)(Citation: ESET Machete July 2019)(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has sent phishing emails that contain a link to an external server with ZIP and RAR archives.(Citation: Cylance Machete Mar 2017)(Citation: ESET Machete July 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has created scheduled tasks to maintain [Machete](https://attack.mitre.org/software/S0409)'s persistence.(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Msiexec",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has used msiexec to install the [Machete](https://attack.mitre.org/software/S0409) malware.(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has has relied on users opening malicious links delivered through spearphishing to execute malware.(Citation: Cylance Machete Mar 2017)(Citation: Securelist Machete Aug 2014)(Citation: ESET Machete July 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Machete](https://attack.mitre.org/groups/G0095) has relied on users opening malicious attachments delivered through spearphishing to execute malware.(Citation: Cylance Machete Mar 2017)(Citation: Securelist Machete Aug 2014)(Citation: ESET Machete July 2019)(Citation: 360 Machete Sep 2020)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0409",
+      "name": "Machete",
+      "descr": "(Citation: Securelist Machete Aug 2014)(Citation: ESET Machete July 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "003",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Custom Method"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1025",
+          "name": "Data from Removable Media"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1052",
+          "id": "001",
+          "name": "Exfiltration Over Physical Medium",
+          "sub_name": "Exfiltration over USB"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "APT-C-43",
+      "descr": "(Citation: 360 Machete Sep 2020)"
+    },
+    {
+      "name": "El Machete",
+      "descr": "(Citation: Cylance Machete Mar 2017)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Cylance Machete Mar 2017": {
+      "description": "The Cylance Threat Research Team. (2017, March 22). El Machete's Malware Attacks Cut Through LATAM. Retrieved September 13, 2019.",
+      "number": null,
+      "url": "https://threatvector.cylance.com/en_us/home/el-machete-malware-attacks-cut-through-latam.html"
+    },
+    "Securelist Machete Aug 2014": {
+      "description": "Kaspersky Global Research and Analysis Team. (2014, August 20). El Machete. Retrieved September 13, 2019.",
+      "number": null,
+      "url": "https://securelist.com/el-machete/66108/"
+    },
+    "ESET Machete July 2019": {
+      "description": "ESET. (2019, July). MACHETE JUST GOT SHARPER Venezuelan government institutions under attack. Retrieved September 13, 2019.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/wp-content/uploads/2019/08/ESET_Machete.pdf"
+    },
+    "360 Machete Sep 2020": {
+      "description": "kate. (2020, September 25). APT-C-43 steals Venezuelan military secrets to provide intelligence support for the reactionaries — HpReact campaign. Retrieved November 20, 2020.",
+      "number": null,
+      "url": "https://blog.360totalsecurity.com/en/apt-c-43-steals-venezuelan-military-secrets-to-provide-intelligence-support-for-the-reactionaries-hpreact-campaign/"
+    }
+  },
+  "aliases_list": [
+    "APT-C-43",
+    "El Machete"
+  ]
+}

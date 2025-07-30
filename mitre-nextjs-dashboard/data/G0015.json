@@ -1,0 +1,19 @@
+{
+  "attack_id": "G0015",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "18 April 2025",
+  "name": "Taidoor",
+  "version": "1.0",
+  "descr": "[Taidoor](https://attack.mitre.org/groups/G0015) has been deprecated, as the only technique it was linked to was deprecated in ATT&CK v7.",
+  "deprecated": true,
+  "technique_table_data": [],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0
+  },
+  "aliases_list": []
+}

@@ -1,0 +1,126 @@
+{
+  "attack_id": "G0097",
+  "notes": null,
+  "created": "27 January 2020",
+  "modified": "25 April 2025",
+  "name": "Bouncing Golf",
+  "version": "1.0",
+  "descr": "[Bouncing Golf](https://attack.mitre.org/groups/G0097) is a cyberespionage campaign targeting Middle Eastern countries.(Citation: Trend Micro Bouncing Golf 2019)",
+  "technique_table_data": [
+    {
+      "domain": "mobile",
+      "id": "T1655",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "mobile",
+          "id": "001",
+          "name": "Match Legitimate Name or Location",
+          "descr": "[Bouncing Golf](https://attack.mitre.org/groups/G0097) distributed malware as repackaged legitimate applications, with the malicious code in the `com.golf` package.(Citation: Trend Micro Bouncing Golf 2019)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0421",
+      "name": "GolfSpy",
+      "descr": "(Citation: Trend Micro Bouncing Golf 2019)",
+      "techniques": [
+        {
+          "id": "T1532",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1429",
+          "name": "Audio Capture"
+        },
+        {
+          "id": "T1414",
+          "name": "Clipboard Data"
+        },
+        {
+          "id": "T1533",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1624",
+          "id": "001",
+          "name": "Event Triggered Execution",
+          "sub_name": "Broadcast Receivers"
+        },
+        {
+          "id": "T1646",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1630",
+          "id": "002",
+          "name": "Indicator Removal on Host",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1430",
+          "name": "Location Tracking"
+        },
+        {
+          "id": "T1406",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1424",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "004",
+          "name": "Protected User Data",
+          "sub_name": "SMS Messages"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "003",
+          "name": "Protected User Data",
+          "sub_name": "Contact List"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "002",
+          "name": "Protected User Data",
+          "sub_name": "Call Log"
+        },
+        {
+          "id": "T1513",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1418",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1426",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1512",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Trend Micro Bouncing Golf 2019": {
+      "description": "E. Xu, G. Guo. (2019, June 28).  Mobile Cyberespionage Campaign ‘Bouncing Golf’ Affects Middle East. Retrieved January 27, 2020.",
+      "number": null,
+      "url": "https://blog.trendmicro.com/trendlabs-security-intelligence/mobile-cyberespionage-campaign-bouncing-golf-affects-middle-east/"
+    }
+  },
+  "aliases_list": []
+}

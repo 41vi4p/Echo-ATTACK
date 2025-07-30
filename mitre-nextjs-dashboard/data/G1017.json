@@ -1,0 +1,1819 @@
+{
+  "attack_id": "G1017",
+  "notes": null,
+  "created": "27 July 2023",
+  "modified": "30 April 2025",
+  "name": "Volt Typhoon",
+  "version": "2.0",
+  "contributors_list": [
+    "Ai Kimura, NEC Corporation",
+    "Manikantan Srinivasan, NEC Corporation India",
+    "Phyo Paing Htun (ChiLai), I-Secure Co.,Ltd",
+    "Pooja Natarajan, NEC Corporation India",
+    "Vlad Shumaher, Palo Alto Networks"
+  ],
+  "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021 primarily targeting critical infrastructure organizations in the US and its territories including Guam. [Volt Typhoon](https://attack.mitre.org/groups/G1017)'s targeting and pattern of behavior have been assessed as pre-positioning to enable lateral movement to operational technology (OT) assets for potential destructive or disruptive attacks. [Volt Typhoon](https://attack.mitre.org/groups/G1017) has emphasized stealth in operations using web shells, living-off-the-land (LOTL) binaries, hands on keyboard activities, and stolen credentials.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has executed `net user` and `quser` to enumerate local account information.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has run `net group /dom` and `net group \"Domain Admins\" /dom` in compromised environments for account discovery.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) used acquired Virtual Private Servers as control systems for devices infected with KV Botnet malware.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) established HTTPS communications from adversary-controlled SOHO devices over port 443 with compromised Versa Director servers.(Citation: Lumen Versa 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1010",
+      "name": "Application Window Discovery",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has collected window title information from compromised systems.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has archived the ntds.dit database as a multi-volume password-protected archive with 7-Zip.(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1217",
+      "name": "Browser Information Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has targeted the browsing history of network administrators.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used PowerShell including for remote system discovery.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used the Windows command line to perform hands-on-keyboard activities in targeted environments including for discovery.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Unix Shell",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used Brightmetricagent.exe which contains a command- line interface (CLI) library that can leverage command shells including Z Shell (zsh).(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) utilizes multiple Bash scripts during botnet installation stages, and the final botnet payload allows for running commands in the Bash shell.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has compromised Virtual Private Servers (VPS) to proxy C2 traffic.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Server",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used compromised Paessler Router Traffic Grapher (PRTG) servers from other organizations for C2.(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Botnet",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) Volt Typhoon has used compromised Cisco and NETGEAR end-of-life SOHO routers implanted with KV Botnet malware to support operations.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Network Devices",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has compromised small office and home office (SOHO) network edge devices, many of which were located in the same geographic area as the victim, to proxy network traffic.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)\n[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) used compromised small office/home office (SOHO) devices to interact with vulnerable Versa Director servers.(Citation: Lumen Versa 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) focuses on compromise of small office-home office (SOHO) network devices to build the subsequent botnet.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has attempted to obtain credentials from OpenSSH, realvnc, and PuTTY.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)\n",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "\n\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has targeted network administrator browser data including browsing history and stored credentials.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has stolen files from a sensitive file server and the Active Directory database from targeted environments, and used [Wevtutil](https://attack.mitre.org/software/S0645) to extract event log information.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has staged collected data in password-protected archives.(Citation: Microsoft Volt Typhoon May 2023)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has saved stolen files including the `ntds.dit` database and the `SYSTEM` and `SECURITY` Registry hives locally to the `C:\\Windows\\Temp\\` directory.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used Base64-encoded data to transfer payloads and commands, including deobfuscation via [certutil](https://attack.mitre.org/software/S0160).(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) involved the development of a new web shell variant, [VersaMem](https://attack.mitre.org/software/S1154).(Citation: Lumen Versa 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Exploits",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has exploited zero-day vulnerabilities for initial access.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1006",
+      "name": "Direct Volume Access",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has executed the Windows-native `vssadmin` command to create volume shadow copies.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Symmetric Cryptography",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used a version of the Awen web shell that employed AES encryption and decryption for C2 communications.(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Asymmetric Cryptography",
+          "descr": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) used HTTPS for command and control of compromised Versa Director servers.(Citation: Lumen Versa 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) command and control activity includes transmission of an RSA public key in communication from the server, but this is followed by subsequent negotiation stages that represent a form of handshake similar to TLS negotiation.(Citation: Lumen KVBotnet 2023)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1546",
+      "name": "Event Triggered Execution",
+      "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) involves managing events on victim systems via <code>libevent</code> to execute a callback function when any running process contains the following references in their path without also having a reference to <code>bioset</code>: busybox, wget, curl, tftp, telnetd, or lua. If the <code>bioset</code> string is not found, the related process is terminated.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has gained initial access through exploitation of multiple vulnerabilities in internet-facing software and appliances such as Fortinet, Ivanti (formerly Pulse Secure), NETGEAR, Citrix, and Cisco.(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) involved exploitation of a vulnerability in Versa Director servers, since identified as CVE-2024-39717, for initial access and code execution.(Citation: Lumen Versa 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1068",
+      "name": "Exploitation for Privilege Escalation",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has gained initial access by exploiting privilege escalation vulnerabilities in the operating system or network services.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used VPNs to connect to victim environments and enable post-exploitation actions.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has enumerated directories containing vulnerability testing and cyber related content and facilities data such as construction drawings.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) gathers a list of filenames from the following locations during execution of the final botnet stage: <code>\\/usr\\/sbin\\/</code>, <code>\\/usr\\/bin\\/</code>,  <code>\\/sbin\\/</code>, <code>\\/pfrm2.0\\/bin\\/</code>, <code>\\/usr\\/local\\/bin\\/</code>.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1222",
+      "name": "File and Directory Permissions Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Linux and Mac File and Directory Permissions Modification",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) altered permissions on downloaded tools and payloads to enable execution on victim machines.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1592",
+      "name": "Gather Victim Host Information",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted pre-compromise reconnaissance for victim host information.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1589",
+      "name": "Gather Victim Identity Information",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Addresses",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has targeted the personal emails of key network and IT staff at victim organizations.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has gathered victim identify information during pre-compromise reconnaissance. (Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1590",
+      "name": "Gather Victim Network Information",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted extensive pre-compromise reconnaissance to learn about the target organization’s network.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Network Topology",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted extensive reconnaissance of victim networks including identifying network topologies.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Network Security Appliances",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has identified target network security measures as part of pre-compromise reconnaissance.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1591",
+      "name": "Gather Victim Org Information",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Identify Roles",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has identified key network and IT staff members pre-compromise at targeted organizations.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted extensive reconnaissance pre-compromise to gain information about the targeted organization.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Bind Mounts",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) leveraged a bind mount to bind itself to the `/proc/` file path before deleting its files from the `/tmp/` directory.(Citation: Lumen KVBotnet 2023) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) used various scripts to remove or disable security tools, such as <code>http_watchdog</code> and <code>firewallsd</code>, as well as tools related to other botnet infections, such as <code>mips_ff</code>, on victim devices.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Clear Windows Event Logs",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has selectively cleared Windows Event Logs, system logs, and other technical artifacts to remove evidence of intrusion activity.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has run `rd /S` to delete their working directories and deleted systeminfo.dat from `C:\\Users\\Public\\Documentsfiles`.(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) removes on-disk copies of tools and other artifacts after it the primary botnet payload has been loaded into memory on the victim device.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Clear Network Connection History and Configurations",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has inspected server logs to remove their IPs.(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has downloaded an outdated version of comsvcs.dll to a compromised domain controller in a non-standard folder.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) included the use of scripts to download additional payloads when compromising network nodes.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Keylogging",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has created and accessed a file named rult3uil.log on compromised domain controllers to capture keypresses and command execution.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) intercepted and harvested credentials from user logins to compromised devices.(Citation: Lumen Versa 2024)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has copied web shells between servers in targeted environments.(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1654",
+      "name": "Log Enumeration",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used `wevtutil.exe` and the PowerShell command `Get-EventLog security` to enumerate Windows logs to search for successful logons.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Masquerade Task or Service",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) installation steps include first identifying, then stopping, any process containing <code>[kworker\\/0:1]</code>, then renaming its initial installation stage to this process name.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used legitimate looking filenames for compressed copies of the ntds.dit database and used names including cisco_up.exe, cl64.exe, vm3dservice.exe, watchdogd.exe, Win.exe, WmiPreSV.exe, and WmiPrvSE.exe for the Earthworm and Fast Reverse Proxy tools.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Masquerade File Type",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has appended copies of the ntds.dit database with a .gif file extension.(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) involves changing process filename to <code>pr_set_mm_exe_file</code> and process name to <code>pr_set_name</code> during later infection stages.(Citation: Lumen KVBotnet 2023)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used `netsh` to create a PortProxy Registry modification on a compromised server running the Paessler Router Traffic Grapher (PRTG).(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used commercial tools, LOTL utilities, and appliances already present on the system for network service discovery.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) used a non-standard TCP session to initialize communication prior to establishing HTTPS command and control.(Citation: Lumen Versa 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) command and control traffic uses a non-standard, likely custom protocol for communication.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) generates a random port number greater than 30,000 to serve as the listener for subsequent command and control activity.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used the Ultimate Packer for Executables (UPX) to obfuscate the FRP client files BrightmetricAgent.exe and SMSvcService.ex) and the port scanning utility ScanLine.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used legitimate network and forensic tools and customized versions of open-source tools for C2.(Citation: Microsoft Volt Typhoon May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Vulnerabilities",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used publicly available exploit code for initial access.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has attempted to access hashed credentials from the LSASS process memory space.(Citation: Microsoft Volt Typhoon May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "NTDS",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used ntds.util to create domain controller installation media containing usernames and password hashes.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1120",
+      "name": "Peripheral Device Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has obtained victim's screen dimension and display device information.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1069",
+      "name": "Permission Groups Discovery",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Groups",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has run `net localgroup administrators` in compromised environments to enumerate accounts.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Groups",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has run `net group` in compromised environments to discover domain groups.(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used commercial tools, LOTL utilities, and appliances already present on the system for group and user discovery.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has enumerated running processes on targeted systems including through the use of [Tasklist](https://attack.mitre.org/software/S0057).(Citation: Microsoft Volt Typhoon May 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\nScripts associated with [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) initial deployment can identify processes related to security tools and other botnet families for follow-on disabling during installation.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "009",
+          "name": "Proc Memory",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) final payload installation includes mounting and binding to the <code>\\/proc\\/</code> filepath on the victim system to enable subsequent operation in memory while also removing on-disk artifacts.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used compromised devices and customized versions of open source tools  such as [FRP](https://attack.mitre.org/software/S1144) (Fast Reverse Proxy), Earthworm, and [Impacket](https://attack.mitre.org/software/S0357) to proxy network traffic.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internal Proxy",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used the built-in [netsh](https://attack.mitre.org/software/S0108) `port proxy` command to create proxies on compromised systems to facilitate access.(Citation: Microsoft Volt Typhoon May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Multi-hop Proxy",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used multi-hop proxies for command-and-control infrastructure.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1012",
+      "name": "Query Registry",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has queried the Registry on compromised systems, `reg query hklm\\software\\`, for information on installed software including PuTTY.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has moved laterally to the Domain Controller via RDP using a compromised account with domain administrator privileges.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used multiple methods, including [Ping](https://attack.mitre.org/software/S0097), to enumerate systems on compromised networks.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1113",
+      "name": "Screen Capture",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has obtained a screenshot of the victim's system using the gdi32.dll and gdiplus.dll libraries.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1596",
+      "name": "Search Open Technical Databases",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scan Databases",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used FOFA, Shodan, and Censys to search for exposed victim infrastructure.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1593",
+      "name": "Search Open Websites/Domains",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted pre-compromise web searches for victim information.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1594",
+      "name": "Search Victim-Owned Websites",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has conducted pre-compromise reconnaissance on victim-owned sites.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used webshells, including ones named AuditReport.jspx and iisstart.aspx, in compromised environments.(Citation: Secureworks BRONZE SILHOUETTE May 2023)\n[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) resulted in the deployment of the VersaMem web shell for follow-on activity.(Citation: Lumen Versa 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has queried the Registry on compromised systems for information on installed software.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) involved removal of security tools, as well as other identified IOT malware, from compromised devices.(Citation: Lumen KVBotnet 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used native tools and processes including living off the land binaries or “LOLBins\" to maintain and expand access to the victim networks.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has discovered file system types, drive names, size, and free space on compromised systems.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) includes use of native system tools, such as <code>uname</code>, to obtain information about victim device architecture, as well as gathering other system information such as the victim's hosts file and CPU utilization.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1614",
+      "name": "System Location Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has obtained the victim's system current location.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has executed multiple commands to enumerate network topology and settings including  `ipconfig`, `netsh interface firewall show all`, and `netsh interface portproxy show all`.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)\n[KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) gathers victim IP information during initial installation stages.(Citation: Lumen KVBotnet 2023)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internet Connection Discovery",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has employed [Ping](https://attack.mitre.org/software/S0097) to check network connectivity.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used `netstat -ano` on compromised hosts to enumerate network connections.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)                                                   ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used public tools and executed the PowerShell command `Get-EventLog security -instanceid 4624` to identify associated user and computer account names.(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1007",
+      "name": "System Service Discovery",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used `net start` to list running services.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1124",
+      "name": "System Time Discovery",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has obtained the victim's system timezone.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has obtained credentials insecurely stored on targeted network appliances.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Private Keys",
+          "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) has accessed a Local State file that contains the AES key used to encrypt passwords stored in the Chrome browser.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "descr": "\n[Volt Typhoon](https://attack.mitre.org/groups/G1017) relies primarily on valid credentials for persistence.(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Accounts",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has used compromised domain accounts to authenticate to devices on compromised networks.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1497",
+      "name": "Virtualization/Sandbox Evasion",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "System Checks",
+          "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has run system checks to determine if they were operating in a virtualized environment.(Citation: Microsoft Volt Typhoon May 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) has leveraged WMIC for execution, remote system discovery, and to create and use temporary directories.(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0035",
+      "name": "KV Botnet Activity",
+      "first_seen": "October 2022",
+      "last_seen": "January 2024",
+      "first_seen_citation": "(Citation: Lumen KVBotnet 2023)",
+      "last_seen_citation": "(Citation: DOJ KVBotnet 2024)",
+      "desc": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) used [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) to build intermediate communication chains between operators and victims, such as identified access to victims in Guam.(Citation: Lumen KVBotnet 2023)",
+      "techniques": [
+        {
+          "parent_id": "T1583",
+          "id": "003",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Virtual Private Server"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "004",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "parent_id": "T1584",
+          "id": "008",
+          "name": "Compromise Infrastructure",
+          "sub_name": "Network Devices"
+        },
+        {
+          "id": "T1573",
+          "name": "Encrypted Channel"
+        },
+        {
+          "id": "T1546",
+          "name": "Event Triggered Execution"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "002",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Linux and Mac File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "013",
+          "name": "Hide Artifacts",
+          "sub_name": "Bind Mounts"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "009",
+          "name": "Process Injection",
+          "sub_name": "Proc Memory"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "C0039",
+      "name": "Versa Director Zero Day Exploitation",
+      "first_seen": "June 2024",
+      "last_seen": "August 2024",
+      "first_seen_citation": "(Citation: Lumen Versa 2024)",
+      "last_seen_citation": "(Citation: Lumen Versa 2024)",
+      "desc": "[Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) was conducted by [Volt Typhoon](https://attack.mitre.org/groups/G1017) between June and August 2024.(Citation: Lumen Versa 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1584",
+          "id": "008",
+          "name": "Compromise Infrastructure",
+          "sub_name": "Network Devices"
+        },
+        {
+          "parent_id": "T1587",
+          "id": "001",
+          "name": "Develop Capabilities",
+          "sub_name": "Malware"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        },
+        {
+          "id": "T1056",
+          "name": "Input Capture"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S0160",
+      "name": "certutil",
+      "descr": "(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "004",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Install Root Certificate"
+        }
+      ]
+    },
+    {
+      "id": "S0106",
+      "name": "cmd",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1144",
+      "name": "FRP",
+      "descr": "(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0100",
+      "name": "ipconfig",
+      "descr": "(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)",
+      "techniques": [
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0039",
+      "name": "Net",
+      "descr": "(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "007",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Local or Domain Groups"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0108",
+      "name": "netsh",
+      "descr": "(Citation: Microsoft Volt Typhoon May 2023)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1546",
+          "id": "007",
+          "name": "Event Triggered Execution",
+          "sub_name": "Netsh Helper DLL"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0104",
+      "name": "netstat",
+      "descr": "(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0359",
+      "name": "Nltest",
+      "descr": "(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0097",
+      "name": "Ping",
+      "descr": "(Citation: Microsoft Volt Typhoon May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)\n",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0075",
+      "name": "Reg",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "002",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials in Registry"
+        }
+      ]
+    },
+    {
+      "id": "S0096",
+      "name": "Systeminfo",
+      "descr": "(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0057",
+      "name": "Tasklist",
+      "descr": "(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1154",
+      "name": "VersaMem",
+      "descr": "[VersaMem](https://attack.mitre.org/software/S1154) was used by [Volt Typhoon](https://attack.mitre.org/groups/G1017) as part of [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039).(Citation: Lumen Versa 2024)",
+      "techniques": [
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1129",
+          "name": "Shared Modules"
+        }
+      ]
+    },
+    {
+      "id": "S0645",
+      "name": "Wevtutil",
+      "descr": "(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)",
+      "techniques": [
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "002",
+          "name": "Impair Defenses",
+          "sub_name": "Disable Windows Event Logging"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "BRONZE SILHOUETTE",
+      "descr": "(Citation: Secureworks BRONZE SILHOUETTE May 2023)(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "name": "Vanguard Panda",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "name": "DEV-0391",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "name": "UNC3236",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "name": "Voltzite",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    },
+    {
+      "name": "Insidious Taurus",
+      "descr": "(Citation: CISA AA24-038A PRC Critical Infrastructure February 2024)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "CISA AA24-038A PRC Critical Infrastructure February 2024": {
+      "description": "CISA et al.. (2024, February 7). PRC State-Sponsored Actors Compromise and Maintain Persistent Access to U.S. Critical Infrastructure. Retrieved May 15, 2024.",
+      "number": null,
+      "url": "https://www.cisa.gov/sites/default/files/2024-03/aa24-038a_csa_prc_state_sponsored_actors_compromise_us_critical_infrastructure_3.pdf"
+    },
+    "Secureworks BRONZE SILHOUETTE May 2023": {
+      "description": "Counter Threat Unit Research Team. (2023, May 24). Chinese Cyberespionage Group BRONZE SILHOUETTE Targets U.S. Government and Defense Organizations. Retrieved July 27, 2023.",
+      "number": null,
+      "url": "https://www.secureworks.com/blog/chinese-cyberespionage-group-bronze-silhouette-targets-us-government-and-defense-organizations"
+    },
+    "Microsoft Volt Typhoon May 2023": {
+      "description": "Microsoft Threat Intelligence. (2023, May 24). Volt Typhoon targets US critical infrastructure with living-off-the-land techniques. Retrieved July 27, 2023.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2023/05/24/volt-typhoon-targets-us-critical-infrastructure-with-living-off-the-land-techniques/"
+    },
+    "Joint Cybersecurity Advisory Volt Typhoon June 2023": {
+      "description": "NSA et al. (2023, May 24). People's Republic of China State-Sponsored Cyber Actor Living off the Land to Evade Detection. Retrieved July 27, 2023.",
+      "number": null,
+      "url": "https://media.defense.gov/2023/May/24/2003229517/-1/-1/0/CSA_Living_off_the_Land.PDF"
+    },
+    "Lumen Versa 2024": {
+      "description": "Black Lotus Labs. (2024, August 27). Taking The Crossroads: The Versa Director Zero-Day Exploitaiton. Retrieved August 27, 2024.",
+      "number": null,
+      "url": "https://blog.lumen.com/taking-the-crossroads-the-versa-director-zero-day-exploitation/"
+    },
+    "Lumen KVBotnet 2023": {
+      "description": "Black Lotus Labs. (2023, December 13). Routers Roasting On An Open Firewall: The KV-Botnet Investigation. Retrieved June 10, 2024.",
+      "number": null,
+      "url": "https://blog.lumen.com/routers-roasting-on-an-open-firewall-the-kv-botnet-investigation/"
+    },
+    "DOJ KVBotnet 2024": {
+      "description": "US Department of Justice. (2024, January 31). U.S. Government Disrupts Botnet People’s Republic of China Used to Conceal Hacking of Critical Infrastructure. Retrieved June 10, 2024.",
+      "number": null,
+      "url": "https://www.justice.gov/opa/pr/us-government-disrupts-botnet-peoples-republic-china-used-conceal-hacking-critical"
+    }
+  },
+  "aliases_list": [
+    "BRONZE SILHOUETTE",
+    "Vanguard Panda",
+    "DEV-0391",
+    "UNC3236",
+    "Voltzite",
+    "Insidious Taurus"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "attack_id": "G0020",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "Equation",
+  "version": "1.2",
+  "descr": "[Equation](https://attack.mitre.org/groups/G0020) is a sophisticated threat group that employs multiple remote access tools. The group is known to use zero-day exploits and has developed the capability to overwrite the firmware of hard disk drives. (Citation: Kaspersky Equation QA)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1480",
+      "name": "Execution Guardrails",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Environmental Keying",
+          "descr": "[Equation](https://attack.mitre.org/groups/G0020) has been observed utilizing environmental keying in payload delivery.(Citation: Kaspersky Gauss Whitepaper)(Citation: Kaspersky Equation QA)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Hidden File System",
+          "descr": "[Equation](https://attack.mitre.org/groups/G0020) has used an encrypted virtual file system stored in the Windows Registry.(Citation: Kaspersky Equation QA)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1120",
+      "name": "Peripheral Device Discovery",
+      "descr": "[Equation](https://attack.mitre.org/groups/G0020) has used tools with the functionality to search for specific information about the attached hard drive that could be used to identify and overwrite the firmware.(Citation: Kaspersky Equation QA)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1542",
+      "name": "Pre-OS Boot",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Component Firmware",
+          "descr": "[Equation](https://attack.mitre.org/groups/G0020) is known to have the capability to overwrite the firmware on hard drives from some manufacturers.(Citation: Kaspersky Equation QA) ",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "Kaspersky Equation QA": {
+      "description": "Kaspersky Lab's Global Research and Analysis Team. (2015, February). Equation Group: Questions and Answers. Retrieved December 21, 2015.",
+      "number": null,
+      "url": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064459/Equation_group_questions_and_answers.pdf"
+    },
+    "Kaspersky Gauss Whitepaper": {
+      "description": "Kaspersky Lab. (2012, August). Gauss: Abnormal Distribution. Retrieved January 17, 2019.",
+      "number": null,
+      "url": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/20134940/kaspersky-lab-gauss.pdf"
+    }
+  },
+  "aliases_list": []
+}

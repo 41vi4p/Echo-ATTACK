@@ -1,0 +1,552 @@
+{
+  "attack_id": "G0051",
+  "notes": null,
+  "created": "14 December 2017",
+  "modified": "17 November 2024",
+  "name": "FIN10",
+  "version": "1.3",
+  "descr": "[FIN10](https://attack.mitre.org/groups/G0051) is a financially motivated threat group that has targeted organizations in North America since at least 2013 through 2016. The group uses stolen data exfiltrated from victims to extort organizations. (Citation: FireEye FIN10 June 2017)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has established persistence by using the Registry option in PowerShell Empire to add a Run key.(Citation: FireEye FIN10 June 2017)(Citation: Github PowerShell Empire)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) uses PowerShell for execution as well as PowerShell Empire to establish persistence.(Citation: FireEye FIN10 June 2017)(Citation: Github PowerShell Empire)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has executed malicious .bat files containing PowerShell commands.(Citation: FireEye FIN10 June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has used batch scripts and scheduled tasks to delete critical system files.(Citation: FireEye FIN10 June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has deployed Meterpreter stagers and SplinterRAT instances in the victim network after moving laterally.(Citation: FireEye FIN10 June 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has relied on publicly-available software to gain footholds and establish persistence in victim environments.(Citation: FireEye FIN10 June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has used RDP to move laterally to systems in the victim environment.(Citation: FireEye FIN10 June 2017)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has established persistence by using S4U tasks as well as the Scheduled Task option in PowerShell Empire.(Citation: FireEye FIN10 June 2017)(Citation: Github PowerShell Empire)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has used Meterpreter to enumerate users on remote systems.(Citation: FireEye FIN10 June 2017)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Local Accounts",
+          "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has moved laterally using the Local Administrator account.(Citation: FireEye FIN10 June 2017)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[FIN10](https://attack.mitre.org/groups/G0051) has used stolen credentials to connect remotely to victim networks using VPNs protected with only a single factor.(Citation: FireEye FIN10 June 2017)"
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0363",
+      "name": "Empire",
+      "descr": "(Citation: FireEye FIN10 June 2017)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "008",
+          "name": "Event Triggered Execution",
+          "sub_name": "Accessibility Features"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "001",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Code Repository"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "004",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Dylib Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "FireEye FIN10 June 2017": {
+      "description": "FireEye iSIGHT Intelligence. (2017, June 16). FIN10: Anatomy of a Cyber Extortion Operation. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://services.google.com/fh/files/misc/rpt-fin-10-anatomy-of-a-cyber-en.pdf"
+    },
+    "Github PowerShell Empire": {
+      "description": "Schroeder, W., Warner, J., Nelson, M. (n.d.). Github PowerShellEmpire. Retrieved April 28, 2016.",
+      "number": null,
+      "url": "https://github.com/PowerShellEmpire/Empire"
+    }
+  },
+  "aliases_list": []
+}

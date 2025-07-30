@@ -1,0 +1,1697 @@
+{
+  "attack_id": "G0129",
+  "notes": null,
+  "created": "12 April 2021",
+  "modified": "16 April 2025",
+  "name": "Mustang Panda",
+  "version": "2.1",
+  "contributors_list": [
+    "Kyaw Pyiyt Htet, @KyawPyiytHtet"
+  ],
+  "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) is a China-based cyber espionage threat actor that was first observed in 2017 but may have been conducting operations since at least 2014. [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government entities, nonprofits, religious, and other non-governmental organizations in the U.S., Europe, Mongolia, Myanmar, Pakistan, and Vietnam, among others.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019) ",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) have acquired C2 domains prior to operations.(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Recorded Future REDDELTA July 2020)(Citation: McAfee Dianxun March 2021)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) registered adversary-controlled domains during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047) that were re-registrations of expired domains.(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has communicated with its C2 via HTTP POST requests.(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Recorded Future REDDELTA July 2020)(Citation: McAfee Dianxun March 2021)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) used HTTP POST messages for command and control from [PlugX](https://attack.mitre.org/software/S0013) installations during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used RAR to create password-protected archives of collected documents prior to exfiltration.(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Archive via Custom Method",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has encrypted documents with RC4 prior to exfiltration.(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) used custom batch scripts to collect files automatically from a targeted system.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has created the registry key <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Run\\AdobelmdyU</code> to maintain persistence.(Citation: Proofpoint TA416 November 2020)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) used Run registry keys with names such as `OneNote Update` to execute legitimate executables that would load through search-order hijacking malicious DLLS to ensure persistence during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used malicious PowerShell scripts to enable execution.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) used LNK files to execute PowerShell commands leading to eventual [PlugX](https://attack.mitre.org/software/S0013) installation during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has executed HTA files via cmd.exe, and used batch scripts for collection.(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has embedded VBScript components in LNK files to download additional files and automate collection.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has stored collected credential files in <code>c:\\windows\\temp</code> prior to exfiltration. [Mustang Panda](https://attack.mitre.org/groups/G0129) has also stored documents for exfiltration in a hidden folder on USB drives.(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Symmetric Cryptography",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has encrypted C2 communications with RC4.(Citation: Recorded Future REDDELTA July 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Accounts",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has leveraged the legitimate email marketing service SMTP2Go for phishing campaigns.(Citation: Proofpoint TA416 Europe March 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1546",
+      "name": "Event Triggered Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Management Instrumentation Event Subscription",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129)'s custom ORat tool uses a WMI event consumer to maintain persistence.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1480",
+      "name": "Execution Guardrails",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) included the use of Cloudflare geofencing mechanisms to limit payload download activity during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1052",
+      "name": "Exfiltration Over Physical Medium",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Exfiltration over USB",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used a customized [PlugX](https://attack.mitre.org/software/S0013) variant which could exfiltrate documents from air-gapped networks.(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has exploited CVE-2017-0199 in Microsoft Word to execute code.(Citation: Crowdstrike MUSTANG PANDA June 2018)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) used the GrimResource exploitation technique via specially crafted MSC files for arbitrary code execution during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has searched the entire target system for DOC, DOCX, PPT, PPTX, XLS, XLSX, and PDF files.(Citation: Avira Mustang Panda January 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Hidden Files and Directories",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129)'s [PlugX](https://attack.mitre.org/software/S0013) variant has created a hidden folder on USB drives named <code>RECYCLE.BIN</code> to store malicious executables and collected data.(Citation: Avira Mustang Panda January 2020)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) stored encrypted payloads associated with [PlugX](https://attack.mitre.org/software/S0013) installation in hidden directories during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1574",
+      "name": "Hijack Execution Flow",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "DLL",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used a legitimately signed executable to execute a malicious payload within a DLL file.(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Recorded Future REDDELTA July 2020)(Citation: Proofpoint TA416 November 2020)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) used DLL search order hijacking on vulnerable applications to install [PlugX](https://attack.mitre.org/software/S0013) payloads during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) will delete their tools and files, and kill processes after their objectives are reached.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has downloaded additional executables following the initial infection stage.(Citation: Recorded Future REDDELTA July 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Masquerade Task or Service",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) masqueraded Registry run keys as legitimate-looking service names such as `OneNote Update` during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used names like `adobeupdate.dat` and `PotPlayerDB.dat` to disguise [PlugX](https://attack.mitre.org/software/S0013), and a file named `OneDrive.exe` to load a [Cobalt Strike](https://attack.mitre.org/software/S0154) payload.(Citation: Recorded Future REDDELTA July 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Double File Extension",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used an additional filename extension to hide the true file type.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) communicated over TCP 5000 from adversary administrative servers to adversary command and control nodes during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has delivered initial payloads hidden using archives and encoding measures.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Recorded Future REDDELTA July 2020)(Citation: Proofpoint TA416 November 2020)(Citation: Proofpoint TA416 Europe March 2022)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) stored installation payloads as encrypted files in hidden folders during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "016",
+          "name": "Junk Code Insertion",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used junk code within their DLL files to hinder analysis.(Citation: Avira Mustang Panda January 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Digital Certificates",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) acquired Cloudflare Origin CA TLS certificates during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "NTDS",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used vssadmin to create a volume shadow copy and retrieve the NTDS.dit file. [Mustang Panda](https://attack.mitre.org/groups/G0129) has also used <code>reg save</code> on the SYSTEM file Registry location to help extract the NTDS.dit file.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used spearphishing attachments to deliver initial access payloads.(Citation: Recorded Future REDDELTA July 2020)(Citation: Proofpoint TA416 November 2020)(Citation: Google TAG Ukraine Threat Landscape March 2022)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) leveraged malicious attachments in spearphishing emails for initial access to victim environments in [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has delivered malicious links to their intended targets.(Citation: McAfee Dianxun March 2021)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) distributed malicious links in phishing emails leading to HTML files that would direct the victim to malicious MSC files if running Windows based on User Agent fingerprinting during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1598",
+      "name": "Phishing for Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing Link",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has delivered web bugs to profile their intended targets.(Citation: Proofpoint TA416 Europe March 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used <code>tasklist /v</code> to determine active process information.(Citation: Avira Mustang Panda January 2020)\t",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) proxied communication through the Cloudflare CDN service during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1219",
+      "name": "Remote Access Tools",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Desktop Software",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has installed TeamViewer on targeted systems.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1091",
+      "name": "Replication Through Removable Media",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used a customized [PlugX](https://attack.mitre.org/software/S0013) variant which could spread through USB connections.(Citation: Avira Mustang Panda January 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has created a scheduled task to execute additional malicious software, as well as maintain persistence.(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: McAfee Dianxun March 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has searched the victim system for the <code>InstallUtil.exe</code> program and its version.(Citation: Anomali MUSTANG PANDA October 2019)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1608",
+      "name": "Stage Capabilities",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Upload Malware",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has hosted malicious payloads on DropBox including [PlugX](https://attack.mitre.org/software/S0013).(Citation: Proofpoint TA416 Europe March 2022)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) staged malware on adversary-controlled domains and cloud storage instances during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used servers under their control to validate tracking pixels sent to phishing victims.(Citation: Proofpoint TA416 Europe March 2022)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1553",
+      "name": "Subvert Trust Controls",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Code Signing",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) used legitimate, signed binaries such as `inkform.exe` or `ExcelRepairToolboxLauncher.exe` for follow-on execution of malicious DLLs through DLL search order hijacking in [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "InstallUtil",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used <code>InstallUtil.exe</code> to execute a malicious Beacon stager.(Citation: Anomali MUSTANG PANDA October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Mshta",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used mshta.exe to launch collection scripts.(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Msiexec",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) initial payloads downloaded a Windows Installer MSI file that in turn dropped follow-on files leading to installation of [PlugX](https://attack.mitre.org/software/S0013) during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "014",
+          "name": "MMC",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) used Microsoft Management Console Snap-In Control files, or MSC files, executed via MMC to run follow-on PowerShell commands during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has gathered system information using <code>systeminfo</code>.(Citation: Avira Mustang Panda January 2020)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) captured victim operating system type via User Agent analysis during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used <code>ipconfig</code> and <code>arp</code> to determine network configuration information.(Citation: Avira Mustang Panda January 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used <code>netstat -ano</code> to determine network connection information.(Citation: Avira Mustang Panda January 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has sent malicious links including links directing victims to a Google Drive folder.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: McAfee Dianxun March 2021)(Citation: Proofpoint TA416 Europe March 2022)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) distributed hyperlinks that would result in an MSC file running a PowerShell command to download and install a remotely-hosted MSI file during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has sent malicious files requiring direct victim interaction to execute.(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Avira Mustang Panda January 2020)(Citation: Recorded Future REDDELTA July 2020)(Citation: Google TAG Ukraine Threat Landscape March 2022)(Citation: Proofpoint TA416 Europe March 2022)\n[Mustang Panda](https://attack.mitre.org/groups/G0129) distributed malicious LNK objects for user execution during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has used DropBox URLs to deliver variants of [PlugX](https://attack.mitre.org/software/S0013).(Citation: Proofpoint TA416 Europe March 2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) has executed PowerShell scripts via WMI.(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0047",
+      "name": "RedDelta Modified PlugX Infection Chain Operations",
+      "first_seen": "July 2023",
+      "last_seen": "December 2024",
+      "first_seen_citation": "(Citation: Recorded Future RedDelta 2025)",
+      "last_seen_citation": "(Citation: Recorded Future RedDelta 2025)",
+      "desc": "[RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047) was an campaign linked to [Mustang Panda](https://attack.mitre.org/groups/G0129) operations.(Citation: Recorded Future RedDelta 2025)",
+      "techniques": [
+        {
+          "parent_id": "T1583",
+          "id": "001",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Domains"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1588",
+          "id": "004",
+          "name": "Obtain Capabilities",
+          "sub_name": "Digital Certificates"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "002",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1608",
+          "id": "001",
+          "name": "Stage Capabilities",
+          "sub_name": "Upload Malware"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "007",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Msiexec"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "014",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "MMC"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "001",
+          "name": "User Execution",
+          "sub_name": "Malicious Link"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Recorded Future REDDELTA July 2020)(Citation: McAfee Dianxun March 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0590",
+      "name": "NBTscan",
+      "descr": "(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+      "techniques": [
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0013",
+      "name": "PlugX",
+      "descr": "(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: Avira Mustang Panda January 2020)(Citation: Recorded Future REDDELTA July 2020)(Citation: Proofpoint TA416 Europe March 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        }
+      ]
+    },
+    {
+      "id": "S0012",
+      "name": "PoisonIvy",
+      "descr": "(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Recorded Future REDDELTA July 2020)",
+      "techniques": [
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "014",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Active Setup"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "002",
+          "name": "Execution Guardrails",
+          "sub_name": "Mutual Exclusion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1014",
+          "name": "Rootkit"
+        }
+      ]
+    },
+    {
+      "id": "S0662",
+      "name": "RCSession",
+      "descr": "(Citation: Secureworks BRONZE PRESIDENT December 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1573",
+          "name": "Encrypted Channel"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "015",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compression"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "007",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Msiexec"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0596",
+      "name": "ShadowPad",
+      "descr": "[Mustang Panda](https://attack.mitre.org/groups/G0129) used similar installation techniques with DLL sideloading to install [ShadowPad](https://attack.mitre.org/software/S0596) during [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047).(Citation: Recorded Future RedDelta 2025)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "TA416",
+      "descr": "(Citation: Proofpoint TA416 November 2020)"
+    },
+    {
+      "name": "RedDelta",
+      "descr": "(Citation: Recorded Future REDDELTA July 2020)(Citation: Proofpoint TA416 Europe March 2022)"
+    },
+    {
+      "name": "BRONZE PRESIDENT",
+      "descr": "(Citation: Secureworks BRONZE PRESIDENT December 2019)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Anomali MUSTANG PANDA October 2019": {
+      "description": "Anomali Threat Research. (2019, October 7). China-Based APT Mustang Panda Targets Minority Groups, Public and Private Sector Organizations. Retrieved April 12, 2021.",
+      "number": null,
+      "url": "https://www.anomali.com/blog/china-based-apt-mustang-panda-targets-minority-groups-public-and-private-sector-organizations"
+    },
+    "Secureworks BRONZE PRESIDENT December 2019": {
+      "description": "Counter Threat Unit Research Team. (2019, December 29). BRONZE PRESIDENT Targets NGOs. Retrieved April 13, 2021.",
+      "number": null,
+      "url": "https://www.secureworks.com/research/bronze-president-targets-ngos"
+    },
+    "Recorded Future REDDELTA July 2020": {
+      "description": "Insikt Group. (2020, July 28). CHINESE STATE-SPONSORED GROUP ‘REDDELTA’ TARGETS THE VATICAN AND CATHOLIC ORGANIZATIONS. Retrieved April 13, 2021.",
+      "number": null,
+      "url": "https://go.recordedfuture.com/hubfs/reports/cta-2020-0728.pdf"
+    },
+    "Crowdstrike MUSTANG PANDA June 2018": {
+      "description": "Meyers, A. (2018, June 15). Meet CrowdStrike’s Adversary of the Month for June: MUSTANG PANDA. Retrieved April 12, 2021.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-june-mustang-panda/"
+    },
+    "Proofpoint TA416 November 2020": {
+      "description": "Proofpoint Threat Research Team. (2020, November 23). TA416 Goes to Ground and Returns with a Golang PlugX Malware Loader. Retrieved April 13, 2021.",
+      "number": null,
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/ta416-goes-ground-and-returns-golang-plugx-malware-loader"
+    },
+    "Proofpoint TA416 Europe March 2022": {
+      "description": "Raggi, M. et al. (2022, March 7). The Good, the Bad, and the Web Bug: TA416 Increases Operational Tempo Against European Governments as Conflict in Ukraine Escalates. Retrieved March 16, 2022.",
+      "number": null,
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/good-bad-and-web-bug-ta416-increases-operational-tempo-against-european"
+    },
+    "Avira Mustang Panda January 2020": {
+      "description": "Hamzeloofard, S. (2020, January 31). New wave of PlugX targets Hong Kong | Avira Blog. Retrieved April 13, 2021.",
+      "number": null,
+      "url": "https://www.avira.com/en/blog/new-wave-of-plugx-targets-hong-kong"
+    },
+    "McAfee Dianxun March 2021": {
+      "description": "Roccia, T., Seret, T., Fokker, J. (2021, March 16). Technical Analysis of Operation Dianxun. Retrieved April 13, 2021.",
+      "number": null,
+      "url": "https://www.mcafee.com/enterprise/en-us/assets/reports/rp-operation-dianxun.pdf"
+    },
+    "Google TAG Ukraine Threat Landscape March 2022": {
+      "description": "Huntley, S. (2022, March 7). An update on the threat landscape. Retrieved March 16, 2022.",
+      "number": null,
+      "url": "https://blog.google/threat-analysis-group/update-threat-landscape-ukraine"
+    },
+    "Recorded Future RedDelta 2025": {
+      "description": "Insikt Group. (2025, January 9). Chinese State-Sponsored RedDelta Targeted Taiwan, Mongolia, and Southeast Asia with Adapted PlugX Infection Chain. Retrieved January 14, 2025.",
+      "number": null,
+      "url": "https://go.recordedfuture.com/hubfs/reports/cta-cn-2025-0109.pdf"
+    }
+  },
+  "aliases_list": [
+    "TA416",
+    "RedDelta",
+    "BRONZE PRESIDENT"
+  ]
+}

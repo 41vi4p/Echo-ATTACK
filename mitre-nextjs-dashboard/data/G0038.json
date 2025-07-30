@@ -1,0 +1,178 @@
+{
+  "attack_id": "G0038",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "Stealth Falcon",
+  "version": "1.2",
+  "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) is a threat group that has conducted targeted spyware attacks against Emirati journalists, activists, and dissidents since at least 2012. Circumstantial evidence suggests there could be a link between this group and the United Arab Emirates (UAE) government, but that has not been confirmed. (Citation: Citizen Lab Stealth Falcon May 2016)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware communicates with its C2 server via HTTPS.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware uses WMI to script data collection and command execution on the victim.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware uses PowerShell commands to perform various functions, including gathering system information via WMI and executing commands from its C2 server.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers passwords from multiple sources, including Internet Explorer, Firefox, and Chrome.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Windows Credential Manager",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers passwords from the Windows Credential Vault.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers passwords from multiple sources, including Windows Credential Vault and Outlook.(Citation: Citizen Lab Stealth Falcon May 2016)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers data from the local victim system.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Symmetric Cryptography",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware encrypts C2 traffic using RC4 with a hard-coded key.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "descr": "After data is collected by [Stealth Falcon](https://attack.mitre.org/groups/G0038) malware, it is exfiltrated over the existing C2 channel.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers a list of running processes.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1012",
+      "name": "Query Registry",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware attempts to determine the installed version of .NET by querying the Registry.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware creates a scheduled task entitled “IE Web Cache” to execute a malicious file hourly.(Citation: Citizen Lab Stealth Falcon May 2016)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers system information via WMI, including the system directory, build number, serial number, version, manufacturer, model, and total physical memory.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers the Address Resolution Protocol (ARP) table from the victim.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers the registered user and primary owner name via WMI.(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Stealth Falcon](https://attack.mitre.org/groups/G0038) malware gathers system information via Windows Management Instrumentation (WMI).(Citation: Citizen Lab Stealth Falcon May 2016)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [],
+  "add_software_ref": false,
+  "citations": {
+    "current_number": 0,
+    "Citizen Lab Stealth Falcon May 2016": {
+      "description": "Marczak, B. and Scott-Railton, J.. (2016, May 29). Keep Calm and (Don’t) Enable Macros: A New Threat Actor Targets UAE Dissidents. Retrieved June 8, 2016.",
+      "number": null,
+      "url": "https://citizenlab.org/2016/05/stealth-falcon/"
+    }
+  },
+  "aliases_list": []
+}

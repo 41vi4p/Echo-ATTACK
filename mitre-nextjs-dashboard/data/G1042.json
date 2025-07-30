@@ -1,0 +1,195 @@
+{
+  "attack_id": "G1042",
+  "notes": null,
+  "created": "21 November 2024",
+  "modified": "13 March 2025",
+  "name": "RedEcho",
+  "version": "1.0",
+  "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) is a People’s Republic of China-related threat actor associated with long-running intrusions in Indian critical infrastructure entities. [RedEcho](https://attack.mitre.org/groups/G1042) overlaps with various other PRC-linked threat groups, such as [APT41](https://attack.mitre.org/groups/G0096), and is linked to [ShadowPad](https://attack.mitre.org/software/S0596) malware use through shared infrastructure.(Citation: RecordedFuture RedEcho 2021)(Citation: RecordedFuture RedEcho 2022)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) has registered domains spoofing Indian critical infrastructure entities.(Citation: RecordedFuture RedEcho 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) network activity is associated with SSL traffic via TCP 443 and proxied HTTP traffic over non-standard ports.(Citation: RecordedFuture RedEcho 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1568",
+      "name": "Dynamic Resolution",
+      "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) used dynamic DNS domains associated with malicious infrastructure.(Citation: RecordedFuture RedEcho 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Asymmetric Cryptography",
+          "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) uses SSL for network communication.(Citation: RecordedFuture RedEcho 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) has used non-standard ports such as TCP 8080 for HTTP communication.(Citation: RecordedFuture RedEcho 2021)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0596",
+      "name": "ShadowPad",
+      "descr": "[RedEcho](https://attack.mitre.org/groups/G1042) has used [ShadowPad](https://attack.mitre.org/software/S0596) during intrusions.(Citation: RecordedFuture RedEcho 2021)(Citation: RecordedFuture RedEcho 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "RecordedFuture RedEcho 2021": {
+      "description": "Recorded Future Insikt Group. (2021, February). China-Linked Group RedEcho Targets the Indian Power Sector Amid Heightened Border Tensions. Retrieved November 21, 2024.",
+      "number": null,
+      "url": "https://go.recordedfuture.com/hubfs/reports/cta-2021-0228.pdf"
+    },
+    "RecordedFuture RedEcho 2022": {
+      "description": "Recorded Future Insikt Group. (2022, April 6). Continued Targeting of Indian Power Grid Assets by Chinese State-Sponsored Activity Group. Retrieved November 21, 2024.",
+      "number": null,
+      "url": "https://go.recordedfuture.com/hubfs/reports/ta-2022-0406.pdf"
+    }
+  },
+  "aliases_list": []
+}

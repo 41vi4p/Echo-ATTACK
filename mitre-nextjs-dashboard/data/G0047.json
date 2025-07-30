@@ -1,0 +1,925 @@
+{
+  "attack_id": "G0047",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "23 September 2024",
+  "name": "Gamaredon Group",
+  "version": "3.1",
+  "contributors_list": [
+    "ESET",
+    "Trend Micro Incorporated",
+    "Yoshihiro Kori, NEC Corporation",
+    "Manikantan Srinivasan, NEC Corporation India",
+    "Pooja Natarajan, NEC Corporation India"
+  ],
+  "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) is a suspected Russian cyber espionage threat group that has targeted military, NGO, judiciary, law enforcement, and non-profit organizations in Ukraine since at least 2013. The name [Gamaredon Group](https://attack.mitre.org/groups/G0047) comes from a misspelling of the word \"Armageddon\", which was detected in the adversary's early campaigns.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Symantec Shuckworm January 2022)(Citation: Microsoft Actinium February 2022)\n\nIn November 2021, the Ukrainian government publicly attributed [Gamaredon Group](https://attack.mitre.org/groups/G0047) to Russia's Federal Security Service (FSB) Center 18.(Citation: Bleepingcomputer Gamardeon FSB November 2021)(Citation: Microsoft Actinium February 2022)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has registered multiple domains to facilitate payload staging and C2.(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used VPS hosting providers for infrastructure outside of Russia.(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used HTTP and HTTPS for C2 communications.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Symantec Shuckworm January 2022)(Citation: CERT-EE Gamaredon January 2021)(Citation: Unit 42 Gamaredon February 2022)(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has deployed scripts on compromised systems that automatically scan for interesting documents.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1020",
+      "name": "Automated Exfiltration",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used modules that automatically upload gathered documents to the C2 server.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) tools have registered Run keys in the registry to give malicious VBS files persistence.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used obfuscated PowerShell scripts for staging.(Citation: Microsoft Actinium February 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used various batch scripts to establish C2 and download additional files. [Gamaredon Group](https://attack.mitre.org/groups/G0047)'s backdoor malware has also been written to a batch file.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has embedded malicious macros in document templates, which executed VBScript. [Gamaredon Group](https://attack.mitre.org/groups/G0047) has also delivered Microsoft Outlook VBA projects with embedded macros.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: Microsoft Actinium February 2022)(Citation: Secureworks IRON TILDEN Profile)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has collected files from infected systems and uploaded them to a C2 server.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1039",
+      "name": "Data from Network Shared Drive",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) malware has collected Microsoft Office documents from mapped network drives.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1025",
+      "name": "Data from Removable Media",
+      "descr": "A [Gamaredon Group](https://attack.mitre.org/groups/G0047) file stealer has the capability to steal data from newly connected logical volumes on a system, including USB drives.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1001",
+      "name": "Data Obfuscation",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used obfuscated VBScripts with randomly generated variable names and concatenated strings.(Citation: unit42_gamaredon_dec2022) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1491",
+      "name": "Defacement",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internal Defacement",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has left taunting images and messages on the victims' desktops as proof of system access.(Citation: CERT-EE Gamaredon January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) tools decrypted additional payloads from the C2. [Gamaredon Group](https://attack.mitre.org/groups/G0047) has also decoded base64-encoded source code of a downloader.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020) Additionally, [Gamaredon Group](https://attack.mitre.org/groups/G0047) has decoded Telegram content to reveal the IP address for C2 communications.(Citation: unit42_gamaredon_dec2022)  ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1561",
+      "name": "Disk Wipe",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disk Content Wipe",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used tools to delete files and folders from victims' desktops and profiles.(Citation: CERT-EE Gamaredon January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1568",
+      "name": "Dynamic Resolution",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Fast Flux DNS",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used fast flux DNS to mask their command and control channel behind rotating IP addresses.(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has incorporated dynamic DNS domains in its infrastructure.(Citation: Unit 42 Gamaredon February 2022)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1480",
+      "name": "Execution Guardrails",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used geoblocking to limit downloads of the malicious file to specific geographic locations.(Citation: unit42_gamaredon_dec2022) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "descr": "A [Gamaredon Group](https://attack.mitre.org/groups/G0047) file stealer can transfer collected files to a hardcoded C2 server.(Citation: Palo Alto Gamaredon Feb 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) macros can scan for Microsoft Word and Excel files to inject with additional malicious macros. [Gamaredon Group](https://attack.mitre.org/groups/G0047) has also used its backdoors to automatically list interesting files (such as Office documents) found on a system.(Citation: ESET Gamaredon June 2020)(Citation: Unit 42 Gamaredon February 2022)\t",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Hidden Window",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used <code>hidcon</code> to run batch files in a hidden console window.(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has delivered macros which can tamper with Microsoft Office security settings.(Citation: ESET Gamaredon June 2020)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) tools can delete files used during an operation.(Citation: TrendMicro Gamaredon April 2020)(Citation: Symantec Shuckworm January 2022)(Citation: CERT-EE Gamaredon January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has downloaded additional malware and tools onto a compromised host.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Microsoft Actinium February 2022) For example, [Gamaredon Group](https://attack.mitre.org/groups/G0047) uses a backdoor script to retrieve and decode additional payloads once in victim environments.(Citation: unit42_gamaredon_dec2022) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1559",
+      "name": "Inter-Process Communication",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Component Object Model",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) malware can insert malicious macros into documents using a <code>Microsoft.Office.Interop</code> object.(Citation: ESET Gamaredon June 2020)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1534",
+      "name": "Internal Spearphishing",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used legitimate process names to hide malware including <code>svchosst</code>.(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has removed security settings for VBA macro execution by changing registry values <code>HKCU\\Software\\Microsoft\\Office\\&lt;version&gt;\\&lt;product&gt;\\Security\\VBAWarnings</code> and <code>HKCU\\Software\\Microsoft\\Office\\&lt;version&gt;\\&lt;product&gt;\\Security\\AccessVBOM</code>.(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1106",
+      "name": "Native API",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) malware has used <code>CreateProcess</code> to launch additional malicious components.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Compile After Delivery",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has compiled the source code for a downloader directly on the infected system using the built-in <code>Microsoft.CSharp.CSharpCodeProvider</code> class.(Citation: ESET Gamaredon June 2020)\t",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Command Obfuscation",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used obfuscated or encrypted scripts.(Citation: ESET Gamaredon June 2020)(Citation: Microsoft Actinium February 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "016",
+          "name": "Junk Code Insertion",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has obfuscated .NET executables by inserting junk code.(Citation: ESET Gamaredon June 2020)\t",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has delivered self-extracting 7z archive files within malicious document attachments.(Citation: ESET Gamaredon June 2020)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used various legitimate tools, such as `mshta.exe` and [Reg](https://attack.mitre.org/software/S0075), and services during operations.(Citation: unit42_gamaredon_dec2022)     ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1137",
+      "name": "Office Application Startup",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has inserted malicious macros into existing documents, providing persistence when they are reopened. [Gamaredon Group](https://attack.mitre.org/groups/G0047) has loaded the group's previously delivered VBA project by relaunching Microsoft Outlook with the <code>/altvba</code> option, once the Application.Startup event is received.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1120",
+      "name": "Peripheral Device Discovery",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) tools have contained an application to check performance of USB flash drives. [Gamaredon Group](https://attack.mitre.org/groups/G0047) has also used malware to scan for removable drives.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has delivered spearphishing emails with malicious attachments to targets.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)(Citation: Secureworks IRON TILDEN Profile)(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used tools to enumerate processes on target hosts including Process Explorer.(Citation: Symantec Shuckworm January 2022)(Citation: Unit 42 Gamaredon February 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "VNC",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used VNC tools, including UltraVNC, to remotely interact with compromised hosts.(Citation: Symantec Shuckworm January 2022)(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has created scheduled tasks to launch executables after a designated number of minutes have passed.(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: Microsoft Actinium February 2022)(Citation: unit42_gamaredon_dec2022)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1113",
+      "name": "Screen Capture",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047)'s malware can take screenshots of the compromised computer every minute.(Citation: ESET Gamaredon June 2020)\t",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1608",
+      "name": "Stage Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Upload Malware",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has registered domains to stage payloads.(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Mshta",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used `mshta.exe` to execute malicious files.(Citation: Symantec Shuckworm January 2022)(Citation: unit42_gamaredon_dec2022) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "011",
+          "name": "Rundll32",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) malware has used rundll32 to launch additional malicious components.(Citation: ESET Gamaredon June 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "A [Gamaredon Group](https://attack.mitre.org/groups/G0047) file stealer can gather the victim's computer name and drive serial numbers to send to a C2 server.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: CERT-EE Gamaredon January 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internet Connection Discovery",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has tested connectivity between a compromised machine and a C2 server using  [Ping](https://attack.mitre.org/software/S0097) with commands such as `CSIDL_SYSTEM\\cmd.exe /c ping -n 1`.(Citation: Symantec Shuckworm January 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "A [Gamaredon Group](https://attack.mitre.org/groups/G0047) file stealer can gather the victim's username to send to a C2 server.(Citation: Palo Alto Gamaredon Feb 2017)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1080",
+      "name": "Taint Shared Content",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has injected malicious macros into all Word and Excel documents on mapped network drives.(Citation: ESET Gamaredon June 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1221",
+      "name": "Template Injection",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used DOCX files to download malicious DOT document templates and has used RTF template injection to download malicious payloads.(Citation: Proofpoint RTF Injection) [Gamaredon Group](https://attack.mitre.org/groups/G0047) can also inject malicious macros or remote templates into documents already present on compromised systems.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: CERT-EE Gamaredon January 2021)(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)(Citation: Secureworks IRON TILDEN Profile)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has attempted to get users to click on a link pointing to a malicious HTML file leading to follow-on malicious content.(Citation: unit42_gamaredon_dec2022) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has attempted to get users to click on Office attachments with malicious macros embedded.(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Symantec Shuckworm January 2022)(Citation: CERT-EE Gamaredon January 2021)(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)(Citation: Secureworks IRON TILDEN Profile)(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "One-Way Communication",
+          "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used Telegram Messenger content to discover the IP address for C2 communications.(Citation: unit42_gamaredon_dec2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used GitHub repositories for downloaders which will be obtained by the group's .NET executable on the compromised system.(Citation: ESET Gamaredon June 2020)\t"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used WMI to execute scripts used for discovery and for determining the C2 IP address.(Citation: CERT-EE Gamaredon January 2021)(Citation: unit42_gamaredon_dec2022) ",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0097",
+      "name": "Ping",
+      "descr": "(Citation: Symantec Shuckworm January 2022)",
+      "techniques": [
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0685",
+      "name": "PowerPunch",
+      "descr": "(Citation: Microsoft Actinium February 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "001",
+          "name": "Execution Guardrails",
+          "sub_name": "Environmental Keying"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        }
+      ]
+    },
+    {
+      "id": "S0147",
+      "name": "Pteranodon",
+      "descr": "(Citation: Palo Alto Gamaredon Feb 2017)(Citation: Symantec Shuckworm January 2022)(Citation: Microsoft Actinium February 2022)(Citation: Unit 42 Gamaredon February 2022)(Citation: Secureworks IRON TILDEN Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "007",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Dynamic API Resolution"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "005",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Mshta"
+        },
+        {
+          "id": "T1497",
+          "name": "Virtualization/Sandbox Evasion"
+        }
+      ]
+    },
+    {
+      "id": "S0686",
+      "name": "QuietSieve",
+      "descr": "(Citation: Microsoft Actinium February 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "003",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Window"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1016",
+          "id": "001",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Internet Connection Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0075",
+      "name": "Reg",
+      "descr": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) has used [Reg](https://attack.mitre.org/software/S0075) to add Run keys to the Registry.(Citation: unit42_gamaredon_dec2022)",
+      "techniques": [
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "002",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials in Registry"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "IRON TILDEN",
+      "descr": "(Citation: Secureworks IRON TILDEN Profile)"
+    },
+    {
+      "name": "Primitive Bear",
+      "descr": "(Citation: Unit 42 Gamaredon February 2022)"
+    },
+    {
+      "name": "ACTINIUM",
+      "descr": "(Citation: Microsoft Actinium February 2022)"
+    },
+    {
+      "name": "Armageddon",
+      "descr": "(Citation: Symantec Shuckworm January 2022)"
+    },
+    {
+      "name": "Shuckworm",
+      "descr": "(Citation: Symantec Shuckworm January 2022)"
+    },
+    {
+      "name": "DEV-0157",
+      "descr": "(Citation: Microsoft Actinium February 2022)"
+    },
+    {
+      "name": "Aqua Blizzard",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "ESET Gamaredon June 2020": {
+      "description": "Boutin, J. (2020, June 11). Gamaredon group grows its game. Retrieved June 16, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/2020/06/11/gamaredon-group-grows-its-game/"
+    },
+    "TrendMicro Gamaredon April 2020": {
+      "description": "Kakara, H., Maruyama, E. (2020, April 17). Gamaredon APT Group Use Covid-19 Lure in Campaigns. Retrieved May 19, 2020.",
+      "number": null,
+      "url": "https://blog.trendmicro.com/trendlabs-security-intelligence/gamaredon-apt-group-use-covid-19-lure-in-campaigns/"
+    },
+    "Palo Alto Gamaredon Feb 2017": {
+      "description": "Kasza, A. and Reichel, D. (2017, February 27). The Gamaredon Group Toolset Evolution. Retrieved March 1, 2017.",
+      "number": null,
+      "url": "https://researchcenter.paloaltonetworks.com/2017/02/unit-42-title-gamaredon-group-toolset-evolution/"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Microsoft Actinium February 2022": {
+      "description": "Microsoft Threat Intelligence Center. (2022, February 4). ACTINIUM targets Ukrainian organizations. Retrieved February 18, 2022.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2022/02/04/actinium-targets-ukrainian-organizations/"
+    },
+    "Secureworks IRON TILDEN Profile": {
+      "description": "Secureworks CTU. (n.d.). IRON TILDEN. Retrieved February 24, 2022.",
+      "number": null,
+      "url": "https://www.secureworks.com/research/threat-profiles/iron-tilden"
+    },
+    "Symantec Shuckworm January 2022": {
+      "description": "Symantec. (2022, January 31). Shuckworm Continues Cyber-Espionage Attacks Against Ukraine. Retrieved February 17, 2022.",
+      "number": null,
+      "url": "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/shuckworm-gamaredon-espionage-ukraine"
+    },
+    "Bleepingcomputer Gamardeon FSB November 2021": {
+      "description": "Toulas, B. (2018, November 4). Ukraine links members of Gamaredon hacker group to Russian FSB. Retrieved April 15, 2022.",
+      "number": null,
+      "url": "https://www.bleepingcomputer.com/news/security/ukraine-links-members-of-gamaredon-hacker-group-to-russian-fsb/"
+    },
+    "Unit 42 Gamaredon February 2022": {
+      "description": "Unit 42. (2022, February 3). Russia’s Gamaredon aka Primitive Bear APT Group Actively Targeting Ukraine. Retrieved February 21, 2022.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/gamaredon-primitive-bear-ukraine-update-2021/"
+    },
+    "CERT-EE Gamaredon January 2021": {
+      "description": "CERT-EE. (2021, January 27). Gamaredon Infection: From Dropper to Entry. Retrieved February 17, 2022.",
+      "number": null,
+      "url": "https://www.ria.ee/sites/default/files/content-editors/kuberturve/tale_of_gamaredon_infection.pdf"
+    },
+    "unit42_gamaredon_dec2022": {
+      "description": "Unit 42. (2022, December 20). Russia’s Trident Ursa (aka Gamaredon APT) Cyber Conflict Operations Unwavering Since Invasion of Ukraine. Retrieved September 12, 2024.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/trident-ursa/"
+    },
+    "Proofpoint RTF Injection": {
+      "description": "Raggi, M. (2021, December 1). Injection is the New Black: Novel RTF Template Inject Technique Poised for Widespread Adoption Beyond APT Actors . Retrieved December 9, 2021.",
+      "number": null,
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/injection-new-black-novel-rtf-template-inject-technique-poised-widespread"
+    }
+  },
+  "aliases_list": [
+    "IRON TILDEN",
+    "Primitive Bear",
+    "ACTINIUM",
+    "Armageddon",
+    "Shuckworm",
+    "DEV-0157",
+    "Aqua Blizzard"
+  ]
+}

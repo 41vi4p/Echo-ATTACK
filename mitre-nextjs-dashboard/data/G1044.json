@@ -1,0 +1,490 @@
+{
+  "attack_id": "G1044",
+  "notes": null,
+  "created": "08 January 2025",
+  "modified": "08 March 2025",
+  "name": "APT42",
+  "version": "1.0",
+  "contributors_list": [
+    "Sittikorn Sangrattanapitak"
+  ],
+  "descr": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used the PowerShell-based POWERPOST script to collect local account names from the victim machine.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has registered domains, several of which masqueraded as news outlets and login services, for use in operations.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used anonymized infrastructure and Virtual Private Servers (VPSs) to interact with the victim’s environment.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has modified the Registry to maintain persistence.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has downloaded and executed PowerShell payloads.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used a VBScript to query anti-virus products.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal credentials.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1132",
+      "name": "Data Encoding",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Standard Encoding",
+          "descr": " [APT42](https://attack.mitre.org/groups/G1044) has encoded C2 traffic with Base64.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1530",
+      "name": "Data from Cloud Storage",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has collected data from Microsoft 365 environments.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)   ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Asymmetric Cryptography",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Accounts",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has created email accounts to use in spearphishing operations.(Citation: TAG APT42)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1656",
+      "name": "Impersonation",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has impersonated legitimate people in phishing emails to gain credentials.(Citation: Mandiant APT42-charms)(Citation: TAG APT42) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has cleared Chrome browser history.(Citation: Mandiant APT42-untangling) ",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Clear Mailbox Data",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has deleted login notification emails and has cleared the Sent folder to cover their tracks.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used credential harvesting websites.(Citation: Mandiant APT42-untangling) ",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Keylogging",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to log keystrokes.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has masqueraded the VINETHORN payload as a VPN application.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has modified Registry keys to maintain persistence.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1111",
+      "name": "Multi-Factor Authentication Interception",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has intercepted SMS-based one-time passwords and has set up two-factor authentication.(Citation: Mandiant APT42-charms) Additionally, [APT42](https://attack.mitre.org/groups/G1044) has used cloned or fake websites to capture MFA tokens.(Citation: Mandiant APT42-untangling) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used built-in features in the Microsoft 365 environment and publicly available tools to avoid detection.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has sent spearphishing emails containing malicious links.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)(Citation: TAG APT42) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used scheduled tasks for persistence.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1113",
+      "name": "Screen Capture",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to take screenshots.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to check for anti-virus products.(Citation: Mandiant APT42-untangling) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1608",
+      "name": "Stage Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Upload Malware",
+          "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used its infrastructure for C2 and for staging the VINETHORN payload, which masqueraded as a VPN application.(Citation: Mandiant APT42-charms) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1539",
+      "name": "Steal Web Session Cookie",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal login and cookie data from common browsers.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect system information.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect network information.(Citation: Mandiant APT42-charms) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used various links, such as links with typo-squatted domains, links to Dropbox files and links to fake Google sites, in spearphishing operations.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)(Citation: TAG APT42) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to query anti-virus products.(Citation: Mandiant APT42-untangling) ",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S1192",
+      "name": "NICECURL",
+      "descr": "(Citation: Mandiant APT42-untangling)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        }
+      ]
+    },
+    {
+      "id": "S1193",
+      "name": "TAMECAT",
+      "descr": "(Citation: Mandiant APT42-untangling)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Mandiant APT42-charms": {
+      "description": "Mandiant. (n.d.). APT42: Crooked Charms, Cons and Compromises. Retrieved October 9, 2024.",
+      "number": null,
+      "url": "https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf"
+    },
+    "Mandiant APT42-untangling": {
+      "description": "Rozmann, O., et al. (2024, May 1). Uncharmed: Untangling Iran's APT42 Operations. Retrieved October 9, 2024.",
+      "number": null,
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations"
+    },
+    "TAG APT42": {
+      "description": "Google Threat Analysis Group. (2024, August 14). Iranian backed group steps up phishing campaigns against Israel, U.S.. Retrieved October 9, 2024.",
+      "number": null,
+      "url": "https://blog.google/threat-analysis-group/iranian-backed-group-steps-up-phishing-campaigns-against-israel-us/"
+    }
+  },
+  "aliases_list": []
+}

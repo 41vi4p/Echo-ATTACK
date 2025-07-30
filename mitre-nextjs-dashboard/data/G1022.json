@@ -1,0 +1,1207 @@
+{
+  "attack_id": "G1022",
+  "notes": null,
+  "created": "03 January 2024",
+  "modified": "14 February 2024",
+  "name": "ToddyCat",
+  "version": "1.0",
+  "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) is a sophisticated threat group that has been active since at least 2020 using custom loaders and malware in multi-stage infection chains against government and military targets across Europe and Asia.(Citation: Kaspersky ToddyCat June 2022)(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has run `net user %USER% /dom` for account discovery.(Citation: Kaspersky ToddyCat Check Logs October 2023)\n",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has leveraged  xcopy, 7zip, and RAR to stage and compress collected documents prior to exfiltration.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used Powershell scripts to perform post exploit collection.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used .bat scripts and `cmd` for execution on compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has run scripts to collect documents from targeted hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Data Staging",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) manually transferred collected files to an exfiltration host using xcopy.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used a DropBox uploader to exfiltrate stolen files.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has exploited the ProxyLogon vulnerability (CVE-2021-26855) to compromise Exchange Servers at multiple organizations.(Citation: Kaspersky ToddyCat June 2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has run scripts to enumerate recently modified documents having either a .pdf, .doc, .docx, .xls or .xlsx extension.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Hidden Window",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has hidden malicious scripts using `powershell.exe -windowstyle hidden`. (Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Disable or Modify System Firewall",
+          "descr": "Prior to executing a backdoor [ToddyCat](https://attack.mitre.org/groups/G1022)  has run `cmd /c start /b netsh advfirewall firewall add rule name=\"SGAccessInboundRule\" dir=in protocol=udp action=allow localport=49683` to allow the targeted system to receive UDP packets on port 49683.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used the name `debug.exe` for malware components.(Citation: Kaspersky ToddyCat June 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1106",
+      "name": "Native API",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used `WinExec` to execute commands received from C2 on compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used a passive backdoor that receives commands with UDP packets.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1069",
+      "name": "Permission Groups Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Groups",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has executed `net group \"domain admins\" /dom` for discovery on compromised machines.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing via Service",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has sent loaders configured to run [Ninja](https://attack.mitre.org/software/S1100) as zip archives via Telegram.(Citation: Kaspersky ToddyCat June 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has run `cmd /c start /b tasklist` to enumerate processes.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SMB/Windows Admin Shares",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used locally mounted network shares for lateral movement through targated environments.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used `ping %REMOTE_HOST%` for post exploit discovery.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used scheduled tasks to execute discovery commands and scripts for collection.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) can determine is Kaspersky software is running on an endpoint by running `cmd /c wmic process where name=\"avp.exe\"`.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has collected information on bootable drives including model, vendor, and serial numbers.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used `netstat -anop tcp` to discover TCP connections to compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Accounts",
+          "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used compromised domain admin credentials to mount local network shares.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[ToddyCat](https://attack.mitre.org/groups/G1022) has used WMI to execute scripts for post exploit document collection.(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0020",
+      "name": "China Chopper",
+      "descr": "(Citation: Kaspersky ToddyCat June 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S1101",
+      "name": "LoFiSe",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        }
+      ]
+    },
+    {
+      "id": "S0039",
+      "name": "Net",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "007",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Local or Domain Groups"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0104",
+      "name": "netstat",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1100",
+      "name": "Ninja",
+      "descr": "(Citation: Kaspersky ToddyCat June 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1001",
+          "name": "Data Obfuscation"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "001",
+          "name": "Execution Guardrails",
+          "sub_name": "Environmental Keying"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1559",
+          "name": "Inter-Process Communication"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "015",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compression"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "003",
+          "name": "Phishing",
+          "sub_name": "Spearphishing via Service"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        }
+      ]
+    },
+    {
+      "id": "S1102",
+      "name": "Pcexter",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        }
+      ]
+    },
+    {
+      "id": "S0097",
+      "name": "Ping",
+      "descr": "(Citation: Kaspersky ToddyCat Check Logs October 2023)",
+      "techniques": [
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1099",
+      "name": "Samurai",
+      "descr": "(Citation: Kaspersky ToddyCat June 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "015",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compression"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "004",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compile After Delivery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "007",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Dynamic API Resolution"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Kaspersky ToddyCat June 2022": {
+      "description": "Dedola, G. (2022, June 21). APT ToddyCat. Retrieved January 3, 2024.",
+      "number": null,
+      "url": "https://securelist.com/toddycat/106799/"
+    },
+    "Kaspersky ToddyCat Check Logs October 2023": {
+      "description": "Dedola, G. et al. (2023, October 12). ToddyCat: Keep calm and check logs. Retrieved January 3, 2024.",
+      "number": null,
+      "url": "https://securelist.com/toddycat-keep-calm-and-check-logs/110696/"
+    }
+  },
+  "aliases_list": []
+}

@@ -1,0 +1,473 @@
+{
+  "attack_id": "G0077",
+  "notes": null,
+  "created": "17 October 2018",
+  "modified": "16 April 2025",
+  "name": "Leafminer",
+  "version": "2.4",
+  "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) is an Iranian threat group that has targeted government organizations and business entities in the Middle East since at least early 2017. (Citation: Symantec Leafminer July 2018)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Password Spraying",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called Total SMB BruteForcer to perform internal password spraying.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "JavaScript",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) infected victims using JavaScript code.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called Imecab to set up a persistent remote access account on the victim machine.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1189",
+      "name": "Drive-by Compromise",
+      "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) has infected victims using watering holes.(Citation: Symantec Leafminer July 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1114",
+      "name": "Email Collection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Email Collection",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called MailSniper to search through the Exchange server mailboxes for keywords.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called MailSniper to search for files on the desktop and another utility called Sobolsoft to extract attachments from EML files.(Citation: Symantec Leafminer July 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) scanned network services to search for vulnerabilities in the victim system.(Citation: Symantec Leafminer July 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Command Obfuscation",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) obfuscated scripts that were used on victim machines.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) has obtained and used tools such as [LaZagne](https://attack.mitre.org/software/S0349), [Mimikatz](https://attack.mitre.org/software/S0002), [PsExec](https://attack.mitre.org/software/S0029), and [MailSniper](https://attack.mitre.org/software/S0413).(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne and Mimikatz.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "LSA Secrets",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Cached Domain Credentials",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Process Doppelgänging",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) has used [Process Doppelgänging](https://attack.mitre.org/techniques/T1055/013) to evade security software while deploying tools on compromised systems.(Citation: Symantec Leafminer July 2018)\t",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used Microsoft’s Sysinternals tools to gather detailed information about remote systems.(Citation: Symantec Leafminer July 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Credentials In Files",
+          "descr": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0349",
+      "name": "LaZagne",
+      "descr": "(Citation: Symantec Leafminer July 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "001",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Keychain"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "008",
+          "name": "OS Credential Dumping",
+          "sub_name": "/etc/passwd and /etc/shadow"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "005",
+          "name": "OS Credential Dumping",
+          "sub_name": "Cached Domain Credentials"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "007",
+          "name": "OS Credential Dumping",
+          "sub_name": "Proc Filesystem"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        }
+      ]
+    },
+    {
+      "id": "S0413",
+      "name": "MailSniper",
+      "descr": "(Citation: Symantec Leafminer July 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "003",
+          "name": "Account Discovery",
+          "sub_name": "Email Account"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "003",
+          "name": "Brute Force",
+          "sub_name": "Password Spraying"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "002",
+          "name": "Email Collection",
+          "sub_name": "Remote Email Collection"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: Symantec Leafminer July 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: Symantec Leafminer July 2018)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "Raspite",
+      "descr": "(Citation: Dragos Raspite Aug 2018)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Dragos Raspite Aug 2018": {
+      "description": "Dragos, Inc. (2018, August 2). RASPITE. Retrieved November 26, 2018.",
+      "number": null,
+      "url": "https://www.dragos.com/blog/20180802Raspite.html"
+    },
+    "Symantec Leafminer July 2018": {
+      "description": "Symantec Security Response. (2018, July 25). Leafminer: New Espionage Campaigns Targeting Middle Eastern Regions. Retrieved August 28, 2018.",
+      "number": null,
+      "url": "https://www.symantec.com/blogs/threat-intelligence/leafminer-espionage-middle-east"
+    }
+  },
+  "aliases_list": [
+    "Raspite"
+  ]
+}

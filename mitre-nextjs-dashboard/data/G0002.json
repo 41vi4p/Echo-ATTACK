@@ -1,0 +1,126 @@
+{
+  "attack_id": "G0002",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "25 April 2025",
+  "name": "Moafee",
+  "version": "1.1",
+  "descr": "[Moafee](https://attack.mitre.org/groups/G0002) is a threat group that appears to operate from the Guandong Province of China. Due to overlapping TTPs, including similar custom tools, Moafee is thought to have a direct or indirect relationship with the threat group [DragonOK](https://attack.mitre.org/groups/G0017). (Citation: Haq 2014)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Binary Padding",
+          "descr": "[Moafee](https://attack.mitre.org/groups/G0002) has been known to employ binary padding.(Citation: Haq 2014)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0012",
+      "name": "PoisonIvy",
+      "descr": "(Citation: Haq 2014)",
+      "techniques": [
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "014",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Active Setup"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "002",
+          "name": "Execution Guardrails",
+          "sub_name": "Mutual Exclusion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1014",
+          "name": "Rootkit"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Haq 2014": {
+      "description": "Haq, T., Moran, N., Scott, M., & Vashisht, S. O. (2014, September 10). The Path to Mass-Producing Cyber Attacks &#91;Blog&#93;. Retrieved November 12, 2014.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2014/09/the-path-to-mass-producing-cyber-attacks.html"
+    }
+  },
+  "aliases_list": []
+}

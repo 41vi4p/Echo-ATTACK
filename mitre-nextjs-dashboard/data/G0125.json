@@ -1,0 +1,890 @@
+{
+  "attack_id": "G0125",
+  "notes": null,
+  "created": "03 March 2021",
+  "modified": "25 March 2025",
+  "name": "HAFNIUM",
+  "version": "3.0",
+  "contributors_list": [
+    "Daniyal Naeem, BT Security",
+    "Matt Brenton, Zurich Insurance Group",
+    "Mayuresh Dani, Qualys",
+    "Harshal Tupsamudre, Qualys",
+    "Vinayak Wadhwa, SAFE Security"
+  ],
+  "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) is a likely state-sponsored cyber espionage group operating out of China that has been active since at least January 2021. [HAFNIUM](https://attack.mitre.org/groups/G0125) primarily targets entities in the US across a number of industry sectors, including infectious disease researchers, law firms, higher education institutions, defense contractors, policy think tanks, and NGOs. [HAFNIUM](https://attack.mitre.org/groups/G0125) has targeted remote management tools and cloud software for intial access and has demonstrated an ability to quickly operationalize exploits for identified vulnerabilities in edge devices.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has granted privileges to domain accounts and reset the password for default admin accounts.(Citation: Volexity Exchange Marauder March 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has operated from leased virtual private servers (VPS) in the United States.(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Botnet",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has incorporated leased devices into covert networks to obfuscate communications.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Web Services",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has acquired web services for use in C2 and exfiltration.(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used open-source C2 frameworks, including [Covenant](https://attack.mitre.org/software/S1155).(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used 7-Zip and WinRAR to compress stolen files for exfiltration.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used MSGraph to exfiltrate data from email, OneDrive, and SharePoint.(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Password Spraying",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has gained initial access through password spray attacks.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used the Exchange Power Shell module <code>Set-OabVirtualDirectoryPowerShell</code> to export mailbox data.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used `cmd.exe` to execute commands on the victim's machine.(Citation: Rapid7 HAFNIUM Mar 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Botnet",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used compromised devices in covert networks to obfuscate communications.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has created domain accounts.(Citation: Volexity Exchange Marauder March 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Cloud Secrets Management Stores",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has moved laterally from on-premises environments to steal passwords from Azure key vaults.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1132",
+      "name": "Data Encoding",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Standard Encoding",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used ASCII encoding for C2 traffic.(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1530",
+      "name": "Data from Cloud Storage",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has exfitrated data from OneDrive.(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1213",
+      "name": "Data from Information Repositories",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Sharepoint",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has abused compromised credentials to exfiltrate data from SharePoint.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has collected data and files from a compromised machine.(Citation: Rapid7 HAFNIUM Mar 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1114",
+      "name": "Email Collection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Email Collection",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used web shells and MSGraph to export mailbox data.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)(Citation: Microsoft Silk Typhoon MAR 2025)\n",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has exfiltrated data to file sharing sites, including MEGA.(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has exploited multiple vulnerabilities to compromise edge devices and on-premises versions of Microsoft Exchange Server.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)(Citation: FireEye Exchange Zero Days March 2021)(Citation: Tarrask scheduled task)(Citation: Microsoft Log4j Vulnerability Exploitation December 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1068",
+      "name": "Exploitation for Privilege Escalation",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has targeted unpatched applications to elevate access in targeted organizations.(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has searched file contents on a compromised host.(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1592",
+      "name": "Gather Victim Host Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Client Configurations",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has interacted with Office 365 tenants to gather details regarding target's environments.(Citation: Microsoft HAFNIUM March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1589",
+      "name": "Gather Victim Identity Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Addresses",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has collected e-mail addresses for users they intended to target.(Citation: Volexity Exchange Marauder March 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1590",
+      "name": "Gather Victim Network Information",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) gathered the fully qualified domain names (FQDNs) for targeted Exchange servers in the victim's environment.(Citation: Volexity Exchange Marauder March 2021)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "IP Addresses",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has obtained IP addresses for publicly-accessible Exchange servers.(Citation: Volexity Exchange Marauder March 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1564",
+      "name": "Hide Artifacts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Hidden Files and Directories",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has hidden files on a compromised host.(Citation: Rapid7 HAFNIUM Mar 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Clear Windows Event Logs",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has cleared actor-performed actions from logs.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has downloaded malware and tools--including Nishang and PowerCat--onto a compromised host.(Citation: Microsoft HAFNIUM March 2020)(Citation: Rapid7 HAFNIUM Mar 2021) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used TCP for C2.(Citation: Microsoft HAFNIUM March 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used <code>procdump</code> to dump the LSASS process memory.(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)(Citation: Rapid7 HAFNIUM Mar 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "NTDS",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has stolen copies of the Active Directory database (NTDS.DIT).(Citation: Volexity Exchange Marauder March 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used `tasklist` to enumerate processes.(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has enumerated domain controllers using `net group \"Domain computers\"` and `nltest /dclist`.(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1593",
+      "name": "Search Open Websites/Domains",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Code Repositories",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has discovered leaked corporate credentials on public repositories including GitHub.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has deployed multiple web shells on compromised servers including SIMPLESEESHARP, SPORTSBALL, [China Chopper](https://attack.mitre.org/software/S0020), and [ASPXSpy](https://attack.mitre.org/software/S0073).(Citation: Microsoft HAFNIUM March 2020)(Citation: Volexity Exchange Marauder March 2021)(Citation: FireEye Exchange Zero Days March 2021)(Citation: Tarrask scheduled task)(Citation: Rapid7 HAFNIUM Mar 2021)(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "011",
+          "name": "Rundll32",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used <code>rundll32</code> to load malicious DLLs.(Citation: Volexity Exchange Marauder March 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internet Connection Discovery",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has checked for network connectivity from a compromised host using `ping`, including attempts to contact `google[.]com`.(Citation: Rapid7 HAFNIUM Mar 2021)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has collected IP information via IPInfo.(Citation: Rapid7 HAFNIUM Mar 2021)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used `whoami` to gather user information.(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1199",
+      "name": "Trusted Relationship",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used stolen API keys and credentials associatd with privilege access management (PAM), cloud app providers, and cloud data management companies to access downstream customer environments.(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1550",
+      "name": "Use Alternate Authentication Material",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Application Access Token",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has abused service principals with administrative permissions for data exfiltration.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Local Accounts",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has used the NT AUTHORITY\\SYSTEM account to create files on Exchange servers.(Citation: FireEye Exchange Zero Days March 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Cloud Accounts",
+          "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) has abused service principals in compromised environments to enable data exfiltration.(Citation: Microsoft Silk Typhoon MAR 2025)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0073",
+      "name": "ASPXSpy",
+      "descr": "(Citation: Volexity Exchange Marauder March 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0020",
+      "name": "China Chopper",
+      "descr": "(Citation: Volexity Exchange Marauder March 2021)(Citation: FireEye Exchange Zero Days March 2021)(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S1155",
+      "name": "Covenant",
+      "descr": "[HAFNIUM](https://attack.mitre.org/groups/G0125) used [Covenant](https://attack.mitre.org/software/S1155) for command and control following compromise of internet-facing servers.(Citation: Microsoft HAFNIUM March 2020)(Citation: Microsoft Silk Typhoon MAR 2025)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "010",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Regsvr32"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "004",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "InstallUtil"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "005",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Mshta"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "(Citation: Tarrask scheduled task)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: Volexity Exchange Marauder March 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S1011",
+      "name": "Tarrask",
+      "descr": "(Citation: Tarrask scheduled task) ",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1564",
+          "name": "Hide Artifacts"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "Operation Exchange Marauder",
+      "descr": "(Citation: Volexity Exchange Marauder March 2021)"
+    },
+    {
+      "name": "Silk Typhoon",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)(Citation: Microsoft Silk Typhoon MAR 2025)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Volexity Exchange Marauder March 2021": {
+      "description": "Gruzweig, J. et al. (2021, March 2). Operation Exchange Marauder: Active Exploitation of Multiple Zero-Day Microsoft Exchange Vulnerabilities. Retrieved March 3, 2021.",
+      "number": null,
+      "url": "https://www.volexity.com/blog/2021/03/02/active-exploitation-of-microsoft-exchange-zero-day-vulnerabilities/"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Microsoft Silk Typhoon MAR 2025": {
+      "description": "Microsoft Threat Intelligence . (2025, March 5). Silk Typhoon targeting IT supply chain. Retrieved March 20, 2025.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2025/03/05/silk-typhoon-targeting-it-supply-chain/"
+    },
+    "Microsoft HAFNIUM March 2020": {
+      "description": "MSTIC. (2021, March 2). HAFNIUM targeting Exchange Servers with 0-day exploits. Retrieved March 3, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/03/02/hafnium-targeting-exchange-servers/"
+    },
+    "Rapid7 HAFNIUM Mar 2021": {
+      "description": "Eoin Miller. (2021, March 23). Defending Against the Zero Day: Analyzing Attacker Behavior Post-Exploitation of Microsoft Exchange. Retrieved October 27, 2022.",
+      "number": null,
+      "url": "https://www.rapid7.com/blog/post/2021/03/23/defending-against-the-zero-day-analyzing-attacker-behavior-post-exploitation-of-microsoft-exchange/"
+    },
+    "FireEye Exchange Zero Days March 2021": {
+      "description": "Bromiley, M. et al. (2021, March 4). Detection and Response to Exploitation of Microsoft Exchange Zero-Day Vulnerabilities. Retrieved March 9, 2021.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2021/03/detection-response-to-exploitation-of-microsoft-exchange-zero-day-vulnerabilities.html"
+    },
+    "Tarrask scheduled task": {
+      "description": "Microsoft Threat Intelligence Team & Detection and Response Team . (2022, April 12). Tarrask malware uses scheduled tasks for defense evasion. Retrieved June 1, 2022.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2022/04/12/tarrask-malware-uses-scheduled-tasks-for-defense-evasion/"
+    },
+    "Microsoft Log4j Vulnerability Exploitation December 2021": {
+      "description": "Microsoft Threat Intelligence. (2021, December 11). Guidance for preventing, detecting, and hunting for exploitation of the Log4j 2 vulnerability. Retrieved December 7, 2023.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2021/12/11/guidance-for-preventing-detecting-and-hunting-for-cve-2021-44228-log4j-2-exploitation/"
+    }
+  },
+  "aliases_list": [
+    "Operation Exchange Marauder",
+    "Silk Typhoon"
+  ]
+}

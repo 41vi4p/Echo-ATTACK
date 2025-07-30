@@ -1,0 +1,328 @@
+{
+  "attack_id": "G1026",
+  "notes": null,
+  "created": "13 March 2024",
+  "modified": "29 March 2024",
+  "name": "Malteiro",
+  "version": "1.0",
+  "contributors_list": [
+    "Daniel Fernando Soriano Espinosa",
+    "SCILabs"
+  ],
+  "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) is a financially motivated criminal group that is likely based in Brazil and has been active since at least November 2019. The group operates and distributes the [Mispadu](https://attack.mitre.org/software/S1122)  banking trojan via a Malware-as-a-Service (MaaS) business model. [Malteiro](https://attack.mitre.org/groups/G1026) mainly targets victims throughout Latin America (particularly Mexico) and Europe (particularly Spain and Portugal).(Citation: SCILabs Malteiro 2021)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has utilized a dropper containing malicious VBS scripts.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has stolen credentials stored in the victim’s browsers via software tool NirSoft WebBrowserPassView.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has obtained credentials from mail clients via NirSoft MailPassView.(Citation: SCILabs Malteiro 2021)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has the ability to deobfuscate downloaded files prior to execution.(Citation: SCILabs Malteiro 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1657",
+      "name": "Financial Theft",
+      "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) targets organizations in a wide variety of sectors via the use of [Mispadu](https://attack.mitre.org/software/S1122) banking trojan with the goal of financial theft.(Citation: SCILabs Malteiro 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has used scripts encoded in Base64 certificates to distribute malware to victims.(Citation: SCILabs Malteiro Threat Overlap 2023)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has sent spearphishing emails containing malicious .zip files.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Dynamic-link Library Injection",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has injected [Mispadu](https://attack.mitre.org/software/S1122)’s DLL into a process.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1518",
+      "name": "Software Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Security Software Discovery",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) collects the installed antivirus on the victim machine.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) collects the machine information, system architecture, the OS version, computer name, and Windows product name.(Citation: SCILabs Malteiro 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1614",
+      "name": "System Location Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "System Language Discovery",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) will terminate [Mispadu](https://attack.mitre.org/software/S1122)'s infection process if the language of the victim machine is not Spanish or Portuguese.(Citation: SCILabs Malteiro 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Malteiro](https://attack.mitre.org/groups/G1026) has relied on users to execute .zip file attachments containing malicious URLs.(Citation: SCILabs Malteiro 2021) ",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S1122",
+      "name": "Mispadu",
+      "descr": "(Citation: SCILabs Malteiro 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "002",
+          "name": "Input Capture",
+          "sub_name": "GUI Input Capture"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "002",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1176",
+          "id": "001",
+          "name": "Software Extensions",
+          "sub_name": "Browser Extensions"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "007",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Msiexec"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1614",
+          "id": "001",
+          "name": "System Location Discovery",
+          "sub_name": "System Language Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "SCILabs Malteiro 2021": {
+      "description": "SCILabs. (2021, December 23). Cyber Threat Profile Malteiro. Retrieved March 13, 2024.",
+      "number": null,
+      "url": "https://blog.scilabs.mx/en/cyber-threat-profile-malteiro/"
+    },
+    "SCILabs Malteiro Threat Overlap 2023": {
+      "description": "SCILabs. (2023, October 8). URSA/Mispadu: Overlap analysis with other threats. Retrieved March 13, 2024.",
+      "number": null,
+      "url": "https://blog.scilabs.mx/en/ursa-mispadu-overlap-analysis-with-other-threats/"
+    }
+  },
+  "aliases_list": []
+}

@@ -1,0 +1,177 @@
+{
+  "attack_id": "G0105",
+  "notes": null,
+  "created": "15 May 2020",
+  "modified": "25 April 2025",
+  "name": "DarkVishnya",
+  "version": "1.1",
+  "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) is a financially motivated threat actor targeting financial institutions in Eastern Europe. In 2017-2018 the group attacked at least 8 banks in this region.(Citation: Securelist DarkVishnya Dec 2018)",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) used brute-force attack to obtain login data.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) used PowerShell to create shellcode loaders.(Citation: Securelist DarkVishnya Dec 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1543",
+      "name": "Create or Modify System Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Service",
+          "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) created new services for shellcode loaders distribution.(Citation: Securelist DarkVishnya Dec 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1200",
+      "name": "Hardware Additions",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) physically connected Bash Bunny, Raspberry Pi, netbooks, and inexpensive laptops to the target organization's environment to access the company’s local network.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) performed port scanning to obtain the list of active services.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1135",
+      "name": "Network Share Discovery",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) scanned the network for public shared folders.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1040",
+      "name": "Network Sniffing",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) used network sniffing to obtain login data. (Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) used ports 5190 and 7900 for shellcode listeners, and 4444, 4445, 31337 for shellcode C2.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) has obtained and used tools such as [Impacket](https://attack.mitre.org/software/S0357), [Winexe](https://attack.mitre.org/software/S0191), and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Securelist DarkVishnya Dec 2018)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1219",
+      "name": "Remote Access Tools",
+      "descr": "[DarkVishnya](https://attack.mitre.org/groups/G0105) used DameWare Mini Remote Control for lateral movement.(Citation: Securelist DarkVishnya Dec 2018)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: Securelist DarkVishnya Dec 2018) ",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0191",
+      "name": "Winexe",
+      "descr": "(Citation: Securelist DarkVishnya Dec 2018) ",
+      "techniques": [
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Securelist DarkVishnya Dec 2018": {
+      "description": "Golovanov, S. (2018, December 6). DarkVishnya: Banks attacked through direct connection to local network. Retrieved May 15, 2020.",
+      "number": null,
+      "url": "https://securelist.com/darkvishnya/89169/"
+    }
+  },
+  "aliases_list": []
+}

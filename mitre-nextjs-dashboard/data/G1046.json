@@ -1,0 +1,1452 @@
+{
+  "attack_id": "G1046",
+  "notes": null,
+  "created": "14 March 2025",
+  "modified": "14 March 2025",
+  "name": "Storm-1811",
+  "version": "1.0",
+  "contributors_list": [
+    "Liran Ravich, CardinalOps",
+    "Joe Gumke, U.S. Bank"
+  ],
+  "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) is a financially-motivated entity linked to [Black Basta](https://attack.mitre.org/software/S1070) ransomware deployment. [Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake \"help desk\" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)(Citation: RedCanary June Insights 2024)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has performed domain account enumeration during intrusions.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created domains for use with RMM tools.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created Windows Registry Run keys that execute various batch scripts to establish persistence on victim devices.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used PowerShell for multiple purposes, such as using PowerShell scripts executing in an infinite loop to create an SSH connection to a command and control server.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used multiple batch scripts during initial access and subsequent actions on victim machines.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) is a financially-motivated entity linked to the deployment of [Black Basta](https://attack.mitre.org/software/S1070) ransomware in victim environments.(Citation: Microsoft Storm-1811 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Local Data Staging",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has locally staged captured credentials for subsequent manual exfiltration.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has distributed password-protected archives such as ZIP files during intrusions.(Citation: rapid7-email-bombing)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1482",
+      "name": "Domain Trust Discovery",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has enumerated domain accounts and access during intrusions.(Citation: Microsoft Storm-1811 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1667",
+      "name": "Email Bombing",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has deployed large volumes of non-malicious email spam to victims in order to prompt follow-on interactions with the threat actor posing as IT support or helpdesk to resolve the problem.(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Cloud Accounts",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created malicious accounts to enable activity via Microsoft Teams, typically spoofing various IT support and helpdesk themes.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1048",
+      "name": "Exfiltration Over Alternative Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has exfiltrated captured user credentials via Secure Copy Protocol (SCP).(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1222",
+      "name": "File and Directory Permissions Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Windows File and Directory Permissions Modification",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used `cacls.exe` via batch script to modify file and directory permissions in victim environments.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1574",
+      "name": "Hijack Execution Flow",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "DLL",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has deployed a malicious DLL (7z.DLL) that is sideloaded by a modified, legitimate installer (7zG.exe) when that installer is executed with an additional command line parameter of `b` at runtime to load a [Cobalt Strike](https://attack.mitre.org/software/S0154) beacon payload.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1656",
+      "name": "Impersonation",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) impersonates help desk and IT support personnel for phishing and social engineering purposes during initial access to victim environments.(Citation: Microsoft Storm-1811 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used scripted `cURL` commands, [BITSAdmin](https://attack.mitre.org/software/S0190), and other mechanisms to retrieve follow-on batch scripts and tools for execution on victim devices.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary June Insights 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1056",
+      "name": "Input Capture",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used a PowerShell script to capture user credentials after prompting a user to authenticate to run a malicious script masquerading as a legitimate update item.(Citation: rapid7-email-bombing)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used the [Impacket](https://attack.mitre.org/software/S0357) toolset to move and remotely execute payloads to other hosts in victim networks.(Citation: rapid7-email-bombing)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has disguised [Cobalt Strike](https://attack.mitre.org/software/S0154) installers as a malicious DLL masquerading as part of a legitimate 7zip installation package.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "010",
+          "name": "Masquerade Account Name",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created Microsoft Teams accounts that spoof IT support and helpdesk members for use in application and voice phishing.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has prompted users to download and execute batch scripts that masquerade as legitimate update files during initial access and social engineering operations.(Citation: rapid7-email-bombing)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "013",
+          "name": "Encrypted/Encoded File",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) XOR encodes a [Cobalt Strike](https://attack.mitre.org/software/S0154) installation payload in a DLL file that is decoded with a hardcoded key when called by a legitimate 7zip installation process.(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) acquired various legitimate and malicious tools, such as RMM software and commodity malware packages, for operations.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has distributed malicious links to victims that redirect to EvilProxy-based phishing sites to harvest credentials.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing via Service",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used Microsoft Teams to send messages and initiate voice calls to victims posing as IT support personnel.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Spearphishing Voice",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has initiated voice calls with victims posing as IT support to prompt users to download and execute scripts and other tools for initial access.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1219",
+      "name": "Remote Access Tools",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Desktop Software",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has abused multiple types of legitimate remote access software and tools, such as ScreenConnect, NetSupport Manager, and AnyDesk.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SMB/Windows Admin Shares",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has attempted to move laterally in victim environments via SMB using [Impacket](https://attack.mitre.org/software/S0357).(Citation: rapid7-email-bombing)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "SSH",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used OpenSSH to establish an SSH tunnel to victims for persistent access.(Citation: Microsoft Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1033",
+      "name": "System Owner/User Discovery",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used `whoami.exe` to determine if the active user on a compromised system is an administrator.(Citation: rapid7-email-bombing)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has prompted users to execute downloaded software and payloads as the result of social engineering activity.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0190",
+      "name": "BITSAdmin",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used [BITSAdmin](https://attack.mitre.org/software/S0190) to download payloads.(Citation: Microsoft Storm-1811 2024)(Citation: RedCanary June Insights 2024)",
+      "techniques": [
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        }
+      ]
+    },
+    {
+      "id": "S1070",
+      "name": "Black Basta",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) is associated with the deployment of [Black Basta](https://attack.mitre.org/software/S1070) ransomware.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1486",
+          "name": "Data Encrypted for Impact"
+        },
+        {
+          "id": "T1622",
+          "name": "Debugger Evasion"
+        },
+        {
+          "parent_id": "T1491",
+          "id": "001",
+          "name": "Defacement",
+          "sub_name": "Internal Defacement"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "002",
+          "name": "Execution Guardrails",
+          "sub_name": "Mutual Exclusion"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "002",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Linux and Mac File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "009",
+          "name": "Impair Defenses",
+          "sub_name": "Safe Mode Boot"
+        },
+        {
+          "id": "T1490",
+          "name": "Inhibit System Recovery"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "001",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Binary Padding"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "id": "T1497",
+          "name": "Virtualization/Sandbox Evasion"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) operations include the use of [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used [Impacket](https://attack.mitre.org/software/S0357) for lateral movement activity.(Citation: rapid7-email-bombing)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used [PsExec](https://attack.mitre.org/software/S0029) for remote process execution.(Citation: Microsoft Storm-1811 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S0650",
+      "name": "QakBot",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) operations have included deployment of [QakBot](https://attack.mitre.org/software/S0650).(Citation: Microsoft Storm-1811 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "id": "T1110",
+          "name": "Brute Force"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "001",
+          "name": "Data Staged",
+          "sub_name": "Local Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1210",
+          "name": "Exploitation of Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "008",
+          "name": "Masquerading",
+          "sub_name": "Masquerade File Type"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "001",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Binary Padding"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "006",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "HTML Smuggling"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "id": "T1120",
+          "name": "Peripheral Device Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "002",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "002",
+          "name": "Proxy",
+          "sub_name": "External Proxy"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1091",
+          "name": "Replication Through Removable Media"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "id": "T1539",
+          "name": "Steal Web Session Cookie"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "005",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Mark-of-the-Web Bypass"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "010",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Regsvr32"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "007",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Msiexec"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1016",
+          "id": "001",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Internet Connection Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "001",
+          "name": "User Execution",
+          "sub_name": "Malicious Link"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S1209",
+      "name": "Quick Assist",
+      "descr": "[Storm-1811](https://attack.mitre.org/groups/G1046) used [Quick Assist](https://attack.mitre.org/software/S1209) as part of social engineering activity to interact with victims to install follow-on malicious software.(Citation: Microsoft Storm-1811 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1125",
+          "name": "Video Capture"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "Microsoft Storm-1811 2024": {
+      "description": "Microsoft Threat Intelligence. (2024, May 15). Threat actors misusing Quick Assist in social engineering attacks leading to ransomware. Retrieved March 14, 2025.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2024/05/15/threat-actors-misusing-quick-assist-in-social-engineering-attacks-leading-to-ransomware/"
+    },
+    "RedCanary Storm-1811 2024": {
+      "description": "Red Canary Intelligence. (2024, December 2). Storm-1811 exploits RMM tools to drop Black Basta ransomware. Retrieved March 14, 2025.",
+      "number": null,
+      "url": "https://redcanary.com/blog/threat-intelligence/storm-1811-black-basta/"
+    },
+    "RedCanary June Insights 2024": {
+      "description": "The Red Canary Team. (2024, June 20). Intelligence Insights: June 2024. Retrieved March 14, 2025.",
+      "number": null,
+      "url": "https://redcanary.com/blog/threat-intelligence/intelligence-insights-june-2024/"
+    },
+    "rapid7-email-bombing": {
+      "description": "Tyler McGraw, Thomas Elkins, and Evan McCann. (2024, May 10). Ongoing Social Engineering Campaign Linked to Black Basta Ransomware Operators. Retrieved January 31, 2025.",
+      "number": null,
+      "url": "https://www.rapid7.com/blog/post/2024/05/10/ongoing-social-engineering-campaign-linked-to-black-basta-ransomware-operators"
+    }
+  },
+  "aliases_list": []
+}

@@ -1,0 +1,62 @@
+{
+  "attack_id": "G0023",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "16 April 2025",
+  "name": "APT16",
+  "version": "1.1",
+  "descr": "[APT16](https://attack.mitre.org/groups/G0023) is a China-based threat group that has launched spearphishing campaigns targeting Japanese and Taiwanese organizations. (Citation: FireEye EPS Awakens Part 2)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Server",
+          "descr": "[APT16](https://attack.mitre.org/groups/G0023) has compromised otherwise legitimate sites as staging servers for second-stage payloads.(Citation: FireEye EPS Awakens Part 2)",
+          "subtechniques": []
+        }
+      ]
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0064",
+      "name": "ELMER",
+      "descr": "(Citation: FireEye EPS Awakens Part 2)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "citations": {
+    "current_number": 0,
+    "FireEye EPS Awakens Part 2": {
+      "description": "Winters, R. (2015, December 20). The EPS Awakens - Part 2. Retrieved January 22, 2016.",
+      "number": null,
+      "url": "https://web.archive.org/web/20151226205946/https://www.fireeye.com/blog/threat-research/2015/12/the-eps-awakens-part-two.html"
+    }
+  },
+  "aliases_list": []
+}

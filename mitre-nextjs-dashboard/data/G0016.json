@@ -1,0 +1,5455 @@
+{
+  "attack_id": "G0016",
+  "notes": null,
+  "created": "31 May 2017",
+  "modified": "04 April 2025",
+  "name": "APT29",
+  "version": "6.2",
+  "contributors_list": [
+    "Daniyal Naeem, BT Security",
+    "Matt Brenton, Zurich Insurance Group",
+    "Katie Nickels, Red Canary",
+    "Joe Gumke, U.S. Bank",
+    "Liran Ravich, CardinalOps",
+    "Vicky Ray, RayvenX"
+  ],
+  "descr": "[APT29](https://attack.mitre.org/groups/G0016) is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).(Citation: White House Imposing Costs RU Gov April 2021)(Citation: UK Gov Malign RIS Activity April 2021) They have operated since at least 2008, often targeting government networks in Europe and NATO member countries, research institutes, and think tanks. [APT29](https://attack.mitre.org/groups/G0016) reportedly compromised the Democratic National Committee starting in the summer of 2015.(Citation: F-Secure The Dukes)(Citation: GRIZZLY STEPPE JAR)(Citation: Crowdstrike DNC June 2016)(Citation: UK Gov UK Exposes Russia SolarWinds April 2021)\n\nIn April 2021, the US and UK governments attributed the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024) to the SVR; public statements included citations to [APT29](https://attack.mitre.org/groups/G0016), Cozy Bear, and The Dukes.(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021) Industry reporting also referred to the actors involved in this campaign as UNC2452, NOBELIUM, StellarParticle, Dark Halo, and SolarStorm.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Unit 42 SolarStorm December 2020)",
+  "technique_table_data": [
+    {
+      "domain": "enterprise",
+      "id": "T1548",
+      "name": "Abuse Elevation Control Mechanism",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Bypass User Account Control",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has bypassed UAC.(Citation: Mandiant No Easy Breach)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1087",
+      "name": "Account Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Account",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used PowerShell to discover domain accounts by exectuing `Get-ADUser` and `Get-ADGroupMember`.(Citation: CrowdStrike StellarParticle January 2022)(Citation: Secureworks IRON RITUAL Profile)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Cloud Account",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has conducted enumeration of Azure AD accounts.(Citation: MSTIC Nobelium Oct 2021)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) obtained a list of users and their roles from an Exchange server using `Get-ManagementRoleAssignment`.(Citation: Volexity SolarWinds)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1098",
+      "name": "Account Manipulation",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Additional Cloud Credentials",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) added credentials to OAuth Applications and Service Principals.(Citation: Microsoft - Customer Guidance on Recent Nation-State Cyber Attacks)(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Additional Email Delegate Permissions",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used a compromised global administrator account in Azure AD to backdoor a service principal with `ApplicationImpersonation` rights to start collecting emails from targeted mailboxes; [APT29](https://attack.mitre.org/groups/G0016) has also used compromised accounts holding `ApplicationImpersonation` rights in Exchange to collect emails.(Citation: Mandiant APT29 Microsoft 365 2022)(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) added their own devices as allowed IDs for active sync using `Set-CASMailbox`, allowing it to obtain copies of victim mailboxes. It also added additional permissions (such as Mail.Read and Mail.ReadWrite) to compromised Application or Service Principals.(Citation: Volexity SolarWinds)(Citation: Microsoft - Customer Guidance on Recent Nation-State Cyber Attacks)(Citation: MSTIC Nobelium Oct 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Additional Cloud Roles",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) granted `company administrator` privileges to a newly created service principle.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Device Registration",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has enrolled their own devices into compromised cloud tenants, including enrolling a device in MFA to an Azure AD environment following a successful password guessing attack against a dormant account.(Citation: Mandiant APT29 Microsoft 365 2022)(Citation: NCSC et al APT29 2024)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) registered devices in order to enable mailbox syncing via the `Set-CASMailbox` command.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "For the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) acquired C2 domains, sometimes through resellers.(Citation: MSTIC NOBELIUM Mar 2021)(Citation: FireEye SUNSHUTTLE Mar 2021)\nFor [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) registered domains for use in C2 including some crafted to appear as existing legitimate domains.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Web Services",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has registered algorithmically generated Twitter handles that are used for C2 by malware, such as [HAMMERTOSS](https://attack.mitre.org/software/S0037). [APT29](https://attack.mitre.org/groups/G0016) has also used legitimate web services such as Dropbox and Constant Contact in their operations.(Citation: FireEye APT29)(Citation: MSTIC NOBELIUM May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Vulnerability Scanning",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has conducted widespread scanning of target environments to identify vulnerabilities for exploit.(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Protocols",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used HTTP for C2 and data exfiltration.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Archive via Utility",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used 7-Zip to compress stolen emails into password-protected archives prior to exfltration; [APT29](https://attack.mitre.org/groups/G0016) also compressed text files into zipped archives.(Citation: Volexity SolarWinds)(Citation: Microsoft Deep Dive Solorigate January 2021)(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Registry Run Keys / Startup Folder",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) added Registry Run keys to establish persistence.(Citation: Mandiant No Easy Breach)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1037",
+      "name": "Boot or Logon Initialization Scripts",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has hijacked legitimate application-specific startup scripts to enable malware to execute on system startup.(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "RC Scripts",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has installed a run command on a compromised system to enable malware execution on system startup.(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Password Guessing",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has successfully conducted password guessing attacks against a list of mailboxes.(Citation: Mandiant APT29 Microsoft 365 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Password Spraying",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has conducted brute force password spray attacks.(Citation: MSRC Nobelium June 2021)(Citation: MSTIC Nobelium Oct 2021)(Citation: NCSC et al APT29 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1651",
+      "name": "Cloud Administration Command",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used Azure Run Command and Azure Admin-on-Behalf-of (AOBO) to execute code on virtual machines.(Citation: MSTIC Nobelium Oct 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used encoded PowerShell scripts uploaded to [CozyCar](https://attack.mitre.org/software/S0046) installations to download and install [SeaDuke](https://attack.mitre.org/software/S0053).(Citation: Symantec Seaduke 2015)(Citation: Mandiant No Easy Breach)(Citation: ESET T3 Threat Report 2021)(Citation: Secureworks IRON HEMLOCK Profile)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used PowerShell to create new tasks on remote machines, identify configuration settings, exfiltrate data, and execute other commands.(Citation: Volexity SolarWinds)(Citation: Microsoft Analyzing Solorigate Dec 2020)(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Command Shell",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used `cmd.exe` to execute commands on remote machines.(Citation: Volexity SolarWinds)(Citation: Microsoft Analyzing Solorigate Dec 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Visual Basic",
+          "descr": "For the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) wrote malware such as [Sibot](https://attack.mitre.org/software/S0589) in Visual Basic.(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Python",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has developed malware variants written in Python.(Citation: Symantec Seaduke 2015)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "009",
+          "name": "Cloud API",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has leveraged the Microsoft Graph API to perform various actions across Azure and M365 environments. They have also utilized AADInternals PowerShell Modules to access the API (Citation: MSTIC Nobelium Toolset May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1586",
+      "name": "Compromise Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Email Accounts",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has compromised email accounts to further enable phishing campaigns and taken control of dormant accounts.(Citation: ANSSI Nobelium Phishing December 2021)(Citation: Mandiant APT29 Microsoft 365 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Cloud Accounts",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used residential proxies, including Azure Virtual Machines, to obfuscate their access to victim environments.(Citation: Mandiant APT29 Microsoft 365 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1584",
+      "name": "Compromise Infrastructure",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Domains",
+          "descr": "For the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) compromised domains to use for C2.(Citation: MSTIC NOBELIUM Mar 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1136",
+      "name": "Create Account",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Cloud Account",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) can create new users through Azure AD.(Citation: MSTIC Nobelium Oct 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1555",
+      "name": "Credentials from Password Stores",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Credentials from Web Browsers",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) stole users' saved passwords from Chrome.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used account credentials they obtained to attempt access to Group Managed Service Account (gMSA) passwords.(Citation: Microsoft Deep Dive Solorigate January 2021) "
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1213",
+      "name": "Data from Information Repositories",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) accessed victims' internal knowledge repositories (wikis) to view sensitive corporate information on products, services, and internal business operations.(Citation: CrowdStrike StellarParticle January 2022)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Code Repositories",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) downloaded source code from code repositories.(Citation: Microsoft Internal Solorigate Investigation Blog)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has stolen data from compromised hosts.(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) extracted files from compromised networks.(Citation: Volexity SolarWinds)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1001",
+      "name": "Data Obfuscation",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Steganography",
+          "descr": "During [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used steganography to hide the communications between the implants and their C&C servers.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1074",
+      "name": "Data Staged",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Data Staging",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) staged data and files in password-protected archives on a victim's OWA server.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1140",
+      "name": "Deobfuscate/Decode Files or Information",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used 7-Zip to decode their [Raindrop](https://attack.mitre.org/software/S0565) malware.(Citation: Symantec RAINDROP January 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1587",
+      "name": "Develop Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used unique malware in many of their operations.(Citation: F-Secure The Dukes)(Citation: Mandiant No Easy Breach)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nFor the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used numerous pieces of malware that were likely developed for or by the group, including [SUNBURST](https://attack.mitre.org/software/S0559), [SUNSPOT](https://attack.mitre.org/software/S0562), [Raindrop](https://attack.mitre.org/software/S0565), and [TEARDROP](https://attack.mitre.org/software/S0560).(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Microsoft Deep Dive Solorigate January 2021) \nFor [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used new strains of malware including [FatDuke](https://attack.mitre.org/software/S0512), [MiniDuke](https://attack.mitre.org/software/S0051), [RegDuke](https://attack.mitre.org/software/S0511), and [PolyglotDuke](https://attack.mitre.org/software/S0518).(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Digital Certificates",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has created self-signed digital certificates to enable mutual TLS authentication for malware.(Citation: PWC WellMess July 2020)(Citation: PWC WellMess C2 August 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1484",
+      "name": "Domain or Tenant Policy Modification",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Trust Modification",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) changed domain federation trust settings using Azure AD administrative permissions to configure the domain to accept authorization tokens signed by their own SAML signing certificate.(Citation: Secureworks IRON RITUAL Profile)(Citation: Microsoft 365 Defender Solorigate)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1482",
+      "name": "Domain Trust Discovery",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used the `Get-AcceptedDomain` PowerShell cmdlet to enumerate accepted domains through an Exchange Management Shell.(Citation: Volexity SolarWinds) They also used [AdFind](https://attack.mitre.org/software/S0552) to enumerate domains and to discover trust between federated domains.(Citation: CrowdStrike StellarParticle January 2022)(Citation: Microsoft Deep Dive Solorigate January 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1568",
+      "name": "Dynamic Resolution",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used Dynamic DNS providers for their malware C2 infrastructure.(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used dynamic DNS resolution to construct and resolve to randomly-generated subdomains for C2.(Citation: Volexity SolarWinds) ",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1114",
+      "name": "Email Collection",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Remote Email Collection",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has collected emails from targeted mailboxes within a compromised Azure AD tenant and compromised Exchange servers, including via Exchange Web Services (EWS) API requests.(Citation: Mandiant APT29 Microsoft 365 2022)(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) collected emails from specific individuals, such as executives and IT staff, using `New-MailboxExportRequest` followed by `Get-MailboxExportRequest`.(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1573",
+      "name": "Encrypted Channel",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used multiple layers of encryption within malware to protect C2 communication.(Citation: Secureworks IRON HEMLOCK Profile)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Social Media Accounts",
+          "descr": "For [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) registered Twitter accounts to host C2 nodes.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1546",
+      "name": "Event Triggered Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Windows Management Instrumentation Event Subscription",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used WMI event subscriptions for persistence.(Citation: Mandiant No Easy Breach)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used a WMI event filter to invoke a command-line event consumer at system boot time to launch a backdoor with `rundll32.exe`.(Citation: Microsoft Deep Dive Solorigate January 2021)(Citation: Microsoft 365 Defender Solorigate)\nDuring [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used WMI event subscriptions to establish persistence for malware.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Accessibility Features",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) used sticky-keys to obtain unauthenticated, privileged console access.(Citation: Mandiant No Easy Breach)(Citation: FireEye APT29 Domain Fronting)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1048",
+      "name": "Exfiltration Over Alternative Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) exfiltrated collected data over a simple HTTPS request to a password-protected archive staged on a victim's OWA servers.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has exploited CVE-2019-19781 for Citrix, CVE-2019-11510 for Pulse Secure VPNs, CVE-2018-13379 for FortiGate VPNs, and CVE-2019-9670 in Zimbra software to gain access.(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: NCSC APT29 July 2020)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) exploited CVE-2020-0688 against the Microsoft Exchange Control Panel to regain access to a network.(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used multiple software exploits for common client software, like Microsoft Word, Exchange, and Adobe Reader, to gain code execution.(Citation: F-Secure The Dukes)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: MSTIC NOBELIUM May 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1068",
+      "name": "Exploitation for Privilege Escalation",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has exploited CVE-2021-36934 to escalate privileges on a compromised host.(Citation: ESET T3 Threat Report 2021)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used compromised identities to access networks via VPNs and Citrix.(Citation: NCSC APT29 July 2020)(Citation: Mandiant APT29 Microsoft 365 2022)\nFor the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used compromised identities to access networks via SSH, VPNs, and other remote access tools.(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike StellarParticle January 2022)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1083",
+      "name": "File and Directory Discovery",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) obtained information about the configured Exchange virtual directory using `Get-WebServicesVirtualDirectory`.(Citation: Volexity SolarWinds)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1606",
+      "name": "Forge Web Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Web Cookies",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) bypassed MFA set on OWA accounts by generating a cookie value from a previously stolen secret key.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SAML Tokens",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) created tokens using compromised SAML signing certificates.(Citation: Microsoft - Customer Guidance on Recent Nation-State Cyber Attacks)(Citation: Secureworks IRON RITUAL Profile)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1589",
+      "name": "Gather Victim Identity Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Credentials",
+          "descr": "For the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) conducted credential theft operations to obtain credentials to be used for access to victim environments.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1665",
+      "name": "Hide Infrastructure",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) uses compromised residential endpoints, typically within the same ISP IP address range, as proxies to hide the true source of C2 traffic.(Citation: NCSC et al APT29 2024)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) set the hostnames of their C2 infrastructure to match legitimate hostnames in the victim environment. They also used IP addresses originating from the same country as the victim for their VPN infrastructure.(Citation: FireEye SUNBURST Backdoor December 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used the service control manager on a remote system to disable services associated with security monitoring products.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Disable Windows Event Logging",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016), used `AUDITPOL` to prevent the collection of audit logs.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Disable or Modify System Firewall",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used `netsh` to configure firewall rules that limited certain UDP outbound packets.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Disable or Modify Cloud Logs",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has disabled Purview Audit on targeted accounts prior to stealing emails from  Microsoft 365 tenants.(Citation: Mandiant APT29 Microsoft 365 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used [SDelete](https://attack.mitre.org/software/S0195) to remove artifacts from victim networks.(Citation: Mandiant No Easy Breach)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) routinely removed their tools, including custom backdoors, once remote access was achieved.(Citation: FireEye SUNBURST Backdoor December 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Timestomp",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used timestomping to alter the Standard Information timestamps on their web shells to match other files in the same directory.(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) modified timestamps of backdoors to match legitimate Windows files.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "008",
+          "name": "Clear Mailbox Data",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) removed evidence of email export requests using `Remove-MailboxExportRequest`.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) temporarily replaced legitimate utilities with their own, executed their payload, and then restored the original file.(Citation: FireEye SUNBURST Backdoor December 2020)"
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has downloaded additional tools and malware onto compromised networks.(Citation: Mandiant No Easy Breach)(Citation: PWC WellMess July 2020)(Citation: F-Secure The Dukes)(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) downloaded additional malware, such as [TEARDROP](https://attack.mitre.org/software/S0560) and [Cobalt Strike](https://attack.mitre.org/software/S0154), onto a compromised host following initial access.(Citation: FireEye SUNBURST Backdoor December 2020)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Masquerade Task or Service",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) named tasks `\\Microsoft\\Windows\\SoftwareProtectionPlatform\\EventCacheManager` in order to appear legitimate.(Citation: Volexity SolarWinds)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has renamed malicious DLLs with legitimate names to appear benign; they have also created an Azure AD certificate with a Common Name that matched the display name of the compromised service principal.(Citation: SentinelOne NobleBaron June 2021)(Citation: Mandiant APT29 Microsoft 365 2022)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) renamed software and DLLs with legitimate names to appear benign.(Citation: Volexity SolarWinds)(Citation: Microsoft Analyzing Solorigate Dec 2020)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1556",
+      "name": "Modify Authentication Process",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Hybrid Identity",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has edited the `Microsoft.IdentityServer.Servicehost.exe.config` file to load a malicious DLL into the AD FS process, thereby enabling persistent access to any service federated with AD FS for a user with a specified User Principal Name.(Citation: MagicWeb)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1621",
+      "name": "Multi-Factor Authentication Request Generation",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used repeated MFA requests to gain access to victim accounts.(Citation: Suspected Russian Activity Targeting Government and Business Entities Around the Globe)(Citation: NCSC et al APT29 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Binary Padding",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) used large size files to avoid detection by security solutions with hardcoded size limits.(Citation: SentinelOne NobleBaron June 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Software Packing",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) used UPX to pack files.(Citation: Mandiant No Easy Breach)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Steganography",
+          "descr": "During [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used steganography to hide payloads inside valid images.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "HTML Smuggling",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has embedded an ISO file within an HTML attachment that contained JavaScript code to initiate malware execution.(Citation: ESET T3 Threat Report 2021) ",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Tool",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has obtained and used a variety of tools including [Mimikatz](https://attack.mitre.org/software/S0002), [SDelete](https://attack.mitre.org/software/S0195), [Tor](https://attack.mitre.org/software/S0183), [meek](https://attack.mitre.org/software/S0175), and [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: Mandiant No Easy Breach)(Citation: F-Secure The Dukes)(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Security Account Manager",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used the `reg save` command to save registry hives.(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "LSA Secrets",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used the `reg save` command to extract LSA secrets offline.(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "DCSync",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used privileged accounts to replicate directory service data with domain controllers.(Citation: Microsoft 365 Defender Solorigate)(Citation: Microsoft Deep Dive Solorigate January 2021)(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1069",
+      "name": "Permission Groups Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Groups",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used [AdFind](https://attack.mitre.org/software/S0552) to enumerate domain groups.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used the `Get-ManagementRoleAssignment` PowerShell cmdlet to enumerate Exchange management role assignments through an Exchange Management Shell.(Citation: Volexity SolarWinds)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1566",
+      "name": "Phishing",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Spearphishing Attachment",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used spearphishing emails with an attachment to deliver files with exploits to initial victims.(Citation: F-Secure The Dukes)(Citation: MSTIC NOBELIUM May 2021)(Citation: ESET T3 Threat Report 2021)(Citation: Secureworks IRON HEMLOCK Profile)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Spearphishing Link",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used spearphishing with a link to trick victims into clicking on a link to a zip file containing malicious files.(Citation: Mandiant No Easy Breach)(Citation: MSTIC NOBELIUM May 2021)(Citation: Secureworks IRON RITUAL USAID Phish May 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Spearphishing via Service",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used the legitimate mailing service Constant Contact to send phishing e-mails.(Citation: MSTIC NOBELIUM May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1057",
+      "name": "Process Discovery",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used multiple command-line utilities to enumerate running processes.(Citation: Volexity SolarWinds)(Citation: Microsoft Deep Dive Solorigate January 2021)(Citation: CrowdStrike StellarParticle January 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internal Proxy",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used SSH port forwarding capabilities on public-facing systems, and configured at least one instance of [Cobalt Strike](https://attack.mitre.org/software/S0154) to use a network pipe over SMB.(Citation: CrowdStrike StellarParticle January 2022)(Citation: Symantec RAINDROP January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "External Proxy",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) uses compromised residential endpoints as proxies for defense evasion and network access.(Citation: NCSC et al APT29 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Multi-hop Proxy",
+          "descr": "A backdoor used by [APT29](https://attack.mitre.org/groups/G0016) created a [Tor](https://attack.mitre.org/software/S0183) hidden service to forward traffic from the [Tor](https://attack.mitre.org/software/S0183) client to local ports 3389 (RDP), 139 (Netbios), and 445 (SMB) enabling full remote access from outside the network and has also used TOR.(Citation: Mandiant No Easy Breach)(Citation: MSTIC Nobelium Oct 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Domain Fronting",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used the meek domain fronting plugin for [Tor](https://attack.mitre.org/software/S0183) to hide the destination of C2 traffic.(Citation: Mandiant No Easy Breach)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Remote Desktop Protocol",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used RDP sessions from public-facing systems to internal servers.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "SMB/Windows Admin Shares",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used administrative accounts to connect over SMB to targeted users.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "006",
+          "name": "Windows Remote Management",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used WinRM via PowerShell to execute commands and payloads on remote hosts.(Citation: Symantec RAINDROP January 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "007",
+          "name": "Cloud Services",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has leveraged compromised high-privileged on-premises accounts synced to Office 365 to move laterally into a cloud environment, including through the use of Azure AD PowerShell.(Citation: Mandiant Remediation and Hardening Strategies for Microsoft 365)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used [AdFind](https://attack.mitre.org/software/S0552) to enumerate remote systems.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used named and hijacked scheduled tasks to establish persistence.(Citation: Mandiant No Easy Breach)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used `scheduler` and `schtasks` to create new tasks on remote host as part of their lateral movement. They manipulated scheduled tasks by updating an existing legitimate task to execute their tools and then returned the scheduled task to its original configuration. [APT29](https://attack.mitre.org/groups/G0016) also created a scheduled task to maintain [SUNSPOT](https://attack.mitre.org/software/S0562) persistence when the host booted.(Citation: Volexity SolarWinds)(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: CrowdStrike SUNSPOT Implant January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has installed web shells on exploited Microsoft Exchange servers.(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1528",
+      "name": "Steal Application Access Token",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) uses stolen tokens to access victim accounts, without needing a password.(Citation: NCSC et al APT29 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1649",
+      "name": "Steal or Forge Authentication Certificates",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has abused misconfigured AD CS certificate templates to impersonate admin users and create additional authentication certificates.(Citation: Mandiant APT29 Trello)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1558",
+      "name": "Steal or Forge Kerberos Tickets",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Kerberoasting",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) obtained Ticket Granting Service (TGS) tickets for Active Directory Service Principle Names to crack offline.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1539",
+      "name": "Steal Web Session Cookie",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) stole Chrome browser cookies by copying the Chrome profile directories of targeted users.(Citation: CrowdStrike StellarParticle January 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1553",
+      "name": "Subvert Trust Controls",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Code Signing",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) was able to get [SUNBURST](https://attack.mitre.org/software/S0559) signed by SolarWinds code signing certificates by injecting the malware into the SolarWinds Orion software lifecycle.(Citation: FireEye SUNBURST Backdoor December 2020)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Mark-of-the-Web Bypass",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has embedded ISO images and VHDX files in HTML to evade Mark-of-the-Web.(Citation: ESET T3 Threat Report 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1195",
+      "name": "Supply Chain Compromise",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Compromise Software Supply Chain",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) gained initial network access to some victims via a trojanized update of SolarWinds Orion software.(Citation: SolarWinds Sunburst Sunspot Update January 2021)(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1218",
+      "name": "System Binary Proxy Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Mshta",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has use `mshta` to execute malicious scripts on a compromised host.(Citation: ESET T3 Threat Report 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "011",
+          "name": "Rundll32",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used `Rundll32.exe` to execute payloads.(Citation: Microsoft - Customer Guidance on Recent Nation-State Cyber Attacks)(Citation: Microsoft Deep Dive Solorigate January 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used `fsutil` to check available free space before executing actions that might create large files on disk.(Citation: Microsoft Deep Dive Solorigate January 2021)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1016",
+      "name": "System Network Configuration Discovery",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Internet Connection Discovery",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has ensured web servers in a victim environment are Internet accessible before copying tools or malware to it.(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used [GoldFinder](https://attack.mitre.org/software/S0597) to perform HTTP GET requests to check internet connectivity and identify HTTP proxy servers and other redirectors that an HTTP request travels through.(Citation: MSTIC NOBELIUM Mar 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1199",
+      "name": "Trusted Relationship",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has compromised IT, cloud services, and managed services providers to gain broad access to multiple customers for subsequent operations.(Citation: MSTIC Nobelium Oct 2021)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) gained access through compromised accounts at cloud solution partners, and used compromised certificates issued by Mimecast to authenticate to Mimecast customer systems.(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: CrowdStrike StellarParticle January 2022)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Private Keys",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) obtained PKI keys, certificate files, and the private encryption key from an Active Directory Federation Services (AD FS) container to decrypt corresponding SAML signing certificates.(Citation: Microsoft 365 Defender Solorigate)(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1550",
+      "name": "Use Alternate Authentication Material",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Application Access Token",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used compromised service principals to make changes to the Office 365 environment.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Pass the Ticket",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) used Kerberos ticket attacks for lateral movement.(Citation: Mandiant No Easy Breach)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Web Session Cookie",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used stolen cookies to access cloud resources and a forged `duo-sid` cookie to bypass MFA set on an email account.(Citation: Volexity SolarWinds)(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used forged SAML tokens that allowed the actors to impersonate users and bypass MFA, enabling [APT29](https://attack.mitre.org/groups/G0016) to access enterprise cloud applications and services.(Citation: Microsoft 365 Defender Solorigate)(Citation: Secureworks IRON RITUAL Profile)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1204",
+      "name": "User Execution",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malicious Link",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used various forms of spearphishing attempting to get a user to click on a malicious link.(Citation: MSTIC NOBELIUM May 2021)(Citation: Secureworks IRON RITUAL USAID Phish May 2021)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Malicious File",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used various forms of spearphishing attempting to get a user to open attachments, including, but not limited to, malicious Microsoft Word documents, .pdf, and .lnk files. (Citation: F-Secure The Dukes)(Citation: ESET T3 Threat Report 2021)(Citation: Secureworks IRON HEMLOCK Profile)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": true,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Domain Accounts",
+          "descr": "During the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used domain administrators' accounts to help facilitate lateral movement on compromised networks.(Citation: CrowdStrike StellarParticle January 2022)\nFor [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used stolen administrator credentials for lateral movement on compromised networks.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Local Accounts",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) targets dormant or inactive user accounts, accounts belonging to individuals no longer at the organization but whose accounts remain on the system, for access and persistence.(Citation: NCSC et al APT29 2024)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used compromised local accounts to access victims' networks.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "Cloud Accounts",
+          "descr": "[APT29](https://attack.mitre.org/groups/G0016) has gained access to a global administrator account in Azure AD and has used `Service Principal` credentials in Exchange.(Citation: Mandiant APT29 Microsoft 365 2022)(Citation: Mandiant APT29 Eye Spy Email Nov 22)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used a compromised O365 administrator account to create a new Service Principal.(Citation: CrowdStrike StellarParticle January 2022)",
+          "subtechniques": []
+        }
+      ],
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) has used a compromised account to access an organization's VPN infrastructure.(Citation: Mandiant APT29 Microsoft 365 2022)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used different compromised credentials for remote access and to move laterally.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: Cybersecurity Advisory SVR TTP May 2021)"
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1102",
+      "name": "Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Bidirectional Communication",
+          "descr": "For [Operation Ghost](https://attack.mitre.org/campaigns/C0023), [APT29](https://attack.mitre.org/groups/G0016) used social media platforms to hide communications to C2 servers.(Citation: ESET Dukes October 2019)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[APT29](https://attack.mitre.org/groups/G0016) used WMI to steal credentials and execute backdoors at a future time.(Citation: Mandiant No Easy Breach)\nDuring the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024), [APT29](https://attack.mitre.org/groups/G0016) used WMI for the remote execution of files for lateral movement.(Citation: Microsoft 365 Defender Solorigate)(Citation: Microsoft Deep Dive Solorigate January 2021)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [
+    {
+      "id": "C0023",
+      "name": "Operation Ghost",
+      "first_seen": "September 2013",
+      "last_seen": "October 2019",
+      "first_seen_citation": "(Citation: ESET Dukes October 2019)",
+      "last_seen_citation": "(Citation: ESET Dukes October 2019)",
+      "desc": "(Citation: ESET Dukes October 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1583",
+          "id": "001",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Domains"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "002",
+          "name": "Data Obfuscation",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1587",
+          "id": "001",
+          "name": "Develop Capabilities",
+          "sub_name": "Malware"
+        },
+        {
+          "parent_id": "T1585",
+          "id": "001",
+          "name": "Establish Accounts",
+          "sub_name": "Social Media Accounts"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "C0024",
+      "name": "SolarWinds Compromise",
+      "first_seen": "August 2019",
+      "last_seen": "January 2021",
+      "first_seen_citation": "(Citation: Unit 42 SolarStorm December 2020)",
+      "last_seen_citation": "(Citation: MSTIC NOBELIUM May 2021)",
+      "desc": "(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021)(Citation: Mandiant UNC2452 APT29 April 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "id": "T1087",
+          "name": "Account Discovery"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "002",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Email Delegate Permissions"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "003",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Cloud Roles"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "005",
+          "name": "Account Manipulation",
+          "sub_name": "Device Registration"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "001",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Cloud Credentials"
+        },
+        {
+          "parent_id": "T1583",
+          "id": "001",
+          "name": "Acquire Infrastructure",
+          "sub_name": "Domains"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1584",
+          "id": "001",
+          "name": "Compromise Infrastructure",
+          "sub_name": "Domains"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "id": "T1213",
+          "name": "Data from Information Repositories"
+        },
+        {
+          "parent_id": "T1213",
+          "id": "003",
+          "name": "Data from Information Repositories",
+          "sub_name": "Code Repositories"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1074",
+          "id": "002",
+          "name": "Data Staged",
+          "sub_name": "Remote Data Staging"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1587",
+          "id": "001",
+          "name": "Develop Capabilities",
+          "sub_name": "Malware"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "002",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Trust Modification"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "id": "T1568",
+          "name": "Dynamic Resolution"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "002",
+          "name": "Email Collection",
+          "sub_name": "Remote Email Collection"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "002",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        },
+        {
+          "id": "T1133",
+          "name": "External Remote Services"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1606",
+          "id": "002",
+          "name": "Forge Web Credentials",
+          "sub_name": "SAML Tokens"
+        },
+        {
+          "parent_id": "T1606",
+          "id": "001",
+          "name": "Forge Web Credentials",
+          "sub_name": "Web Cookies"
+        },
+        {
+          "parent_id": "T1589",
+          "id": "001",
+          "name": "Gather Victim Identity Information",
+          "sub_name": "Credentials"
+        },
+        {
+          "id": "T1665",
+          "name": "Hide Infrastructure"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "002",
+          "name": "Impair Defenses",
+          "sub_name": "Disable Windows Event Logging"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "004",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify System Firewall"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "008",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Mailbox Data"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1069",
+          "name": "Permission Groups Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "id": "T1539",
+          "name": "Steal Web Session Cookie"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1195",
+          "id": "002",
+          "name": "Supply Chain Compromise",
+          "sub_name": "Compromise Software Supply Chain"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1016",
+          "id": "001",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Internet Connection Discovery"
+        },
+        {
+          "id": "T1199",
+          "name": "Trusted Relationship"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "id": "T1550",
+          "name": "Use Alternate Authentication Material"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "001",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Application Access Token"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "004",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Web Session Cookie"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "004",
+          "name": "Valid Accounts",
+          "sub_name": "Cloud Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1078",
+          "name": "Valid Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    }
+  ],
+  "add_campaign_ref": true,
+  "software_data": [
+    {
+      "id": "S0677",
+      "name": "AADInternals",
+      "descr": "(Citation: MSTIC Nobelium Oct 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "004",
+          "name": "Account Discovery",
+          "sub_name": "Cloud Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "005",
+          "name": "Account Manipulation",
+          "sub_name": "Device Registration"
+        },
+        {
+          "id": "T1651",
+          "name": "Cloud Administration Command"
+        },
+        {
+          "id": "T1526",
+          "name": "Cloud Service Discovery"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "003",
+          "name": "Create Account",
+          "sub_name": "Cloud Account"
+        },
+        {
+          "id": "T1530",
+          "name": "Data from Cloud Storage"
+        },
+        {
+          "parent_id": "T1484",
+          "id": "002",
+          "name": "Domain or Tenant Policy Modification",
+          "sub_name": "Trust Modification"
+        },
+        {
+          "id": "T1048",
+          "name": "Exfiltration Over Alternative Protocol"
+        },
+        {
+          "parent_id": "T1606",
+          "id": "002",
+          "name": "Forge Web Credentials",
+          "sub_name": "SAML Tokens"
+        },
+        {
+          "parent_id": "T1589",
+          "id": "002",
+          "name": "Gather Victim Identity Information",
+          "sub_name": "Email Addresses"
+        },
+        {
+          "parent_id": "T1590",
+          "id": "001",
+          "name": "Gather Victim Network Information",
+          "sub_name": "Domain Properties"
+        },
+        {
+          "parent_id": "T1556",
+          "id": "007",
+          "name": "Modify Authentication Process",
+          "sub_name": "Hybrid Identity"
+        },
+        {
+          "parent_id": "T1556",
+          "id": "006",
+          "name": "Modify Authentication Process",
+          "sub_name": "Multi-Factor Authentication"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "003",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Cloud Groups"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "002",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "parent_id": "T1598",
+          "id": "003",
+          "name": "Phishing for Information",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "id": "T1528",
+          "name": "Steal Application Access Token"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "001",
+          "name": "Unsecured Credentials",
+          "sub_name": "Credentials In Files"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        }
+      ]
+    },
+    {
+      "id": "S0552",
+      "name": "AdFind",
+      "descr": "(Citation: Microsoft Analyzing Solorigate Dec 2020)(Citation: CrowdStrike StellarParticle January 2022)(Citation: ESET T3 Threat Report 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0521",
+      "name": "BloodHound",
+      "descr": "(Citation: ESET T3 Threat Report 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0635",
+      "name": "BoomBox",
+      "descr": "(Citation: MSTIC Nobelium Toolset May 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "003",
+          "name": "Account Discovery",
+          "sub_name": "Email Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    },
+    {
+      "id": "S0054",
+      "name": "CloudDuke",
+      "descr": "(Citation: F-Secure The Dukes)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0154",
+      "name": "Cobalt Strike",
+      "descr": "(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: MSTIC NOBELIUM May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: SentinelOne NobleBaron June 2021)(Citation: ESET T3 Threat Report 2021)(Citation: Secureworks IRON RITUAL Profile)(Citation: Secureworks IRON RITUAL USAID Phish May 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "003",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Sudo and Sudo Caching"
+        },
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "004",
+          "name": "Access Token Manipulation",
+          "sub_name": "Parent PID Spoofing"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "001",
+          "name": "Access Token Manipulation",
+          "sub_name": "Token Impersonation/Theft"
+        },
+        {
+          "parent_id": "T1134",
+          "id": "003",
+          "name": "Access Token Manipulation",
+          "sub_name": "Make and Impersonate Token"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "002",
+          "name": "Application Layer Protocol",
+          "sub_name": "File Transfer Protocols"
+        },
+        {
+          "id": "T1197",
+          "name": "BITS Jobs"
+        },
+        {
+          "id": "T1185",
+          "name": "Browser Session Hijacking"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1203",
+          "name": "Exploitation for Client Execution"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "010",
+          "name": "Hide Artifacts",
+          "sub_name": "Process Argument Spoofing"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1137",
+          "id": "001",
+          "name": "Office Application Startup",
+          "sub_name": "Office Template Macros"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "006",
+          "name": "Remote Services",
+          "sub_name": "Windows Remote Management"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "003",
+          "name": "Remote Services",
+          "sub_name": "Distributed Component Object Model"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1029",
+          "name": "Scheduled Transfer"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "002",
+          "name": "Valid Accounts",
+          "sub_name": "Domain Accounts"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "003",
+          "name": "Valid Accounts",
+          "sub_name": "Local Accounts"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0050",
+      "name": "CosmicDuke",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1020",
+          "name": "Automated Exfiltration"
+        },
+        {
+          "id": "T1115",
+          "name": "Clipboard Data"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1039",
+          "name": "Data from Network Shared Drive"
+        },
+        {
+          "id": "T1025",
+          "name": "Data from Removable Media"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "001",
+          "name": "Email Collection",
+          "sub_name": "Local Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "id": "T1068",
+          "name": "Exploitation for Privilege Escalation"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1056",
+          "id": "001",
+          "name": "Input Capture",
+          "sub_name": "Keylogging"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        }
+      ]
+    },
+    {
+      "id": "S0046",
+      "name": "CozyCar",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "003",
+          "name": "Masquerading",
+          "sub_name": "Rename Legitimate Utilities"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1497",
+          "name": "Virtualization/Sandbox Evasion"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0634",
+      "name": "EnvyScout",
+      "descr": "(Citation: MSTIC Nobelium Toolset May 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "007",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "JavaScript"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "id": "T1187",
+          "name": "Forced Authentication"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "001",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Files and Directories"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "006",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "HTML Smuggling"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        }
+      ]
+    },
+    {
+      "id": "S0512",
+      "name": "FatDuke",
+      "descr": "(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "016",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Junk Code Insertion"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        }
+      ]
+    },
+    {
+      "id": "S0661",
+      "name": "FoggyWeb",
+      "descr": "(Citation: MSTIC FoggyWeb September 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "003",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Custom Method"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "002",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Library"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1574",
+          "id": "001",
+          "name": "Hijack Execution Flow",
+          "sub_name": "DLL"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "004",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compile After Delivery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "id": "T1129",
+          "name": "Shared Modules"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "id": "T1550",
+          "name": "Use Alternate Authentication Material"
+        }
+      ]
+    },
+    {
+      "id": "S0049",
+      "name": "GeminiDuke",
+      "descr": "(Citation: F-Secure The Dukes)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0597",
+      "name": "GoldFinder",
+      "descr": "(Citation: MSTIC NOBELIUM Mar 2021)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "parent_id": "T1016",
+          "id": "001",
+          "name": "System Network Configuration Discovery",
+          "sub_name": "Internet Connection Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0588",
+      "name": "GoldMax",
+      "descr": "(Citation: MSTIC NOBELIUM Mar 2021)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: MSTIC NOBELIUM May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "001",
+          "name": "Data Obfuscation",
+          "sub_name": "Junk Data"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "011",
+          "name": "Hide Artifacts",
+          "sub_name": "Ignore Process Interrupts"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "004",
+          "name": "Masquerading",
+          "sub_name": "Masquerade Task or Service"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "003",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Cron"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    },
+    {
+      "id": "S0037",
+      "name": "HAMMERTOSS",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "002",
+          "name": "Data Obfuscation",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "003",
+          "name": "Hide Artifacts",
+          "sub_name": "Hidden Window"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "003",
+          "name": "Web Service",
+          "sub_name": "One-Way Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0100",
+      "name": "ipconfig",
+      "descr": "(Citation: CISA SoreFang July 2016)",
+      "techniques": [
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0513",
+      "name": "LiteDuke",
+      "descr": "(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        }
+      ]
+    },
+    {
+      "id": "S0175",
+      "name": "meek",
+      "descr": "(Citation: Mandiant No Easy Breach)",
+      "techniques": [
+        {
+          "parent_id": "T1090",
+          "id": "004",
+          "name": "Proxy",
+          "sub_name": "Domain Fronting"
+        }
+      ]
+    },
+    {
+      "id": "S0002",
+      "name": "Mimikatz",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: Microsoft 365 Defender Solorigate)(Citation: CrowdStrike StellarParticle January 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "005",
+          "name": "Access Token Manipulation",
+          "sub_name": "SID-History Injection"
+        },
+        {
+          "id": "T1098",
+          "name": "Account Manipulation"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "005",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Security Support Provider"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "004",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Windows Credential Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "006",
+          "name": "OS Credential Dumping",
+          "sub_name": "DCSync"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1207",
+          "name": "Rogue Domain Controller"
+        },
+        {
+          "id": "T1649",
+          "name": "Steal or Forge Authentication Certificates"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "002",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Silver Ticket"
+        },
+        {
+          "parent_id": "T1552",
+          "id": "004",
+          "name": "Unsecured Credentials",
+          "sub_name": "Private Keys"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        }
+      ]
+    },
+    {
+      "id": "S0051",
+      "name": "MiniDuke",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        }
+      ]
+    },
+    {
+      "id": "S0637",
+      "name": "NativeZone",
+      "descr": "(Citation: SentinelOne NobleBaron June 2021)",
+      "techniques": [
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    },
+    {
+      "id": "S0039",
+      "name": "Net",
+      "descr": "(Citation: CISA SoreFang July 2016)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1098",
+          "id": "007",
+          "name": "Account Manipulation",
+          "sub_name": "Additional Local or Domain Groups"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "001",
+          "name": "Create Account",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "005",
+          "name": "Indicator Removal",
+          "sub_name": "Network Share Connection Removal"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0052",
+      "name": "OnionDuke",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1499",
+          "name": "Endpoint Denial of Service"
+        },
+        {
+          "id": "T1003",
+          "name": "OS Credential Dumping"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "003",
+          "name": "Web Service",
+          "sub_name": "One-Way Communication"
+        }
+      ]
+    },
+    {
+      "id": "S0048",
+      "name": "PinchDuke",
+      "descr": "(Citation: F-Secure The Dukes)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1555",
+          "name": "Credentials from Password Stores"
+        },
+        {
+          "parent_id": "T1555",
+          "id": "003",
+          "name": "Credentials from Password Stores",
+          "sub_name": "Credentials from Web Browsers"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1003",
+          "name": "OS Credential Dumping"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0518",
+      "name": "PolyglotDuke",
+      "descr": "(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "001",
+          "name": "Web Service",
+          "sub_name": "Dead Drop Resolver"
+        }
+      ]
+    },
+    {
+      "id": "S0150",
+      "name": "POSHSPY",
+      "descr": "(Citation: FireEye POSHSPY April 2017)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "006",
+          "name": "Indicator Removal",
+          "sub_name": "Timestomp"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        }
+      ]
+    },
+    {
+      "id": "S0139",
+      "name": "PowerDuke",
+      "descr": "(Citation: Volexity PowerDuke November 2016)",
+      "techniques": [
+        {
+          "id": "T1010",
+          "name": "Application Window Discovery"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1564",
+          "id": "004",
+          "name": "Hide Artifacts",
+          "sub_name": "NTFS File Attributes"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: ESET Dukes October 2019)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S1084",
+      "name": "QUIETEXIT",
+      "descr": "(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+      "techniques": [
+        {
+          "id": "T1071",
+          "name": "Application Layer Protocol"
+        },
+        {
+          "id": "T1008",
+          "name": "Fallback Channels"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "002",
+          "name": "Proxy",
+          "sub_name": "External Proxy"
+        }
+      ]
+    },
+    {
+      "id": "S0565",
+      "name": "Raindrop",
+      "descr": "(Citation: Symantec RAINDROP January 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        }
+      ]
+    },
+    {
+      "id": "S0511",
+      "name": "RegDuke",
+      "descr": "(Citation: ESET Dukes October 2019)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "003",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1102",
+          "id": "002",
+          "name": "Web Service",
+          "sub_name": "Bidirectional Communication"
+        }
+      ]
+    },
+    {
+      "id": "S1187",
+      "name": "reGeorg",
+      "descr": "(Citation: Mandiant APT29 Eye Spy Email Nov 22)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0684",
+      "name": "ROADTools",
+      "descr": "(Citation: MSTIC Nobelium Oct 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "004",
+          "name": "Account Discovery",
+          "sub_name": "Cloud Account"
+        },
+        {
+          "id": "T1119",
+          "name": "Automated Collection"
+        },
+        {
+          "id": "T1526",
+          "name": "Cloud Service Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "003",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Cloud Groups"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "parent_id": "T1078",
+          "id": "004",
+          "name": "Valid Accounts",
+          "sub_name": "Cloud Accounts"
+        }
+      ]
+    },
+    {
+      "id": "S0195",
+      "name": "SDelete",
+      "descr": "(Citation: Mandiant No Easy Breach)",
+      "techniques": [
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        }
+      ]
+    },
+    {
+      "id": "S0053",
+      "name": "SeaDuke",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: Secureworks IRON HEMLOCK Profile)(Citation: Symantec Seaduke 2015)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1560",
+          "id": "002",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Library"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "009",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Shortcut Modification"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "parent_id": "T1114",
+          "id": "002",
+          "name": "Email Collection",
+          "sub_name": "Remote Email Collection"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "003",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Ticket"
+        },
+        {
+          "id": "T1078",
+          "name": "Valid Accounts"
+        }
+      ]
+    },
+    {
+      "id": "S0589",
+      "name": "Sibot",
+      "descr": "(Citation: MSTIC NOBELIUM Mar 2021)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "010",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Command Obfuscation"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "011",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Fileless Storage"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "005",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Mshta"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0633",
+      "name": "Sliver",
+      "descr": "(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Secureworks IRON HEMLOCK Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1071",
+          "name": "Application Layer Protocol"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "002",
+          "name": "Data Obfuscation",
+          "sub_name": "Steganography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "004",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compile After Delivery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "id": "T1055",
+          "name": "Process Injection"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "001",
+          "name": "Proxy",
+          "sub_name": "Internal Proxy"
+        },
+        {
+          "id": "T1113",
+          "name": "Screen Capture"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "001",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Golden Ticket"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0516",
+      "name": "SoreFang",
+      "descr": "(Citation: NCSC APT29 July 2020)(Citation: CISA SoreFang July 2016)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1190",
+          "name": "Exploit Public-Facing Application"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0559",
+      "name": "SUNBURST",
+      "descr": "(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "003",
+          "name": "Data Obfuscation",
+          "sub_name": "Protocol or Service Impersonation"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "001",
+          "name": "Data Obfuscation",
+          "sub_name": "Junk Data"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "002",
+          "name": "Data Obfuscation",
+          "sub_name": "Steganography"
+        },
+        {
+          "id": "T1568",
+          "name": "Dynamic Resolution"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "012",
+          "name": "Event Triggered Execution",
+          "sub_name": "Image File Execution Options Injection"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "009",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Persistence"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "007",
+          "name": "Indicator Removal",
+          "sub_name": "Clear Network Connection History and Configurations"
+        },
+        {
+          "id": "T1070",
+          "name": "Indicator Removal"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "015",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Compression"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "005",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Indicator Removal from Tools"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1553",
+          "id": "002",
+          "name": "Subvert Trust Controls",
+          "sub_name": "Code Signing"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "011",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Rundll32"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        },
+        {
+          "id": "T1124",
+          "name": "System Time Discovery"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0562",
+      "name": "SUNSPOT",
+      "descr": "(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: MSTIC Nobelium Toolset May 2021)",
+      "techniques": [
+        {
+          "id": "T1134",
+          "name": "Access Token Manipulation"
+        },
+        {
+          "parent_id": "T1565",
+          "id": "001",
+          "name": "Data Manipulation",
+          "sub_name": "Stored Data Manipulation"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "parent_id": "T1480",
+          "id": "002",
+          "name": "Execution Guardrails",
+          "sub_name": "Mutual Exclusion"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1195",
+          "id": "002",
+          "name": "Supply Chain Compromise",
+          "sub_name": "Compromise Software Supply Chain"
+        }
+      ]
+    },
+    {
+      "id": "S0096",
+      "name": "Systeminfo",
+      "descr": "(Citation: CISA SoreFang July 2016)",
+      "techniques": [
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0057",
+      "name": "Tasklist",
+      "descr": "(Citation: CISA SoreFang July 2016)",
+      "techniques": [
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "id": "T1007",
+          "name": "System Service Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0560",
+      "name": "TEARDROP",
+      "descr": "(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: Secureworks IRON RITUAL Profile)",
+      "techniques": [
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        }
+      ]
+    },
+    {
+      "id": "S0183",
+      "name": "Tor",
+      "descr": "(Citation: Mandiant No Easy Breach)",
+      "techniques": [
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1090",
+          "id": "003",
+          "name": "Proxy",
+          "sub_name": "Multi-hop Proxy"
+        }
+      ]
+    },
+    {
+      "id": "S0682",
+      "name": "TrailBlazer",
+      "descr": "(Citation: CrowdStrike StellarParticle January 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "001",
+          "name": "Data Obfuscation",
+          "sub_name": "Junk Data"
+        },
+        {
+          "id": "T1001",
+          "name": "Data Obfuscation"
+        },
+        {
+          "parent_id": "T1546",
+          "id": "003",
+          "name": "Event Triggered Execution",
+          "sub_name": "Windows Management Instrumentation Event Subscription"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        }
+      ]
+    },
+    {
+      "id": "S0636",
+      "name": "VaporRage",
+      "descr": "(Citation: MSTIC Nobelium Toolset May 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1480",
+          "name": "Execution Guardrails"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        }
+      ]
+    },
+    {
+      "id": "S0515",
+      "name": "WellMail",
+      "descr": "(Citation: CISA WellMail July 2020)(Citation: NCSC APT29 July 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+      "techniques": [
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1571",
+          "name": "Non-Standard Port"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0514",
+      "name": "WellMess",
+      "descr": "(Citation: PWC WellMess July 2020)(Citation: PWC WellMess C2 August 2020)(Citation: CISA WellMess July 2020)(Citation: NCSC APT29 July 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "004",
+          "name": "Application Layer Protocol",
+          "sub_name": "DNS"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "parent_id": "T1001",
+          "id": "001",
+          "name": "Data Obfuscation",
+          "sub_name": "Junk Data"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "002",
+          "name": "Encrypted Channel",
+          "sub_name": "Asymmetric Cryptography"
+        },
+        {
+          "parent_id": "T1573",
+          "id": "001",
+          "name": "Encrypted Channel",
+          "sub_name": "Symmetric Cryptography"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "IRON RITUAL",
+      "descr": "(Citation: Secureworks IRON RITUAL Profile)"
+    },
+    {
+      "name": "IRON HEMLOCK",
+      "descr": "(Citation: Secureworks IRON HEMLOCK Profile)"
+    },
+    {
+      "name": "NobleBaron",
+      "descr": "(Citation: SentinelOne NobleBaron June 2021)"
+    },
+    {
+      "name": "Dark Halo",
+      "descr": "(Citation: Volexity SolarWinds)"
+    },
+    {
+      "name": "NOBELIUM",
+      "descr": "(Citation: MSTIC NOBELIUM Mar 2021)(Citation: MSTIC NOBELIUM May 2021)(Citation: MSTIC Nobelium Toolset May 2021)(Citation: MSRC Nobelium June 2021)"
+    },
+    {
+      "name": "UNC2452",
+      "descr": "(Citation: FireEye SUNBURST Backdoor December 2020)"
+    },
+    {
+      "name": "YTTRIUM",
+      "descr": "(Citation: Microsoft Unidentified Dec 2018)"
+    },
+    {
+      "name": "The Dukes",
+      "descr": "(Citation: F-Secure The Dukes)(Citation: ESET Dukes October 2019)(Citation: NCSC APT29 July 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)"
+    },
+    {
+      "name": "Cozy Bear",
+      "descr": "(Citation: Crowdstrike DNC June 2016)(Citation: ESET Dukes October 2019)(Citation: NCSC APT29 July 2020)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: CrowdStrike StellarParticle January 2022)"
+    },
+    {
+      "name": "CozyDuke",
+      "descr": "(Citation: Crowdstrike DNC June 2016)"
+    },
+    {
+      "name": "SolarStorm",
+      "descr": "(Citation: Unit 42 SolarStorm December 2020)"
+    },
+    {
+      "name": "Blue Kitsune",
+      "descr": "(Citation: PWC WellMess July 2020)(Citation: PWC WellMess C2 August 2020)"
+    },
+    {
+      "name": "UNC3524",
+      "descr": "(Citation: Mandiant APT29 Eye Spy Email Nov 22)"
+    },
+    {
+      "name": "Midnight Blizzard",
+      "descr": "(Citation: Microsoft Threat Actor Naming July 2023)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "Crowdstrike DNC June 2016": {
+      "description": "Alperovitch, D.. (2016, June 15). Bears in the Midst: Intrusion into the Democratic National Committee. Retrieved August 3, 2016.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/bears-midst-intrusion-democratic-national-committee/"
+    },
+    "Volexity SolarWinds": {
+      "description": "Cash, D. et al. (2020, December 14). Dark Halo Leverages SolarWinds Compromise to Breach Organizations. Retrieved December 29, 2020.",
+      "number": null,
+      "url": "https://www.volexity.com/blog/2020/12/14/dark-halo-leverages-solarwinds-compromise-to-breach-organizations/"
+    },
+    "CrowdStrike SUNSPOT Implant January 2021": {
+      "description": "CrowdStrike Intelligence Team. (2021, January 11). SUNSPOT: An Implant in the Build Process. Retrieved January 11, 2021.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/"
+    },
+    "CrowdStrike StellarParticle January 2022": {
+      "description": "CrowdStrike. (2022, January 27). Early Bird Catches the Wormhole: Observations from the StellarParticle Campaign. Retrieved February 7, 2022.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/observations-from-the-stellarparticle-campaign/"
+    },
+    "GRIZZLY STEPPE JAR": {
+      "description": "Department of Homeland Security and Federal Bureau of Investigation. (2016, December 29). GRIZZLY STEPPE – Russian Malicious Cyber Activity. Retrieved January 11, 2017.",
+      "number": null,
+      "url": "https://www.us-cert.gov/sites/default/files/publications/JAR_16-20296A_GRIZZLY%20STEPPE-2016-1229.pdf"
+    },
+    "FireEye APT29 Nov 2018": {
+      "description": "Dunwoody, M., et al. (2018, November 19). Not So Cozy: An Uncomfortable Examination of a Suspected APT29 Phishing Campaign. Retrieved November 27, 2018.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2018/11/not-so-cozy-an-uncomfortable-examination-of-a-suspected-apt29-phishing-campaign.html"
+    },
+    "F-Secure The Dukes": {
+      "description": "F-Secure Labs. (2015, September 17). The Dukes: 7 years of Russian cyberespionage. Retrieved December 10, 2015.",
+      "number": null,
+      "url": "https://www.f-secure.com/documents/996508/1030745/dukes_whitepaper.pdf"
+    },
+    "ESET Dukes October 2019": {
+      "description": "Faou, M., Tartare, M., Dupuy, T. (2019, October). OPERATION GHOST. Retrieved September 23, 2020.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/wp-content/uploads/2019/10/ESET_Operation_Ghost_Dukes.pdf"
+    },
+    "FireEye SUNBURST Backdoor December 2020": {
+      "description": "FireEye. (2020, December 13). Highly Evasive Attacker Leverages SolarWinds Supply Chain to Compromise Multiple Global Victims With SUNBURST Backdoor. Retrieved January 4, 2021.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html"
+    },
+    "SentinelOne NobleBaron June 2021": {
+      "description": "Guerrero-Saade, J. (2021, June 1). NobleBaron | New Poisoned Installers Could Be Used In Supply Chain Attacks. Retrieved August 4, 2021.",
+      "number": null,
+      "url": "https://labs.sentinelone.com/noblebaron-new-poisoned-installers-could-be-used-in-supply-chain-attacks/"
+    },
+    "Mandiant APT29 Eye Spy Email Nov 22": {
+      "description": "Mandiant. (2022, May 2). UNC3524: Eye Spy on Your Email. Retrieved August 17, 2023.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/blog/unc3524-eye-spy-email"
+    },
+    "Microsoft Threat Actor Naming July 2023": {
+      "description": "Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.",
+      "number": null,
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide"
+    },
+    "Microsoft Unidentified Dec 2018": {
+      "description": "Microsoft Defender Research Team. (2018, December 3). Analysis of cyberattack on U.S. think tanks, non-profits, public sector by unidentified attackers. Retrieved April 15, 2019.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2018/12/03/analysis-of-cyberattack-on-u-s-think-tanks-non-profits-public-sector-by-unidentified-attackers/"
+    },
+    "MSTIC NOBELIUM May 2021": {
+      "description": "Microsoft Threat Intelligence Center (MSTIC). (2021, May 27). New sophisticated email-based attack from NOBELIUM. Retrieved May 28, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/05/27/new-sophisticated-email-based-attack-from-nobelium/"
+    },
+    "MSRC Nobelium June 2021": {
+      "description": "MSRC. (2021, June 25). New Nobelium activity. Retrieved August 4, 2021.",
+      "number": null,
+      "url": "https://msrc-blog.microsoft.com/2021/06/25/new-nobelium-activity/"
+    },
+    "MSTIC Nobelium Toolset May 2021": {
+      "description": "MSTIC. (2021, May 28). Breaking down NOBELIUM’s latest early-stage toolset. Retrieved August 4, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/05/28/breaking-down-nobeliums-latest-early-stage-toolset/"
+    },
+    "MSTIC NOBELIUM Mar 2021": {
+      "description": "Nafisi, R., Lelli, A. (2021, March 4). GoldMax, GoldFinder, and Sibot: Analyzing NOBELIUM’s layered persistence. Retrieved March 8, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/03/04/goldmax-goldfinder-sibot-analyzing-nobelium-malware/"
+    },
+    "NCSC APT29 July 2020": {
+      "description": "National Cyber Security Centre. (2020, July 16). Advisory: APT29 targets COVID-19 vaccine development. Retrieved September 29, 2020.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/files/Advisory-APT29-targets-COVID-19-vaccine-development-V1-1.pdf"
+    },
+    "Cybersecurity Advisory SVR TTP May 2021": {
+      "description": "NCSC, CISA, FBI, NSA. (2021, May 7). Further TTPs associated with SVR cyber actors. Retrieved July 29, 2021.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/files/Advisory-further-TTPs-associated-with-SVR-cyber-actors.pdf"
+    },
+    "NSA Joint Advisory SVR SolarWinds April 2021": {
+      "description": "NSA, FBI, DHS. (2021, April 15). Russian SVR Targets U.S. and Allied Networks. Retrieved April 16, 2021.",
+      "number": null,
+      "url": "https://media.defense.gov/2021/Apr/15/2002621240/-1/-1/0/CSA_SVR_TARGETS_US_ALLIES_UOO13234021.PDF/CSA_SVR_TARGETS_US_ALLIES_UOO13234021.PDF"
+    },
+    "PWC WellMess C2 August 2020": {
+      "description": "PWC. (2020, August 17). WellMess malware: analysis of its Command and Control (C2) server. Retrieved September 29, 2020.",
+      "number": null,
+      "url": "https://www.pwc.co.uk/issues/cyber-security-services/insights/wellmess-analysis-command-control.html"
+    },
+    "PWC WellMess July 2020": {
+      "description": "PWC. (2020, July 16). How WellMess malware has been used to target COVID-19 vaccines. Retrieved September 24, 2020.",
+      "number": null,
+      "url": "https://www.pwc.co.uk/issues/cyber-security-services/insights/cleaning-up-after-wellmess.html"
+    },
+    "Secureworks IRON HEMLOCK Profile": {
+      "description": "Secureworks CTU. (n.d.). IRON HEMLOCK. Retrieved February 22, 2022.",
+      "number": null,
+      "url": "http://www.secureworks.com/research/threat-profiles/iron-hemlock"
+    },
+    "Secureworks IRON RITUAL Profile": {
+      "description": "Secureworks CTU. (n.d.). IRON RITUAL. Retrieved February 24, 2022.",
+      "number": null,
+      "url": "https://www.secureworks.com/research/threat-profiles/iron-ritual"
+    },
+    "UK Gov Malign RIS Activity April 2021": {
+      "description": "UK Gov. (2021, April 15). UK and US expose global campaign of malign activity by Russian intelligence services . Retrieved April 16, 2021.",
+      "number": null,
+      "url": "https://www.gov.uk/government/news/russia-uk-and-us-expose-global-campaigns-of-malign-activity-by-russian-intelligence-services"
+    },
+    "UK Gov UK Exposes Russia SolarWinds April 2021": {
+      "description": "UK Gov. (2021, April 15). UK exposes Russian involvement in SolarWinds cyber compromise . Retrieved April 16, 2021.",
+      "number": null,
+      "url": "https://www.gov.uk/government/news/russia-uk-exposes-russian-involvement-in-solarwinds-cyber-compromise"
+    },
+    "UK NSCS Russia SolarWinds April 2021": {
+      "description": "UK NCSC. (2021, April 15). UK and US call out Russia for SolarWinds compromise. Retrieved April 16, 2021.",
+      "number": null,
+      "url": "https://www.ncsc.gov.uk/news/uk-and-us-call-out-russia-for-solarwinds-compromise"
+    },
+    "Unit 42 SolarStorm December 2020": {
+      "description": "Unit 42. (2020, December 23). SolarStorm Supply Chain Attack Timeline. Retrieved March 24, 2023.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/solarstorm-supply-chain-attack-timeline/"
+    },
+    "White House Imposing Costs RU Gov April 2021": {
+      "description": "White House. (2021, April 15). Imposing Costs for Harmful Foreign Activities by the Russian Government. Retrieved April 16, 2021.",
+      "number": null,
+      "url": "https://www.whitehouse.gov/briefing-room/statements-releases/2021/04/15/fact-sheet-imposing-costs-for-harmful-foreign-activities-by-the-russian-government/"
+    },
+    "Suspected Russian Activity Targeting Government and Business Entities Around the Globe": {
+      "description": "Luke Jenkins, Sarah Hawley, Parnian Najafi, Doug Bienstock. (2021, December 6). Suspected Russian Activity Targeting Government and Business Entities Around the Globe. Retrieved April 15, 2022.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/russian-targeting-gov-business"
+    },
+    "NCSC et al APT29 2024": {
+      "description": "UK National Cyber Security Center et al. (2024, February). SVR cyber actors adapt tactics for initial cloud access. Retrieved March 1, 2024.",
+      "number": null,
+      "url": "https://www.ic3.gov/Media/News/2024/240226.pdf"
+    },
+    "Mandiant No Easy Breach": {
+      "description": "Dunwoody, M. and Carr, N.. (2016, September 27). No Easy Breach DerbyCon 2016. Retrieved September 12, 2024.",
+      "number": null,
+      "url": "https://www.slideshare.net/slideshow/no-easy-breach-derby-con-2016/66447908"
+    },
+    "ESET T3 Threat Report 2021": {
+      "description": "ESET. (2022, February). THREAT REPORT T3 2021. Retrieved February 10, 2022.",
+      "number": null,
+      "url": "https://www.welivesecurity.com/wp-content/uploads/2022/02/eset_threat_report_t32021.pdf"
+    },
+    "MSTIC Nobelium Oct 2021": {
+      "description": "Microsoft Threat Intelligence Center. (2021, October 25). NOBELIUM targeting delegated administrative privileges to facilitate broader attacks. Retrieved March 25, 2022.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/10/25/nobelium-targeting-delegated-administrative-privileges-to-facilitate-broader-attacks/"
+    },
+    "Mandiant APT29 Microsoft 365 2022": {
+      "description": "Douglas Bienstock. (2022, August 18). You Can’t Audit Me: APT29 Continues Targeting Microsoft 365. Retrieved February 23, 2023.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/blog/apt29-continues-targeting-microsoft"
+    },
+    "FireEye APT29": {
+      "description": "FireEye Labs. (2015, July). HAMMERTOSS: Stealthy Tactics Define a Russian Cyber Threat Group. Retrieved November 17, 2024.",
+      "number": null,
+      "url": "https://services.google.com/fh/files/misc/rpt-apt29-hammertoss-stealthy-tactics-define-en.pdf"
+    },
+    "Secureworks IRON RITUAL USAID Phish May 2021": {
+      "description": "Secureworks CTU. (2021, May 28). USAID-Themed Phishing Campaign Leverages U.S. Elections Lure. Retrieved February 24, 2022.",
+      "number": null,
+      "url": "https://www.secureworks.com/blog/usaid-themed-phishing-campaign-leverages-us-elections-lure"
+    },
+    "MagicWeb": {
+      "description": "Microsoft Threat Intelligence Center, Microsoft Detection and Response Team, Microsoft 365 Defender Research Team . (2022, August 24). MagicWeb: NOBELIUM’s post-compromise trick to authenticate as anyone. Retrieved September 28, 2022.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2022/08/24/magicweb-nobeliums-post-compromise-trick-to-authenticate-as-anyone/"
+    },
+    "Symantec Seaduke 2015": {
+      "description": "Symantec Security Response. (2015, July 13). “Forkmeiamfamous”: Seaduke, latest weapon in the Duke armory. Retrieved July 22, 2015.",
+      "number": null,
+      "url": "http://www.symantec.com/connect/blogs/forkmeiamfamous-seaduke-latest-weapon-duke-armory"
+    },
+    "Mandiant Remediation and Hardening Strategies for Microsoft 365": {
+      "description": "Mandiant. (2022, August). Remediation and Hardening Strategies for  Microsoft 365 to Defend Against APT29. Retrieved February 21, 2023.",
+      "number": null,
+      "url": "https://www.mandiant.com/sites/default/files/2022-08/remediation-hardening-strategies-for-m365-defend-against-apt29-white-paper.pdf"
+    },
+    "Mandiant APT29 Trello": {
+      "description": "Wolfram, J. et al. (2022, April 28). Trello From the Other Side: Tracking APT29 Phishing Campaigns. Retrieved August 3, 2022.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/tracking-apt29-phishing-campaigns"
+    },
+    "FireEye APT29 Domain Fronting": {
+      "description": "Dunwoody, M. (2017, March 27). APT29 Domain Fronting With TOR. Retrieved March 27, 2017.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2017/03/apt29_domain_frontin.html"
+    },
+    "ANSSI Nobelium Phishing December 2021": {
+      "description": "ANSSI. (2021, December 6). PHISHING CAMPAIGNS BY THE NOBELIUM INTRUSION SET. Retrieved April 13, 2022.",
+      "number": null,
+      "url": "https://www.cert.ssi.gouv.fr/uploads/CERTFR-2021-CTI-011.pdf"
+    },
+    "Microsoft - Customer Guidance on Recent Nation-State Cyber Attacks": {
+      "description": "MSRC. (2020, December 13). Customer Guidance on Recent Nation-State Cyber Attacks. Retrieved December 30, 2020.",
+      "number": null,
+      "url": "https://msrc-blog.microsoft.com/2020/12/13/customer-guidance-on-recent-nation-state-cyber-attacks/"
+    },
+    "Symantec RAINDROP January 2021": {
+      "description": "Symantec Threat Hunter Team. (2021, January 18). Raindrop: New Malware Discovered in SolarWinds Investigation. Retrieved January 19, 2021.",
+      "number": null,
+      "url": "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/solarwinds-raindrop-malware"
+    },
+    "Microsoft Deep Dive Solorigate January 2021": {
+      "description": "MSTIC, CDOC, 365 Defender Research Team. (2021, January 20). Deep dive into the Solorigate second-stage activation: From SUNBURST to TEARDROP and Raindrop . Retrieved January 22, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/01/20/deep-dive-into-the-solorigate-second-stage-activation-from-sunburst-to-teardrop-and-raindrop/"
+    },
+    "Microsoft 365 Defender Solorigate": {
+      "description": "Microsoft 365 Defender Team. (2020, December 28). Using Microsoft 365 Defender to protect against Solorigate. Retrieved January 7, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2020/12/28/using-microsoft-365-defender-to-coordinate-protection-against-solorigate/"
+    },
+    "Microsoft Analyzing Solorigate Dec 2020": {
+      "description": "MSTIC. (2020, December 18). Analyzing Solorigate, the compromised DLL file that started a sophisticated cyberattack, and how Microsoft Defender helps protect customers . Retrieved January 5, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2020/12/18/analyzing-solorigate-the-compromised-dll-file-that-started-a-sophisticated-cyberattack-and-how-microsoft-defender-helps-protect/"
+    },
+    "Microsoft Internal Solorigate Investigation Blog": {
+      "description": "MSRC Team. (2021, February 18). Microsoft Internal Solorigate Investigation – Final Update. Retrieved May 14, 2021.",
+      "number": null,
+      "url": "https://msrc-blog.microsoft.com/2021/02/18/microsoft-internal-solorigate-investigation-final-update/"
+    },
+    "SolarWinds Sunburst Sunspot Update January 2021": {
+      "description": "Sudhakar Ramakrishna . (2021, January 11). New Findings From Our Investigation of SUNBURST. Retrieved January 13, 2021.",
+      "number": null,
+      "url": "https://orangematter.solarwinds.com/2021/01/11/new-findings-from-our-investigation-of-sunburst/"
+    },
+    "FireEye SUNSHUTTLE Mar 2021": {
+      "description": "Smith, L., Leathery, J., Read, B. (2021, March 4). New SUNSHUTTLE Second-Stage Backdoor Uncovered Targeting U.S.-Based Entity; Possible Connection to UNC2452. Retrieved March 12, 2021.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2021/03/sunshuttle-second-stage-backdoor-targeting-us-based-entity.html"
+    },
+    "USG Joint Statement SolarWinds January 2021": {
+      "description": "FBI, CISA, ODNI, NSA. (2022, January 5). Joint Statement by the Federal Bureau of Investigation (FBI), the Cybersecurity and Infrastructure Security Agency (CISA), the Office of the Director of National Intelligence (ODNI), and the National Security Agency (NSA). Retrieved March 26, 2023.",
+      "number": null,
+      "url": "https://www.cisa.gov/news-events/news/joint-statement-federal-bureau-investigation-fbi-cybersecurity-and-infrastructure"
+    },
+    "Mandiant UNC2452 APT29 April 2022": {
+      "description": "Mandiant. (2020, April 27). Assembling the Russian Nesting Doll: UNC2452 Merged into APT29. Retrieved March 26, 2023.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/blog/unc2452-merged-into-apt29"
+    },
+    "SolarWinds Advisory Dec 2020": {
+      "description": "SolarWinds. (2020, December 24). SolarWinds Security Advisory. Retrieved February 22, 2021.",
+      "number": null,
+      "url": "https://www.solarwinds.com/sa-overview/securityadvisory"
+    },
+    "CISA SoreFang July 2016": {
+      "description": "CISA. (2020, July 16). MAR-10296782-1.v1 – SOREFANG. Retrieved September 29, 2020.",
+      "number": null,
+      "url": "https://us-cert.cisa.gov/ncas/analysis-reports/ar20-198a"
+    },
+    "CISA WellMail July 2020": {
+      "description": "CISA. (2020, July 16). MAR-10296782-3.v1 – WELLMAIL. Retrieved September 29, 2020.",
+      "number": null,
+      "url": "https://us-cert.cisa.gov/ncas/analysis-reports/ar20-198c"
+    },
+    "FireEye POSHSPY April 2017": {
+      "description": "Dunwoody, M.. (2017, April 3). Dissecting One of APT29’s Fileless WMI and PowerShell Backdoors (POSHSPY). Retrieved April 5, 2017.",
+      "number": null,
+      "url": "https://www.fireeye.com/blog/threat-research/2017/03/dissecting_one_ofap.html"
+    },
+    "MSTIC FoggyWeb September 2021": {
+      "description": "Ramin Nafisi. (2021, September 27). FoggyWeb: Targeted NOBELIUM malware leads to persistent backdoor. Retrieved October 4, 2021.",
+      "number": null,
+      "url": "https://www.microsoft.com/security/blog/2021/09/27/foggyweb-targeted-nobelium-malware-leads-to-persistent-backdoor/"
+    },
+    "Volexity PowerDuke November 2016": {
+      "description": "Adair, S.. (2016, November 9). PowerDuke: Widespread Post-Election Spear Phishing Campaigns Targeting Think Tanks and NGOs. Retrieved January 11, 2017.",
+      "number": null,
+      "url": "https://www.volexity.com/blog/2016/11/09/powerduke-post-election-spear-phishing-campaigns-targeting-think-tanks-and-ngos/"
+    },
+    "CISA WellMess July 2020": {
+      "description": "CISA. (2020, July 16). MAR-10296782-2.v1 – WELLMESS. Retrieved September 24, 2020.",
+      "number": null,
+      "url": "https://us-cert.cisa.gov/ncas/analysis-reports/ar20-198b"
+    }
+  },
+  "aliases_list": [
+    "IRON RITUAL",
+    "IRON HEMLOCK",
+    "NobleBaron",
+    "Dark Halo",
+    "NOBELIUM",
+    "UNC2452",
+    "YTTRIUM",
+    "The Dukes",
+    "Cozy Bear",
+    "CozyDuke",
+    "SolarStorm",
+    "Blue Kitsune",
+    "UNC3524",
+    "Midnight Blizzard"
+  ]
+}

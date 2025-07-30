@@ -1,0 +1,1434 @@
+{
+  "attack_id": "G1003",
+  "notes": null,
+  "created": "09 June 2022",
+  "modified": "25 April 2025",
+  "name": "Ember Bear",
+  "version": "2.1",
+  "contributors_list": [
+    "Hannah S"
+  ],
+  "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) is a Russian state-sponsored cyber espionage group that has been active since at least 2020, linked to Russia's General Staff Main Intelligence Directorate (GRU) 161st Specialist Training Center (Unit 29155).(Citation: CISA GRU29155 2024) [Ember Bear](https://attack.mitre.org/groups/G1003) has primarily focused operations against Ukrainian government and telecommunication entities, but has also operated against critical infrastructure entities in Europe and the Americas.(Citation: Cadet Blizzard emerges as novel threat actor) [Ember Bear](https://attack.mitre.org/groups/G1003) conducted the [WhisperGate](https://attack.mitre.org/software/S0689) destructive wiper attacks against Ukraine in early 2022.(Citation: CrowdStrike Ember Bear Profile March 2022)(Citation: Mandiant UNC2589 March 2022)(Citation: CISA GRU29155 2024) There is some confusion as to whether [Ember Bear](https://attack.mitre.org/groups/G1003) overlaps with another Russian-linked entity referred to as [Saint Bear](https://attack.mitre.org/groups/G1031). At present available evidence strongly suggests these are distinct activities with different behavioral profiles.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: Palo Alto Unit 42 OutSteel SaintBot February 2022 )",
+  "technique_table_data": [
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1583",
+      "name": "Acquire Infrastructure",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses services such as IVPN, SurfShark, and Tor to add anonymization to operations.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Virtual Private Server",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used virtual private servers (VPSs) to host tools, perform reconnaissance, exploit victim infrastructure, and as a destination for data exfiltration.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1595",
+      "name": "Active Scanning",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Scanning IP Blocks",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has targeted IP ranges for vulnerability scanning related to government and critical infrastructure organizations.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Vulnerability Scanning",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used publicly available tools such as MASSCAN and Acunetix for vulnerability scanning of public-facing infrastructure.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "DNS",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used DNS tunnelling tools, such as dnscat/2 and Iodine, for C2 purposes.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1560",
+      "name": "Archive Collected Data",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has compressed collected data prior to exfiltration.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1119",
+      "name": "Automated Collection",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) engages in mass collection from compromised systems during intrusions.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1110",
+      "name": "Brute Force",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) used the `su-bruteforce` tool to brute force specific users using the `su` command.(Citation: CISA GRU29155 2024)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Password Spraying",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has conducted password spraying against Outlook Web Access (OWA) infrastructure to identify valid user names and passwords.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1059",
+      "name": "Command and Scripting Interpreter",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "PowerShell",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used PowerShell commands to gather information from compromised systems,  such as email servers.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1005",
+      "name": "Data from Local System",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) gathers victim system information such as enumerating the volume of a given device or extracting system and security event logs for analysis.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1491",
+      "name": "Defacement",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "External Defacement",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) is linked to the defacement of several Ukrainian organization websites.(Citation: Cadet Blizzard emerges as novel threat actor)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1561",
+      "name": "Disk Wipe",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Disk Structure Wipe",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) conducted destructive operations against victims, including disk structure wiping, via the [WhisperGate](https://attack.mitre.org/software/S0689) malware in Ukraine.(Citation: Cadet Blizzard emerges as novel threat actor)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1114",
+      "name": "Email Collection",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) attempts to collect mail from accessed systems and servers.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1585",
+      "name": "Establish Accounts",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has created accounts on dark web forums to obtain various tools and malware.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1567",
+      "name": "Exfiltration Over Web Service",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Exfiltration to Cloud Storage",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate information from victim environments to cloud storage such as `mega.nz`.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) gains initial access to victim environments by exploiting external-facing services. Examples include exploitation of CVE-2021-26084 in Confluence servers; CVE-2022-41040, ProxyShell, and other vulnerabilities in Microsoft Exchange; and multiple vulnerabilities in open-source platforms such as content management systems.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1203",
+      "name": "Exploitation for Client Execution",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits to enable follow-on execution of frameworks such as Meterpreter.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1210",
+      "name": "Exploitation of Remote Services",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits for vulnerabilities such as MS17-010, also known as `Eternal Blue`, during operations.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1133",
+      "name": "External Remote Services",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) have used VPNs both for initial access to victim environments and for persistence within them following compromise.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1562",
+      "name": "Impair Defenses",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Disable or Modify Tools",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses the NirSoft AdvancedRun utility to disable Microsoft Defender Antivirus through stopping the WinDefend service on victim machines. [Ember Bear](https://attack.mitre.org/groups/G1003) disables Windows Defender via registry key changes.(Citation: Cadet Blizzard emerges as novel threat actor)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1070",
+      "name": "Indicator Removal",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "File Deletion",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) deletes files related to lateral movement to avoid detection.(Citation: Cadet Blizzard emerges as novel threat actor)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1570",
+      "name": "Lateral Tool Transfer",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) retrieves follow-on payloads direct from adversary-owned infrastructure for deployment on compromised hosts.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1654",
+      "name": "Log Enumeration",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has enumerated SECURITY and SYSTEM log files during intrusions.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1036",
+      "name": "Masquerading",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has renamed the legitimate Sysinternals tool procdump to alternative names such as <code>dump64.exe</code> to evade detection.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Match Legitimate Resource Name or Location",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has renamed tools to match legitimate utilities, such as renaming GOST tunneling instances to `java` in victim environments.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1112",
+      "name": "Modify Registry",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) modifies registry values for anti-forensics and defense evasion purposes.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1046",
+      "name": "Network Service Discovery",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as NMAP for remote system discovery and enumeration in victim environments.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1095",
+      "name": "Non-Application Layer Protocol",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses socket-based tunneling utilities for command and control purposes such as NetCat and Go Simple Tunnel (GOST). These tunnels are used to push interactive command prompts over the created sockets.(Citation: Cadet Blizzard emerges as novel threat actor) [Ember Bear](https://attack.mitre.org/groups/G1003) has also used reverse TCP connections from Meterpreter installations to communicate back with C2 infrastructure.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1571",
+      "name": "Non-Standard Port",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used various non-standard ports for C2 communication.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1588",
+      "name": "Obtain Capabilities",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Malware",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has acquired malware and related tools from dark web forums.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Exploits",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has obtained exploitation scripts against publicly-disclosed vulnerabilities from public repositories.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) gathers credential material from target systems, such as SSH keys, to facilitate access to victim environments.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "LSASS Memory",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses legitimate Sysinternals tools such as procdump to dump LSASS memory.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Security Account Manager",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) acquires victim credentials by extracting registry hives such as the Security Account Manager through commands such as <code>reg save</code>.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        },
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "004",
+          "name": "LSA Secrets",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used frameworks such as [Impacket](https://attack.mitre.org/software/S0357) to dump LSA secrets for credential capture.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1572",
+      "name": "Protocol Tunneling",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used ProxyChains to tunnel protocols to internal networks.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1090",
+      "name": "Proxy",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Multi-hop Proxy",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has configured multi-hop proxies via ProxyChains within victim environments.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1021",
+      "name": "Remote Services",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses valid network credentials gathered through credential harvesting to move laterally within victim networks, often employing the [Impacket](https://attack.mitre.org/software/S0357) framework to do so.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1018",
+      "name": "Remote System Discovery",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as Nmap and MASSCAN for remote service discovery.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1053",
+      "name": "Scheduled Task/Job",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "005",
+          "name": "Scheduled Task",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses remotely scheduled tasks to facilitate remote command execution on victim machines.(Citation: Cadet Blizzard emerges as novel threat actor)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1505",
+      "name": "Server Software Component",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "003",
+          "name": "Web Shell",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) deploys web shells following initial access for either follow-on command execution or protocol tunneling. Example web shells used by [Ember Bear](https://attack.mitre.org/groups/G1003) include P0wnyshell, reGeorg, [P.A.S. Webshell](https://attack.mitre.org/software/S0598), and custom variants of publicly-available web shell examples.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1195",
+      "name": "Supply Chain Compromise",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has compromised information technology providers and software developers providing services to targets of interest, building initial access to ultimate victims at least in part through compromise of service providers that work with the victim organizations.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "subtechniques": []
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Credentials In Files",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has dumped configuration settings in accessed IP cameras including plaintext credentials.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1550",
+      "name": "Use Alternate Authentication Material",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "002",
+          "name": "Pass the Hash",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used pass-the-hash techniques for lateral movement in victim environments.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "domain": "enterprise",
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "technique_used": false,
+      "subtechniques": [
+        {
+          "technique_used": true,
+          "domain": "enterprise",
+          "id": "001",
+          "name": "Default Accounts",
+          "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has abused default user names and passwords in externally-accessible IP cameras for initial access.(Citation: CISA GRU29155 2024)",
+          "subtechniques": []
+        }
+      ]
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1125",
+      "name": "Video Capture",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has exfiltrated images from compromised IP cameras.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    },
+    {
+      "technique_used": true,
+      "domain": "enterprise",
+      "id": "T1047",
+      "name": "Windows Management Instrumentation",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used WMI execution with password hashes for command execution and lateral movement.(Citation: CISA GRU29155 2024)",
+      "subtechniques": []
+    }
+  ],
+  "campaign_data": [],
+  "add_campaign_ref": false,
+  "software_data": [
+    {
+      "id": "S0521",
+      "name": "BloodHound",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [BloodHound](https://attack.mitre.org/software/S0521) to profile Active Directory environments.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "id": "T1560",
+          "name": "Archive Collected Data"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1482",
+          "name": "Domain Trust Discovery"
+        },
+        {
+          "id": "T1615",
+          "name": "Group Policy Discovery"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "001",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Local Groups"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0488",
+      "name": "CrackMapExec",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) used [CrackMapExec](https://attack.mitre.org/software/S0488) during intrusions.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "002",
+          "name": "Account Discovery",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "003",
+          "name": "Brute Force",
+          "sub_name": "Password Spraying"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "id": "T1110",
+          "name": "Brute Force"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "id": "T1201",
+          "name": "Password Policy Discovery"
+        },
+        {
+          "parent_id": "T1069",
+          "id": "002",
+          "name": "Permission Groups Discovery",
+          "sub_name": "Domain Groups"
+        },
+        {
+          "id": "T1018",
+          "name": "Remote System Discovery"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "002",
+          "name": "Scheduled Task/Job",
+          "sub_name": "At"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1049",
+          "name": "System Network Connections Discovery"
+        },
+        {
+          "parent_id": "T1550",
+          "id": "002",
+          "name": "Use Alternate Authentication Material",
+          "sub_name": "Pass the Hash"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0357",
+      "name": "Impacket",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [Impacket](https://attack.mitre.org/software/S0357) for lateral movement and process execution in victim environments.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "003",
+          "name": "OS Credential Dumping",
+          "sub_name": "NTDS"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "001",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSASS Memory"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "002",
+          "name": "OS Credential Dumping",
+          "sub_name": "Security Account Manager"
+        },
+        {
+          "parent_id": "T1003",
+          "id": "004",
+          "name": "OS Credential Dumping",
+          "sub_name": "LSA Secrets"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "003",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Kerberoasting"
+        },
+        {
+          "parent_id": "T1558",
+          "id": "005",
+          "name": "Steal or Forge Kerberos Tickets",
+          "sub_name": "Ccache Files"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation"
+        }
+      ]
+    },
+    {
+      "id": "S0508",
+      "name": "ngrok",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) used [ngrok](https://attack.mitre.org/software/S0508) during intrusions against Ukrainian victims.(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "techniques": [
+        {
+          "parent_id": "T1568",
+          "id": "002",
+          "name": "Dynamic Resolution",
+          "sub_name": "Domain Generation Algorithms"
+        },
+        {
+          "id": "T1567",
+          "name": "Exfiltration Over Web Service"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    },
+    {
+      "id": "S0598",
+      "name": "P.A.S. Webshell",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [P.A.S. Webshell](https://attack.mitre.org/software/S0598) during intrusions.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1087",
+          "id": "001",
+          "name": "Account Discovery",
+          "sub_name": "Local Account"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1110",
+          "id": "001",
+          "name": "Brute Force",
+          "sub_name": "Password Guessing"
+        },
+        {
+          "id": "T1059",
+          "name": "Command and Scripting Interpreter"
+        },
+        {
+          "id": "T1213",
+          "name": "Data from Information Repositories"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1222",
+          "id": "002",
+          "name": "File and Directory Permissions Modification",
+          "sub_name": "Linux and Mac File and Directory Permissions Modification"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1046",
+          "name": "Network Service Discovery"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        },
+        {
+          "id": "T1518",
+          "name": "Software Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S0029",
+      "name": "PsExec",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [PsExec](https://attack.mitre.org/software/S0029) through frameworks such as [Impacket](https://attack.mitre.org/software/S0357) for remote command execution.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1136",
+          "id": "002",
+          "name": "Create Account",
+          "sub_name": "Domain Account"
+        },
+        {
+          "parent_id": "T1543",
+          "id": "003",
+          "name": "Create or Modify System Process",
+          "sub_name": "Windows Service"
+        },
+        {
+          "id": "T1570",
+          "name": "Lateral Tool Transfer"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        }
+      ]
+    },
+    {
+      "id": "S1040",
+      "name": "Rclone",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate information from victim environments.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1560",
+          "id": "001",
+          "name": "Archive Collected Data",
+          "sub_name": "Archive via Utility"
+        },
+        {
+          "id": "T1030",
+          "name": "Data Transfer Size Limits"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "002",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol"
+        },
+        {
+          "parent_id": "T1048",
+          "id": "003",
+          "name": "Exfiltration Over Alternative Protocol",
+          "sub_name": "Exfiltration Over Unencrypted Non-C2 Protocol"
+        },
+        {
+          "parent_id": "T1567",
+          "id": "002",
+          "name": "Exfiltration Over Web Service",
+          "sub_name": "Exfiltration to Cloud Storage"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        }
+      ]
+    },
+    {
+      "id": "S1187",
+      "name": "reGeorg",
+      "descr": "(Citation: Cadet Blizzard emerges as novel threat actor)",
+      "techniques": [
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "006",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Python"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1095",
+          "name": "Non-Application Layer Protocol"
+        },
+        {
+          "id": "T1572",
+          "name": "Protocol Tunneling"
+        },
+        {
+          "id": "T1090",
+          "name": "Proxy"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "001",
+          "name": "Remote Services",
+          "sub_name": "Remote Desktop Protocol"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "004",
+          "name": "Remote Services",
+          "sub_name": "SSH"
+        },
+        {
+          "parent_id": "T1021",
+          "id": "002",
+          "name": "Remote Services",
+          "sub_name": "SMB/Windows Admin Shares"
+        },
+        {
+          "parent_id": "T1505",
+          "id": "003",
+          "name": "Server Software Component",
+          "sub_name": "Web Shell"
+        }
+      ]
+    },
+    {
+      "id": "S0174",
+      "name": "Responder",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [Responder](https://attack.mitre.org/software/S0174) in intrusions.(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1557",
+          "id": "001",
+          "name": "Adversary-in-the-Middle",
+          "sub_name": "LLMNR/NBT-NS Poisoning and SMB Relay"
+        },
+        {
+          "id": "T1040",
+          "name": "Network Sniffing"
+        }
+      ]
+    },
+    {
+      "id": "S1018",
+      "name": "Saint Bot",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used [Saint Bot](https://attack.mitre.org/software/S1018) during operations, but is distinct from the threat actor [Saint Bear](https://attack.mitre.org/groups/G1031).(Citation: CISA GRU29155 2024)",
+      "techniques": [
+        {
+          "parent_id": "T1548",
+          "id": "002",
+          "name": "Abuse Elevation Control Mechanism",
+          "sub_name": "Bypass User Account Control"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1547",
+          "id": "001",
+          "name": "Boot or Logon Autostart Execution",
+          "sub_name": "Registry Run Keys / Startup Folder"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1132",
+          "id": "001",
+          "name": "Data Encoding",
+          "sub_name": "Standard Encoding"
+        },
+        {
+          "id": "T1005",
+          "name": "Data from Local System"
+        },
+        {
+          "id": "T1622",
+          "name": "Debugger Evasion"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "id": "T1574",
+          "name": "Hijack Execution Flow"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "parent_id": "T1036",
+          "id": "005",
+          "name": "Masquerading",
+          "sub_name": "Match Legitimate Resource Name or Location"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "002",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Software Packing"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "002",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Link"
+        },
+        {
+          "parent_id": "T1566",
+          "id": "001",
+          "name": "Phishing",
+          "sub_name": "Spearphishing Attachment"
+        },
+        {
+          "id": "T1057",
+          "name": "Process Discovery"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "001",
+          "name": "Process Injection",
+          "sub_name": "Dynamic-link Library Injection"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "004",
+          "name": "Process Injection",
+          "sub_name": "Asynchronous Procedure Call"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1012",
+          "name": "Query Registry"
+        },
+        {
+          "parent_id": "T1053",
+          "id": "005",
+          "name": "Scheduled Task/Job",
+          "sub_name": "Scheduled Task"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "010",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "Regsvr32"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "004",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "InstallUtil"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "id": "T1614",
+          "name": "System Location Discovery"
+        },
+        {
+          "id": "T1016",
+          "name": "System Network Configuration Discovery"
+        },
+        {
+          "id": "T1033",
+          "name": "System Owner/User Discovery"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "002",
+          "name": "User Execution",
+          "sub_name": "Malicious File"
+        },
+        {
+          "parent_id": "T1204",
+          "id": "001",
+          "name": "User Execution",
+          "sub_name": "Malicious Link"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        }
+      ]
+    },
+    {
+      "id": "S0689",
+      "name": "WhisperGate",
+      "descr": "[Ember Bear](https://attack.mitre.org/groups/G1003) is associated with [WhisperGate](https://attack.mitre.org/software/S0689) use against multiple victims in Ukraine.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CrowdStrike Ember Bear Profile March 2022)(Citation: Mandiant UNC2589 March 2022)",
+      "techniques": [
+        {
+          "parent_id": "T1134",
+          "id": "002",
+          "name": "Access Token Manipulation",
+          "sub_name": "Create Process with Token"
+        },
+        {
+          "parent_id": "T1071",
+          "id": "001",
+          "name": "Application Layer Protocol",
+          "sub_name": "Web Protocols"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "001",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "PowerShell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "003",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Windows Command Shell"
+        },
+        {
+          "parent_id": "T1059",
+          "id": "005",
+          "name": "Command and Scripting Interpreter",
+          "sub_name": "Visual Basic"
+        },
+        {
+          "id": "T1485",
+          "name": "Data Destruction"
+        },
+        {
+          "id": "T1140",
+          "name": "Deobfuscate/Decode Files or Information"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "002",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Structure Wipe"
+        },
+        {
+          "parent_id": "T1561",
+          "id": "001",
+          "name": "Disk Wipe",
+          "sub_name": "Disk Content Wipe"
+        },
+        {
+          "id": "T1083",
+          "name": "File and Directory Discovery"
+        },
+        {
+          "parent_id": "T1562",
+          "id": "001",
+          "name": "Impair Defenses",
+          "sub_name": "Disable or Modify Tools"
+        },
+        {
+          "parent_id": "T1070",
+          "id": "004",
+          "name": "Indicator Removal",
+          "sub_name": "File Deletion"
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer"
+        },
+        {
+          "id": "T1036",
+          "name": "Masquerading"
+        },
+        {
+          "id": "T1106",
+          "name": "Native API"
+        },
+        {
+          "id": "T1135",
+          "name": "Network Share Discovery"
+        },
+        {
+          "parent_id": "T1027",
+          "id": "013",
+          "name": "Obfuscated Files or Information",
+          "sub_name": "Encrypted/Encoded File"
+        },
+        {
+          "parent_id": "T1542",
+          "id": "003",
+          "name": "Pre-OS Boot",
+          "sub_name": "Bootkit"
+        },
+        {
+          "parent_id": "T1055",
+          "id": "012",
+          "name": "Process Injection",
+          "sub_name": "Process Hollowing"
+        },
+        {
+          "id": "T1620",
+          "name": "Reflective Code Loading"
+        },
+        {
+          "parent_id": "T1518",
+          "id": "001",
+          "name": "Software Discovery",
+          "sub_name": "Security Software Discovery"
+        },
+        {
+          "parent_id": "T1218",
+          "id": "004",
+          "name": "System Binary Proxy Execution",
+          "sub_name": "InstallUtil"
+        },
+        {
+          "id": "T1082",
+          "name": "System Information Discovery"
+        },
+        {
+          "parent_id": "T1569",
+          "id": "002",
+          "name": "System Services",
+          "sub_name": "Service Execution"
+        },
+        {
+          "id": "T1529",
+          "name": "System Shutdown/Reboot"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "001",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "System Checks"
+        },
+        {
+          "parent_id": "T1497",
+          "id": "003",
+          "name": "Virtualization/Sandbox Evasion",
+          "sub_name": "Time Based Evasion"
+        },
+        {
+          "id": "T1102",
+          "name": "Web Service"
+        }
+      ]
+    }
+  ],
+  "add_software_ref": true,
+  "alias_descriptions": [
+    {
+      "name": "UNC2589",
+      "descr": "(Citation: Mandiant UNC2589 March 2022)"
+    },
+    {
+      "name": "Bleeding Bear",
+      "descr": "(Citation: CrowdStrike Ember Bear Profile March 2022)"
+    },
+    {
+      "name": "DEV-0586",
+      "descr": "(Citation: Cadet Blizzard emerges as novel threat actor)"
+    },
+    {
+      "name": "Cadet Blizzard",
+      "descr": "(Citation: Cadet Blizzard emerges as novel threat actor)"
+    },
+    {
+      "name": "Frozenvista",
+      "descr": "(Citation: CISA GRU29155 2024)"
+    },
+    {
+      "name": "UAC-0056",
+      "descr": "(Citation: CISA GRU29155 2024)"
+    }
+  ],
+  "citations": {
+    "current_number": 0,
+    "CrowdStrike Ember Bear Profile March 2022": {
+      "description": "CrowdStrike. (2022, March 30). Who is EMBER BEAR?. Retrieved June 9, 2022.",
+      "number": null,
+      "url": "https://www.crowdstrike.com/blog/who-is-ember-bear/"
+    },
+    "Cadet Blizzard emerges as novel threat actor": {
+      "description": "Microsoft Threat Intelligence. (2023, June 14). Cadet Blizzard emerges as a novel and distinct Russian threat actor. Retrieved July 10, 2023.",
+      "number": null,
+      "url": "https://www.microsoft.com/en-us/security/blog/2023/06/14/cadet-blizzard-emerges-as-a-novel-and-distinct-russian-threat-actor/"
+    },
+    "Mandiant UNC2589 March 2022": {
+      "description": "Sadowski, J; Hall, R. (2022, March 4). Responses to Russia's Invasion of Ukraine Likely to Spur Retaliation. Retrieved June 9, 2022.",
+      "number": null,
+      "url": "https://www.mandiant.com/resources/russia-invasion-ukraine-retaliation"
+    },
+    "Palo Alto Unit 42 OutSteel SaintBot February 2022 ": {
+      "description": "Unit 42. (2022, February 25). Spear Phishing Attacks Target Organizations in Ukraine, Payloads Include the Document Stealer OutSteel and the Downloader SaintBot. Retrieved June 9, 2022.",
+      "number": null,
+      "url": "https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/"
+    },
+    "CISA GRU29155 2024": {
+      "description": "US Cybersecurity & Infrastructure Security Agency et al. (2024, September 5). Russian Military Cyber Actors Target U.S. and Global Critical Infrastructure. Retrieved September 6, 2024.",
+      "number": null,
+      "url": "https://www.cisa.gov/sites/default/files/2024-09/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf"
+    }
+  },
+  "aliases_list": [
+    "UNC2589",
+    "Bleeding Bear",
+    "DEV-0586",
+    "Cadet Blizzard",
+    "Frozenvista",
+    "UAC-0056"
+  ]
+}

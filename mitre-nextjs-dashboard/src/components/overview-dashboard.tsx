@@ -254,7 +254,7 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold text-foreground mb-2">
-              MITRE ATT&CK Intelligence Platform
+              ECHO ATT&CK Intelligence Platform
             </h1>
             <p className="text-muted-foreground text-lg">
               Advanced Persistent Threat Analysis & Real-time Monitoring

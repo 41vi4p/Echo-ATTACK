@@ -61,7 +61,7 @@ export default function AboutDashboard() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              About MITRE ATT&CK Dashboard
+              About ECHO ATT&CK
             </h1>
             <p className="text-muted-foreground">
               Modern threat intelligence platform for defensive security analysis
@@ -87,7 +87,7 @@ export default function AboutDashboard() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground leading-relaxed">
-              This dashboard is a modern Next.js application that provides comprehensive analysis of 
+              ECHO ATT&CK is a modern Next.js application that provides comprehensive analysis of 
               MITRE ATT&CK framework data. Originally converted from a Streamlit application, it offers 
               an intuitive interface for threat intelligence professionals and security researchers.
             </p>
@@ -224,7 +224,7 @@ export default function AboutDashboard() {
             </p>
             <Button variant="default" asChild>
               <a 
-                href="https://github.com/davidporathur/mitre-nextjs-dashboard" 
+                href="https://github.com/davidporathur/echo-attack-dashboard" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -253,7 +253,7 @@ export default function AboutDashboard() {
             </p>
             <Button variant="outline" size="sm" asChild>
               <a 
-                href="https://github.com/davidporathur/mitre-nextjs-dashboard/issues" 
+                href="https://github.com/davidporathur/echo-attack-dashboard/issues" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -280,7 +280,7 @@ export default function AboutDashboard() {
             <div>
               <h4 className="font-semibold text-foreground mb-2">MITRE ATT&CK Framework</h4>
               <p className="text-sm text-muted-foreground mb-2">
-                This dashboard utilizes data from the MITRE ATT&CK framework, a globally-accessible 
+                ECHO ATT&CK utilizes data from the MITRE ATT&CK framework, a globally-accessible 
                 knowledge base of adversary tactics and techniques.
               </p>
               <Button variant="outline" size="sm" asChild>
@@ -338,7 +338,7 @@ export default function AboutDashboard() {
             <div>
               <h4 className="font-semibold text-foreground mb-2">Security Notice</h4>
               <p className="text-sm text-muted-foreground">
-                This dashboard is designed exclusively for defensive security analysis. It provides 
+                ECHO ATT&CK is designed exclusively for defensive security analysis. It provides 
                 tools for understanding threats, not for conducting malicious activities.
               </p>
             </div>

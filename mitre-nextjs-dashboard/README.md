@@ -1,6 +1,6 @@
-# MITRE ATT&CK Dashboard
+# ECHO ATT&CK
 
-A modern, interactive threat intelligence dashboard built with Next.js, providing comprehensive analysis of MITRE ATT&CK framework data including APT groups, techniques, and software tools.
+A modern, interactive threat intelligence platform built with Next.js, providing comprehensive analysis of MITRE ATT&CK framework data including APT groups, techniques, and software tools.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, interactive threat intelligence dashboard built with Next.js, providin
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd mitre-nextjs-dashboard
+   cd echo-attack-dashboard
    ```
 
 2. **Install dependencies**
@@ -93,7 +93,7 @@ src/
 
 ## 🎨 Theme & Styling
 
-The dashboard features a professional futuristic blue theme using:
+ECHO ATT&CK features a professional futuristic blue theme using:
 - **Primary Colors**: Various shades of blue using oklch color space
 - **Typography**: Modern font stack with terminal-style elements
 - **Effects**: Subtle animations and hover states
@@ -148,7 +148,7 @@ This project is licensed under the MIT License.
 
 ## 🔒 Security
 
-This dashboard is designed for defensive security analysis only. It provides tools for:
+ECHO ATT&CK is designed for defensive security analysis only. It provides tools for:
 - Threat intelligence analysis
 - Security research and education
 - Defensive planning and preparation

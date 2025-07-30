@@ -1,5 +1,23 @@
 # Version Changelog
 
+## v1.0.1 - ECHO ATT&CK Rebranding
+
+### 🔄 Branding Changes
+- **Platform Rebranding**: Changed platform name from "MITRE CTI Dashboard" to "ECHO ATT&CK"
+- **Updated All Components**: Comprehensive rebranding across all dashboard components
+- **Repository Rename**: Updated package.json and repository references
+- **Documentation Updates**: Updated README.md and all documentation with new branding
+
+### 🎨 Visual Updates
+- **Sidebar Branding**: Updated main sidebar header with ECHO ATT&CK branding
+- **About Page**: Complete refresh with new platform name and developer information
+- **Component Headers**: Updated all dashboard component titles and descriptions
+
+### 🔗 Repository Changes
+- **Package Name**: Changed from "mitre-nextjs-dashboard" to "echo-attack-dashboard"
+- **GitHub Links**: Updated all repository links to reflect new naming
+- **Issue Tracker**: Updated issue tracking links
+
 ## v1.0.0 - Initial Release
 
 ### ✨ Features

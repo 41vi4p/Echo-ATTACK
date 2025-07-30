@@ -61,7 +61,7 @@ export default function DashboardLayout({ children, activeTab, onTabChange }: Da
         {!isCollapsed && (
           <div>
             <h1 className="text-xl font-bold text-foreground font-sans">
-              MITRE CTI Dashboard
+              ECHO ATT&CK
             </h1>
             <p className="text-xs text-muted-foreground">
               Threat Intelligence Platform

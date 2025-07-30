@@ -1,6 +1,6 @@
 # ECHO ATT&CK
 
-[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/41vi4p/Echo-ATTACK/releases)
+[![Version](https://img.shields.io/badge/version-1.0.4-blue.svg)](https://github.com/41vi4p/Echo-ATTACK/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/41vi4p/Echo-ATTACK/blob/main/LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)

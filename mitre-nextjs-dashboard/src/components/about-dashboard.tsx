@@ -10,15 +10,31 @@ import {
   Zap,
   Users,
   ExternalLink,
-  Github,
   Heart,
   Star,
   Cpu,
-  Globe
+  Globe,
+  Mail,
+  AlertTriangle
 } from 'lucide-react';
 
 export default function AboutDashboard() {
   const version = "1.0.1";
+  
+  const developers = [
+    {
+      name: "David Porathur",
+      github: "https://github.com/davidporathur", // Replace with actual GitHub URL
+      linkedin: "https://linkedin.com/in/davidporathur", // Replace with actual LinkedIn URL
+      email: "david.porathur@example.com" // Replace with actual email
+    },
+    {
+      name: "Vanessa Rodrigues",
+      github: "https://github.com/vanessarodrigues", // Replace with actual GitHub URL
+      linkedin: "https://linkedin.com/in/vanessarodrigues", // Replace with actual LinkedIn URL
+      email: "vanessa.rodrigues@example.com" // Replace with actual email
+    }
+  ];
   
   const techStack = [
     { name: "Next.js 15", description: "React framework with App Router", icon: Code },
@@ -138,6 +154,115 @@ export default function AboutDashboard() {
                 </div>
               );
             })}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Development Team */}
+      <Card className="hacker-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Users className="h-5 w-5 text-primary" />
+            Development Team
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {developers.map((developer, index) => (
+              <div key={index} className="p-4 bg-secondary/30 rounded-lg border border-border">
+                <div className="text-center mb-4">
+                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-foreground text-lg">{developer.name}</h3>
+                </div>
+                
+                <div className="flex justify-center gap-2">
+                  <Button variant="outline" size="sm" asChild>
+                    <a 
+                      href={developer.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      GitHub
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a 
+                      href={developer.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      LinkedIn
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Repository Information */}
+      <Card className="hacker-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ExternalLink className="h-5 w-5 text-primary" />
+            Repository
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Source Code</h4>
+            <p className="text-sm text-muted-foreground mb-3">
+              This project is open source and available on GitHub. Feel free to explore the code, 
+              report issues, or contribute to the development.
+            </p>
+            <Button variant="default" asChild>
+              <a 
+                href="https://github.com/davidporathur/mitre-nextjs-dashboard" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                View on GitHub
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Contributing</h4>
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p>• Fork the repository</p>
+              <p>• Create a feature branch</p>
+              <p>• Make your changes</p>
+              <p>• Submit a pull request</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Issues & Support</h4>
+            <p className="text-sm text-muted-foreground mb-2">
+              Found a bug or have a feature request? Please use the GitHub issue tracker.
+            </p>
+            <Button variant="outline" size="sm" asChild>
+              <a 
+                href="https://github.com/davidporathur/mitre-nextjs-dashboard/issues" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <AlertTriangle className="h-4 w-4" />
+                Report Issue
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
           </div>
         </CardContent>
       </Card>

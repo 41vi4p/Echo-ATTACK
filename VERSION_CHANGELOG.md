@@ -9,7 +9,7 @@
 - **Documentation Updates**: Updated README.md and all documentation with new branding
 
 ### 🎨 Visual Updates
-- **Sidebar Branding**: Updated main sidebar header with ECHO ATT&CK branding
+- **Sidebar Branding**: Updated main smitre_cacheidebar header with ECHO ATT&CK branding
 - **About Page**: Complete refresh with new platform name and developer information
 - **Component Headers**: Updated all dashboard component titles and descriptions
 

@@ -15,7 +15,7 @@ from pathlib import Path
 from collections import Counter, defaultdict
 import json
 
-from mitre_cache import MITRECache
+from streamlit.mitre_cache import MITRECache
 
 # Page configuration
 st.set_page_config(

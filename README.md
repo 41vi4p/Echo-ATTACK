@@ -1,6 +1,36 @@
 # ECHO ATT&CK
 
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/41vi4p/Echo-ATTACK/releases)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/41vi4p/Echo-ATTACK/blob/main/LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.1-61DAFB.svg)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC.svg)](https://tailwindcss.com/)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-Framework-red.svg)](https://attack.mitre.org/)
+[![Security](https://img.shields.io/badge/Security-Defensive_Only-green.svg)](#-security)
+[![Contributors](https://img.shields.io/badge/Contributors-2-orange.svg)](#-development-team)
+[![Issues](https://img.shields.io/github/issues/41vi4p/Echo-ATTACK.svg)](https://github.com/41vi4p/Echo-ATTACK/issues)
+[![Stars](https://img.shields.io/github/stars/41vi4p/Echo-ATTACK.svg?style=social)](https://github.com/41vi4p/Echo-ATTACK/stargazers)
+
 A modern, interactive threat intelligence platform built with Next.js, providing comprehensive analysis of MITRE ATT&CK framework data including APT groups, techniques, and software tools.
+
+## 📋 Table of Contents
+
+- [🚀 Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📦 Installation](#-installation)
+- [🏗️ Project Structure](#️-project-structure)
+- [🎯 Key Components](#-key-components)
+- [🎨 Theme & Styling](#-theme--styling)
+- [📊 Data Format](#-data-format)
+- [🚀 Build & Deployment](#-build--deployment)
+- [🔧 Configuration](#-configuration)
+- [📈 Version History](#-version-history)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [🔒 Security](#-security)
+- [👥 Development Team](#-development-team)  
+- [📞 Support](#-support)
 
 ## 🚀 Features
 
@@ -26,8 +56,8 @@ A modern, interactive threat intelligence platform built with Next.js, providing
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd echo-attack-dashboard
+   git clone https://github.com/41vi4p/Echo-ATTACK.git
+   cd Echo-ATTACK
    ```
 
 2. **Install dependencies**
@@ -152,6 +182,19 @@ ECHO ATT&CK is designed for defensive security analysis only. It provides tools 
 - Threat intelligence analysis
 - Security research and education
 - Defensive planning and preparation
+
+## 👥 Development Team
+
+**ECHO ATT&CK** is developed and maintained by:
+
+- **[David Porathur](https://github.com/41vi4p)** 
+- **[Vanessa Rodrigues](https://github.com/Vanessa-Rodrigues-156)**
+
+### 🤝 Get Involved
+- 🐛 [Report Issues](https://github.com/41vi4p/Echo-ATTACK/issues)
+- 💡 [Request Features](https://github.com/41vi4p/Echo-ATTACK/issues/new)
+- 🔧 [Contribute Code](https://github.com/41vi4p/Echo-ATTACK/pulls)
+- ⭐ [Star the Repository](https://github.com/41vi4p/Echo-ATTACK/stargazers)
 
 ## 📞 Support
 

@@ -19,19 +19,19 @@ import {
 } from 'lucide-react';
 
 export default function AboutDashboard() {
-  const version = "1.0.1";
+  const version = "1.0.4";
   
   const developers = [
     {
       name: "David Porathur",
-      github: "https://github.com/davidporathur", // Replace with actual GitHub URL
-      linkedin: "https://linkedin.com/in/davidporathur", // Replace with actual LinkedIn URL
+      github: "https://github.com/41vi4p",
+      linkedin: "https://www.linkedin.com/in/david-porathur-33780228a/", // Replace with actual LinkedIn URL
       email: "david.porathur@example.com" // Replace with actual email
     },
     {
       name: "Vanessa Rodrigues",
-      github: "https://github.com/vanessarodrigues", // Replace with actual GitHub URL
-      linkedin: "https://linkedin.com/in/vanessarodrigues", // Replace with actual LinkedIn URL
+      github: "https://github.com/Vanessa-Rodrigues-156",
+      linkedin: "https://www.linkedin.com/in/vanessa-rodrigues-156vfr/", // Replace with actual LinkedIn URL
       email: "vanessa.rodrigues@example.com" // Replace with actual email
     }
   ];
@@ -224,7 +224,7 @@ export default function AboutDashboard() {
             </p>
             <Button variant="default" asChild>
               <a 
-                href="https://github.com/davidporathur/echo-attack-dashboard" 
+                href="https://github.com/41vi4p/Echo-ATTACK" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -253,7 +253,7 @@ export default function AboutDashboard() {
             </p>
             <Button variant="outline" size="sm" asChild>
               <a 
-                href="https://github.com/davidporathur/echo-attack-dashboard/issues" 
+                href="https://github.com/41vi4p/Echo-ATTACK/issues" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"

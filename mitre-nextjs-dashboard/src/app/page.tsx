@@ -5,6 +5,8 @@ import DashboardLayout from '@/components/dashboard-layout';
 import OverviewDashboard from '@/components/overview-dashboard';
 import APTGroupsDashboard from '@/components/apt-groups-dashboard';
 import SearchDashboard from '@/components/search-dashboard';
+import AboutDashboard from '@/components/about-dashboard';
+import TTPMatrixDashboard from '@/components/ttp-matrix-dashboard';
 import { APTGroup, OverviewMetrics } from '@/types/mitre';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, AlertTriangle } from 'lucide-react';
@@ -105,16 +107,7 @@ export default function Home() {
       case 'apt-analysis':
         return <APTGroupsDashboard aptGroups={aptGroups} />;
       case 'ttp-matrix':
-        return (
-          <div className="text-center py-20">
-            <Card className="hacker-card max-w-md mx-auto">
-              <CardContent className="p-8">
-                <p className="text-lg neon-text terminal-font">TTP MATRIX MODULE</p>
-                <p className="text-muted-foreground terminal-font mt-2">Coming soon...</p>
-              </CardContent>
-            </Card>
-          </div>
-        );
+        return <TTPMatrixDashboard aptGroups={aptGroups} />;
       case 'analytics':
         return (
           <div className="text-center py-20">
@@ -128,6 +121,8 @@ export default function Home() {
         );
       case 'search':
         return <SearchDashboard aptGroups={aptGroups} />;
+      case 'about':
+        return <AboutDashboard />;
       default:
         return <OverviewDashboard aptGroups={aptGroups} metrics={metrics} />;
     }

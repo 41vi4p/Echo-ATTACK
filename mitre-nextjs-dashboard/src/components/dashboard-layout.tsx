@@ -15,7 +15,8 @@ import {
   Activity,
   Cpu,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Info
 } from 'lucide-react';
 
 interface DashboardLayoutProps {
@@ -30,6 +31,7 @@ const navigationItems = [
   { id: 'ttp-matrix', label: '🎯 TTP Matrix', icon: Target, description: 'Tactics, Techniques & Procedures' },
   { id: 'analytics', label: '📊 Analytics', icon: TrendingUp, description: 'Advanced Analytics' },
   { id: 'search', label: '🔍 Search', icon: Search, description: 'Threat Intelligence Search' },
+  { id: 'about', label: 'ℹ️ About', icon: Info, description: 'About This Dashboard' },
 ];
 
 export default function DashboardLayout({ children, activeTab, onTabChange }: DashboardLayoutProps) {

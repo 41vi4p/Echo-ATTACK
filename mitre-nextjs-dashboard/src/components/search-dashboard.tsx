@@ -5,14 +5,20 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { APTGroup } from '@/types/mitre';
+import { parseMitreLinks, MitreLink } from '@/lib/mitre-links';
 import { 
   Search, 
   Shield, 
   Target, 
   Database, 
   Filter,
-  X
+  X,
+  Eye,
+  CheckCircle,
+  XCircle
 } from 'lucide-react';
 
 interface SearchDashboardProps {
@@ -32,6 +38,44 @@ interface SearchResult {
 export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTypes, setSelectedTypes] = useState<string[]>(['group', 'technique', 'software']);
+
+  // Get detailed information for a search result
+  const getDetailedInfo = (result: SearchResult) => {
+    const group = Object.values(aptGroups).find(g => g.attack_id === result.groupId || g.name === result.name);
+    
+    if (result.type === 'group' && group) {
+      return {
+        group,
+        technique: null,
+        software: null
+      };
+    }
+    
+    if (result.type === 'technique' && group) {
+      const technique = group.technique_table_data.find(t => 
+        t.id === result.id || 
+        t.subtechniques.some(st => `${t.id}.${st.id}` === result.id)
+      );
+      const subTechnique = technique?.subtechniques.find(st => `${technique.id}.${st.id}` === result.id);
+      
+      return {
+        group,
+        technique: subTechnique || technique,
+        software: null
+      };
+    }
+    
+    if (result.type === 'software' && group) {
+      const software = group.software_data?.find(s => s.id === result.id);
+      return {
+        group,
+        technique: null,
+        software
+      };
+    }
+    
+    return { group, technique: null, software: null };
+  };
 
   // Search across all data
   const searchResults = useMemo(() => {
@@ -148,6 +192,208 @@ export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
     }
   };
 
+  const DetailedView = ({ result }: { result: SearchResult }) => {
+    const details = getDetailedInfo(result);
+    const { group, technique, software } = details;
+
+    if (!group) return <div>No detailed information available</div>;
+
+    return (
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">
+          {result.type === 'group' && <Shield className="h-6 w-6 text-blue-400" />}
+          {result.type === 'technique' && <Target className="h-6 w-6 text-green-400" />}
+          {result.type === 'software' && <Database className="h-6 w-6 text-purple-400" />}
+          <div>
+            <h3 className="text-lg font-semibold">{result.name}</h3>
+            <p className="text-sm text-muted-foreground font-mono">{result.id}</p>
+          </div>
+        </div>
+
+        <Tabs defaultValue="overview" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="group">APT Group</TabsTrigger>
+            <TabsTrigger value="related">Related Data</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-4">
+            <Card className="hacker-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Eye className="h-5 w-5 text-primary" />
+                  Description
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-muted-foreground leading-relaxed">
+                  {result.type === 'group' && parseMitreLinks(group.descr || 'No description available')}
+                  {result.type === 'technique' && technique && parseMitreLinks(technique.descr || 'No description available')}
+                  {result.type === 'software' && software && parseMitreLinks(software.description || 'No description available')}
+                </div>
+              </CardContent>
+            </Card>
+
+            {result.type === 'technique' && technique && (
+              <Card className="hacker-card">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="h-5 w-5 text-primary" />
+                    Technique Status
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    {technique.technique_used ? (
+                      <Badge variant="default" className="bg-green-500/20 text-green-400 border-green-500/30">
+                        <CheckCircle className="h-3 w-3 mr-1" />
+                        Active
+                      </Badge>
+                    ) : (
+                      <Badge variant="secondary">
+                        <XCircle className="h-3 w-3 mr-1" />
+                        Inactive
+                      </Badge>
+                    )}
+                    <span className="text-sm text-muted-foreground">
+                      Status in {group.name}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="group" className="space-y-4">
+            <Card className="hacker-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  <MitreLink id={group.attack_id} type="group">
+                    {group.name}
+                  </MitreLink>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <span className="text-muted-foreground">ID:</span>
+                    <span className="ml-2 font-medium font-mono">{group.attack_id}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Created:</span>
+                    <span className="ml-2 font-medium">{group.created}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Modified:</span>
+                    <span className="ml-2 font-medium">{group.modified}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Version:</span>
+                    <span className="ml-2 font-medium">{group.version}</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-4 pt-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-400">
+                      {group.technique_table_data.filter(t => t.technique_used).length}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Active Techniques</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-purple-400">
+                      {group.software_data?.length || 0}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Software Tools</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-orange-400">
+                      {group.campaign_data?.length || 0}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Campaigns</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="related" className="space-y-4">
+            {result.type === 'group' && (
+              <Card className="hacker-card">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="h-5 w-5 text-primary" />
+                    Top Active Techniques
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 max-h-60 overflow-y-auto">
+                    {group.technique_table_data
+                      .filter(t => t.technique_used)
+                      .slice(0, 10)
+                      .map((tech, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-secondary/20 rounded">
+                          <div>
+                            <MitreLink id={tech.id} type="technique" className="font-medium">
+                              {tech.name}
+                            </MitreLink>
+                            <p className="text-xs text-muted-foreground font-mono">{tech.id}</p>
+                          </div>
+                          <Badge variant="default" className="bg-green-500/20 text-green-400 border-green-500/30">
+                            Active
+                          </Badge>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {(result.type === 'technique' || result.type === 'software') && (
+              <Card className="hacker-card">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-primary" />
+                    Other APT Groups Using This {result.type === 'technique' ? 'Technique' : 'Software'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 max-h-60 overflow-y-auto">
+                    {Object.values(aptGroups)
+                      .filter(g => {
+                        if (result.type === 'technique') {
+                          return g.technique_table_data.some(t => 
+                            (t.id === result.id && t.technique_used) ||
+                            t.subtechniques.some(st => `${t.id}.${st.id}` === result.id && st.technique_used)
+                          );
+                        } else if (result.type === 'software') {
+                          return g.software_data?.some(s => s.id === result.id);
+                        }
+                        return false;
+                      })
+                      .slice(0, 10)
+                      .map((relatedGroup, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-secondary/20 rounded">
+                          <div>
+                            <MitreLink id={relatedGroup.attack_id} type="group" className="font-medium">
+                              {relatedGroup.name}
+                            </MitreLink>
+                            <p className="text-xs text-muted-foreground font-mono">{relatedGroup.attack_id}</p>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -236,47 +482,60 @@ export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
                   const color = getTypeColor(result.type);
                   
                   return (
-                    <div 
-                      key={index} 
-                      className="p-4 bg-secondary/30 rounded-lg border border-border hover:bg-secondary/50 transition-colors"
-                    >
-                      <div className="flex items-start gap-3">
-                        <Icon className={`h-5 w-5 ${color} flex-shrink-0 mt-1`} />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex-1">
-                              <h3 className="font-semibold text-foreground mb-1">
-                                {result.name}
-                              </h3>
-                              <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
-                                {result.description}
-                              </p>
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <Badge variant={getTypeBadgeVariant(result.type)}>
-                                  {result.type.charAt(0).toUpperCase() + result.type.slice(1)}
-                                </Badge>
-                                <Badge variant="outline" className="font-mono text-xs">
-                                  {result.id}
-                                </Badge>
-                                {result.groupName && (
-                                  <Badge variant="secondary" className="text-xs">
-                                    {result.groupName}
-                                  </Badge>
-                                )}
-                                {result.used !== undefined && (
-                                  <Badge 
-                                    variant={result.used ? "default" : "secondary"}
-                                    className={result.used ? "bg-green-500/20 text-green-400 border-green-500/30" : ""}
-                                  >
-                                    {result.used ? "Active" : "Inactive"}
-                                  </Badge>
-                                )}
+                    <Dialog key={index}>
+                      <DialogTrigger asChild>
+                        <div 
+                          className="p-4 bg-secondary/30 rounded-lg border border-border hover:bg-secondary/50 transition-colors cursor-pointer group"
+                        >
+                          <div className="flex items-start gap-3">
+                            <Icon className={`h-5 w-5 ${color} flex-shrink-0 mt-1`} />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex-1">
+                                  <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                                    {result.name}
+                                  </h3>
+                                  <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
+                                    {result.description}
+                                  </p>
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <Badge variant={getTypeBadgeVariant(result.type)}>
+                                      {result.type.charAt(0).toUpperCase() + result.type.slice(1)}
+                                    </Badge>
+                                    <Badge variant="outline" className="font-mono text-xs">
+                                      {result.id}
+                                    </Badge>
+                                    {result.groupName && (
+                                      <Badge variant="secondary" className="text-xs">
+                                        {result.groupName}
+                                      </Badge>
+                                    )}
+                                    {result.used !== undefined && (
+                                      <Badge 
+                                        variant={result.used ? "default" : "secondary"}
+                                        className={result.used ? "bg-green-500/20 text-green-400 border-green-500/30" : ""}
+                                      >
+                                        {result.used ? "Active" : "Inactive"}
+                                      </Badge>
+                                    )}
+                                  </div>
+                                </div>
+                                <Eye className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Icon className={`h-5 w-5 ${color}`} />
+                            {result.name} - Detailed Information
+                          </DialogTitle>
+                        </DialogHeader>
+                        <DetailedView result={result} />
+                      </DialogContent>
+                    </Dialog>
                   );
                 })}
               </div>

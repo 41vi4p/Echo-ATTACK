@@ -258,7 +258,13 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -272,6 +278,24 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.75 0.17 240);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .hacker-card {
+    border-radius: 8px;
+  }
+  
+  .chart-container {
+    padding: 0.5rem;
+  }
+}
+
+/* Touch target improvements */
+@media (hover: none) and (pointer: coarse) {
+  button, .cursor-pointer {
+    min-height: 44px;
+  }
 }
 
 /* Professional card styles */

@@ -73,14 +73,14 @@ export default function APTGroupsDashboard({ aptGroups }: APTGroupsDashboardProp
     color: string;
   }) => (
     <Card className="hacker-card">
-      <CardContent className="p-4">
+      <CardContent className="p-3 sm:p-4">
         <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground font-medium">{title}</p>
-            <p className={`text-2xl font-bold ${color} mt-1`}>{value}</p>
-            <p className="text-xs text-muted-foreground mt-1">{subtitle}</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs sm:text-sm text-muted-foreground font-medium truncate">{title}</p>
+            <p className={`text-lg sm:text-xl lg:text-2xl font-bold ${color} mt-1`}>{value}</p>
+            <p className="text-xs text-muted-foreground mt-1 leading-tight">{subtitle}</p>
           </div>
-          <Icon className={`h-8 w-8 ${color}`} />
+          <Icon className={`h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 ${color} flex-shrink-0`} />
         </div>
       </CardContent>
     </Card>
@@ -89,18 +89,18 @@ export default function APTGroupsDashboard({ aptGroups }: APTGroupsDashboardProp
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="hacker-card p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
+      <div className="hacker-card p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
               APT Groups Analysis
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Detailed analysis of Advanced Persistent Threat groups and their tactics
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="px-3 py-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <Badge variant="secondary" className="px-3 py-2 text-sm">
               <Users className="h-4 w-4 mr-2" />
               {Object.keys(aptGroups).length} Groups
             </Badge>
@@ -110,30 +110,30 @@ export default function APTGroupsDashboard({ aptGroups }: APTGroupsDashboardProp
 
       {/* Search and Filters */}
       <Card className="hacker-card">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-4">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search APT groups by name, ID, or description..."
+                placeholder="Search APT groups..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-secondary/50 border-border"
+                className="pl-10 bg-secondary/50 border-border text-sm"
               />
             </div>
             <Button
               variant={filterUsedOnly ? "default" : "outline"}
               onClick={() => setFilterUsedOnly(!filterUsedOnly)}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-xs sm:text-sm px-3 py-2"
             >
-              <Filter className="h-4 w-4" />
+              <Filter className="h-3 w-3 sm:h-4 sm:w-4" />
               Active Only
             </Button>
           </div>
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Groups List */}
         <div className="lg:col-span-1">
           <Card className="hacker-card">
@@ -227,7 +227,7 @@ export default function APTGroupsDashboard({ aptGroups }: APTGroupsDashboardProp
 
               {/* Statistics */}
               {groupStats && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
                   <StatCard
                     title="Techniques Used"
                     value={`${groupStats.usedTechniques}/${groupStats.totalTechniques}`}

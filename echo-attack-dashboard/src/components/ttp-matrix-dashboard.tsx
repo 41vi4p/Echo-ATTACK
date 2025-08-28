@@ -413,18 +413,18 @@ export default function TTPMatrixDashboard({ aptGroups }: TTPMatrixDashboardProp
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="hacker-card p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
+      <div className="hacker-card p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
               TTP Matrix Analysis
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Comprehensive view of Tactics, Techniques, and Procedures across APT groups
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="px-3 py-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <Badge variant="secondary" className="px-3 py-2 text-sm">
               <Target className="h-4 w-4 mr-2" />
               {filteredTechniques.length} Techniques
             </Badge>
@@ -434,64 +434,64 @@ export default function TTPMatrixDashboard({ aptGroups }: TTPMatrixDashboardProp
 
       {/* Controls */}
       <Card className="hacker-card">
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <div className="space-y-4">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search techniques by name, ID, or description..."
+                placeholder="Search techniques..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-secondary/50 border-border"
+                className="pl-10 bg-secondary/50 border-border text-sm"
               />
               {searchTerm && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0"
                   onClick={() => setSearchTerm('')}
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-3 w-3" />
                 </Button>
               )}
             </div>
 
             {/* Filters */}
-            <div className="flex items-center gap-4 flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">Tactic:</span>
-                <div className="flex gap-1 flex-wrap">
-                  <Button
-                    variant={selectedTactic === 'all' ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedTactic('all')}
-                  >
-                    All Tactics
-                  </Button>
-                  {MITRE_TACTICS.slice(0, 6).map((tactic) => (
-                    <Button
-                      key={tactic.id}
-                      variant={selectedTactic === tactic.name ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedTactic(tactic.name)}
-                      className="text-xs"
-                    >
-                      {tactic.name}
-                    </Button>
-                  ))}
-                </div>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-muted-foreground">Filter by Tactic:</span>
+                <Button
+                  variant={showActiveOnly ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setShowActiveOnly(!showActiveOnly)}
+                  className="flex items-center gap-2 text-xs"
+                >
+                  <Filter className="h-3 w-3" />
+                  Active Only
+                </Button>
               </div>
-
-              <Button
-                variant={showActiveOnly ? "default" : "outline"}
-                size="sm"
-                onClick={() => setShowActiveOnly(!showActiveOnly)}
-                className="flex items-center gap-2"
-              >
-                <Filter className="h-4 w-4" />
-                Active Only
-              </Button>
+              <div className="flex gap-2 flex-wrap">
+                <Button
+                  variant={selectedTactic === 'all' ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedTactic('all')}
+                  className="text-xs"
+                >
+                  All Tactics
+                </Button>
+                {MITRE_TACTICS.slice(0, 6).map((tactic) => (
+                  <Button
+                    key={tactic.id}
+                    variant={selectedTactic === tactic.name ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedTactic(tactic.name)}
+                    className="text-xs px-2 py-1"
+                  >
+                    {tactic.name.split(' ')[0]}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         </CardContent>
@@ -506,7 +506,7 @@ export default function TTPMatrixDashboard({ aptGroups }: TTPMatrixDashboardProp
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {tacticStats.map((tactic) => {
               const Icon = tactic.icon;
               return (
@@ -556,7 +556,7 @@ export default function TTPMatrixDashboard({ aptGroups }: TTPMatrixDashboardProp
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                     {techniques.map((technique) => (
                       <TechniqueCard key={technique.id} technique={technique} />
                     ))}
@@ -577,7 +577,7 @@ export default function TTPMatrixDashboard({ aptGroups }: TTPMatrixDashboardProp
           </CardHeader>
           <CardContent>
             {filteredTechniques.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                 {filteredTechniques.map((technique) => (
                   <TechniqueCard key={technique.id} technique={technique} />
                 ))}

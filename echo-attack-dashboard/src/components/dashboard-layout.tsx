@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
 import { 
   Menu, 
   Shield, 
@@ -182,6 +182,9 @@ export default function DashboardLayout({ children, activeTab, onTabChange }: Da
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="w-80 p-0 bg-card/95 backdrop-blur-lg">
+          <SheetHeader className="sr-only">
+            <SheetTitle>Navigation Menu</SheetTitle>
+          </SheetHeader>
           <SidebarContent isCollapsed={false} />
         </SheetContent>
       </Sheet>
@@ -191,42 +194,43 @@ export default function DashboardLayout({ children, activeTab, onTabChange }: Da
         <div className="h-full overflow-auto">
           {/* Header Bar */}
           <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border">
-            <div className="flex items-center justify-between p-4">
-              <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between p-3 sm:p-4">
+              <div className="flex items-center gap-2 sm:gap-4 min-w-0">
                 <div className="md:hidden">
                   <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
                     <SheetTrigger asChild>
-                      <Button variant="ghost" size="icon" className="border border-border">
-                        <Menu className="h-5 w-5" />
+                      <Button variant="ghost" size="icon" className="border border-border h-8 w-8 sm:h-10 sm:w-10">
+                        <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
                       </Button>
                     </SheetTrigger>
                   </Sheet>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground">
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground truncate">
                     {navigationItems.find(item => item.id === activeTab)?.label || 'Dashboard'}
                   </h2>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
                     Real-time threat intelligence analysis
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3">
-                <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
+                <div className="hidden lg:flex items-center gap-2 text-xs text-muted-foreground">
                   <Zap className="h-3 w-3 text-primary" />
                   <span className="font-medium">Live Data Feed</span>
                 </div>
-                <Button variant="outline" size="sm" className="border-primary/30 bg-primary/10">
-                  <Activity className="h-3 w-3 mr-2 text-primary" />
-                  <span className="font-medium">Monitoring</span>
+                <Button variant="outline" size="sm" className="border-primary/30 bg-primary/10 text-xs sm:text-sm px-2 sm:px-3">
+                  <Activity className="h-3 w-3 mr-1 sm:mr-2 text-primary" />
+                  <span className="font-medium hidden sm:inline">Monitoring</span>
+                  <span className="font-medium sm:hidden">Mon</span>
                 </Button>
               </div>
             </div>
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-3 sm:p-4 md:p-6">
             {children}
           </div>
         </div>

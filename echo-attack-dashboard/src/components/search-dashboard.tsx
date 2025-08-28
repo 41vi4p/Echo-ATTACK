@@ -397,18 +397,18 @@ export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="hacker-card p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
+      <div className="hacker-card p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
               Threat Intelligence Search
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Search across APT groups, techniques, and software tools
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="px-3 py-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <Badge variant="secondary" className="px-3 py-2 text-sm">
               <Search className="h-4 w-4 mr-2" />
               {searchResults.length} Results
             </Badge>
@@ -418,7 +418,7 @@ export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
 
       {/* Search Interface */}
       <Card className="hacker-card">
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <div className="space-y-4">
             {/* Search Input */}
             <div className="relative">
@@ -427,39 +427,42 @@ export default function SearchDashboard({ aptGroups }: SearchDashboardProps) {
                 placeholder="Search for APT groups, techniques, or software..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 text-lg h-12 bg-secondary/50 border-border"
+                className="pl-10 text-sm sm:text-base lg:text-lg h-10 sm:h-12 bg-secondary/50 border-border"
               />
               {searchTerm && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0"
                   onClick={() => setSearchTerm('')}
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               )}
             </div>
 
             {/* Type Filters */}
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground mr-2">Filter by type:</span>
-              {[
-                { key: 'group', label: 'APT Groups', icon: Shield },
-                { key: 'technique', label: 'Techniques', icon: Target },
-                { key: 'software', label: 'Software', icon: Database },
-              ].map(({ key, label, icon: Icon }) => (
-                <Button
-                  key={key}
-                  variant={selectedTypes.includes(key) ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => toggleType(key)}
-                  className="flex items-center gap-2"
-                >
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </Button>
-              ))}
+            <div className="space-y-3">
+              <span className="text-sm font-medium text-muted-foreground">Filter by type:</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { key: 'group', label: 'APT Groups', shortLabel: 'Groups', icon: Shield },
+                  { key: 'technique', label: 'Techniques', shortLabel: 'Techniques', icon: Target },
+                  { key: 'software', label: 'Software', shortLabel: 'Software', icon: Database },
+                ].map(({ key, label, shortLabel, icon: Icon }) => (
+                  <Button
+                    key={key}
+                    variant={selectedTypes.includes(key) ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => toggleType(key)}
+                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3"
+                  >
+                    <Icon className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{label}</span>
+                    <span className="sm:hidden">{shortLabel}</span>
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         </CardContent>

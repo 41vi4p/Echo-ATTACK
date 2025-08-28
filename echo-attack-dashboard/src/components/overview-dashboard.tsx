@@ -232,15 +232,15 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
     suffix?: string;
   }) => (
     <Card className="hacker-card hover:shadow-xl transition-all duration-300">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-        <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
-        <Icon className={`h-5 w-5 ${color}`} />
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 sm:pb-3 p-3 sm:p-6">
+        <CardTitle className="text-xs sm:text-sm font-medium text-muted-foreground truncate">{title}</CardTitle>
+        <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${color} flex-shrink-0`} />
       </CardHeader>
-      <CardContent>
-        <div className={`text-3xl font-bold ${color} mb-2`}>
+      <CardContent className="p-3 sm:p-6 pt-0">
+        <div className={`text-xl sm:text-2xl lg:text-3xl font-bold ${color} mb-1 sm:mb-2`}>
           {animatedValue !== undefined ? animatedValue : value}{suffix}
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground leading-tight">
           {description}
         </p>
       </CardContent>
@@ -250,22 +250,22 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
   return (
     <div className="space-y-6 animate-fade-in">
       {/* System Status Header */}
-      <div className="hacker-card p-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold text-foreground mb-2">
+      <div className="hacker-card p-4 sm:p-6 md:p-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2 leading-tight">
               ECHO ATT&CK Intelligence Platform
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg">
               Advanced Persistent Threat Analysis & Real-time Monitoring
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <Badge variant="destructive" className="px-3 py-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 flex-shrink-0">
+            <Badge variant="destructive" className="px-3 py-2 text-sm">
               <AlertTriangle className="h-4 w-4 mr-2" />
-              Active Threats: {metrics.total_groups}
+              <span className="hidden xs:inline">Active Threats: </span>{metrics.total_groups}
             </Badge>
-            <div className="flex items-center gap-2 text-sm text-primary">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-primary">
               <Globe className="h-4 w-4" />
               <span className="font-medium">Global Monitoring</span>
             </div>
@@ -274,7 +274,7 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
       </div>
 
       {/* Main Metrics Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <MetricCard
           title="APT GROUPS"
           value={metrics.total_groups}
@@ -310,7 +310,7 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
       </div>
 
       {/* Secondary Metrics */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <MetricCard
           title="SUB-TECHNIQUES"
           value={metrics.used_subtechniques}
@@ -343,16 +343,16 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
       </div>
 
       {/* Charts Section */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
         {/* Top Techniques Chart */}
         <Card className="hacker-card">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-foreground">
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-lg sm:text-xl font-semibold text-foreground">
               Top Attack Techniques
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="chart-container h-80">
+          <CardContent className="p-4 sm:p-6">
+            <div className="chart-container h-64 sm:h-80">
               <Bar data={topTechniquesChart} options={chartOptions} />
             </div>
           </CardContent>
@@ -360,13 +360,13 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
 
         {/* Technique Coverage Chart */}
         <Card className="hacker-card">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-foreground">
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-lg sm:text-xl font-semibold text-foreground">
               Technique Coverage
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="chart-container h-80 flex items-center justify-center">
+          <CardContent className="p-4 sm:p-6">
+            <div className="chart-container h-64 sm:h-80 flex items-center justify-center">
               <Doughnut 
                 data={coverageData} 
                 options={{
@@ -387,26 +387,26 @@ export default function OverviewDashboard({ aptGroups, metrics }: OverviewDashbo
 
       {/* Recent Activity */}
       <Card className="hacker-card">
-        <CardHeader>
-          <CardTitle className="text-xl font-semibold text-foreground flex items-center gap-2">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl font-semibold text-foreground flex items-center gap-2">
             <Activity className="h-5 w-5 text-primary" />
             Threat Intelligence Feed
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
+        <CardContent className="p-4 sm:p-6">
+          <div className="space-y-3 sm:space-y-4">
             {Object.values(aptGroups).slice(0, 5).map((group) => (
-              <div key={group.attack_id} className="flex items-center justify-between p-4 rounded-lg bg-secondary/30 border border-border hover:bg-secondary/50 transition-colors">
-                <div className="flex items-center gap-3">
-                  <Shield className="h-5 w-5 text-primary" />
-                  <div>
-                    <p className="font-medium text-foreground">{group.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {group.attack_id} • {group.technique_table_data.filter(t => t.technique_used).length} active techniques
+              <div key={group.attack_id} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 rounded-lg bg-secondary/30 border border-border hover:bg-secondary/50 transition-colors gap-2 sm:gap-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="font-medium text-foreground truncate">{group.name}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      <span className="font-mono">{group.attack_id}</span> • {group.technique_table_data.filter(t => t.technique_used).length} active techniques
                     </p>
                   </div>
                 </div>
-                <Badge variant="outline" className="px-2 py-1">
+                <Badge variant="outline" className="px-2 py-1 text-xs self-start sm:self-center">
                   {group.modified}
                 </Badge>
               </div>

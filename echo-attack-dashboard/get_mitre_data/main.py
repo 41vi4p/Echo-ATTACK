@@ -16,6 +16,7 @@ import requests
 from stix2 import MemoryStore
 from util import relationshipgetters
 import groups
+import glob
 
 # URLs for MITRE ATT&CK data
 SOURCES = [
@@ -24,8 +25,15 @@ SOURCES = [
     "https://raw.githubusercontent.com/mitre/cti/master/ics-attack/ics-attack.json",
 ]
 
-OUTPUT_DIR = "output"
+OUTPUT_DIR = "../data"
 
+def clean_output_dir():
+    files = glob.glob(os.path.join(OUTPUT_DIR, "*.json"))
+    for f in files:
+        try:
+            os.remove(f)
+        except Exception as e:
+            print(f"[WARN] Could not delete {f}: {e}")
 
 def download_stix(url):
     resp = requests.get(url)
@@ -34,6 +42,8 @@ def download_stix(url):
 
 
 def main():
+    # Clean output directory before writing new files
+    clean_output_dir()
     # Download and combine all STIX objects
     all_objects = []
     for url in SOURCES:

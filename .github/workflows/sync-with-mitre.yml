@@ -1,0 +1,38 @@
+# .github/workflows/update-mitre-data.yml
+name: Sync MITRE ATT&CK Data
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs daily at 2:00 AM UTC
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  sync-mitre:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r echo-attack-dashboard/get_mitre_data/requirements.txt
+
+      - name: Run MITRE data update script
+        run: |
+          cd echo-attack-dashboard/get_mitre_data
+          python main.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ../data/*.json
+          git commit -m "Update MITRE ATT&CK group data [auto]" || echo "No changes to commit"
+          git push

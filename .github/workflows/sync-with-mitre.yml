@@ -42,7 +42,22 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           set -e
           if ! git push origin HEAD:${GITHUB_REF#refs/heads/}; then
-            echo "[ERROR] Push failed. This may be due to branch protection rules."
-            echo "If this is a protected branch, consider allowing GitHub Actions to push, or push to a separate branch and open a PR."
-            exit 1
+            echo "[INFO] Push to main failed. Creating a pull request."
+            BRANCH_NAME="mitre-update-$(date +'%Y%m%d%H%M%S')"
+            git checkout -b "$BRANCH_NAME"
+            git push origin "$BRANCH_NAME"
+            # Install GitHub CLI if not present
+            if ! command -v gh &> /dev/null; then
+              echo "Installing GitHub CLI..."
+              sudo apt-get update && sudo apt-get install -y gh
+            fi
+            # Authenticate gh CLI
+            echo "${GITHUB_TOKEN}" | gh auth login --with-token
+            gh pr create \
+              --title "Update MITRE ATT&CK group data [auto]" \
+              --body "Automated update of MITRE ATT&CK group data." \
+              --base "${GITHUB_REF#refs/heads/}" \
+              --head "$BRANCH_NAME" \
+              --repo "${{ github.repository }}"
+            exit 0
           fi

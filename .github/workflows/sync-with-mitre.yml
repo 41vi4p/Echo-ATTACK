@@ -31,7 +31,7 @@ jobs:
 
       - name: Commit and push changes
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -39,7 +39,7 @@ jobs:
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Update MITRE ATT&CK group data [auto]"
           # Use token for authentication
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git
           set -e
           if ! git push origin HEAD:${GITHUB_REF#refs/heads/}; then
             echo "[INFO] Push to main failed. Creating a pull request."
@@ -52,7 +52,7 @@ jobs:
               sudo apt-get update && sudo apt-get install -y gh
             fi
             # Authenticate gh CLI
-            echo "${GITHUB_TOKEN}" | gh auth login --with-token
+            echo "${TOKEN}" | gh auth login --with-token
             gh pr create \
               --title "Update MITRE ATT&CK group data [auto]" \
               --body "Automated update of MITRE ATT&CK group data." \
